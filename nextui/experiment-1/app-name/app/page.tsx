@@ -51,6 +51,21 @@ export default function Home() {
           </span>
         </Snippet>
       </div>
+
+      <div className="flex gap-3">
+        <Link
+          isExternal
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
+          href={siteConfig.links.docs}
+        >
+          Documentation
+        </Link>
+      </div>
+
     </section>
   );
 }
