@@ -54,6 +54,21 @@ export default function IndexPage() {
             </span>
           </Snippet>
         </div>
+
+      <div className="flex gap-3">
+        <Link
+          isExternal
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
+          href="/pricing"
+        >
+          Documentation
+        </Link>
+      </div>
+
       </section>
     </DefaultLayout>
   );
