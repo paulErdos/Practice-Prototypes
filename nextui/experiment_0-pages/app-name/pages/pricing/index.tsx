@@ -1,5 +1,12 @@
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
+import Select from 'react-select'; 
+
+const dummy_options = [
+  {value: 5, label: 'fif'},
+  {value: 'ah plead da fif', label: 'onetwothreefofiiiif'},
+  {value: 'real option', label: 'i actually plead the third i refuse to quarter troops in my home'}
+]
 
 export default function DocsPage() {
   return (
@@ -10,6 +17,11 @@ export default function DocsPage() {
           <div>I intend to put this in a card: "https://react-select.com/home"</div>
           <div>Note: if recipes can be saved, named, and used as ingredients, meals of recipe servings are trivial</div>
         </div>
+
+        <div>
+          <Select options={dummy_options} />
+        </div>
+
       </section>
     </DefaultLayout>
   );
