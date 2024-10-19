@@ -3,7 +3,9 @@ import DefaultLayout from "@/layouts/default";
 import Select from 'react-select'; 
 import {Button} from "@nextui-org/react"
 import React, { useState } from 'react';
-import { Card } from "@nextui-org/react";
+//import { Card } from "@nextui-org/react";
+import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
+
 
 const dummy_options = [
   {value: 5, label: 'fif'},
@@ -55,6 +57,10 @@ export default function DocsPage() {
           <ToggleButton />
         </div>
 
+        <div>
+          <ItemCard />
+        </div>
+
       {/*
         <div>
           <ButtonCard />
@@ -92,6 +98,40 @@ const ButtonCard: React.FC = () => {
   );
 };
 
+const ItemCard: React.FC = () => {
+  return (
+    <Card className="max-w-[400px]">
+      <CardHeader className="flex gap-3">
+        <Image
+          alt="nextui logo"
+          height={40}
+          radius="sm"
+          src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+          width={40}
+        />
+        <div className="flex flex-col">
+          <p className="text-md">NextUI</p>
+          <p className="text-small text-default-500">nextui.org</p>
+        </div>
+      </CardHeader>
+      <Divider/>
+      <CardBody>
+        <p>Make beautiful websites regardless of your design experience.</p>
+      </CardBody>
+      <Divider/>
+      <CardFooter>
+        <Link
+          isExternal
+          showAnchorIcon
+          href="https://github.com/nextui-org/nextui"
+        >
+          Visit source code on GitHub.
+        </Link>
+      </CardFooter>
+    </Card>
+  );
+}
+
 const ToggleButton: React.FC = () => {
   const [isToggled, setIsToggled] = useState<boolean>(false);
 
@@ -101,7 +141,7 @@ const ToggleButton: React.FC = () => {
 
   return (
     <Button color="primary" variant="solid" onClick={handleClick}>
-      {isToggled ? "On" : "Off"}
+      {isToggled ? "Add New" : "X"}
     </Button>
   );
 };
