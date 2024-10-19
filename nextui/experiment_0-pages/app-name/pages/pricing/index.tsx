@@ -67,6 +67,10 @@ export default function DocsPage() {
         </div>
       */}
 
+        <div>
+          <DoubleButton />
+        </div>
+
       </section>
     </DefaultLayout>
   );
@@ -145,3 +149,49 @@ const ToggleButton: React.FC = () => {
     </Button>
   );
 };
+
+const ToggleButtonWithProps = ({state, setState}) => {
+  return (
+    <Button color="primary" variant="solid" onClick={setState}>
+      {state ? "Add New" : "X"}
+    </Button>
+  );
+};
+
+function DoubleButton() {
+  const [toggled, setToggled] = useState<boolean>(true);
+
+  function handleClick() {
+    console.log('handling click')
+    console.log('toggle is')
+    console.log(toggled)
+    setToggled(!toggled);
+    console.log('and now it is')
+    console.log(toggled)
+  };
+
+
+  return (
+    <div> {/* onClick={setToggled}> */}
+      {toggled ? 
+        (
+          <div>{/* onClick={setToggled}>*/}
+            <ToggleButtonWithProps state={toggled} setState={handleClick} />
+          </div>
+        ) : (
+          <div>{/*onClick={setToggled}>*/}
+            <div>
+              <ToggleButtonWithProps state={toggled} setState={handleClick} />
+              <ToggleButtonWithProps state={toggled} setState={handleClick} />
+            </div>   
+          </div>     
+        )
+      }
+    </div>
+  );
+}
+
+
+
+
+
