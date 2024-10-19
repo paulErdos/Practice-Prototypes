@@ -54,53 +54,22 @@ export default function DocsPage() {
         </div>
 
         <div>
-          <ToggleButton />
-        </div>
-
-        <div>
           <ItemCard />
         </div>
 
-      {/*
-        <div>
-          <ButtonCard />
+
+        <div className="px-4 py-2 border border-gray-400 rounded focus:outline-none focus:border-blue-500">
+          <DoubleButton />
         </div>
-      */}
 
         <div>
-          <DoubleButton />
+          <OpenableSelector />
         </div>
 
       </section>
     </DefaultLayout>
   );
 }
-
-const ButtonCard: React.FC = () => {
-  return (
-    <Card>
-      <Card.Body>
-        <div className="flex flex-col space-y-4">
-          <div className="flex space-x-4">
-            <ToggleButton />
-            <ToggleButton />
-            <ToggleButton />
-          </div>
-          <div className="flex space-x-4">
-            <ToggleButton />
-            <ToggleButton />
-            <ToggleButton />
-          </div>
-          <div className="flex space-x-4">
-            <ToggleButton />
-            <ToggleButton />
-            <ToggleButton />
-          </div>
-        </div>
-      </Card.Body>
-    </Card>
-  );
-};
 
 const ItemCard: React.FC = () => {
   return (
@@ -136,19 +105,6 @@ const ItemCard: React.FC = () => {
   );
 }
 
-const ToggleButton: React.FC = () => {
-  const [isToggled, setIsToggled] = useState<boolean>(false);
-
-  const handleClick = () => {
-    setIsToggled(!isToggled);
-  };
-
-  return (
-    <Button color="primary" variant="solid" onClick={handleClick}>
-      {isToggled ? "Add New" : "X"}
-    </Button>
-  );
-};
 
 const ToggleButtonWithProps = ({state, setState}) => {
   return (
@@ -158,16 +114,12 @@ const ToggleButtonWithProps = ({state, setState}) => {
   );
 };
 
+
 function DoubleButton() {
   const [toggled, setToggled] = useState<boolean>(true);
 
   function handleClick() {
-    console.log('handling click')
-    console.log('toggle is')
-    console.log(toggled)
     setToggled(!toggled);
-    console.log('and now it is')
-    console.log(toggled)
   };
 
 
@@ -189,9 +141,55 @@ function DoubleButton() {
       }
     </div>
   );
-}
+};
+
+
+function OpenableSelector() {
+  const [toggled, setToggled] = useState<boolean>(true);
+
+  function handleClick() {
+    setToggled(!toggled);
+  };
+
+
+  return (
+    <div className="px-4 py-2 border border-gray-400 rounded focus:outline-none focus:border-blue-500"> {/* onClick={setToggled}> */}
+      {toggled ? 
+        (
+          <div>{/* onClick={setToggled}>*/}
+            <ToggleButtonWithProps state={toggled} setState={handleClick} />
+          </div>
+        ) : (
+          <div>{/*onClick={setToggled}>*/}
+            <div className="flex flex-row">
+              <ToggleButtonWithProps state={toggled} setState={handleClick} />
+              <Select options={dummy_options} />
+            </div>   
+          </div>     
+        )
+      }
+    </div>
+  );
+};
 
 
 
+{/*
 
+const ToggleButton: React.FC = () => {
+  const [isToggled, setIsToggled] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setIsToggled(!isToggled);
+  };
+
+  return (
+    <Button color="primary" variant="solid" onClick={handleClick}>
+      {isToggled ? "Add New" : "X"}
+    </Button>
+  );
+};
+
+
+*/}
 
