@@ -66,44 +66,24 @@ export default function DocsPage() {
           <OpenableSelector />
         </div>
 
+        <div>
+          <DoubleOpenableSelector />
+        </div>
+
       </section>
     </DefaultLayout>
   );
 }
 
-const ItemCard: React.FC = () => {
-  return (
-    <Card className="max-w-[400px]">
-      <CardHeader className="flex gap-3">
-        <Image
-          alt="nextui logo"
-          height={40}
-          radius="sm"
-          src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-          width={40}
-        />
-        <div className="flex flex-col">
-          <p className="text-md">NextUI</p>
-          <p className="text-small text-default-500">nextui.org</p>
-        </div>
-      </CardHeader>
-      <Divider/>
-      <CardBody>
-        <p>Make beautiful websites regardless of your design experience.</p>
-      </CardBody>
-      <Divider/>
-      <CardFooter>
-        <Link
-          isExternal
-          showAnchorIcon
-          href="https://github.com/nextui-org/nextui"
-        >
-          Visit source code on GitHub.
-        </Link>
-      </CardFooter>
-    </Card>
-  );
-}
+
+{/*
+Next Steps:
+* [ ] Add quantity selector dropdown that appears after the food selector dropdown has a selection
+* [ ] Fixed width
+* [ ] Vertically center add new / x button
+* [ ] AsyncSelect https://react-select.com/home
+* 
+*/}
 
 
 const ToggleButtonWithProps = ({state, setState}) => {
@@ -115,26 +95,49 @@ const ToggleButtonWithProps = ({state, setState}) => {
 };
 
 
-function DoubleButton() {
+function DoubleOpenableSelector() {
   const [toggled, setToggled] = useState<boolean>(true);
-
   function handleClick() {
     setToggled(!toggled);
+    setFoodSelection("");
   };
 
 
+  const [foodSelection, setFoodSelection] = useState("");
+  const handleFoodSelection = (theFoodSelection) => {
+    setFoodSelection(theFoodSelection);
+  }
+
+  const [massSelection, setMassSelection] = useState(100)
+  const handleMassSelection = (theMassSelection) => {
+    setMassSelection(theMassSelection);
+  }
+
+
   return (
-    <div> {/* onClick={setToggled}> */}
+    <div className="px-4 py-2 border border-gray-400 rounded focus:outline-none focus:border-blue-500"> {/* onClick={setToggled}> */}
       {toggled ? 
         (
-          <div>{/* onClick={setToggled}>*/}
+          <div>
             <ToggleButtonWithProps state={toggled} setState={handleClick} />
           </div>
+
         ) : (
-          <div>{/*onClick={setToggled}>*/}
-            <div>
+
+          <div>
+            <div className="flex flex-row">
               <ToggleButtonWithProps state={toggled} setState={handleClick} />
-              <ToggleButtonWithProps state={toggled} setState={handleClick} />
+              <Select 
+                value={foodSelection}
+                onChange={handleFoodSelection}
+                options={dummy_options}
+              />
+              
+              <div>
+                {foodSelection?.value}
+              </div>
+
+
             </div>   
           </div>     
         )
@@ -142,6 +145,8 @@ function DoubleButton() {
     </div>
   );
 };
+
+
 
 
 function OpenableSelector() {
@@ -185,11 +190,69 @@ function OpenableSelector() {
   );
 };
 
-{/*
-Next Steps:
-* AsyncSelect https://react-select.com/home
-* 
-*/}
+
+const ItemCard: React.FC = () => {
+  return (
+    <Card className="max-w-[400px]">
+      <CardHeader className="flex gap-3">
+        <Image
+          alt="nextui logo"
+          height={40}
+          radius="sm"
+          src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+          width={40}
+        />
+        <div className="flex flex-col">
+          <p className="text-md">NextUI</p>
+          <p className="text-small text-default-500">nextui.org</p>
+        </div>
+      </CardHeader>
+      <Divider/>
+      <CardBody>
+        <p>Make beautiful websites regardless of your design experience.</p>
+      </CardBody>
+      <Divider/>
+      <CardFooter>
+        <Link
+          isExternal
+          showAnchorIcon
+          href="https://github.com/nextui-org/nextui"
+        >
+          Visit source code on GitHub.
+        </Link>
+      </CardFooter>
+    </Card>
+  );
+}
+
+function DoubleButton() {
+  const [toggled, setToggled] = useState<boolean>(true);
+
+  function handleClick() {
+    setToggled(!toggled);
+  };
+
+
+  return (
+    <div> {/* onClick={setToggled}> */}
+      {toggled ? 
+        (
+          <div>{/* onClick={setToggled}>*/}
+            <ToggleButtonWithProps state={toggled} setState={handleClick} />
+          </div>
+        ) : (
+          <div>{/*onClick={setToggled}>*/}
+            <div>
+              <ToggleButtonWithProps state={toggled} setState={handleClick} />
+              <ToggleButtonWithProps state={toggled} setState={handleClick} />
+            </div>   
+          </div>     
+        )
+      }
+    </div>
+  );
+};
+
 
 {/*
 
