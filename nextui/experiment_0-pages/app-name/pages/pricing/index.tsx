@@ -152,18 +152,31 @@ function OpenableSelector() {
   };
 
 
+  const [selection, setSelection] = useState("");
+  const handleSelection = (theSelection) => {
+    setSelection(theSelection);
+  }
+
+
   return (
     <div className="px-4 py-2 border border-gray-400 rounded focus:outline-none focus:border-blue-500"> {/* onClick={setToggled}> */}
       {toggled ? 
         (
-          <div>{/* onClick={setToggled}>*/}
+          <div>
             <ToggleButtonWithProps state={toggled} setState={handleClick} />
           </div>
         ) : (
-          <div>{/*onClick={setToggled}>*/}
+          <div>
             <div className="flex flex-row">
               <ToggleButtonWithProps state={toggled} setState={handleClick} />
-              <Select options={dummy_options} />
+              <Select 
+                value={selection}
+                onChange={handleSelection}
+                options={dummy_options}
+              />
+              <div>
+                {selection?.value}
+              </div>
             </div>   
           </div>     
         )
@@ -172,7 +185,11 @@ function OpenableSelector() {
   );
 };
 
-
+{/*
+Next Steps:
+* AsyncSelect https://react-select.com/home
+* 
+*/}
 
 {/*
 
