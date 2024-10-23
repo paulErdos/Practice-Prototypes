@@ -5,7 +5,7 @@ import {Button} from "@nextui-org/react"
 import React, { useState } from 'react';
 //import { Card } from "@nextui-org/react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
-
+import { Input } from '@nextui-org/react';
 
 const dummy_options = [
   {value: 5, label: 'fif'},
@@ -78,7 +78,15 @@ export default function DocsPage() {
 
 {/*
 Next Steps:
-* [ ] Add quantity selector dropdown that appears after the food selector dropdown has a selection
+* [x] Add quantity selector dropdown that appears after the food selector dropdown has a selection
+* [ ] Add units selector dropdown, cups, grams, ounces, etc. 
+* [ ] Add button to do some dummy api call, like curling pi from somewhere
+* [ ] Add these to a card where new rows can be added
+* [ ] Add a way to save the card info as a file on the client's machine.
+* [ ] Add a way to load saved card info
+* [ ] Then bring that over. 
+* [ ] viz: by calorie, by gram, by any other metric
+*     > Where would this even go
 * [ ] Fixed width
 * [ ] Vertically center add new / x button
 * [ ] AsyncSelect https://react-select.com/home
@@ -100,7 +108,7 @@ function DoubleOpenableSelector() {
   function handleClick() {
     setToggled(!toggled);
     setFoodSelection("");
-  };
+  }
 
 
   const [foodSelection, setFoodSelection] = useState("");
@@ -133,15 +141,67 @@ function DoubleOpenableSelector() {
                 options={dummy_options}
               />
               
-              <div>
-                {foodSelection?.value}
-              </div>
-
+              {foodSelection && (
+                <div>
+                  <div>
+                    <IntegerInput value={massSelection} onChange={setMassSelection} />
+                  </div>
+                  <div>
+                    <p>{massSelection}</p>
+                  </div>
+                </div>
+              )}
 
             </div>   
           </div>     
         )
       }
+    </div>
+  );
+};
+
+
+
+interface IntegerInputProps {
+  value: number | ''; 
+  onChange: (value: number | '') => void;
+}
+
+const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
+  const [inputValue, setInputValue] = useState<string>(value.toString());
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value); // Update the temporary input value
+  };
+
+  const handleConfirmChange = () => {
+    const newValue = Number(inputValue);
+
+    // Validate the input value
+    if (newValue >= 1 && newValue <= 50000) {
+      onChange(newValue); // Call onChange if it's valid
+    } else {
+      // Optionally handle invalid input (e.g., reset to the last valid value)
+      setInputValue(value.toString());
+    }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleConfirmChange(); // Confirm on Enter key press
+    }
+  };
+
+  return (
+    <div>
+      <Input
+        type="text" // Change to text to allow easier backspacing
+        value={inputValue}
+        onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
+        placeholder="Enter a number between 1 and 50000"
+      />
+      <Button onClick={handleConfirmChange}>Confirm</Button>
     </div>
   );
 };
