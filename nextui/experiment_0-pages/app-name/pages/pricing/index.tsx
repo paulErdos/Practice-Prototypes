@@ -13,6 +13,8 @@ const dummy_options = [
   {value: 'real option', label: 'i actually plead the third i refuse to quarter troops in my home'}
 ]
 
+const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
+
 export default function DocsPage() {
   const [buttonPushed, setButtonPushed] = useState(false);
 
@@ -110,53 +112,108 @@ function DoubleOpenableSelector() {
     setFoodSelection("");
   }
 
-
   const [foodSelection, setFoodSelection] = useState("");
   const handleFoodSelection = (theFoodSelection) => {
     setFoodSelection(theFoodSelection);
   }
 
-  const [massSelection, setMassSelection] = useState(100)
+  const [massSelection, setMassSelection] = useState(100);
   const handleMassSelection = (theMassSelection) => {
     setMassSelection(theMassSelection);
   }
 
+  const [unit, setUnit] = useState('g');
+  const selectUnit = (theUnit) => {
+    setUnit(theUnit);
+  }
+
+  const [labelTriggerToggled, setlabelTriggerToggled] = useState<boolean>(true);
+  const setLabelButton = (theLabel) => {
+    setlabelTriggerToggled(theLabel);
+  }
 
   return (
-    <div className="px-4 py-2 border border-gray-400 rounded focus:outline-none focus:border-blue-500"> {/* onClick={setToggled}> */}
+    <div className="px-4 py-2 border border-gray-400 rounded focus:outline-none focus:border-blue-500">
       {toggled ? 
         (
           <div>
             <ToggleButtonWithProps state={toggled} setState={handleClick} />
           </div>
-
         ) : (
-
           <div>
             <div className="flex flex-row">
+
+              {/* Exit out as needed */}
               <ToggleButtonWithProps state={toggled} setState={handleClick} />
+
+              {/* Food selection drop down */}
               <Select 
                 value={foodSelection}
                 onChange={handleFoodSelection}
                 options={dummy_options}
               />
               
+              {/* Quantity + Unit to appear when food selection is made */}
               {foodSelection && (
-                <div>
-                  <div>
-                    <IntegerInput value={massSelection} onChange={setMassSelection} />
-                  </div>
-                  <div>
+                <div className="flex flex-row">
+
+                  {/* Quantity */}
+                  <div className="flex flex-row">
+                    <IntegerInput value={massSelection} onChange={handleMassSelection} />
                     <p>{massSelection}</p>
                   </div>
+
+                  {/* Unit */}
+                  <div className="flex flex-row">
+                    <div className="flex flex-row">
+                      <Select
+                        value={unit}
+                        options={units_options}
+                      />
+                      <p>{unit}</p>
+                    </div>
+                  </div>
+
+                  {/* Make API Call */}
+                  {/* TODO: Can divs have an onclick? */}
+                  {/**/} */
+                  <div>
+                    {labelTriggerToggled ? (
+                      <LabelTriggerToggle
+                        state={labelTriggerToggled}
+                        setState={setLabelButton}
+                        textForSetState={"Set"}
+                        textForUnsetState={""}
+                      />
+                    ) : (
+                      <LabelTriggerToggle
+                        state={labelTriggerToggled}
+                        setState={setLabelButton}
+                        textForSetState={""}
+                        textForUnsetState={"Unset"}
+                      />
+                    )}
+                  </div>
+                  
+                  {/**/}
+
                 </div>
               )}
+
 
             </div>   
           </div>     
         )
       }
     </div>
+  );
+};
+
+const LabelTriggerToggle = ({state, setState, textForSetState, textForUnsetState}) => {
+  return (
+    <Button color="primary" variant="solid" onClick={setState}>
+      {state ? textForUnsetState : textForSetState}
+    </Button>
   );
 };
 
