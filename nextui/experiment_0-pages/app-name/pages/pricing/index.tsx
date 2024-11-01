@@ -72,6 +72,10 @@ export default function DocsPage() {
           <DoubleOpenableSelector />
         </div>
 
+        <div>
+          <InfoCard2 />
+        </div>
+
       </section>
     </DefaultLayout>
   );
@@ -94,6 +98,28 @@ Next Steps:
 * [ ] AsyncSelect https://react-select.com/home
 * 
 */}
+
+
+export function InfoCard2() {
+  const [rows, setRows] = useState<number[]>([]);
+
+  const addRow = () => {
+    setRows([...rows, Math.floor(Math.random() * 100)]);
+  };
+
+  return (
+    <Card css={{ padding: "16px" }}>
+      {rows.map((num, index) => (
+        <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
+          <p>{num}</p>
+          <Button onClick={addRow} size="sm">Add Row</Button>
+        </div>
+      ))}
+      <Button onClick={addRow}>Add Initial Row</Button>
+    </Card>
+  );
+}
+
 
 
 const ToggleButtonWithProps = ({state, setState}) => {
@@ -196,7 +222,7 @@ function DoubleOpenableSelector() {
                   </div>
                   
                   {/**/}
-
+ 
                 </div>
               )}
 
@@ -209,6 +235,7 @@ function DoubleOpenableSelector() {
   );
 };
 
+
 const LabelTriggerToggle = ({state, setState, textForSetState, textForUnsetState}) => {
   return (
     <Button color="primary" variant="solid" onClick={setState}>
@@ -218,11 +245,11 @@ const LabelTriggerToggle = ({state, setState, textForSetState, textForUnsetState
 };
 
 
-
 interface IntegerInputProps {
   value: number | ''; 
   onChange: (value: number | '') => void;
 }
+
 
 const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
   const [inputValue, setInputValue] = useState<string>(value.toString());
@@ -262,8 +289,6 @@ const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
     </div>
   );
 };
-
-
 
 
 function OpenableSelector() {
