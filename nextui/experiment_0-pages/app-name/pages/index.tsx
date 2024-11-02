@@ -65,7 +65,21 @@ export default function IndexPage() {
           })}
           href="/pricing"
         >
-          Documentation
+          Ingredient List UI Tests
+        </Link>
+      </div>
+
+      <div className="flex gap-3">
+        <Link
+          isExternal
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
+          href="/blog"
+        >
+          Nutrition Facts Label UI Tests
         </Link>
       </div>
 

@@ -77,7 +77,7 @@ export default function DocsPage() {
         </div>
 
         <div>
-          <DynamicInfoCard />
+          <DynamicInfoCardTest0 />
         </div>
 
       </section>
@@ -106,7 +106,7 @@ Next Steps:
 //import { useState } from 'react';
 //import { Card, CardHeader, CardBody, CardFooter, Divider, Button, Link, Image } from "@nextui-org/react";
 
-const DynamicInfoCard = () => {
+const DynamicInfoCardTest0 = () => {
   const [rows, setRows] = useState<number[]>([]);
 
   const addRow = () => {
@@ -136,6 +136,7 @@ const DynamicInfoCard = () => {
         {rows.map((num, index) => (
           <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
             <p>{num}</p>
+            <DoubleOpenableSelector key={index} /> 
             <Button onClick={addRow} size="sm">Add Row</Button>
           </div>
         ))}
@@ -156,7 +157,6 @@ const DynamicInfoCard = () => {
     </Card>
   );
 };
-
 
 
 export function InfoCard2() {
@@ -306,7 +306,7 @@ const LabelTriggerToggle = ({state, setState, textForSetState, textForUnsetState
 interface IntegerInputProps {
   value: number | ''; 
   onChange: (value: number | '') => void;
-}
+};
 
 
 const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
@@ -423,7 +423,8 @@ const ItemCard: React.FC = () => {
       </CardFooter>
     </Card>
   );
-}
+};
+
 
 function DoubleButton() {
   const [toggled, setToggled] = useState<boolean>(true);
@@ -472,4 +473,33 @@ const ToggleButton: React.FC = () => {
 
 
 */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
