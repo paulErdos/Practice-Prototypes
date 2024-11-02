@@ -76,6 +76,10 @@ export default function DocsPage() {
           <InfoCard2 />
         </div>
 
+        <div>
+          <DynamicInfoCard />
+        </div>
+
       </section>
     </DefaultLayout>
   );
@@ -99,6 +103,61 @@ Next Steps:
 * 
 */}
 
+//import { useState } from 'react';
+//import { Card, CardHeader, CardBody, CardFooter, Divider, Button, Link, Image } from "@nextui-org/react";
+
+const DynamicInfoCard = () => {
+  const [rows, setRows] = useState<number[]>([]);
+
+  const addRow = () => {
+    setRows([...rows, Math.floor(Math.random() * 100)]);
+  };
+
+  return (
+    <Card className="max-w-[400px]">
+      <CardHeader className="flex gap-3">
+        <Image
+          alt="nextui logo"
+          height={40}
+          radius="sm"
+          src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+          width={40}
+        />
+        <div className="flex flex-col">
+          <p className="text-md">NextUI</p>
+          <p className="text-small text-default-500">nextui.org</p>
+        </div>
+      </CardHeader>
+
+      <Divider />
+
+      <CardBody>
+        <p>Make beautiful websites regardless of your design experience.</p>
+        {rows.map((num, index) => (
+          <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
+            <p>{num}</p>
+            <Button onClick={addRow} size="sm">Add Row</Button>
+          </div>
+        ))}
+        <Button onClick={addRow}>Add Initial Row</Button>
+      </CardBody>
+
+      <Divider />
+
+      <CardFooter>
+        <Link
+          isExternal
+          showAnchorIcon
+          href="https://github.com/nextui-org/nextui"
+        >
+          Visit source code on GitHub.
+        </Link>
+      </CardFooter>
+    </Card>
+  );
+};
+
+
 
 export function InfoCard2() {
   const [rows, setRows] = useState<number[]>([]);
@@ -119,7 +178,6 @@ export function InfoCard2() {
     </Card>
   );
 }
-
 
 
 const ToggleButtonWithProps = ({state, setState}) => {
