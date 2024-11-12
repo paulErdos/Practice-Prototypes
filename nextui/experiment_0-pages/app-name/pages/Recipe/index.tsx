@@ -15,12 +15,13 @@ const dummy_options = [
 
 const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
 
-export default function DocsPage() {
+export default function RecipePage() {
   const [buttonPushed, setButtonPushed] = useState(false);
 
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+
         <div className="inline-block max-w-lg text-center justify-center">
           <h1 className={title()}>Pricing</h1>
           <div>I intend to put this in a card: "https://react-select.com/home"</div>
@@ -45,11 +46,155 @@ export default function DocsPage() {
           <DynamicInfoCardTest0 />
         </div>
 
+        <div>
+          <DynamicInfoCardTest1 />
+        </div>
+
+        <div>
+          <AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions onInputChange={inputChange} />
+        </div>
+
+
       </section>
     </DefaultLayout>
   );
 }
 
+
+const DynamicInfoCardTest1 = () => {
+  return (
+    <div>
+      <Card className="max-w-[800px]">
+        <CardHeader className="flex gap-3">
+          <Image
+            alt="nextui logo"
+            height={40}
+            radius="sm"
+            src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+            width={40}
+          />
+          <div className="flex flex-col">
+            <p className="text-md">NextUI</p>
+            <p className="text-small text-default-500">nextui.org</p>
+          </div>
+        </CardHeader>
+
+        <Divider />
+
+        <CardBody>
+          <Rows />
+        </CardBody>
+
+        <Divider />
+
+        <CardFooter>
+          <div className="flex flex-wrap gap-4 items-center">
+            <Button color="primary" variant="faded">
+              Save
+            </Button>  
+            <Button color="primary" variant="flat">
+              Load
+            </Button>
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  )
+};
+
+
+// Row component
+const Row = ({ index }) => {
+  const [selection, setSelection] = useState("");
+
+  return (
+    <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+
+      <div>
+        <Select
+          options={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }]} // Replace with your options
+          placeholder="Add A Food"
+          styles={{
+            option: (provided) => ({
+              ...provided,
+              color: 'black',
+              backgroundColor: 'white',
+            }),
+          }}
+          onChange={setSelection}
+          menuPosition="fixed"  // Avoid clipping
+        />
+      </div>
+      
+      <div>
+        {selection == "" ? null : (
+            <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
+              <Button color="primary" variant="bordered">
+                Add
+              </Button>  
+              <Button color="primary" variant="bordered">
+                X
+              </Button>  
+            </div>
+          )
+        }
+      </div>
+
+    </div>
+  );
+};
+
+
+// Rows component
+const Rows = () => {
+  // Initialize with a single Row
+  const [rows, setRows] = useState([0]); // Start with one row
+
+  const addRow = () => {
+    setRows([...rows, rows.length]); // Add a new row by appending the next index
+  };
+
+  return (
+    <div>
+      {rows.map((index) => (
+        <Row key={index} index={index} />
+      ))}
+    </div>
+  );
+};
+
+{/* Begin Async Test */}
+//import React from 'react';
+
+import AsyncSelect from 'react-select/async';
+//import { ColourOption, colourOptions } from './docs/data';
+//let ColourOption = [{ label: 'Option A', value: 1 }, { label: 'Option B', value: 2 }]
+let colourOptions = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }]
+//<AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions />
+
+const filterColors = (inputValue: string) => {
+  return colourOptions.filter((i) =>
+    i.label.toLowerCase().includes(inputValue.toLowerCase())
+  );
+};
+
+const inputChange = (inputValue: string) => {
+  console.log('>>>');
+  console.log(inputValue);
+  console.log('<<<')
+}
+
+const loadOptions = (
+  inputValue: string,
+  callback: (options: ColourOption[]) => void
+) => {
+  console.log(inputValue);
+  alert(inputValue);
+  setTimeout(() => {
+    callback(filterColors(inputValue));
+  }, 1000);
+};
+{/* End Async Test */}
 
 {/*
 Next Steps:
@@ -245,6 +390,7 @@ function DoubleOpenableSelector() {
 
 
 
+
 const ToggleButtonWithProps = ({state, setState}) => {
   return (
     <Button color="primary" variant="solid" onClick={setState}>
@@ -259,12 +405,6 @@ const LabelTriggerToggle = ({state, setState, textForSetState, textForUnsetState
       {state ? textForUnsetState : textForSetState}
     </Button>
   );
-};
-
-
-interface IntegerInputProps {
-  value: number | ''; 
-  onChange: (value: number | '') => void;
 };
 
 
@@ -295,6 +435,7 @@ const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
 
   return (
     <div>
+      <p>IntegerInput</p>
       <Input
         type="text" // Change to text to allow easier backspacing
         value={inputValue}
@@ -308,10 +449,10 @@ const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
 };
 
 
-
-
-
-
+interface IntegerInputProps {
+  value: number | ''; 
+  onChange: (value: number | '') => void;
+};
 
 
 
