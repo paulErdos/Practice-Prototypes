@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 //import { Card } from "@nextui-org/react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
 import { Input } from '@nextui-org/react';
+import AsyncSelect from 'react-select/async';
 
 const dummy_options = [
   {value: 5, label: 'fif'},
@@ -46,71 +47,197 @@ export default function RecipePage() {
           <DynamicInfoCardTest0 />
         </div>
 
+
         <div>
           <DynamicInfoCardTest1 />
         </div>
 
+
         <div>
-          <AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions onInputChange={inputChange} />
+          <AsyncSelect cacheOptions loadOptions={colorLoadOptions} defaultOptions onInputChange={colorInputChange} />
         </div>
 
+
+        <div>
+          <Selector />
+        </div>
 
       </section>
     </DefaultLayout>
   );
 }
 
+{/* Begin Async Experiment 1 */}
+{/*} This allows for selecting newly-added options 
+*/}
+const Selector = () => {
+  const [selectedOption, setSelectedOption] = useState("");
 
-const DynamicInfoCardTest1 = () => {
+  const handleChange = (selection: any) => {
+    setSelectedOption(selection);
+  }
+
   return (
-    <div>
-      <Card className="max-w-[800px]">
-        <CardHeader className="flex gap-3">
-          <Image
-            alt="nextui logo"
-            height={40}
-            radius="sm"
-            src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-            width={40}
-          />
-          <div className="flex flex-col">
-            <p className="text-md">NextUI</p>
-            <p className="text-small text-default-500">nextui.org</p>
-          </div>
-        </CardHeader>
+    <AsyncSelect 
+      cacheOptions
+      defaultOptions 
+      loadOptions={ex1LoadOptions}
+      onInputChange={ex1InputChange}
+      onChange={handleChange}
 
-        <Divider />
-
-        <CardBody>
-          <Rows />
-        </CardBody>
-
-        <Divider />
-
-        <CardFooter>
-          <div className="flex flex-wrap gap-4 items-center">
-            <Button color="primary" variant="faded">
-              Save
-            </Button>  
-            <Button color="primary" variant="flat">
-              Load
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
-    </div>
-  )
+      placeholder="Add A Food"
+      styles={{
+        option: (provided) => ({
+          ...provided,
+          color: 'black',
+          backgroundColor: 'white',
+        }),
+      }}
+    />
+  );
 };
+
+{/*This does not
+const Selector = () => {
+  const initialOptions = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
+  const [options, setOptions] = useState(initialOptions); 
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleChange = (selection: any) => {
+    setSelectedOption(selection);
+  }
+
+  const ex1FilterOptions = (inputValue: string) => {
+    return options.filter((i) =>
+      i.label.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  };
+  
+  const ex1InputChange = (inputValue: string) => {
+    console.log('>>>');
+    console.log(inputValue);
+
+    const existingOption = options.find(option => option.label.toLowerCase() === inputValue.toLocaleLowerCase());
+    if (!existingOption) {
+      // Add a new option to the list
+      const newOption = { label: inputValue, value: options.length + 1 };
+      setOptions([...options, newOption]);
+      console.log(options)
+    }
+
+    console.log(options)
+    console.log('<<<')
+  }
+  
+  const ex1LoadOptions = (
+    inputValue: string,
+    callback: (options: {label: string, value: number}[]) => void
+  ) => {
+    console.log(inputValue);
+    setTimeout(() => {
+      callback(ex1FilterOptions(inputValue));
+    }, 1000);
+  };
+
+  return (
+    <AsyncSelect 
+      cacheOptions
+      defaultOptions
+      loadOptions={ex1LoadOptions}
+      onInputChange={ex1InputChange}
+      onChange={handleChange}
+      
+
+      placeholder="Add A Food"
+      styles={{
+        option: (provided) => ({
+          ...provided,
+          color: 'black',
+          backgroundColor: 'white',
+        }),
+      }}
+    />
+  );
+};
+*/}
+
+
+var ex1options = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
+
+const ex1FilterOptions = (inputValue: string) => {
+  return ex1options.filter((i) =>
+    i.label.toLowerCase().includes(inputValue.toLowerCase())
+  );
+};
+
+const ex1InputChange = (inputValue: string) => {
+  console.log('>>>');
+  console.log(inputValue);
+  // Add a new option to the list
+  const newOption = { label: inputValue, value: ex1options.length + 1 };
+  ex1options = [...ex1options, newOption];
+  console.log(ex1options);
+  console.log('<<<')
+}
+
+const ex1LoadOptions = (
+  inputValue: string,
+  callback: (options: {label: string, value: number}[]) => void
+) => {
+  console.log(inputValue);
+  setTimeout(() => {
+    callback(ex1FilterOptions(inputValue));
+  }, 1000);
+};
+{/* End Async Experiment 1 */}
+
+
+
+{/* Begin Async Experiment 0 */}
+//import React from 'react';
+
+
+//import { ColourOption, colourOptions } from './docs/data';
+let ColourOption = [{ label: 'Option A', value: 1 }, { label: 'Option B', value: 2 }]
+let colourOptions = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
+//<AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions />
+
+const filterColors = (inputValue: string) => {
+  return colourOptions.filter((i) =>
+    i.label.toLowerCase().includes(inputValue.toLowerCase())
+  );
+};
+
+const colorInputChange = (inputValue: string) => {
+  console.log('>>>');
+  console.log(inputValue);
+  console.log('<<<')
+}
+
+const colorLoadOptions = (
+  inputValue: string,
+  callback: (options: ColourOption[]) => void
+) => {
+  console.log(inputValue);
+  //alert(inputValue);
+  setTimeout(() => {
+    callback(filterColors(inputValue));
+  }, 1000);
+};
+{/* End Async Experiment 0 */}
 
 
 // Row component
 const Row = ({ index }) => {
   const [selection, setSelection] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+
 
   return (
     <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
       <div>
+
         <Select
           options={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }]} // Replace with your options
           placeholder="Add A Food"
@@ -163,38 +290,48 @@ const Rows = () => {
   );
 };
 
-{/* Begin Async Test */}
-//import React from 'react';
+// Recipe Card Experiment
+const DynamicInfoCardTest1 = () => {
+  return (
+    <div>
+      <Card className="max-w-[800px]">
+        <CardHeader className="flex gap-3">
+          <Image
+            alt="nextui logo"
+            height={40}
+            radius="sm"
+            src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+            width={40}
+          />
+          <div className="flex flex-col">
+            <p className="text-md">NextUI</p>
+            <p className="text-small text-default-500">nextui.org</p>
+          </div>
+        </CardHeader>
 
-import AsyncSelect from 'react-select/async';
-//import { ColourOption, colourOptions } from './docs/data';
-//let ColourOption = [{ label: 'Option A', value: 1 }, { label: 'Option B', value: 2 }]
-let colourOptions = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }]
-//<AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions />
+        <Divider />
 
-const filterColors = (inputValue: string) => {
-  return colourOptions.filter((i) =>
-    i.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
+        <CardBody>
+          <Rows />
+        </CardBody>
+
+        <Divider />
+
+        <CardFooter>
+          <div className="flex flex-wrap gap-4 items-center">
+            <Button color="primary" variant="faded">
+              Save
+            </Button>  
+            <Button color="primary" variant="flat">
+              Load
+            </Button>
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  )
 };
 
-const inputChange = (inputValue: string) => {
-  console.log('>>>');
-  console.log(inputValue);
-  console.log('<<<')
-}
-
-const loadOptions = (
-  inputValue: string,
-  callback: (options: ColourOption[]) => void
-) => {
-  console.log(inputValue);
-  alert(inputValue);
-  setTimeout(() => {
-    callback(filterColors(inputValue));
-  }, 1000);
-};
-{/* End Async Test */}
 
 {/*
 Next Steps:

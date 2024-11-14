@@ -63,9 +63,9 @@ export default function IndexPage() {
             radius: "full",
             variant: "shadow",
           })}
-          href="/pricing"
+          href="/Recipe"
         >
-          Ingredient List UI Tests
+          Ingredient List / Recipe Card UI Experiments
         </Link>
       </div>
 
@@ -82,6 +82,34 @@ export default function IndexPage() {
           Nutrition Facts Label UI Tests
         </Link>
       </div>
+
+      <div className="flex gap-3">
+        <Link
+          isExternal
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
+          href="/api-call-button"
+        >
+          Button-Triggered API Call Tests
+        </Link>
+      </div>
+
+    <div className="flex gap-3">
+      <Link
+        isExternal
+        className={buttonStyles({
+          color: "primary",
+          radius: "full",
+          variant: "shadow",
+        })}
+        href="/Recipe"
+      >
+        Recipe Card Experiments
+      </Link>
+    </div>
 
       </section>
     </DefaultLayout>
