@@ -52,12 +52,6 @@ export default function RecipePage() {
           <DynamicInfoCardTest1 />
         </div>
 
-
-        <div>
-          <AsyncSelect cacheOptions loadOptions={colorLoadOptions} defaultOptions onInputChange={colorInputChange} />
-        </div>
-
-
         <div>
           <Selector2 />
         </div>
@@ -85,17 +79,17 @@ const Selector2 = () => {
       i.label.toLowerCase().includes(inputValue.toLowerCase())
     );
   };
-  
+
   const s2InputChange = (inputValue: string) => {
     console.log('>>>');
     console.log(inputValue);
     // Add a new option to the list
     const newOption = { label: inputValue, value: s2options.length + 1 };
-    ex1options = [...s2options, newOption];
+    s2options = [...s2options, newOption];
     console.log(s2options);
     console.log('<<<')
   }
-  
+
   const s2LoadOptions = (
     inputValue: string,
     callback: (options: {label: string, value: number}[]) => void
@@ -110,8 +104,8 @@ const Selector2 = () => {
     <AsyncSelect 
       cacheOptions
       defaultOptions 
-      loadOptions={ex1LoadOptions}
-      onInputChange={ex1InputChange}
+      loadOptions={s2LoadOptions}
+      onInputChange={s2InputChange}
       onChange={handleChange}
 
       placeholder="Add A Food"
@@ -126,134 +120,8 @@ const Selector2 = () => {
   );
 };
 
-{/*This does not
-const Selector = () => {
-  const initialOptions = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
-  const [options, setOptions] = useState(initialOptions); 
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleChange = (selection: any) => {
-    setSelectedOption(selection);
-  }
-
-  const ex1FilterOptions = (inputValue: string) => {
-    return options.filter((i) =>
-      i.label.toLowerCase().includes(inputValue.toLowerCase())
-    );
-  };
-  
-  const ex1InputChange = (inputValue: string) => {
-    console.log('>>>');
-    console.log(inputValue);
-
-    const existingOption = options.find(option => option.label.toLowerCase() === inputValue.toLocaleLowerCase());
-    if (!existingOption) {
-      // Add a new option to the list
-      const newOption = { label: inputValue, value: options.length + 1 };
-      setOptions([...options, newOption]);
-      console.log(options)
-    }
-
-    console.log(options)
-    console.log('<<<')
-  }
-  
-  const ex1LoadOptions = (
-    inputValue: string,
-    callback: (options: {label: string, value: number}[]) => void
-  ) => {
-    console.log(inputValue);
-    setTimeout(() => {
-      callback(ex1FilterOptions(inputValue));
-    }, 1000);
-  };
-
-  return (
-    <AsyncSelect 
-      cacheOptions
-      defaultOptions
-      loadOptions={ex1LoadOptions}
-      onInputChange={ex1InputChange}
-      onChange={handleChange}
-      
-
-      placeholder="Add A Food"
-      styles={{
-        option: (provided) => ({
-          ...provided,
-          color: 'black',
-          backgroundColor: 'white',
-        }),
-      }}
-    />
-  );
-};
-*/}
-
-
-var ex1options = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
-
-const ex1FilterOptions = (inputValue: string) => {
-  return ex1options.filter((i) =>
-    i.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
-};
-
-const ex1InputChange = (inputValue: string) => {
-  console.log('>>>');
-  console.log(inputValue);
-  // Add a new option to the list
-  const newOption = { label: inputValue, value: ex1options.length + 1 };
-  ex1options = [...ex1options, newOption];
-  console.log(ex1options);
-  console.log('<<<')
-}
-
-const ex1LoadOptions = (
-  inputValue: string,
-  callback: (options: {label: string, value: number}[]) => void
-) => {
-  console.log(inputValue);
-  setTimeout(() => {
-    callback(ex1FilterOptions(inputValue));
-  }, 1000);
-};
 {/* End Async Experiment 1 */}
 
-
-
-{/* Begin Async Experiment 0 */}
-//import React from 'react';
-
-
-//import { ColourOption, colourOptions } from './docs/data';
-let ColourOption = [{ label: 'Option A', value: 1 }, { label: 'Option B', value: 2 }]
-let colourOptions = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
-//<AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions />
-
-const filterColors = (inputValue: string) => {
-  return colourOptions.filter((i) =>
-    i.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
-};
-
-const colorInputChange = (inputValue: string) => {
-  console.log('>>>');
-  console.log(inputValue);
-  console.log('<<<')
-}
-
-const colorLoadOptions = (
-  inputValue: string,
-  callback: (options: ColourOption[]) => void
-) => {
-  console.log(inputValue);
-  //alert(inputValue);
-  setTimeout(() => {
-    callback(filterColors(inputValue));
-  }, 1000);
-};
-{/* End Async Experiment 0 */}
 
 
 // Row component
