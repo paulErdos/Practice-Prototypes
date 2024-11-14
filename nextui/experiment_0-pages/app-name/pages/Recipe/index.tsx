@@ -53,13 +53,25 @@ export default function RecipePage() {
         </div>
 
         <div>
-          <Selector2 />
+          <ParentComponent />
         </div>
 
       </section>
     </DefaultLayout>
   );
 }
+
+const ParentComponent = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  return (
+    <div>
+      <Selector2 selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+      <p>Selected option: {selectedOption ? selectedOption.label : 'None'}</p>
+    </div>
+  );
+};
+
 
 {/* Begin Async Experiment 1 */}
 {/*} This allows for selecting newly-added options, but
@@ -68,7 +80,8 @@ export default function RecipePage() {
 const Selector2 = ({selectedOption, setSelectedOption}) => {
   //const [selectedOption, setSelectedOption] = useState("");
 
-  const handleChange = (selection: any) => {
+  const handleChange = (selection: {value: string, label: number}) => {
+    console.log(selection)
     setSelectedOption(selection);
   }
 
@@ -81,20 +94,16 @@ const Selector2 = ({selectedOption, setSelectedOption}) => {
   };
 
   const s2InputChange = (inputValue: string) => {
-    console.log('>>>');
-    console.log(inputValue);
     // Add a new option to the list
+    // TODO: experiment with doing these as a state
     const newOption = { label: inputValue, value: s2options.length + 1 };
     s2options = [...s2options, newOption];
-    console.log(s2options);
-    console.log('<<<')
   }
 
   const s2LoadOptions = (
     inputValue: string,
     callback: (options: {label: string, value: number}[]) => void
   ) => {
-    console.log(inputValue);
     setTimeout(() => {
       callback(s2FilterOptions(inputValue));
     }, 1000);
@@ -126,8 +135,7 @@ const Selector2 = ({selectedOption, setSelectedOption}) => {
 
 // Row component
 const Row = ({ index }) => {
-  const [selection, setSelection] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selection, setSelection] = useState(null);
 
   return (
     <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
@@ -142,7 +150,7 @@ const Row = ({ index }) => {
             />
           </div>
           <div>
-            <p>Dev: Selected Option: {selectedOption ? selectedOption.label : 'None'}</p>
+            <p>Dev: Selected Option: {selection ? selection.label : 'None'}</p>
           </div>
         </div>
         
@@ -165,13 +173,13 @@ const Row = ({ index }) => {
       </div>
       
       <div>
-        {selection == "" ? null : (
+        {selection == null ? null : (
             <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
               <Button color="primary" variant="bordered">
-                Add
+                add
               </Button>  
               <Button color="primary" variant="bordered">
-                X
+                nvm
               </Button>  
             </div>
           )
