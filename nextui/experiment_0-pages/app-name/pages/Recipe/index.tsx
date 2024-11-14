@@ -65,8 +65,8 @@ export default function RecipePage() {
 {/*} This allows for selecting newly-added options, but
   > doesn't show the added options when the down arrow is clicked
 */}
-const Selector2 = () => {
-  const [selectedOption, setSelectedOption] = useState("");
+const Selector2 = ({selectedOption, setSelectedOption}) => {
+  //const [selectedOption, setSelectedOption] = useState("");
 
   const handleChange = (selection: any) => {
     setSelectedOption(selection);
@@ -107,6 +107,7 @@ const Selector2 = () => {
       loadOptions={s2LoadOptions}
       onInputChange={s2InputChange}
       onChange={handleChange}
+      menuPosition="fixed"  // Avoid clipping
 
       placeholder="Add A Food"
       styles={{
@@ -123,18 +124,30 @@ const Selector2 = () => {
 {/* End Async Experiment 1 */}
 
 
-
 // Row component
 const Row = ({ index }) => {
   const [selection, setSelection] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-
 
   return (
     <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
       <div>
 
+        <div>
+          <div>
+            <Selector2
+              selectedOption={selection}
+              setSelectedOption={setSelection}
+            />
+          </div>
+          <div>
+            <p>Dev: Selected Option: {selectedOption ? selectedOption.label : 'None'}</p>
+          </div>
+        </div>
+        
+
+        {/*}
         <Select
           options={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }]} // Replace with your options
           placeholder="Add A Food"
@@ -148,6 +161,7 @@ const Row = ({ index }) => {
           onChange={setSelection}
           menuPosition="fixed"  // Avoid clipping
         />
+        */}
       </div>
       
       <div>
