@@ -59,7 +59,7 @@ export default function RecipePage() {
 
 
         <div>
-          <Selector />
+          <Selector2 />
         </div>
 
       </section>
@@ -68,14 +68,43 @@ export default function RecipePage() {
 }
 
 {/* Begin Async Experiment 1 */}
-{/*} This allows for selecting newly-added options 
+{/*} This allows for selecting newly-added options, but
+  > doesn't show the added options when the down arrow is clicked
 */}
-const Selector = () => {
+const Selector2 = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleChange = (selection: any) => {
     setSelectedOption(selection);
   }
+
+  var s2options = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
+
+  const s2FilterOptions = (inputValue: string) => {
+    return s2options.filter((i) =>
+      i.label.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  };
+  
+  const s2InputChange = (inputValue: string) => {
+    console.log('>>>');
+    console.log(inputValue);
+    // Add a new option to the list
+    const newOption = { label: inputValue, value: s2options.length + 1 };
+    ex1options = [...s2options, newOption];
+    console.log(s2options);
+    console.log('<<<')
+  }
+  
+  const s2LoadOptions = (
+    inputValue: string,
+    callback: (options: {label: string, value: number}[]) => void
+  ) => {
+    console.log(inputValue);
+    setTimeout(() => {
+      callback(s2FilterOptions(inputValue));
+    }, 1000);
+  };
 
   return (
     <AsyncSelect 
