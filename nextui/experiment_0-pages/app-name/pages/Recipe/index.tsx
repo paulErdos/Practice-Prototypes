@@ -74,6 +74,7 @@ const ParentComponent = () => {
 
 
 {/* Begin Async Experiment 1 */}
+{/* See about having this hit by api call the usda search function */}
 {/*} This allows for selecting newly-added options, but
   > doesn't show the added options when the down arrow is clicked
 */}
@@ -137,43 +138,55 @@ const Selector2 = ({selectedOption, setSelectedOption}) => {
 const Row = ({ index }) => {
   const [selection, setSelection] = useState(null);
 
+
+
+  const [unit, setUnit] = useState('g');
+  const selectUnit = (theUnit) => {
+    setUnit(theUnit);
+  }
+
   return (
     <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
       <div>
-
-        <div>
-          <div>
-            <Selector2
-              selectedOption={selection}
-              setSelectedOption={setSelection}
-            />
-          </div>
-          <div>
-            <p>Dev: Selected Option: {selection ? selection.label : 'None'}</p>
-          </div>
-        </div>
-        
-
-        {/*}
-        <Select
-          options={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }]} // Replace with your options
-          placeholder="Add A Food"
-          styles={{
-            option: (provided) => ({
-              ...provided,
-              color: 'black',
-              backgroundColor: 'white',
-            }),
-          }}
-          onChange={setSelection}
-          menuPosition="fixed"  // Avoid clipping
+        <Selector2
+          selectedOption={selection}
+          setSelectedOption={setSelection}
         />
-        */}
+        <p>Dev: Selected Option: {selection ? selection.label : 'None'}</p> 
       </div>
-      
+
       <div>
         {selection == null ? null : (
+          <div class="flex flex-row" style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+
+            {/* Unit */}
+            {/* TODO: in progress
+            * Vertically center
+            * Add amount text input field
+            * Have add only appear once food, unit, and amount are filled in
+            * Have add create a new row
+            * Have row start off as a button "Add a new food"
+            */}
+            <div>
+              <Select
+                value={unit}
+                options={units_options}
+                menuPosition="fixed"  // Avoid clipping
+                placeholder="Unit..."
+
+                styles={{
+                  option: (provided) => ({
+                    ...provided,
+                    color: 'black',
+                    backgroundColor: 'white',
+                  }),
+                }}
+              />
+              <p>{unit}</p>
+            </div>
+            
+
             <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
               <Button color="primary" variant="bordered">
                 add
@@ -182,6 +195,7 @@ const Row = ({ index }) => {
                 nvm
               </Button>  
             </div>
+          </div>
           )
         }
       </div>
