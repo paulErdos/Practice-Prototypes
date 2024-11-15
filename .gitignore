@@ -3,3 +3,7 @@ node_modules
 __pycache__
 .env
 *.sw*
+target/
+/target/
+/target/debug/
+
