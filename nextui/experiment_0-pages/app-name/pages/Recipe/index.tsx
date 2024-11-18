@@ -14,7 +14,8 @@ const dummy_options = [
   {value: 'real option', label: 'i actually plead the third i refuse to quarter troops in my home'}
 ]
 
-const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
+
+//const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
 
 export default function RecipePage() {
   const [buttonPushed, setButtonPushed] = useState(false);
@@ -52,25 +53,10 @@ export default function RecipePage() {
           <DynamicInfoCardTest1 />
         </div>
 
-        <div>
-          <ParentComponent />
-        </div>
-
       </section>
     </DefaultLayout>
   );
 }
-
-const ParentComponent = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  return (
-    <div>
-      <Selector2 selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
-      <p>Selected option: {selectedOption ? selectedOption.label : 'None'}</p>
-    </div>
-  );
-};
 
 
 {/* Begin Async Experiment 1 */}
@@ -136,73 +122,144 @@ const Selector2 = ({selectedOption, setSelectedOption}) => {
 
 // Row component
 const Row = ({ index }) => {
-  const [selection, setSelection] = useState(null);
+  const [selectedFood, setSelectedFood] = useState(null);
 
-
-
-  const [unit, setUnit] = useState('g');
-  const selectUnit = (theUnit) => {
+  const [unit, setUnit] = useState(null);
+  const selectUnit = (theUnit: any) => {
     setUnit(theUnit);
   }
+
+  const [massSelection, setMassSelection] = useState("");
+  const handleMassSelection = (theMassSelection: string) => {
+    console.log(theMassSelection);
+    setMassSelection(theMassSelection);
+  }
+
+  const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
+  console.log(units_options)
 
   return (
     <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
       <div>
+        <p>Food Type</p>
         <Selector2
-          selectedOption={selection}
-          setSelectedOption={setSelection}
+          selectedOption={selectedFood}
+          setSelectedOption={setSelectedFood}
         />
-        <p>Dev: Selected Option: {selection ? selection.label : 'None'}</p> 
+        <p>Dev: Selected Option: {selectedFood ? selectedFood.label : 'None'}</p> 
       </div>
 
-      <div>
-        {selection == null ? null : (
-          <div class="flex flex-row" style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+      {selectedFood == null ? null : (
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+          {/* Unit */}
+          {/* TODO: in progress
+          * Vertically center
+          * Add amount text input field
+          * Have add only appear once food, unit, and amount are filled in
+          * Have add create a new row
+          * Have row start off as a button "Add a new food"
+          */}
+          <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
+            <p>Unit</p>
+            <Select
+              value={unit}
+              options={units_options}
+              onChange={selectUnit}
+              menuPosition="fixed"  // Avoid clipping
+              placeholder="Unit..."
 
-            {/* Unit */}
-            {/* TODO: in progress
-            * Vertically center
-            * Add amount text input field
-            * Have add only appear once food, unit, and amount are filled in
-            * Have add create a new row
-            * Have row start off as a button "Add a new food"
-            */}
-            <div>
-              <Select
-                value={unit}
-                options={units_options}
-                menuPosition="fixed"  // Avoid clipping
-                placeholder="Unit..."
-
-                styles={{
-                  option: (provided) => ({
-                    ...provided,
-                    color: 'black',
-                    backgroundColor: 'white',
-                  }),
-                }}
-              />
-              <p>{unit}</p>
-            </div>
-            
-
-            <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
-              <Button color="primary" variant="bordered">
-                add
-              </Button>  
-              <Button color="primary" variant="bordered">
-                nvm
-              </Button>  
-            </div>
+              styles={{
+                option: (provided) => ({
+                  ...provided,
+                  color: 'black',
+                  backgroundColor: 'white',
+                }),
+              }}
+            />
+            <p>{unit ? unit.label : ""}</p>
           </div>
-          )
-        }
+
+        </div>
+      )}
+
+      {unit == null ? null : (
+        <div>
+          <p>Amount</p>
+          <IntegerInput value={massSelection} onChange={handleMassSelection} />
+          <p>{massSelection}</p>
+        </div>
+      )}
+
+
+      <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
+        {selectedFood == null ? null : (
+          <Button color="primary" variant="bordered">
+            nvm
+          </Button>  
+        )}
+
+        {massSelection == "" ? null : (
+          <Button color="primary" variant="shadow">
+            add!
+          </Button>  
+        )}
+
+
       </div>
+
 
     </div>
   );
 };
+
+
+const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
+  const [inputValue, setInputValue] = useState<string>(value.toString());
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value); // Update the temporary input value
+  };
+
+  const handleConfirmChange = () => {
+    const newValue = Number(inputValue);
+
+    // Validate the input value
+    if (newValue >= 1 && newValue <= 50000) {
+      onChange(newValue); // Call onChange if it's valid
+    } else {
+      // Optionally handle invalid input (e.g., reset to the last valid value)
+      setInputValue(value.toString());
+    }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleConfirmChange(); // Confirm on Enter key press
+    }
+  };
+
+  return (
+    <div>
+      <Input
+        type="text" // Change to text to allow easier backspacing
+        value={inputValue}
+        onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
+        placeholder="enter an amount"
+      />
+    </div>
+  );
+};
+
+
+interface IntegerInputProps {
+  value: number | ''; 
+  onChange: (value: number | '') => void;
+};
+
+
+
 
 
 // Rows component
@@ -263,6 +320,18 @@ const DynamicInfoCardTest1 = () => {
       </Card>
     </div>
   )
+};
+
+
+const ParentComponent = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  return (
+    <div>
+      <Selector2 selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+      <p>Selected option: {selectedOption ? selectedOption.label : 'None'}</p>
+    </div>
+  );
 };
 
 
@@ -337,7 +406,6 @@ const DynamicInfoCardTest0 = () => {
     </Card>
   );
 };
-
 
 function DoubleOpenableSelector() {
   const [toggled, setToggled] = useState<boolean>(true);
@@ -476,54 +544,6 @@ const LabelTriggerToggle = ({state, setState, textForSetState, textForUnsetState
     </Button>
   );
 };
-
-
-const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
-  const [inputValue, setInputValue] = useState<string>(value.toString());
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value); // Update the temporary input value
-  };
-
-  const handleConfirmChange = () => {
-    const newValue = Number(inputValue);
-
-    // Validate the input value
-    if (newValue >= 1 && newValue <= 50000) {
-      onChange(newValue); // Call onChange if it's valid
-    } else {
-      // Optionally handle invalid input (e.g., reset to the last valid value)
-      setInputValue(value.toString());
-    }
-  };
-
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleConfirmChange(); // Confirm on Enter key press
-    }
-  };
-
-  return (
-    <div>
-      <p>IntegerInput</p>
-      <Input
-        type="text" // Change to text to allow easier backspacing
-        value={inputValue}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-        placeholder="Enter a number between 1 and 50000"
-      />
-      <Button onClick={handleConfirmChange}>Confirm</Button>
-    </div>
-  );
-};
-
-
-interface IntegerInputProps {
-  value: number | ''; 
-  onChange: (value: number | '') => void;
-};
-
 
 
 
