@@ -121,7 +121,8 @@ const Selector2 = ({selectedOption, setSelectedOption}) => {
 
 
 // Row component
-const Row = ({ index }) => {
+const Row = ({ index, addRow }) => {
+  const [added, setAdded] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
 
   const [unit, setUnit] = useState(null);
@@ -133,6 +134,12 @@ const Row = ({ index }) => {
   const handleMassSelection = (theMassSelection: string) => {
     console.log(theMassSelection);
     setMassSelection(theMassSelection);
+  }
+
+  const resetRow = () => {
+    setSelectedFood(null);
+    setUnit(null);
+    setMassSelection("");
   }
 
   const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
@@ -194,13 +201,13 @@ const Row = ({ index }) => {
 
       <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
         {selectedFood == null ? null : (
-          <Button color="primary" variant="bordered">
+          <Button color="primary" variant="bordered" onClick={resetRow}>
             nvm
           </Button>  
         )}
 
         {massSelection == "" ? null : (
-          <Button color="primary" variant="shadow">
+          <Button color="primary" variant="shadow" onClick={addRow}>
             add!
           </Button>  
         )}
@@ -247,6 +254,7 @@ const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
         placeholder="enter an amount"
+
       />
     </div>
   );
@@ -257,9 +265,6 @@ interface IntegerInputProps {
   value: number | ''; 
   onChange: (value: number | '') => void;
 };
-
-
-
 
 
 // Rows component
@@ -274,7 +279,7 @@ const Rows = () => {
   return (
     <div>
       {rows.map((index) => (
-        <Row key={index} index={index} />
+        <Row key={index} index={index} addRow={addRow} />
       ))}
     </div>
   );
