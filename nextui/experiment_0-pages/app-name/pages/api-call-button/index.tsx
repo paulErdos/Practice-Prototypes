@@ -5,8 +5,33 @@ import { Button } from "@nextui-org/react";
 import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@nextui-org/react";
 import { Input } from '@nextui-org/react';
 import { useState } from 'react';
+import FetchDataComponent  from './FetchDataComponent';
 
 export default function DocsPage() {
+  return (
+    <DefaultLayout>
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+
+        <div className="inline-block max-w-lg text-center justify-center">
+          <h1 className={title()}>API Call Button</h1>
+        </div>
+
+        <div>
+          <RandomNumberFetchButton />
+        </div>
+
+        <div>
+          <FetchDataComponent />
+        </div>
+
+
+      </section>
+    </DefaultLayout>
+  );
+}
+
+
+function RandomNumberFetchButton() {
   const [firstNumber, setFirstNumber] = useState(null);
 
   const handleButtonClick = async () => {
@@ -29,20 +54,13 @@ export default function DocsPage() {
   };
 
   return (
-    <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className={title()}>API Call Button</h1>
-        </div>
+    <div className="flex flex-wrap gap-4 items-center">
+      <Button color="primary" variant="solid" onClick={handleButtonClick}>
+        Fetch Random Number
+      </Button>
 
-        <div className="flex flex-wrap gap-4 items-center">
-          <Button color="primary" variant="solid" onClick={handleButtonClick}>
-            Fetch Random Number
-          </Button>
-
-          {firstNumber && <p>{firstNumber}</p>}
-        </div>
-      </section>
-    </DefaultLayout>
+      {firstNumber && <p>{firstNumber}</p>}
+    </div>
   );
+
 }
