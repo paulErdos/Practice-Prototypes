@@ -14,8 +14,21 @@ const dummy_options = [
   {value: 'real option', label: 'i actually plead the third i refuse to quarter troops in my home'}
 ]
 
+/*
 
-//const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
+TODO:
+* For secondary rows, "nvm" doesn't show up until food is added. Makes sense for first row? But not others. 
+* Have the entire thing covered under a "Create a new Recipe Ingredients" that opens the card
+* > Ohhh and that can be reaccassed by pressing 'nvm' on the first card ohhhhhh
+* > This will need to be a state variable in rows that pays att
+* > No it doesn't need to exist
+* Recipe card needs a way to name things.
+* And maybe that picture area can be a color theme selector, idk. 
+* Save button needs to be able to access the data in each row
+* > This means, like, rows or recipecard will need to be the root data storage facility.
+* 
+
+*/
 
 export default function RecipePage() {
   const [buttonPushed, setButtonPushed] = useState(false);
@@ -25,32 +38,15 @@ export default function RecipePage() {
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
 
         <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className={title()}>Pricing</h1>
+          <h1 className={title()}>Recipe Ingredients</h1>
+          <div><p>This Card is used to build the ingredients of a recipe.</p></div>
+          <div style={{marginBottom: "20px"}}>The ingredients of a recipe is a list of foods or other ingredients, with a corresponding amount for each.</div>
           <div>I intend to put this in a card: "https://react-select.com/home"</div>
-          <div>Note: if recipes can be saved, named, and used as ingredients, meals of recipe servings are trivial</div>
+          <div>Note to self for future perspective: if recipes can be saved, named, and used as ingredients, meals of recipe servings are trivial</div>
         </div>
-
-
-        <div className="flex flex-wrap gap-4 items-center">
-          <Button color="primary" variant="faded">
-            Faded
-          </Button>  
-          <Button color="primary" variant="bordered">
-            Bordered
-          </Button>  
-          <Button color="primary" variant="flat">
-            Flat
-          </Button>  
-        </div>
-
 
         <div>
-          <DynamicInfoCardTest0 />
-        </div>
-
-
-        <div>
-          <DynamicInfoCardTest1 />
+          <RecipeIngredients />
         </div>
 
       </section>
@@ -58,6 +54,179 @@ export default function RecipePage() {
   );
 }
 
+// Work-In-Progress Recipe Ingredients Card
+const RecipeIngredients = () => {
+  const [rowsData, setRowsData] = useState([])
+
+  return (
+    <div class="RecipeIngredientsCard">
+      <Card className="max-w-[800px]">
+        <CardHeader className="flex gap-3">
+          <Image
+            alt="nextui logo"
+            height={40}
+            radius="sm"
+            src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+            width={40}
+          />
+          <div className="flex flex-col">
+            <p className="text-md">NextUI</p>
+            <p className="text-small text-default-500">nextui.org</p>
+          </div>
+        </CardHeader>
+
+        <Divider />
+
+        <CardBody>
+          <Rows theRows={rowsData}/>
+        </CardBody>
+
+        <Divider />
+
+        <CardFooter>
+          <div className="flex flex-wrap gap-4 items-center">
+            <Button color="primary" variant="faded">
+              Save
+            </Button>  
+            <Button color="primary" variant="flat">
+              Load
+            </Button>
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  )
+};
+
+
+const Rows = () => {
+  // Initialize with a single Row
+  const [rows, setRows] = useState([0]); // Start with one row
+
+  const addRow = () => {
+    setRows([...rows, rows.length]); // Add a new row by appending the next index
+  };
+
+  const deleteRow = (idToDelete: number) => {
+    setRows(rows.filter((index) => index !== idToDelete));
+  }
+
+  return (
+    <div className="Rows">
+      {rows.map((index) => (
+        <Row key={index} index={index} addRow={addRow} deleteRow={deleteRow}/>
+      ))}
+    </div>
+  );
+};
+
+
+// Row component
+const Row = ({ 
+  index, 
+  addRow, 
+  deleteRow 
+}: {
+  index: number;
+  addRow: () => void;
+  deleteRow: () => void;
+}) => {
+  const [added, setAdded] = useState(false);
+
+  const [selectedFood, setSelectedFood] = useState<{label: string, value: number} | null>(null);
+
+  const [unit, setUnit] = useState<{value: string, label: string} | null>(null);
+  const selectUnit = (theUnit: any) => {
+    setUnit(theUnit);
+  }
+
+  const [massSelection, setMassSelection] = useState("");
+  const handleMassSelection = (theMassSelection: string) => {
+    console.log(theMassSelection);
+    setMassSelection(theMassSelection);
+  }
+
+  const resetRow = () => {
+    setSelectedFood(null);
+    setUnit(null);
+    setMassSelection("");
+  }
+
+  const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
+  console.log(units_options)
+
+  return (
+    <div className="Row" key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+
+      <div>
+        <p>Food Type</p>
+        <Selector2
+          selectedOption={selectedFood}
+          setSelectedOption={setSelectedFood}
+        />
+        <p>Dev: Selected Option: {selectedFood ? selectedFood.label : 'None'}</p> 
+      </div>
+
+      {selectedFood == null ? null : (
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+          {/* Unit */}
+          {/* TODO: in progress
+          * Vertically center
+          * Add amount text input field
+          * Have add only appear once food, unit, and amount are filled in
+          * Have add create a new row
+          * Have row start off as a button "Add a new food"
+          */}
+          <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
+            <p>Unit</p>
+            <Select
+              value={unit}
+              options={units_options}
+              onChange={setUnit}
+              menuPosition="fixed"  // Avoid clipping
+              placeholder="Unit..."
+
+              styles={{
+                option: (provided) => ({
+                  ...provided,
+                  color: 'black',
+                  backgroundColor: 'white',
+                }),
+              }}
+            />
+            <p>{unit ? unit.label : ""}</p>
+          </div>
+
+        </div>
+      )}
+
+      {unit == null ? null : (
+        <div>
+          <p>Amount</p>
+          <IntegerInput value={massSelection} onChange={handleMassSelection} />
+          <p>{massSelection}</p>
+        </div>
+      )}
+
+
+      <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
+        {massSelection == "" ? null : (
+          <Button color="primary" variant="shadow" onClick={addRow}>
+            add!
+          </Button>  
+        )}
+
+        {selectedFood == null ? null : (
+          <Button color="primary" variant="bordered" onClick={deleteRow}>
+            nvm
+          </Button>  
+        )}
+      </div>
+
+
+    </div>
+  );
+};
 
 {/* Begin Async Experiment 1 */}
 {/* See about having this hit by api call the usda search function */}
@@ -119,108 +288,6 @@ const Selector2 = ({selectedOption, setSelectedOption}) => {
 
 {/* End Async Experiment 1 */}
 
-
-// Row component
-const Row = ({ index, addRow }) => {
-  const [added, setAdded] = useState(false);
-  const [selectedFood, setSelectedFood] = useState(null);
-
-  const [unit, setUnit] = useState(null);
-  const selectUnit = (theUnit: any) => {
-    setUnit(theUnit);
-  }
-
-  const [massSelection, setMassSelection] = useState("");
-  const handleMassSelection = (theMassSelection: string) => {
-    console.log(theMassSelection);
-    setMassSelection(theMassSelection);
-  }
-
-  const resetRow = () => {
-    setSelectedFood(null);
-    setUnit(null);
-    setMassSelection("");
-  }
-
-  const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
-  console.log(units_options)
-
-  return (
-    <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
-
-      <div>
-        <p>Food Type</p>
-        <Selector2
-          selectedOption={selectedFood}
-          setSelectedOption={setSelectedFood}
-        />
-        <p>Dev: Selected Option: {selectedFood ? selectedFood.label : 'None'}</p> 
-      </div>
-
-      {selectedFood == null ? null : (
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
-          {/* Unit */}
-          {/* TODO: in progress
-          * Vertically center
-          * Add amount text input field
-          * Have add only appear once food, unit, and amount are filled in
-          * Have add create a new row
-          * Have row start off as a button "Add a new food"
-          */}
-          <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
-            <p>Unit</p>
-            <Select
-              value={unit}
-              options={units_options}
-              onChange={selectUnit}
-              menuPosition="fixed"  // Avoid clipping
-              placeholder="Unit..."
-
-              styles={{
-                option: (provided) => ({
-                  ...provided,
-                  color: 'black',
-                  backgroundColor: 'white',
-                }),
-              }}
-            />
-            <p>{unit ? unit.label : ""}</p>
-          </div>
-
-        </div>
-      )}
-
-      {unit == null ? null : (
-        <div>
-          <p>Amount</p>
-          <IntegerInput value={massSelection} onChange={handleMassSelection} />
-          <p>{massSelection}</p>
-        </div>
-      )}
-
-
-      <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
-        {selectedFood == null ? null : (
-          <Button color="primary" variant="bordered" onClick={resetRow}>
-            nvm
-          </Button>  
-        )}
-
-        {massSelection == "" ? null : (
-          <Button color="primary" variant="shadow" onClick={addRow}>
-            add!
-          </Button>  
-        )}
-
-
-      </div>
-
-
-    </div>
-  );
-};
-
-
 const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
   const [inputValue, setInputValue] = useState<string>(value.toString());
 
@@ -264,67 +331,6 @@ const IntegerInput: React.FC<IntegerInputProps> = ({ value, onChange }) => {
 interface IntegerInputProps {
   value: number | ''; 
   onChange: (value: number | '') => void;
-};
-
-
-// Rows component
-const Rows = () => {
-  // Initialize with a single Row
-  const [rows, setRows] = useState([0]); // Start with one row
-
-  const addRow = () => {
-    setRows([...rows, rows.length]); // Add a new row by appending the next index
-  };
-
-  return (
-    <div>
-      {rows.map((index) => (
-        <Row key={index} index={index} addRow={addRow} />
-      ))}
-    </div>
-  );
-};
-
-// Recipe Card Experiment
-const DynamicInfoCardTest1 = () => {
-  return (
-    <div>
-      <Card className="max-w-[800px]">
-        <CardHeader className="flex gap-3">
-          <Image
-            alt="nextui logo"
-            height={40}
-            radius="sm"
-            src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-            width={40}
-          />
-          <div className="flex flex-col">
-            <p className="text-md">NextUI</p>
-            <p className="text-small text-default-500">nextui.org</p>
-          </div>
-        </CardHeader>
-
-        <Divider />
-
-        <CardBody>
-          <Rows />
-        </CardBody>
-
-        <Divider />
-
-        <CardFooter>
-          <div className="flex flex-wrap gap-4 items-center">
-            <Button color="primary" variant="faded">
-              Save
-            </Button>  
-            <Button color="primary" variant="flat">
-              Load
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
-    </div>
-  )
 };
 
 
