@@ -15,25 +15,22 @@ const dummy_options = [
 ]
 
 /*
-
 TODO:
-* Priority 1: data is used by "Rows" to display "Row"s, "Row"s can set and alter their data, data owned supra-row to facilitate downloading and rendering by uploaded data
-* Integrate theRows into Rows
-* Have Row be passed its data, either as a single array or element by element.
-* Have Row display the data it's passed
-* Have Row alter and set the data it's passed
-* For secondary rows, "nvm" doesn't show up until food is added. Makes sense for first row? But not others. 
-* Have the entire thing covered under a "Create a new Recipe Ingredients" that opens the card
-* > Ohhh and that can be reaccassed by pressing 'nvm' on the first card ohhhhhh
-* > This will need to be a state variable in rows that pays att
-* > No it doesn't need to exist
+* Priority 1: Save button needs to be able to access the data in each row: data is used by "Rows" to display "Row"s, "Row"s can set and alter their data, data owned supra-row to facilitate downloading and rendering by uploaded data
+  * Integrate theRows into Rows
+  * Have Row be passed its data, either as a single array or element by element.
+  * Have Row display the data it's passed
+  * Have Row alter and set the data it's passed
+* Priority 2:
+  * Have the entire thing covered under a "Create a new Recipe Ingredients" that opens the card
+  * > Ohhh and that can be reaccassed by pressing 'nvm' on the first card ohhhhhh
+  * > This will need to be a state variable in rows that pays att
+  * > No it doesn't need to exist
 * Recipe card needs a way to name things.
 * And maybe that picture area can be a color theme selector, idk. 
-* Save button needs to be able to access the data in each row
 * > This means, like, rows or recipecard will need to be the root data storage facility.
 * Why isn't deleterow operating as expected?
 * Unit selection takes multiple clicks to land properly
-
 */
 
 export default function RecipePage() {
@@ -155,11 +152,13 @@ const Rows = ({theRows} : {theRows: IngredientSpec[]}) => {
 
 // Row component
 const Row = ({ 
+  index,
   addRow, 
   deleteRow,
   theRows,
   areWeAlone
 }: {
+  index: number,
   addRow: () => void;
   deleteRow: () => void;
   theRows: [],
@@ -187,6 +186,14 @@ const Row = ({
     setSelectedFood(null);
     setUnit(null);
     setMassSelection("");
+  }
+
+  const handleDeleteRow = () => {
+    if(areWeAlone) {
+      resetRow()
+    } else {
+      deleteRow(index);
+    }
   }
 
   const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
@@ -259,7 +266,7 @@ const Row = ({
               </Button>  
             )}
 
-            <Button color="primary" variant="bordered" onClick={deleteRow}>
+            <Button color="primary" variant="bordered" onClick={handleDeleteRow}>
               nvm
             </Button>  
           </div>
