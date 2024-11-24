@@ -26,7 +26,8 @@ TODO:
 * And maybe that picture area can be a color theme selector, idk. 
 * Save button needs to be able to access the data in each row
 * > This means, like, rows or recipecard will need to be the root data storage facility.
-* 
+* Why isn't deleterow operating as expected?
+* Unit selection takes multiple clicks to land properly
 
 */
 
@@ -53,6 +54,8 @@ export default function RecipePage() {
     </DefaultLayout>
   );
 }
+
+
 
 interface IngredientSpec {
   food: string,
@@ -119,6 +122,7 @@ const Rows = ({theRows} : {theRows: IngredientSpec[]}) => {
 
 
   const addRow = () => {
+    console.log('addrow')
     setRows([...rows, rows.length]); // Add a new row by appending the next index
 
     if(onlyOneRow && rows.length > 1) {
@@ -127,6 +131,7 @@ const Rows = ({theRows} : {theRows: IngredientSpec[]}) => {
   };
 
   const deleteRow = (idToDelete: number) => {
+    console.log('deleterow')
     setRows(rows.filter((index) => index !== idToDelete));
   }
 
@@ -183,74 +188,76 @@ const Row = ({
   console.log(units_options)
 
   return (
-    <div className="Row"style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+    <div>
+      <div className="Row" style={{ display: "flex", justifyContent: "left", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
-      <div>
-        <p>Food Type</p>
-        <Selector2
-          selectedOption={selectedFood}
-          setSelectedOption={setSelectedFood}
-        />
-        <p>Dev: Selected Option: {selectedFood ? selectedFood.label : 'None'}</p> 
-      </div>
-
-      {selectedFood == null ? null : (
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
-          {/* Unit */}
-          {/* TODO: in progress
-          * Vertically center
-          * Add amount text input field
-          * Have add only appear once food, unit, and amount are filled in
-          * Have add create a new row
-          * Have row start off as a button "Add a new food"
-          */}
-          <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
-            <p>Unit</p>
-            <Select
-              value={unit}
-              options={units_options}
-              onChange={setUnit}
-              menuPosition="fixed"  // Avoid clipping
-              placeholder="Unit..."
-
-              styles={{
-                option: (provided) => ({
-                  ...provided,
-                  color: 'black',
-                  backgroundColor: 'white',
-                }),
-              }}
-            />
-            <p>{unit ? unit.label : ""}</p>
-          </div>
-
-        </div>
-      )}
-
-      {unit == null ? null : (
         <div>
-          <p>Amount</p>
-          <IntegerInput value={massSelection} onChange={handleMassSelection} />
-          <p>{massSelection}</p>
+          <p>Food Type</p>
+          <Selector2
+            selectedOption={selectedFood}
+            setSelectedOption={setSelectedFood}
+          />
+          <p>Dev: Selected Option: {selectedFood ? selectedFood.label : 'None'}</p> 
         </div>
-      )}
 
+        {selectedFood == null ? null : (
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+            {/* Unit */}
+            {/* TODO: in progress
+            * Vertically center
+            * Add amount text input field
+            * Have add only appear once food, unit, and amount are filled in
+            * Have add create a new row
+            * Have row start off as a button "Add a new food"
+            */}
+            <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
+              <p>Unit</p>
+              <Select
+                value={unit}
+                options={units_options}
+                onChange={setUnit}
+                menuPosition="fixed"  // Avoid clipping
+                placeholder="Unit..."
 
-      <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
-        {massSelection == "" ? null : (
-          <Button color="primary" variant="shadow" onClick={addRow}>
-            add!
-          </Button>  
+                styles={{
+                  option: (provided) => ({
+                    ...provided,
+                    color: 'black',
+                    backgroundColor: 'white',
+                  }),
+                }}
+              />
+              <p>{unit ? unit.label : ""}</p>
+            </div>
+
+          </div>
         )}
 
-        
-        <Button color="primary" variant="bordered" onClick={deleteRow}>
-          nvm
-        </Button>  
-        
+        {unit == null ? null : (
+          <div>
+            <p>Amount</p>
+            <IntegerInput value={massSelection} onChange={handleMassSelection} />
+            <p>{massSelection}</p>
+          </div>
+        )}
+
+
       </div>
 
 
+      <div style={{ display: "flex", justifyContent: "right", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+        <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
+            {massSelection == "" ? null : (
+              <Button color="primary" variant="shadow" onClick={addRow}>
+                add!
+              </Button>  
+            )}
+
+            <Button color="primary" variant="bordered" onClick={deleteRow}>
+              nvm
+            </Button>  
+          </div>
+      </div>
     </div>
   );
 };
