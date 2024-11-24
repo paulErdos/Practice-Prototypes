@@ -17,6 +17,11 @@ const dummy_options = [
 /*
 
 TODO:
+* Priority 1: data is used by "Rows" to display "Row"s, "Row"s can set and alter their data, data owned supra-row to facilitate downloading and rendering by uploaded data
+* Integrate theRows into Rows
+* Have Row be passed its data, either as a single array or element by element.
+* Have Row display the data it's passed
+* Have Row alter and set the data it's passed
 * For secondary rows, "nvm" doesn't show up until food is added. Makes sense for first row? But not others. 
 * Have the entire thing covered under a "Create a new Recipe Ingredients" that opens the card
 * > Ohhh and that can be reaccassed by pressing 'nvm' on the first card ohhhhhh
@@ -189,6 +194,7 @@ const Row = ({
 
   return (
     <div>
+
       <div className="Row" style={{ display: "flex", justifyContent: "left", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
         <div>
@@ -258,6 +264,7 @@ const Row = ({
             </Button>  
           </div>
       </div>
+
     </div>
   );
 };
