@@ -115,9 +115,15 @@ const RecipeIngredients = () => {
 const Rows = ({theRows} : {theRows: IngredientSpec[]}) => {
   // Initialize with a single Row
   const [rows, setRows] = useState([0]); // Start with one row
+  const [onlyOneRow, setOnlyOneRow] = useState(true);
+
 
   const addRow = () => {
     setRows([...rows, rows.length]); // Add a new row by appending the next index
+
+    if(onlyOneRow && rows.length > 1) {
+      setOnlyOneRow(false);
+    }
   };
 
   const deleteRow = (idToDelete: number) => {
@@ -128,7 +134,7 @@ const Rows = ({theRows} : {theRows: IngredientSpec[]}) => {
     <div className="Rows">
       {rows.map((index) => (
         /* TODO: see if there's a way to do this by passing a mutable reference individual row elements as opposed to spreading around the entire collection of rows */
-        <Row key={index} index={index} addRow={addRow} deleteRow={deleteRow} theRows={theRows}/>
+        <Row key={index} index={index} addRow={addRow} deleteRow={deleteRow} theRows={theRows} areWeAlone={onlyOneRow}/>
       ))}
     </div>
   );
@@ -141,12 +147,17 @@ const Rows = ({theRows} : {theRows: IngredientSpec[]}) => {
 const Row = ({ 
   addRow, 
   deleteRow,
-  theRows
+  theRows,
+  areWeAlone
 }: {
   addRow: () => void;
   deleteRow: () => void;
-  theRows: []
+  theRows: [],
+  areWeAlone: boolean
 }) => {
+  console.log('mark0')
+  console.log(areWeAlone)
+  console.log(areWeAlone)
   const [added, setAdded] = useState(false);
 
   const [selectedFood, setSelectedFood] = useState<{label: string, value: number} | null>(null);
@@ -232,11 +243,11 @@ const Row = ({
           </Button>  
         )}
 
-        {selectedFood == null ? null : (
-          <Button color="primary" variant="bordered" onClick={deleteRow}>
-            nvm
-          </Button>  
-        )}
+        
+        <Button color="primary" variant="bordered" onClick={deleteRow}>
+          nvm
+        </Button>  
+        
       </div>
 
 
