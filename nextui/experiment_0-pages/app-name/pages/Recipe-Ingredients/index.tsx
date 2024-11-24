@@ -54,9 +54,22 @@ export default function RecipePage() {
   );
 }
 
+interface IngredientSpec {
+  food: string,
+  unit: string,  // TODO: can this be an enum of that list of food units
+  amount: 0
+}
+
+const newBlankRow = (): IngredientSpec => ({
+  food: "",
+  unit: "",     // TODO: maybe default to grams
+  amount: 0
+})
+
+
 // Work-In-Progress Recipe Ingredients Card
 const RecipeIngredients = () => {
-  const [rowsData, setRowsData] = useState([])
+  const [rowsData, setRowsData] = useState<IngredientSpec[]>([newBlankRow()])
 
   return (
     <div class="RecipeIngredientsCard">
@@ -99,7 +112,7 @@ const RecipeIngredients = () => {
 };
 
 
-const Rows = () => {
+const Rows = ({theRows} : {theRows: IngredientSpec[]}) => {
   // Initialize with a single Row
   const [rows, setRows] = useState([0]); // Start with one row
 
@@ -114,22 +127,25 @@ const Rows = () => {
   return (
     <div className="Rows">
       {rows.map((index) => (
-        <Row key={index} index={index} addRow={addRow} deleteRow={deleteRow}/>
+        /* TODO: see if there's a way to do this by passing a mutable reference individual row elements as opposed to spreading around the entire collection of rows */
+        <Row key={index} index={index} addRow={addRow} deleteRow={deleteRow} theRows={theRows}/>
       ))}
     </div>
   );
 };
 
 
+
+
 // Row component
 const Row = ({ 
-  index, 
   addRow, 
-  deleteRow 
+  deleteRow,
+  theRows
 }: {
-  index: number;
   addRow: () => void;
   deleteRow: () => void;
+  theRows: []
 }) => {
   const [added, setAdded] = useState(false);
 
@@ -156,7 +172,7 @@ const Row = ({
   console.log(units_options)
 
   return (
-    <div className="Row" key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+    <div className="Row"style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
       <div>
         <p>Food Type</p>
@@ -334,18 +350,6 @@ interface IntegerInputProps {
 };
 
 
-const ParentComponent = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  return (
-    <div>
-      <Selector2 selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
-      <p>Selected option: {selectedOption ? selectedOption.label : 'None'}</p>
-    </div>
-  );
-};
-
-
 {/*
 Next Steps:
 * [x] Add quantity selector dropdown that appears after the food selector dropdown has a selection
@@ -362,200 +366,3 @@ Next Steps:
 * [ ] AsyncSelect https://react-select.com/home
 * 
 */}
-
-//import { useState } from 'react';
-//import { Card, CardHeader, CardBody, CardFooter, Divider, Button, Link, Image } from "@nextui-org/react";
-
-const DynamicInfoCardTest0 = () => {
-  const [rows, setRows] = useState<number[]>([]);
-
-  const addRow = () => {
-    setRows([...rows, Math.floor(Math.random() * 100)]);
-  };
-
-  return (
-    <Card className="max-w-[800px]">
-      <CardHeader className="flex gap-3">
-        <Image
-          alt="nextui logo"
-          height={40}
-          radius="sm"
-          src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-          width={40}
-        />
-        <div className="flex flex-col">
-          <p className="text-md">NextUI</p>
-          <p className="text-small text-default-500">nextui.org</p>
-        </div>
-      </CardHeader>
-
-      <Divider />
-
-      <CardBody>
-        <p>Make beautiful websites regardless of your design experience.</p>
-        {rows.map((num, index) => (
-          <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
-            <p></p> {/*// For some reason, having this in place center justifies following elements */}
-            <DoubleOpenableSelector key={index} /> 
-            <Button onClick={addRow} size="sm">Add Row</Button>
-          </div>
-        ))}
-        <Button onClick={addRow}>Add Initial Row</Button>
-      </CardBody>
-
-      <Divider />
-
-      <CardFooter>
-        <Link
-          isExternal
-          showAnchorIcon
-          href="https://github.com/nextui-org/nextui"
-        >
-          Visit source code on GitHub.
-        </Link>
-      </CardFooter>
-    </Card>
-  );
-};
-
-function DoubleOpenableSelector() {
-  const [toggled, setToggled] = useState<boolean>(true);
-  function handleClick() {
-    setToggled(!toggled);
-    setFoodSelection("");
-  }
-
-  const [foodSelection, setFoodSelection] = useState("");
-  const handleFoodSelection = (theFoodSelection) => {
-    setFoodSelection(theFoodSelection);
-  }
-
-  const [massSelection, setMassSelection] = useState(100);
-  const handleMassSelection = (theMassSelection) => {
-    setMassSelection(theMassSelection);
-  }
-
-  const [unit, setUnit] = useState('g');
-  const selectUnit = (theUnit) => {
-    setUnit(theUnit);
-  }
-
-  const [labelTriggerToggled, setlabelTriggerToggled] = useState<boolean>(true);
-  const setLabelButton = (theLabel) => {
-    setlabelTriggerToggled(theLabel);
-  }
-
-  return (
-    <div className="px-4 py-2 border border-gray-400 rounded focus:outline-none focus:border-blue-500">
-      {toggled ? 
-        (
-          <div>
-            <ToggleButtonWithProps state={toggled} setState={handleClick} />
-          </div>
-        ) : (
-          <div>
-            <div className="flex flex-row">
-
-              {/* Exit out as needed */}
-              <ToggleButtonWithProps state={toggled} setState={handleClick} />
-
-              {/* Food selection drop down */}
-              <Select 
-                value={foodSelection}
-                onChange={handleFoodSelection}
-                options={dummy_options}
-                styles={{
-                    option: (provided) => ({
-                    ...provided,
-                    color: 'black',
-                    backgroundColor: 'white',
-                    }),
-                }}
-              />
-              
-              {/* Quantity + Unit to appear when food selection is made */}
-              {foodSelection && (
-                <div className="flex flex-row">
-
-                  {/* Quantity */}
-                  <div className="flex flex-row">
-                    <IntegerInput value={massSelection} onChange={handleMassSelection} />
-                    <p>{massSelection}</p>
-                  </div>
-
-                  {/* Unit */}
-                  <div className="flex flex-row">
-                    <div className="flex flex-row">
-                        <Select
-                            value={unit}
-                            options={units_options}
-                            styles={{
-                                option: (provided) => ({
-                                ...provided,
-                                color: 'black',
-                                backgroundColor: 'white',
-                                }),
-                            }}
-                        />
-                        <p>{unit}</p>
-                    </div>
-                  </div>
-
-                  {/* Make API Call */}
-                  {/* TODO: Can divs have an onclick? */}
-                  {/**/} */
-                  <div>
-                    {labelTriggerToggled ? (
-                      <LabelTriggerToggle
-                        state={labelTriggerToggled}
-                        setState={setLabelButton}
-                        textForSetState={"Set"}
-                        textForUnsetState={""}
-                      />
-                    ) : (
-                      <LabelTriggerToggle
-                        state={labelTriggerToggled}
-                        setState={setLabelButton}
-                        textForSetState={""}
-                        textForUnsetState={"Unset"}
-                      />
-                    )}
-                  </div>
-                  
-                  {/**/}
- 
-                </div>
-              )}
-
-
-            </div>   
-          </div>     
-        )
-      }
-    </div>
-  );
-};
-
-
-
-
-
-const ToggleButtonWithProps = ({state, setState}) => {
-  return (
-    <Button color="primary" variant="solid" onClick={setState}>
-      {state ? "Add New" : "X"}
-    </Button>
-  );
-};
-
-const LabelTriggerToggle = ({state, setState, textForSetState, textForUnsetState}) => {
-  return (
-    <Button color="primary" variant="solid" onClick={setState}>
-      {state ? textForUnsetState : textForSetState}
-    </Button>
-  );
-};
-
-
-
-
