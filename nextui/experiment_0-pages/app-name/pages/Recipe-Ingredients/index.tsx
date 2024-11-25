@@ -58,7 +58,6 @@ export default function RecipePage() {
 }
 
 
-
 interface IngredientSpec {
   food: string,
   unit: string,  // TODO: can this be an enum of that list of food units
@@ -74,7 +73,22 @@ const newBlankRow = (): IngredientSpec => ({
 
 // Work-In-Progress Recipe Ingredients Card
 const RecipeIngredients = () => {
-  const [rowsData, setRowsData] = useState<IngredientSpec[]>([newBlankRow()])
+  const [rows, setRows] = useState<IngredientSpec[]>([newBlankRow()])
+  const [onlyOneRow, setOnlyOneRow] = useState(true);
+
+
+  const addRow = () => {
+    setRows([...rows, rows.length]); // Add a new row by appending the next index
+
+    if(onlyOneRow && rows.length > 1) {
+      setOnlyOneRow(false);
+    }
+  };
+
+  const deleteRow = (idToDelete: number) => {
+    setRows(rows.filter((index) => index !== idToDelete));
+  }
+
 
   return (
     <div class="RecipeIngredientsCard">
@@ -96,7 +110,17 @@ const RecipeIngredients = () => {
         <Divider />
 
         <CardBody>
-          <Rows theRows={rowsData}/>
+          {rows.map((index) => (
+            /* TODO: see if there's a way to do this by passing a mutable reference individual row elements as opposed to spreading around the entire collection of rows */
+            <Row 
+              theRow={rows[index]} 
+              index={index} 
+              addRow={addRow} 
+              deleteRow={deleteRow} 
+              rows={rows} 
+              areWeAlone={onlyOneRow}
+            />
+          ))}
         </CardBody>
 
         <Divider />
@@ -117,68 +141,38 @@ const RecipeIngredients = () => {
 };
 
 
-const Rows = ({theRows} : {theRows: IngredientSpec[]}) => {
-  // Initialize with a single Row
-  const [rows, setRows] = useState([0]); // Start with one row
-  const [onlyOneRow, setOnlyOneRow] = useState(true);
-
-
-  const addRow = () => {
-    console.log('addrow')
-    setRows([...rows, rows.length]); // Add a new row by appending the next index
-
-    if(onlyOneRow && rows.length > 1) {
-      setOnlyOneRow(false);
-    }
-  };
-
-  const deleteRow = (idToDelete: number) => {
-    console.log('deleterow')
-    setRows(rows.filter((index) => index !== idToDelete));
-  }
-
-  return (
-    <div className="Rows">
-      {rows.map((index) => (
-        /* TODO: see if there's a way to do this by passing a mutable reference individual row elements as opposed to spreading around the entire collection of rows */
-        <Row key={index} index={index} addRow={addRow} deleteRow={deleteRow} theRows={theRows} areWeAlone={onlyOneRow}/>
-      ))}
-    </div>
-  );
-};
-
-
-
-
 // Row component
 const Row = ({ 
+  theRow,
   index,
   addRow, 
   deleteRow,
   theRows,
   areWeAlone
-}: {
+} : {
+  theRow: IngredientSpec,
   index: number,
   addRow: () => void;
-  deleteRow: () => void;
+  deleteRow: (idToDelete: number) => void;
   theRows: [],
   areWeAlone: boolean
 }) => {
-  console.log('mark0')
-  console.log(areWeAlone)
-  console.log(areWeAlone)
+
+  const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
+
   const [added, setAdded] = useState(false);
-
+  
   const [selectedFood, setSelectedFood] = useState<{label: string, value: number} | null>(null);
-
   const [unit, setUnit] = useState<{value: string, label: string} | null>(null);
+  const [massSelection, setMassSelection] = useState("");
+
+  // TODO: needed? Can just setUnit directly?
   const selectUnit = (theUnit: any) => {
     setUnit(theUnit);
   }
 
-  const [massSelection, setMassSelection] = useState("");
+  // TODO: needed?
   const handleMassSelection = (theMassSelection: string) => {
-    console.log(theMassSelection);
     setMassSelection(theMassSelection);
   }
 
@@ -196,9 +190,12 @@ const Row = ({
     }
   }
 
-  const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
-  console.log(units_options)
+  const handleAddRow = () => {
 
+  }
+
+
+  // TODO: 
   return (
     <div>
 
@@ -254,7 +251,6 @@ const Row = ({
           </div>
         )}
 
-
       </div>
 
 
@@ -285,7 +281,6 @@ const Selector2 = ({selectedOption, setSelectedOption}) => {
   //const [selectedOption, setSelectedOption] = useState("");
 
   const handleChange = (selection: {value: string, label: number}) => {
-    console.log(selection)
     setSelectedOption(selection);
   }
 
