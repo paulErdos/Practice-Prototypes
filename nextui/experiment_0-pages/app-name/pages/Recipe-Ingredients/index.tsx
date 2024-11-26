@@ -167,7 +167,7 @@ const Row = ({
 
   //const [added, setAdded] = useState(false);
   
-  const [selectedFood, setSelectedFood] = useState<{label: string, value: number} | null>(null);
+  //const [selectedFood, setSelectedFood] = useState<{label: string, value: number} | null>(null);
   const [unit, setUnit] = useState<{value: string, label: string} | null>(null);
   const [massSelection, setMassSelection] = useState(0);
 
@@ -195,14 +195,24 @@ const Row = ({
     addRow()
   }
 
-
-
   const handleMassSelection = (theMassSelection: number) => {
     setMassSelection(theMassSelection);
     theRow.amount = theMassSelection;
     saveRow(theRow);
   }
 
+  const handleUnitSelection = (theUnitSelection: any) => {
+    const newUnit = theUnitSelection;
+    setUnit(newUnit)
+    theRow.unit = theUnitSelection.value;
+    saveRow(theRow);
+  }
+
+  const handleFoodSelection = (theFoodSelection: any) => {
+    theRow.food = theFoodSelection.value;
+    saveRow(theRow);
+    //setSelectedFood(theFoodSelection);
+  }
 
   return (
     <div>
@@ -213,14 +223,14 @@ const Row = ({
         <div>
           <p>Food Type</p>
           <Selector2
-            selectedOption={selectedFood}
-            setSelectedOption={setSelectedFood}
+            selectedOption={theRow.food}
+            setSelectedOption={handleFoodSelection}
           />
-          <p>Dev: Selected Option: {selectedFood ? selectedFood.label : 'None'}</p> 
+          <p>Dev: Selected Option: {theRow.food ? theRow.food : 'None'}</p> 
         </div>
 
         {/* Select Unit */}
-        {selectedFood == null ? null : (
+        {theRow.food == "" ? null : (
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
             {/* Unit */}
             {/* TODO: in progress
@@ -232,15 +242,10 @@ const Row = ({
             */}
             <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
               <p>Unit</p>
-              <p>{theRow.food}</p>
-              <p>{theRow.unit}</p>
-              <p>{theRow.amount}</p>
-              <p>{theRow.food}</p>
-              <p>{theRow.food}</p>
               <Select
                 value={unit}
                 options={units_options}
-                onChange={setUnit}
+                onChange={handleUnitSelection}
                 menuPosition="fixed"  // Avoid clipping
                 placeholder="Unit..."
 
@@ -252,7 +257,7 @@ const Row = ({
                   }),
                 }}
               />
-              <p>{unit ? unit.label : ""}</p>
+              <p>{theRow.unit ? theRow.unit : ""}</p>
             </div>
 
           </div>
