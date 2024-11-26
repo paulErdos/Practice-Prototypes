@@ -8,12 +8,6 @@ import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nex
 import { Input } from '@nextui-org/react';
 import AsyncSelect from 'react-select/async';
 
-const dummy_options = [
-  {value: 5, label: 'fif'},
-  {value: 'ah plead da fif', label: 'onetwothreefofiiiif'},
-  {value: 'real option', label: 'i actually plead the third i refuse to quarter troops in my home'}
-]
-
 /*
 TODO:
 * Priority 1: Save button needs to be able to access the data in each row: data is used by "Rows" to display "Row"s, "Row"s can set and alter their data, data owned supra-row to facilitate downloading and rendering by uploaded data
@@ -60,8 +54,8 @@ export default function RecipePage() {
 
 interface IngredientSpec {
   food: string,
-  unit: string,  // TODO: can this be an enum of that list of food units
-  amount: 0
+  unit: string,  // TODO: can this be an enum of that list of food units?
+  amount: number
 }
 
 const newBlankRow = (): IngredientSpec => ({
@@ -76,17 +70,27 @@ const RecipeIngredients = () => {
   const [rows, setRows] = useState<IngredientSpec[]>([newBlankRow()])
   const [onlyOneRow, setOnlyOneRow] = useState(true);
 
-
+  // Add new blank row
   const addRow = () => {
-    setRows([...rows, rows.length]); // Add a new row by appending the next index
+    setRows([...rows, newBlankRow()]); // Add a new row by appending the next index
 
     if(onlyOneRow && rows.length > 1) {
       setOnlyOneRow(false);
     }
   };
 
+  // Save or update newest populated or populating row
+  const registerPopulatedRow = (rowData: IngredientSpec) => {
+    setRows([...rows.slice(0, -1), rowData])
+  }
+
+
   const deleteRow = (idToDelete: number) => {
-    setRows(rows.filter((index) => index !== idToDelete));
+    if(rows.length == 1) {
+      resetRow()
+    } else {
+      setRows(rows.filter((index) => index !== idToDelete));
+    }
   }
 
 
@@ -110,15 +114,15 @@ const RecipeIngredients = () => {
         <Divider />
 
         <CardBody>
-          {rows.map((index) => (
+          {rows.map((row, index) => (
             /* TODO: see if there's a way to do this by passing a mutable reference individual row elements as opposed to spreading around the entire collection of rows */
             <Row 
-              theRow={rows[index]} 
+              theRow={row} 
               index={index} 
               addRow={addRow} 
               deleteRow={deleteRow} 
-              rows={rows} 
               areWeAlone={onlyOneRow}
+              saveRow={registerPopulatedRow}
             />
           ))}
         </CardBody>
@@ -147,39 +151,36 @@ const Row = ({
   index,
   addRow, 
   deleteRow,
-  theRows,
-  areWeAlone
+  areWeAlone,
+  saveRow,
 } : {
   theRow: IngredientSpec,
   index: number,
   addRow: () => void;
   deleteRow: (idToDelete: number) => void;
   theRows: [],
-  areWeAlone: boolean
+  areWeAlone: boolean,
+  saveRow: (rowData: IngredientSpec) => void;
 }) => {
 
   const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
 
-  const [added, setAdded] = useState(false);
+  //const [added, setAdded] = useState(false);
   
   const [selectedFood, setSelectedFood] = useState<{label: string, value: number} | null>(null);
   const [unit, setUnit] = useState<{value: string, label: string} | null>(null);
-  const [massSelection, setMassSelection] = useState("");
-
-  // TODO: needed? Can just setUnit directly?
-  const selectUnit = (theUnit: any) => {
-    setUnit(theUnit);
-  }
-
-  // TODO: needed?
-  const handleMassSelection = (theMassSelection: string) => {
-    setMassSelection(theMassSelection);
-  }
+  const [massSelection, setMassSelection] = useState(0);
 
   const resetRow = () => {
     setSelectedFood(null);
     setUnit(null);
     setMassSelection("");
+
+    theRow.food = "";
+    theRow.unit = "";
+    theRow.amount = 0;
+    saveRow(theRow);
+
   }
 
   const handleDeleteRow = () => {
@@ -191,16 +192,24 @@ const Row = ({
   }
 
   const handleAddRow = () => {
-
+    addRow()
   }
 
 
-  // TODO: 
+
+  const handleMassSelection = (theMassSelection: number) => {
+    setMassSelection(theMassSelection);
+    theRow.amount = theMassSelection;
+    saveRow(theRow);
+  }
+
+
   return (
     <div>
 
       <div className="Row" style={{ display: "flex", justifyContent: "left", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
+        {/* Select Food */}
         <div>
           <p>Food Type</p>
           <Selector2
@@ -210,6 +219,7 @@ const Row = ({
           <p>Dev: Selected Option: {selectedFood ? selectedFood.label : 'None'}</p> 
         </div>
 
+        {/* Select Unit */}
         {selectedFood == null ? null : (
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
             {/* Unit */}
@@ -222,6 +232,11 @@ const Row = ({
             */}
             <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
               <p>Unit</p>
+              <p>{theRow.food}</p>
+              <p>{theRow.unit}</p>
+              <p>{theRow.amount}</p>
+              <p>{theRow.food}</p>
+              <p>{theRow.food}</p>
               <Select
                 value={unit}
                 options={units_options}
@@ -243,11 +258,12 @@ const Row = ({
           </div>
         )}
 
+        {/* Select Mass */}
         {unit == null ? null : (
           <div>
             <p>Amount</p>
             <IntegerInput value={massSelection} onChange={handleMassSelection} />
-            <p>{massSelection}</p>
+            <p>{theRow.amount}</p>
           </div>
         )}
 
@@ -257,7 +273,7 @@ const Row = ({
       <div style={{ display: "flex", justifyContent: "right", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
         <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
             {massSelection == "" ? null : (
-              <Button color="primary" variant="shadow" onClick={addRow}>
+              <Button color="primary" variant="shadow" onClick={handleAddRow}>
                 add!
               </Button>  
             )}
