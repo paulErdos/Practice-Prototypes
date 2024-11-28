@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "falcon-redis"
+version = "0.1.0"
+description = ""
+authors = ["paulErdos <vincesteffens@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+redis = "^5.2.0"
+uvicorn = "^0.32.1"
+falcon = "^4.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
