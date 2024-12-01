@@ -1,9 +1,13 @@
 import { Card, Divider } from "@nextui-org/react";
-import categories from "./nutrients-categorized.json";
+//import categories from "./nutrients-categorized.json";
 
+interface Section {
+  title: string;
+  items: string[];
+}
 
-
-function nfexp1() {
+// TODO: use above interface to produce type annotation
+function nfexp1({categories}) {
     return (
       <Card css={{ 
         maxWidth: "300px", 
