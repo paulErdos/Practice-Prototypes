@@ -46,6 +46,21 @@ export default function IndexPage() {
           </Link>
         </div>
 
+        <div className="flex gap-3">
+        <Link
+          //isExternal
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
+          href="/usda-fdc-search"
+        >
+          USDA FDC Search Experiments
+        </Link>
+      </div>
+
+
         <div className="mt-8">
           <Snippet hideCopyButton hideSymbol variant="bordered">
             <span>
