@@ -26,7 +26,7 @@ export default function IndexPage() {
 
         <div className="flex gap-3">
           <Link
-            isExternal
+            //isExternal
             className={buttonStyles({
               color: "primary",
               radius: "full",
@@ -37,7 +37,7 @@ export default function IndexPage() {
             Documentation
           </Link>
           <Link
-            isExternal
+            //isExternal
             className={buttonStyles({ variant: "bordered", radius: "full" })}
             href={siteConfig.links.github}
           >
@@ -57,7 +57,7 @@ export default function IndexPage() {
 
       <div className="flex gap-3">
         <Link
-          isExternal
+          //isExternal
           className={buttonStyles({
             color: "primary",
             radius: "full",
@@ -71,13 +71,13 @@ export default function IndexPage() {
 
       <div className="flex gap-3">
         <Link
-          isExternal
+          //isExternal
           className={buttonStyles({
             color: "primary",
             radius: "full",
             variant: "shadow",
           })}
-          href="/blog"
+          href="/NutritionFacts"
         >
           Nutrition Facts Label UI Tests
         </Link>
@@ -85,7 +85,7 @@ export default function IndexPage() {
 
       <div className="flex gap-3">
         <Link
-          isExternal
+          //isExternal
           className={buttonStyles({
             color: "primary",
             radius: "full",
@@ -99,15 +99,29 @@ export default function IndexPage() {
 
     <div className="flex gap-3">
       <Link
-        isExternal
+        //isExternal
         className={buttonStyles({
           color: "primary",
           radius: "full",
           variant: "shadow",
         })}
-        href="/Recipe"
+        href="/Recipe-Ingredients"
       >
         Recipe Card Experiments
+      </Link>
+    </div>
+
+    <div className="flex gap-3">
+      <Link
+        //isExternal
+        className={buttonStyles({
+          color: "primary",
+          radius: "full",
+          variant: "shadow",
+        })}
+        href="/upload-download-file-button"
+      >
+        Upload / Download File Button Experiments
       </Link>
     </div>
 
