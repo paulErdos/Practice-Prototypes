@@ -1,0 +1,5 @@
+* Remove from history commit of redis install. Redo as dockerfile. 
+* Get that fastapi postgres shoestore in here
+* Setup some linters
+* Get into pytest
+* Retrospective testing monitor service

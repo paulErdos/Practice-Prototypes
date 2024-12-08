@@ -1,8 +1,13 @@
 ## Dev Notes
 
 ### ================================================================================
-### Sun, 13 Oct 2024
+### Setup + Dev Notes
 ### ================================================================================
+
+Setup New NextUI Project*
+* nextui init my-nextui-app
+* Select pages
+
 
 Left off:
 * experiment 1 > app-name > app > page.tsx
