@@ -1,18 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "Finally Follow Join Counter",
-  "version": "1.0",
-  "description": "Counts spans with 'Finally', 'Follow', or 'Join' text",
+  "name": "Span Text Counter",
+  "version": "1.1",
+  "description": "Counts spans with configurable text",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ],
-  "action": {
-    "default_icon": "icon.png"
-  }
+  ]
 }
