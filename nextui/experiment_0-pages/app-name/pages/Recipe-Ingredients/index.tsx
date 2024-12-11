@@ -27,6 +27,24 @@ TODO:
 * Unit selection takes multiple clicks to land properly
 */
 
+{/*
+Next Steps:
+* [x] Add quantity selector dropdown that appears after the food selector dropdown has a selection
+* [ ] Add units selector dropdown, cups, grams, ounces, etc. 
+* [ ] Add button to do some dummy api call, like curling pi from somewhere
+* [ ] Add these to a card where new rows can be added
+* [ ] Add a way to save the card info as a file on the client's machine.
+* [ ] Add a way to load saved card info
+* [ ] Then bring that over. 
+* [ ] viz: by calorie, by gram, by any other metric
+*     > Where would this even go
+* [ ] Fixed width
+* [ ] Vertically center add new / x button
+* [ ] AsyncSelect https://react-select.com/home
+* 
+*/}
+
+
 export default function RecipePage() {
   const [buttonPushed, setButtonPushed] = useState(false);
 
@@ -52,32 +70,25 @@ export default function RecipePage() {
 }
 
 
-interface IngredientSpec {
-  food: string,
-  unit: string,  // TODO: can this be an enum of that list of food units?
-  amount: number
-}
-
-const newBlankRow = (): IngredientSpec => ({
-  food: "",
-  unit: "",     // TODO: maybe default to grams
-  amount: 0
-})
-
-
 // Work-In-Progress Recipe Ingredients Card
 const RecipeIngredients = () => {
   const [rows, setRows] = useState<IngredientSpec[]>([newBlankRow()])
-  const [onlyOneRow, setOnlyOneRow] = useState(true);
+  //const [onlyOneRow, setOnlyOneRow] = useState(true);
 
   // Add new blank row
   const addRow = () => {
+    //console.log('onlyonerow?', onlyOneRow)
     setRows([...rows, newBlankRow()]); // Add a new row by appending the next index
 
-    if(onlyOneRow && rows.length > 1) {
+    /*if(onlyOneRow) {// && rows.length > 1) {
       setOnlyOneRow(false);
-    }
+    }*/
   };
+
+  const resetRow = (rowIndex: number) => {
+    const newRow = newBlankRow();
+    setRows(rows.map((item, index) => (index === rowIndex? newRow : item)))
+  }
 
   // Save or update newest populated or populating row
   const registerPopulatedRow = (rowData: IngredientSpec) => {
@@ -87,17 +98,28 @@ const RecipeIngredients = () => {
 
   const deleteRow = (idToDelete: number) => {
     if(rows.length == 1) {
-      resetRow()
+      resetRow(0);
     } else {
-      setRows(rows.filter((index) => index !== idToDelete));
+      setRows(rows.filter((row, index) => index !== idToDelete));
+      /*if(rows.length == 1) {
+        setOnlyOneRow(true);
+      }*/
     }
   }
+
+
 
 
   return (
     <div class="RecipeIngredientsCard">
       <Card className="max-w-[800px]">
         <CardHeader className="flex gap-3">
+
+          {/* Dev: Demo of state being stored in root UI node */}
+          {rows.map((row, index) => (
+            <p>{row.amount} {row.unit} of {row.food}</p>
+          ))}
+          
           <Image
             alt="nextui logo"
             height={40}
@@ -121,7 +143,8 @@ const RecipeIngredients = () => {
               index={index} 
               addRow={addRow} 
               deleteRow={deleteRow} 
-              areWeAlone={onlyOneRow}
+              resetRow={resetRow}
+              //areWeAlone={onlyOneRow}
               saveRow={registerPopulatedRow}
             />
           ))}
@@ -145,7 +168,21 @@ const RecipeIngredients = () => {
 };
 
 
-// Row component
+interface IngredientSpec {
+  food: string,
+  unit: string,  // TODO: can this be an enum of that list of food units?
+  amount: number
+}
+
+const newBlankRow = (): IngredientSpec => ({
+  food: "",
+  unit: "",     // TODO: maybe default to grams
+  amount: 0
+})
+
+
+
+
 const Row = ({ 
   theRow,
   index,
@@ -153,40 +190,26 @@ const Row = ({
   deleteRow,
   areWeAlone,
   saveRow,
+  resetRow
 } : {
   theRow: IngredientSpec,
   index: number,
   addRow: () => void;
   deleteRow: (idToDelete: number) => void;
-  theRows: [],
   areWeAlone: boolean,
   saveRow: (rowData: IngredientSpec) => void;
+  resetRow: (rowIndex: number) => void;
 }) => {
 
   const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
 
-  //const [added, setAdded] = useState(false);
-  
-  //const [selectedFood, setSelectedFood] = useState<{label: string, value: number} | null>(null);
-  const [unit, setUnit] = useState<{value: string, label: string} | null>(null);
-  const [massSelection, setMassSelection] = useState(0);
-
-  const resetRow = () => {
-    setSelectedFood(null);
-    setUnit(null);
-    setMassSelection("");
-
-    theRow.food = "";
-    theRow.unit = "";
-    theRow.amount = 0;
-    saveRow(theRow);
-
-  }
-
   const handleDeleteRow = () => {
+    console.log("handleDeleteRow!")
     if(areWeAlone) {
+      console.log('hdr resetting! arewealone:', areWeAlone)
       resetRow()
     } else {
+      console.log('hdr deleting!')
       deleteRow(index);
     }
   }
@@ -196,14 +219,12 @@ const Row = ({
   }
 
   const handleMassSelection = (theMassSelection: number) => {
-    setMassSelection(theMassSelection);
     theRow.amount = theMassSelection;
     saveRow(theRow);
   }
 
   const handleUnitSelection = (theUnitSelection: any) => {
     const newUnit = theUnitSelection;
-    setUnit(newUnit)
     theRow.unit = theUnitSelection.value;
     saveRow(theRow);
   }
@@ -211,12 +232,10 @@ const Row = ({
   const handleFoodSelection = (theFoodSelection: any) => {
     theRow.food = theFoodSelection.value;
     saveRow(theRow);
-    //setSelectedFood(theFoodSelection);
   }
 
   return (
     <div>
-
       <div className="Row" style={{ display: "flex", justifyContent: "left", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
         {/* Select Food */}
@@ -243,7 +262,7 @@ const Row = ({
             <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
               <p>Unit</p>
               <Select
-                value={unit}
+                value={theRow.unit}
                 options={units_options}
                 onChange={handleUnitSelection}
                 menuPosition="fixed"  // Avoid clipping
@@ -264,31 +283,29 @@ const Row = ({
         )}
 
         {/* Select Mass */}
-        {unit == null ? null : (
+        {theRow.unit == "" ? null : (
           <div>
             <p>Amount</p>
-            <IntegerInput value={massSelection} onChange={handleMassSelection} />
+            <IntegerInput value={theRow.amount} onChange={handleMassSelection} />
             <p>{theRow.amount}</p>
           </div>
         )}
-
       </div>
 
 
       <div style={{ display: "flex", justifyContent: "right", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
         <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
-            {massSelection == "" ? null : (
-              <Button color="primary" variant="shadow" onClick={handleAddRow}>
-                add!
-              </Button>  
-            )}
-
-            <Button color="primary" variant="bordered" onClick={handleDeleteRow}>
-              nvm
+          {theRow.amount == 0 ? null : (
+            <Button color="primary" variant="shadow" onClick={handleAddRow}>
+              add!
             </Button>  
-          </div>
-      </div>
+          )}
 
+          <Button color="primary" variant="bordered" onClick={handleDeleteRow}>
+            nvm
+          </Button>  
+        </div>
+      </div>
     </div>
   );
 };
@@ -397,20 +414,3 @@ interface IntegerInputProps {
   onChange: (value: number | '') => void;
 };
 
-
-{/*
-Next Steps:
-* [x] Add quantity selector dropdown that appears after the food selector dropdown has a selection
-* [ ] Add units selector dropdown, cups, grams, ounces, etc. 
-* [ ] Add button to do some dummy api call, like curling pi from somewhere
-* [ ] Add these to a card where new rows can be added
-* [ ] Add a way to save the card info as a file on the client's machine.
-* [ ] Add a way to load saved card info
-* [ ] Then bring that over. 
-* [ ] viz: by calorie, by gram, by any other metric
-*     > Where would this even go
-* [ ] Fixed width
-* [ ] Vertically center add new / x button
-* [ ] AsyncSelect https://react-select.com/home
-* 
-*/}

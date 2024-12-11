@@ -54,6 +54,21 @@ export default function IndexPage() {
             </span>
           </Snippet>
         </div>
+
+
+        <div className="flex gap-3">
+          <Link
+            //isExternal
+            className={buttonStyles({
+              color: "primary",
+              radius: "full",
+              variant: "shadow",
+            })}
+            href="/ex0"
+          >
+            GraphQL Query Experiment 0
+          </Link>
+        </div>
       </section>
     </DefaultLayout>
   );

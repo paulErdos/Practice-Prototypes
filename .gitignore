@@ -6,4 +6,5 @@ __pycache__
 target/
 /target/
 /target/debug/
-
+data/
+*.gz
