@@ -1,13 +1,15 @@
 function countSpecificSpans() {
-  chrome.storage.sync.get(['finallyEnabled', 'followEnabled', 'joinEnabled'], (settings) => {
+  chrome.storage.sync.get(['finallyEnabled', 'followEnabled', 'joinEnabled', 'createEnabled'], (settings) => {
     const finallyEnabled = settings.finallyEnabled !== false;
     const followEnabled = settings.followEnabled !== false;
     const joinEnabled = settings.joinEnabled !== false;
+    const createEnabled = settings.createEnabled !== false;
     
     const targetWords = [
       ...(finallyEnabled ? ['Finally'] : []),
       ...(followEnabled ? ['Follow'] : []),
-      ...(joinEnabled ? ['Join'] : [])
+      ...(joinEnabled ? ['Join'] : []),
+      ...(createEnabled ? ['Create'] : [])
     ];
   
     if (targetWords.length === 0) {
@@ -68,6 +70,7 @@ function countSpecificSpans() {
 
       deleteBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        e.preventDefault();
         
         // Find the 11th parent node
         let parentToDelete = span;
