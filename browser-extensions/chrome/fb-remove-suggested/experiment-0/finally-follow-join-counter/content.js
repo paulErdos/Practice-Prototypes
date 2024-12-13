@@ -1,20 +1,15 @@
-// Function to find and count spans
 function countSpecificSpans() {
-  // Default to all words if settings not found
   chrome.storage.sync.get(['finallyEnabled', 'followEnabled', 'joinEnabled'], (settings) => {
-    // Default to true if not set
     const finallyEnabled = settings.finallyEnabled !== false;
     const followEnabled = settings.followEnabled !== false;
     const joinEnabled = settings.joinEnabled !== false;
     
-    // Words we're looking for, filtered by enabled state
     const targetWords = [
       ...(finallyEnabled ? ['Finally'] : []),
       ...(followEnabled ? ['Follow'] : []),
       ...(joinEnabled ? ['Join'] : [])
     ];
   
-    // Skip if no words are enabled
     if (targetWords.length === 0) {
       const counterDiv = document.getElementById('finally-follow-join-counter');
       if (counterDiv) {
@@ -23,7 +18,6 @@ function countSpecificSpans() {
       return;
     }
   
-    // Use XPath to find spans with exact text, case-sensitive
     const spans = [];
     targetWords.forEach(word => {
       const xpath = `//span[contains(text(), "${word}")]`;
@@ -40,10 +34,8 @@ function countSpecificSpans() {
       }
     });
   
-    // Remove duplicates
     const uniqueSpans = [...new Set(spans)];
   
-    // Create or update counter div
     let counterDiv = document.getElementById('finally-follow-join-counter');
     if (!counterDiv) {
       counterDiv = document.createElement('div');
@@ -59,29 +51,58 @@ function countSpecificSpans() {
       document.body.appendChild(counterDiv);
     }
   
-    // Update counter text
     counterDiv.textContent = `Spans: ${uniqueSpans.length}`;
+
+    uniqueSpans.forEach(span => {
+      if (span.querySelector('.delete-span-btn')) return;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '🗑️';
+      deleteBtn.className = 'delete-span-btn';
+      deleteBtn.style.marginLeft = '5px';
+      deleteBtn.style.background = 'red';
+      deleteBtn.style.color = 'white';
+      deleteBtn.style.border = 'none';
+      deleteBtn.style.borderRadius = '3px';
+      deleteBtn.style.cursor = 'pointer';
+
+      deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        // Find the 11th parent node
+        let parentToDelete = span;
+        for (let i = 0; i < 15; i++) {
+          if (parentToDelete.parentElement) {
+            parentToDelete = parentToDelete.parentElement;
+          } else {
+            break; // Stop if we run out of parents before reaching 11
+          }
+        }
+        
+        if (confirm(`Delete the 11th parent element containing "${span.textContent}"?`)) {
+          parentToDelete.remove();
+          countSpecificSpans();
+        }
+      });
+
+      span.appendChild(deleteBtn);
+    });
   });
 }
 
-// Run on page load and create a MutationObserver for dynamic content
 function initializeSpanCounter() {
   countSpecificSpans();
   
-  // Create a MutationObserver to watch for dynamic content changes
   const observer = new MutationObserver((mutations) => {
-    // Debounce to prevent excessive calculations
     clearTimeout(window.spanCounterTimeout);
     window.spanCounterTimeout = setTimeout(countSpecificSpans, 500);
   });
   
-  // Observe the entire document with all child nodes
   observer.observe(document.body, {
     childList: true,
     subtree: true
   });
 
-  // Listen for settings updates
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.type === 'settingsUpdate') {
       countSpecificSpans();
@@ -89,5 +110,4 @@ function initializeSpanCounter() {
   });
 }
 
-// Run the counter when the page loads
 initializeSpanCounter();
