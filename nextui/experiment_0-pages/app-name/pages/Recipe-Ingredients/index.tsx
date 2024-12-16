@@ -109,7 +109,6 @@ const RecipeIngredients = () => {
 
 
 
-
   return (
     <div class="RecipeIngredientsCard">
       <Card className="max-w-[800px]">

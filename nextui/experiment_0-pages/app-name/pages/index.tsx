@@ -63,7 +63,7 @@ export default function IndexPage() {
             radius: "full",
             variant: "shadow",
           })}
-          href="/Recipe"
+          href="/Recipe-Ingredients"
         >
           Ingredient List / Recipe Card UI Experiments
         </Link>
