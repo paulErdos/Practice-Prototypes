@@ -63,6 +63,20 @@ export default function IndexPage() {
             radius: "full",
             variant: "shadow",
           })}
+          href="/Search-Dropdown"
+        >
+	  Search Dropdown
+        </Link>
+      </div>
+
+      <div className="flex gap-3">
+        <Link
+          //isExternal
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
           href="/Recipe-Ingredients"
         >
           Ingredient List / Recipe Card UI Experiments
