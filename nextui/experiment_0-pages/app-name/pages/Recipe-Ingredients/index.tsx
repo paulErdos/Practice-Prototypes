@@ -280,7 +280,6 @@ const Row = ({
             <p>{theRow.amount}</p>
           </div>
         )}
-      </div>
 
 
       <div style={{ display: "flex", justifyContent: "right", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
@@ -295,6 +294,7 @@ const Row = ({
             nvm
           </Button>  
         </div>
+      </div>
       </div>
     </div>
   );
