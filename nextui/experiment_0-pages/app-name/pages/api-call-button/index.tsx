@@ -1,9 +1,9 @@
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import Select from 'react-select'; 
-import { Button } from "@nextui-org/react";
-import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@nextui-org/react";
-import { Input } from '@nextui-org/react';
+import { Button } from "@heroui/react";
+import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@heroui/react";
+import { Input } from "@heroui/react";
 import { useState } from 'react';
 import FetchDataComponent  from './FetchDataComponent';
 

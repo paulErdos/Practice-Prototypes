@@ -1,11 +1,11 @@
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import Select from 'react-select'; 
-import {Button} from "@nextui-org/react"
+import {Button} from "@heroui/react"
 import React, { useState } from 'react';
-//import { Card } from "@nextui-org/react";
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
-import { Input } from '@nextui-org/react';
+//import { Card } from "@heroui/react";
+import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@heroui/react";
+import { Input } from "@heroui/react";
 
 const dummy_options = [
   {value: 5, label: 'fif'},
@@ -104,7 +104,7 @@ Next Steps:
 */}
 
 //import { useState } from 'react';
-//import { Card, CardHeader, CardBody, CardFooter, Divider, Button, Link, Image } from "@nextui-org/react";
+//import { Card, CardHeader, CardBody, CardFooter, Divider, Button, Link, Image } from "@heroui/react";
 
 const DynamicInfoCardTest0 = () => {
   const [rows, setRows] = useState<number[]>([]);
@@ -117,7 +117,7 @@ const DynamicInfoCardTest0 = () => {
     <Card className="max-w-[400px]">
       <CardHeader className="flex gap-3">
         <Image
-          alt="nextui logo"
+          alt="heroui logo"
           height={40}
           radius="sm"
           src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
@@ -125,7 +125,7 @@ const DynamicInfoCardTest0 = () => {
         />
         <div className="flex flex-col">
           <p className="text-md">NextUI</p>
-          <p className="text-small text-default-500">nextui.org</p>
+          <p className="text-small text-default-500">heroui.org</p>
         </div>
       </CardHeader>
 
@@ -149,7 +149,7 @@ const DynamicInfoCardTest0 = () => {
         <Link
           isExternal
           showAnchorIcon
-          href="https://github.com/nextui-org/nextui"
+          href="https://github.com/heroui-org/heroui"
         >
           Visit source code on GitHub.
         </Link>
@@ -396,7 +396,7 @@ const ItemCard: React.FC = () => {
     <Card className="max-w-[400px]">
       <CardHeader className="flex gap-3">
         <Image
-          alt="nextui logo"
+          alt="heroui logo"
           height={40}
           radius="sm"
           src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
@@ -404,7 +404,7 @@ const ItemCard: React.FC = () => {
         />
         <div className="flex flex-col">
           <p className="text-md">NextUI</p>
-          <p className="text-small text-default-500">nextui.org</p>
+          <p className="text-small text-default-500">heroui.org</p>
         </div>
       </CardHeader>
       <Divider/>
@@ -416,7 +416,7 @@ const ItemCard: React.FC = () => {
         <Link
           isExternal
           showAnchorIcon
-          href="https://github.com/nextui-org/nextui"
+          href="https://github.com/heroui-org/heroui"
         >
           Visit source code on GitHub.
         </Link>

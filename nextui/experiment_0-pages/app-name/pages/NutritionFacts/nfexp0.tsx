@@ -1,4 +1,4 @@
-import { Card, CardBody } from '@nextui-org/react';
+import { Card, CardBody } from "@heroui/react";
 import rawNutrients from "./nutrients.json";
 
 const nutrients = rawNutrients.foodNutrients.reduce((acc, nutrient) => {

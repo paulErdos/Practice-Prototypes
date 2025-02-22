@@ -1,11 +1,11 @@
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import Select from 'react-select'; 
-import {Button} from "@nextui-org/react"
+import {Button} from "@heroui/react"
 import React, { useState } from 'react';
-//import { Card } from "@nextui-org/react";
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
-import { Input } from '@nextui-org/react';
+//import { Card } from "@heroui/react";
+import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@heroui/react";
+import { Input } from "@heroui/react";
 import AsyncSelect from 'react-select/async';
 
 /*
@@ -110,7 +110,7 @@ const RecipeIngredients = () => {
 
 
   return (
-    <div class="RecipeIngredientsCard">
+    (<div class="RecipeIngredientsCard">
       <Card className="max-w-[800px]">
         <CardHeader className="flex gap-3">
 
@@ -120,7 +120,7 @@ const RecipeIngredients = () => {
           ))}
           
           <Image
-            alt="nextui logo"
+            alt="heroui logo"
             height={40}
             radius="sm"
             src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
@@ -128,7 +128,7 @@ const RecipeIngredients = () => {
           />
           <div className="flex flex-col">
             <p className="text-md">NextUI</p>
-            <p className="text-small text-default-500">nextui.org</p>
+            <p className="text-small text-default-500">heroui.org</p>
           </div>
         </CardHeader>
 
@@ -137,7 +137,7 @@ const RecipeIngredients = () => {
         <CardBody>
           {rows.map((row, index) => (
             /* TODO: see if there's a way to do this by passing a mutable reference individual row elements as opposed to spreading around the entire collection of rows */
-            <Row 
+            (<Row 
               theRow={row} 
               index={index} 
               addRow={addRow} 
@@ -145,7 +145,7 @@ const RecipeIngredients = () => {
               resetRow={resetRow}
               //areWeAlone={onlyOneRow}
               saveRow={registerPopulatedRow}
-            />
+            />)
           ))}
         </CardBody>
 
@@ -162,8 +162,8 @@ const RecipeIngredients = () => {
           </div>
         </CardFooter>
       </Card>
-    </div>
-  )
+    </div>)
+  );
 };
 
 

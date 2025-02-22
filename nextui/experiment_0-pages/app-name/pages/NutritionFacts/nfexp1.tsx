@@ -1,4 +1,4 @@
-import { Card, Divider } from "@nextui-org/react";
+import { Card, Divider } from "@heroui/react";
 //import categories from "./nutrients-categorized.json";
 
 interface Section {

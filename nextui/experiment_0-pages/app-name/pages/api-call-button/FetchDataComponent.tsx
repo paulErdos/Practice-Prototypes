@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Textarea } from '@nextui-org/react';
+import { Button, Textarea } from "@heroui/react";
 
 const FetchDataComponent = () => {
   const [text, setText] = useState('');

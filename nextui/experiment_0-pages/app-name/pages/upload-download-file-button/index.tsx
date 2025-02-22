@@ -1,6 +1,6 @@
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { useState } from "react";
 
 export default function DocsPage() {
@@ -50,7 +50,7 @@ const handleDownload = () => {
 
 
 import React from 'react';
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/react";
 
 const CsvUploader = () => {
   const [csvContent, setCsvContent] = useState('');
