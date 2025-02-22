@@ -234,68 +234,47 @@ const Row = ({
   }
 
   return (
-    <div>
-      <div className="Row" style={{ display: "flex", justifyContent: "left", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
+    <div className="Row" style={{ display: "flex", justifyContent: "left", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
 
-        {/* Select Food */}
-        <div>
-          <p>Food Type</p>
-          <Selector2
-            selectedOption={theRow.food}
-            setSelectedOption={handleFoodSelection}
-          />
-          <p>Dev: Selected Option: {theRow.food ? theRow.food : 'None'}</p> 
-        </div>
+      {/* Select Food */}
+      <Selector2
+        selectedOption={theRow.food}
+        setSelectedOption={handleFoodSelection}
+      />
 
-        {/* Select Unit */}
-            {/* Unit */}
-            {/* TODO: in progress
-            * Vertically center
-            * Add amount text input field
-            * Have add only appear once food, unit, and amount are filled in
-            * Have add create a new row
-            * Have row start off as a button "Add a new food"
-            */}
-              <Select
-                value={theRow.unit}
-                options={units_options}
-                onChange={handleUnitSelection}
-                menuPosition="fixed"  // Avoid clipping
-                placeholder="Unit..."
+      {/* Select Unit */}
+      <Select
+        value={theRow.unit}
+        options={units_options}
+        onChange={handleUnitSelection}
+        menuPosition="fixed"  // Avoid clipping
+        placeholder="Unit..."
 
-                styles={{
-                  option: (provided) => ({
-                    ...provided,
-                    color: 'black',
-                    backgroundColor: 'white',
-                  }),
-                }}
-              />
+        styles={{
+          option: (provided) => ({
+            ...provided,
+            color: 'black',
+            backgroundColor: 'white',
+          }),
+        }}
+      />
 
-        {/* Select Mass */}
-        {theRow.unit == "" ? null : (
-          <div>
-            <p>Amount</p>
-            <IntegerInput value={theRow.amount} onChange={handleMassSelection} />
-            <p>{theRow.amount}</p>
-          </div>
-        )}
+      {/* Select Mass */}
+      <IntegerInput value={theRow.amount} onChange={handleMassSelection} />
 
 
-      <div style={{ display: "flex", justifyContent: "right", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
-        <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center" }}>
-          {theRow.amount == 0 ? null : (
-            <Button color="primary" variant="shadow" onClick={handleAddRow}>
-              add!
-            </Button>  
-          )}
+      {theRow.amount == 0 ? null : (
+        <Button color="primary" variant="shadow" onClick={handleAddRow}
+         // isDisabled 
+	>
+          add!
+        </Button>  
+      )}
 
-          <Button color="primary" variant="bordered" onClick={handleDeleteRow}>
-            nvm
-          </Button>  
-        </div>
-      </div>
-      </div>
+      <Button color="primary" variant="bordered" onClick={handleDeleteRow}>
+        nvm
+      </Button>  
+
     </div>
   );
 };
