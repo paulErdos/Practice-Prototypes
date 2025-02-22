@@ -248,8 +248,6 @@ const Row = ({
         </div>
 
         {/* Select Unit */}
-        {theRow.food == "" ? null : (
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
             {/* Unit */}
             {/* TODO: in progress
             * Vertically center
@@ -258,8 +256,6 @@ const Row = ({
             * Have add create a new row
             * Have row start off as a button "Add a new food"
             */}
-            <div style={{ gap: "10px", alignItems: "center", justifyContent: "center" }}>
-              <p>Unit</p>
               <Select
                 value={theRow.unit}
                 options={units_options}
@@ -275,11 +271,6 @@ const Row = ({
                   }),
                 }}
               />
-              <p>{theRow.unit ? theRow.unit : ""}</p>
-            </div>
-
-          </div>
-        )}
 
         {/* Select Mass */}
         {theRow.unit == "" ? null : (
