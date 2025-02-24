@@ -48,6 +48,12 @@ Next Steps:
 export default function RecipePage() {
   const [buttonPushed, setButtonPushed] = useState(false);
 
+  const [selectedFood, setSelectedFood] = useState("foobar");
+
+  const handleFoodSelection = (theFoodSelection: any) => {
+     setSelectedFood(theFoodSelection.value)
+  }
+
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -57,9 +63,10 @@ export default function RecipePage() {
           <div><p>So the goal here is to have a dropdown, the food dropdown, display a list of foods. For now it's fine to just use the simplest proxy server, and then in a separate step, add a database.</p></div>
         </div>
 
-        <div>
-          <RecipeIngredients />
-        </div>
+      <Selector2
+        selectedOption={selectedFood}
+        setSelectedOption={handleFoodSelection}
+      />
 
       </section>
     </DefaultLayout>
@@ -67,144 +74,6 @@ export default function RecipePage() {
 }
 
 
-// Work-In-Progress Recipe Ingredients Card
-const RecipeIngredients = () => {
-  const [rows, setRows] = useState<IngredientSpec[]>([newBlankRow()])
-  //const [onlyOneRow, setOnlyOneRow] = useState(true);
-
-  // Add new blank row
-  const addRow = () => {
-    //console.log('onlyonerow?', onlyOneRow)
-    setRows([...rows, newBlankRow()]); // Add a new row by appending the next index
-
-    /*if(onlyOneRow) {// && rows.length > 1) {
-      setOnlyOneRow(false);
-    }*/
-  };
-
-  const resetRow = (rowIndex: number) => {
-    const newRow = newBlankRow();
-    setRows(rows.map((item, index) => (index === rowIndex? newRow : item)))
-  }
-
-  // Save or update newest populated or populating row
-  const registerPopulatedRow = (rowData: IngredientSpec) => {
-    setRows([...rows.slice(0, -1), rowData])
-  }
-
-
-  const deleteRow = (idToDelete: number) => {
-    if(rows.length == 1) {
-      resetRow(0);
-    } else {
-      setRows(rows.filter((row, index) => index !== idToDelete));
-      /*if(rows.length == 1) {
-        setOnlyOneRow(true);
-      }*/
-    }
-  }
-
-
-
-  return (
-    <Card className="max-w-[800px]">
-
-      <CardBody>
-        {rows.map((row, index) => (
-          /* TODO: see if there's a way to do this by passing a mutable reference individual row elements as opposed to spreading around the entire collection of rows */
-          (<Row 
-            theRow={row} 
-            index={index} 
-            addRow={addRow} 
-            deleteRow={deleteRow} 
-            resetRow={resetRow}
-            //areWeAlone={onlyOneRow}
-            saveRow={registerPopulatedRow}
-          />)
-        ))}
-      </CardBody>
-
-    </Card>
-  );
-};
-
-
-interface IngredientSpec {
-  food: string,
-  unit: string,  // TODO: can this be an enum of that list of food units?
-  amount: number
-}
-
-const newBlankRow = (): IngredientSpec => ({
-  food: "",
-  unit: "",     // TODO: maybe default to grams
-  amount: 0
-})
-
-
-
-
-const Row = ({ 
-  theRow,
-  index,
-  addRow, 
-  deleteRow,
-  areWeAlone,
-  saveRow,
-  resetRow
-} : {
-  theRow: IngredientSpec,
-  index: number,
-  addRow: () => void;
-  deleteRow: (idToDelete: number) => void;
-  areWeAlone: boolean,
-  saveRow: (rowData: IngredientSpec) => void;
-  resetRow: (rowIndex: number) => void;
-}) => {
-
-  const units_options = ['g', 'cup', 'ounce'].map(u => ({value: u, label: u}));
-
-  const handleDeleteRow = () => {
-    console.log("handleDeleteRow!")
-    if(areWeAlone) {
-      console.log('hdr resetting! arewealone:', areWeAlone)
-      resetRow()
-    } else {
-      console.log('hdr deleting!')
-      deleteRow(index);
-    }
-  }
-
-  const handleAddRow = () => {
-    addRow()
-  }
-
-  const handleMassSelection = (theMassSelection: number) => {
-    theRow.amount = theMassSelection;
-    saveRow(theRow);
-  }
-
-  const handleUnitSelection = (theUnitSelection: any) => {
-    const newUnit = theUnitSelection;
-    theRow.unit = theUnitSelection.value;
-    saveRow(theRow);
-  }
-
-  const handleFoodSelection = (theFoodSelection: any) => {
-    theRow.food = theFoodSelection.value;
-    saveRow(theRow);
-  }
-
-  return (
-    <div className="Row" style={{ display: "flex", justifyContent: "left", marginBottom: "8px", gap: "10px",  alignItems: "center"}}>
-      {/* Select Food */}
-      <Selector2
-        selectedOption={theRow.food}
-        setSelectedOption={handleFoodSelection}
-      />
-    </div>
-  );
-};
 
 {/* Begin Async Experiment 1 */}
 {/* See about having this hit by api call the usda search function */}
