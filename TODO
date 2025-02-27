@@ -1,3 +1,5 @@
+* See where out of the folders marked 0 the folders marked 1 go. Stay as is OK. Not sure they naturally fall into the new organizational idea.
+* See where out of the folders marked 0 the folders marked 2 go. I think they naturally fall somewhere. If not, mark as 1.
 * Remove from history commit of redis install. Redo as dockerfile. 
 * Get that fastapi postgres shoestore in here
 * Setup some linters
