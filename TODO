@@ -1,3 +1,4 @@
+1. Reorg this branch following the changes in the reorg branch. Probably doesn't work to manually mash em together. Actually you know what get experimental with it. 
 * Remove from history commit of redis install. Redo as dockerfile. 
 * Get that fastapi postgres shoestore in here
 * Setup some linters
