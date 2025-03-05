@@ -1,0 +1,8 @@
+FROM postgres:latest
+
+ENV POSTGRES_USER={user} \
+    POSTGRES_PASSWORD={pass} \
+    POSTGRES_DB={db}
+
+EXPOSE 5432
+
