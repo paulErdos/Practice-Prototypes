@@ -1,5 +1,7 @@
 FROM postgres:latest
 
+USER {user}
+
 ENV POSTGRES_USER={user} \
     POSTGRES_PASSWORD={pass} \
     POSTGRES_DB={db}
