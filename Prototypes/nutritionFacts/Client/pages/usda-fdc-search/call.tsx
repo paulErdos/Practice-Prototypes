@@ -68,7 +68,7 @@ export function StaticFdcSearchButton () {
 
   const handleButtonClick = async () => {
     try {
-      const url = "http://192.168.0.3:8080/test-rest"
+      const url = "http://192.168.0.3:9001/search-test/kefir"
       const response = await fetch(url);
       const text = await response.text();
       
