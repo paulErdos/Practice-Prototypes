@@ -63,9 +63,23 @@ export default function IndexPage() {
             radius: "full",
             variant: "shadow",
           })}
+          href="/API-Search-Dropdown"
+        >
+          API Search Dropdown
+        </Link>
+      </div>
+
+      <div className="flex gap-3">
+        <Link
+          //isExternal
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
           href="/Search-Dropdown"
         >
-	  Search Dropdown
+          Search Dropdown
         </Link>
       </div>
 
