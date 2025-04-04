@@ -1,5 +1,5 @@
 [project]
-name = "nutritionfactsfalconserver"
+name = "asgi-starter"
 version = "0.1.0"
 description = ""
 authors = [
@@ -8,10 +8,13 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "falcon (>=4.0.2,<5.0.0)",
+    "uvicorn (>=0.34.0,<0.35.0)",
+    "httpx (>=0.28.1,<0.29.0)"
 ]
 
 [tool.poetry]
-packages = [{include = "nutritionfactsfalconserver", from = "src"}]
+packages = [{include = "asgi_starter", from = "src"}]
 
 
 [build-system]
