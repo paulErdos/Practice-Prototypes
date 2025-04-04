@@ -63,6 +63,20 @@ export default function IndexPage() {
             radius: "full",
             variant: "shadow",
           })}
+          href="/usda-fdc-search"
+        >
+          USDA FDC Search Experiments
+        </Link>
+      </div>
+
+      <div className="flex gap-3">
+        <Link
+          //isExternal
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
           href="/API-Search-Dropdown"
         >
           API Search Dropdown
