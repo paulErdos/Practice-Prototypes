@@ -3,7 +3,7 @@
 ## TODO: Move notes to bash notes
 
 # Notes: space separated nonwhitespace in parens is an array
-a=($(ps | egrep 'start-server.sh|uvicorn|python' | sed 's,^\([^ ]*\) .*$,\1,'))
+a=($(ps -a | egrep 'start-server.sh|uvicorn|python' | sed 's,^\([^ ]*\) .*$,\1,'))
 
 # The first element of the array
 #echo $a

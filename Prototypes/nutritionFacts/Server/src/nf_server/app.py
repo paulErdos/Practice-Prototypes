@@ -34,11 +34,11 @@ class USDASearchResource:
             response = await client.post(
                 "https://fdc.nal.usda.gov/portal-data/external/search",
                 headers={
-                    "Accept": "application/json, text/plain, */*",
-                    "Accept-Language": "en-US,en;q=0.9",
-                    "Content-Type": "application/json",
-                    "Referer": f"https://fdc.nal.usda.gov/food-search?query={query}&type=SR%20Legacy",
-                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+#                    "Accept": "application/json, text/plain, */*",
+#                    "Accept-Language": "en-US,en;q=0.9",
+#                    "Content-Type": "application/json",
+#                    "Referer": f"https://fdc.nal.usda.gov/food-search?query={query}&type=SR%20Legacy",
+#                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
                 },
                 json={
                     "includeDataTypes": {"SR Legacy": True},
