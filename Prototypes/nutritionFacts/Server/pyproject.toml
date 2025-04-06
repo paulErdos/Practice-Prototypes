@@ -1,5 +1,5 @@
 [project]
-name = "asgi-starter"
+name = "nf_server"
 version = "0.1.0"
 description = ""
 authors = [
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "asgi_starter", from = "src"}]
+packages = [{include = "nf_server", from = "src"}]
 
 
 [build-system]
