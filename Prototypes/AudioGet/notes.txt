@@ -1,3 +1,13 @@
+Note 1
+===============================================================================
+
+Vibecoded pipeliner first draft error i+o
+
+(>^_^)> AudioGet $ echo 'https://www.youtube.com/watch?v=wTP2RUD_cL0' | ./pipeliner
+Using CDN: cdn303.savetube.su
+Error fetching MP3: HTTPSConnectionPool(host='cdn303.savetube.su.savetube.su', port=443): Max retries exceeded with url: /api/v2/convert?url=https://www.youtube.com/watch?v=wTP2RUD_cL0 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x713b26c7f5c0>: Failed to resolve 'cdn303.savetube.su.savetube.su' ([Errno -2] Name or service not known)"))
+
+
 Note 0
 ===============================================================================
 
