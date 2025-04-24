@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Gather what we're responsible for
-a=($(ps -a | egrep 'npm|node|next|start-server.sh|uvicorn|python' | egrep -v grep | sed 's,^\([^ ]*\) .*$,\1,'))
+a=($(ps aux | egrep 'npm|node|next|start-server.sh|uvicorn|python' | egrep -v grep | sed 's,^[^ ]*  *\([^ ]*\) .*$,\1,'))
 
 
 # Don't worry if there's none
