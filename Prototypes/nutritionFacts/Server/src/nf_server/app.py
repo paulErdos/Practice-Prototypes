@@ -10,6 +10,16 @@ extra_handlers = {
     'application/json': json_handler,
 }
 
+class CORSMiddleware:
+    async def process_request(self, req, resp):
+        pass
+
+    async def process_response(self, req, resp, resource, req_succeeded):
+        resp.set_header('Access-Control-Allow-Origin', '*')
+        resp.set_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        resp.set_header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+
+
 class Counter:
     def __init__(self):
         self.count = 0
@@ -31,6 +41,8 @@ class USDASearchResource:
             resp.text = await self._fetch_usda_data("kefir")
         else:
             resp.text = await self._fetch_usda_data(query)
+
+        print(resp.text)
 
     async def _fetch_usda_data(self, query: str):
         async with httpx.AsyncClient() as client:
@@ -55,7 +67,7 @@ class USDASearchResource:
             return response.text
 
 
-app = falcon.asgi.App()
+app = falcon.asgi.App(middleware=[CORSMiddleware()])
 
 app.add_route("/test-rest", USDASearchResource())
 app.add_route("/search-test/{query}", USDASearchResource())
