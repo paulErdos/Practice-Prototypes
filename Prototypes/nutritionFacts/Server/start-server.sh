@@ -1,3 +1,4 @@
 #!/usr/bin/bash
 
-poetry run src/nf_server/start-server.sh
+cd src/nf_server/
+poetry run ./start-server.sh &
