@@ -5,12 +5,10 @@ import httpx
 import json
 from falcon import media
 
-# Configure JSON handler
 json_handler = media.JSONHandler()
 extra_handlers = {
     'application/json': json_handler,
 }
-
 
 class Counter:
     def __init__(self):
@@ -21,11 +19,16 @@ class Counter:
         self.count += 1
         resp.media = {'count': self.count}
 
+    async def on_head(self, req, resp):
+        resp.status = falcon.HTTP_200
+        resp.text = 'Alive!'
+
 class USDASearchResource:
+
     async def on_get(self, req, resp, query=None):
         print('on get', query)
         if not query:
-            resp.text = await self._fetch_usda_data("apple")
+            resp.text = await self._fetch_usda_data("kefir")
         else:
             resp.text = await self._fetch_usda_data(query)
 
@@ -49,10 +52,7 @@ class USDASearchResource:
                 }
             )
 
-            print(response.text)
             return response.text
-
-
 
 
 app = falcon.asgi.App()
