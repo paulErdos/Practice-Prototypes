@@ -1,0 +1,37 @@
+#!/home/vincent/.cache/pypoetry/virtualenvs/audioget-GQxKoC_2-py3.12/bin/python3
+
+import yt_dlp
+import sys
+
+def extract_video_urls(playlist_url):
+    # Configure yt-dlp options
+    ydl_opts = {
+        'quiet': True,  # Suppresses the output
+        'extract_flat': True,  # Prevents downloading actual videos, only retrieves URLs
+    }
+
+    # Use yt-dlp to get playlist information
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info_dict = ydl.extract_info(playlist_url, download=False)
+        # Check if it's a playlist and extract video URLs
+        if 'entries' in info_dict:
+            video_urls = [entry['url'] for entry in info_dict['entries']]
+            return video_urls
+        else:
+            print(f"Error: Couldn't extract video URLs from playlist: {playlist_url}")
+            return []
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python extract_youtube_playlist_urls.py <playlist_url>")
+        sys.exit(1)
+
+    # The playlist URL is passed as a command-line argument
+    playlist_url = sys.argv[1]
+    video_urls = extract_video_urls(playlist_url)
+
+    # Print each video URL on its own line
+    if video_urls:
+        for url in video_urls:
+            print(url)
+
