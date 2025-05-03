@@ -4,9 +4,10 @@ import DefaultLayout from "@/layouts/default";
 import { Button } from "@heroui/react";
 //import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@heroui/react";
 //import { Input } from '@heroui/react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import AsyncSelect from 'react-select/async';
+import RenderAny from "../NutritionFacts/RenderAny";
 
 /*
 function DocsPage() {
@@ -27,6 +28,61 @@ function DocsPage() {
   );
 }
 */
+
+// Abstract Data Type: Food
+export type FoodNutrient = { nutrientName: string; value: number; unitName: string };
+
+export class Food {
+  name: string;
+  amount: number; // in grams
+  nutrients: FoodNutrient[];
+
+  constructor({ name, nutrients, amount = 100 }: {
+    name: string,
+    nutrients: FoodNutrient[],
+    amount?: number
+  }) {
+    this.name = name;
+    this.nutrients = nutrients;
+    this.amount = amount;
+  }
+
+  // Returns the scaled nutrients for the given amount in grams
+  render(amountInGrams?: number): FoodNutrient[] {
+    const amt = amountInGrams === undefined ? this.amount : amountInGrams;
+    const scale = amt / 100;
+    return this.nutrients.map(n => ({
+      nutrientName: n.nutrientName,
+      value: n.value * scale,
+      unitName: n.unitName
+    }));
+  }
+}
+
+// New: Recipe class
+export class Recipe {
+  foods: Food[];
+
+  constructor(foods: Food[]) {
+    this.foods = foods;
+  }
+
+  // Sums the nutrients from all foods in the recipe
+  render() {
+    const nutrientMap: Record<string, {nutrientName: string, value: number, unitName: string}> = {};
+    for (const food of this.foods) {
+      const rendered = food.render();
+      for (const n of rendered) {
+        if (!nutrientMap[n.nutrientName]) {
+          nutrientMap[n.nutrientName] = { ...n };
+        } else {
+          nutrientMap[n.nutrientName].value += n.value;
+        }
+      }
+    }
+    return Object.values(nutrientMap);
+  }
+}
 
 export default function RandomNumberFetchButton() {
   const [firstNumber, setFirstNumber] = useState(null);
@@ -117,19 +173,103 @@ export function StaticFdcSearchButton () {
 
 }
 
+// TODO: don't trust this. AI gen'd. 
+export function DynamicFdcSearchButton() {
+  const [query, setQuery] = useState("");
+  const [responseText, setResponseText] = useState("");
+  const [foodsData, setFoodsData] = useState<any[]>([]);
+
+  const handleButtonClick = async () => {
+    try {
+      const url = `http://192.168.0.3:9001/search-test/${encodeURIComponent(query)}`;
+      const response = await fetch(url);
+      const text = await response.text();
+
+      const data = JSON.parse(text);
+      var names = [];
+      var dataFoods = [];
+      for(const item of data.foods) {
+        var theValue = [];
+        for(const datum of item.foodNutrients) {
+          theValue.push({
+            nutrientName: datum.nutrientName,
+            value: datum.value,
+            unitName: datum.unitName
+          });
+        }
+        names.push(item.description);
+        dataFoods.push({label: item.description, value: theValue});
+      }
+
+      setResponseText(JSON.stringify(names));
+      setFoodsData(dataFoods);
+
+    } catch (error) {
+      console.error("Error making API call:", error);
+    }
+  };
+
+
+  const [selectedOption, setSelectedOption] = useState("");
+
+
+  return (
+    <div className="flex flex-col gap-4 items-start">
+      <div className="flex gap-2 items-center">
+        <input
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="Enter food to search"
+          className="border px-2 py-1 rounded"
+        />
+        <Button color="primary" variant="solid" onClick={handleButtonClick}>
+          Search USDA FDC
+        </Button>
+      </div>
+
+      <div>
+        {responseText &&
+          <Selector2 
+            options={responseText} 
+            selectedOption={selectedOption} 
+            setSelectedOption={setSelectedOption}
+          />
+        }
+      </div>
+
+
+      {/* TODO: Make this a react-select */}
+      {responseText && <p>{responseText}</p>}
+
+      <ul>
+        <li> foods    //    vv data vv</li>
+      </ul>
+      <p></p>
+      {foodsData.length > 0 && <pre>{JSON.stringify(foodsData, null, 2)}</pre>}
+    </div>
+  );
+}
+
+
+
+
 {/* Begin Async Experiment 1 */}
 {/* See about having this hit by api call the usda search function */}
 {/*} This allows for selecting newly-added options, but
   > doesn't show the added options when the down arrow is clicked
 */}
-export const Selector2 = ({selectedOption, setSelectedOption}) => {
-  //const [selectedOption, setSelectedOption] = useState("");
+export const Selector2 = ({options, selectedOption, setSelectedOption}) => {
+
+  var s2options = options; // TODO cleanup
+  var defaultOptions = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
+  if(options == null) {
+    s2options = defaultOptions;
+  }
 
   const handleChange = (selection: {value: string, label: number}) => {
     setSelectedOption(selection);
   }
-
-  var s2options = [{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2 }];
 
   const s2FilterOptions = (inputValue: string) => {
     return s2options.filter((i) =>
@@ -156,7 +296,7 @@ export const Selector2 = ({selectedOption, setSelectedOption}) => {
   return (
     <AsyncSelect 
       cacheOptions
-      defaultOptions 
+      defaultOptions={defaultOptions}
       loadOptions={s2LoadOptions}
       onInputChange={s2InputChange}
       onChange={handleChange}
@@ -175,3 +315,92 @@ export const Selector2 = ({selectedOption, setSelectedOption}) => {
 };
 
 {/* End Async Experiment 1 */}
+
+// New: Async dropdown for FDC search
+import type { FC } from 'react';
+import type { SingleValue } from 'react-select';
+
+type FoodOption = { label: string; value: string };
+// type FoodNutrient = { nutrientName: string; value: number; unitName: string };
+type FoodData = { label: string; value: import('./call').FoodNutrient[] };
+
+export const FdcAsyncDropdown: FC = () => {
+  const [selectedOption, setSelectedOption] = useState<SingleValue<FoodOption>>(null);
+  const [foodsDataMap, setFoodsDataMap] = useState<Record<string, FoodNutrient[]>>({});
+  const [selectedFoodNutrients, setSelectedFoodNutrients] = useState<FoodNutrient[] | null>(null);
+
+  // Fetch options from API as user types
+  const loadOptions = useCallback(async (inputValue: string): Promise<FoodOption[]> => {
+    if (!inputValue) return [];
+    try {
+      const url = `http://192.168.0.3:9001/search-test/${encodeURIComponent(inputValue)}`;
+      const response = await fetch(url);
+      const text = await response.text();
+      const data = JSON.parse(text);
+      const options: FoodOption[] = [];
+      const foodsMap: Record<string, FoodNutrient[]> = {};
+      for (const item of data.foods) {
+        const nutrients: FoodNutrient[] = item.foodNutrients.map((datum: any) => ({
+          nutrientName: datum.nutrientName,
+          value: datum.value,
+          unitName: datum.unitName,
+        }));
+        options.push({ label: item.description, value: item.description });
+        foodsMap[item.description] = nutrients;
+      }
+      setFoodsDataMap(foodsMap);
+      return options;
+    } catch (error) {
+      console.error('Error fetching FDC options:', error);
+      return [];
+    }
+  }, []);
+
+  // When an option is selected, show its nutrients
+  const handleChange = (option: SingleValue<FoodOption>) => {
+    setSelectedOption(option);
+    if (option && foodsDataMap[option.label]) {
+      setSelectedFoodNutrients(foodsDataMap[option.label]);
+    } else {
+      setSelectedFoodNutrients(null);
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-4 items-start w-full max-w-lg">
+      <AsyncSelect
+        cacheOptions
+        loadOptions={loadOptions}
+        defaultOptions={[]}
+        onChange={handleChange}
+        value={selectedOption}
+        placeholder="Search for a food..."
+        styles={{
+          option: (provided) => ({
+            ...provided,
+            color: 'black',
+            backgroundColor: 'white',
+          }),
+        }}
+        menuPosition="fixed"
+        isClearable
+      />
+      {selectedFoodNutrients && (
+        <div className="w-full mt-2">
+          <h4 className="font-bold mb-2">Nutrients:</h4>
+          <ul className="list-disc pl-5">
+            {selectedFoodNutrients.map((nutrient, idx) => (
+              <li key={idx}>
+                {nutrient.nutrientName}: {nutrient.value} {nutrient.unitName}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {/* Render RenderAny for the selected food */}
+      {selectedOption && selectedFoodNutrients && (
+        <RenderAny item={new Food({ name: selectedOption.label, nutrients: selectedFoodNutrients })} title={selectedOption.label} />
+      )}
+    </div>
+  );
+};

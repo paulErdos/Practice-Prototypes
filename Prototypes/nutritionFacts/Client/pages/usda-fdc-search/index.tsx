@@ -1,6 +1,6 @@
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
-import RandomNumberFetchButton, { StaticFdcSearchButton, Selector2 } from "@/pages/usda-fdc-search/call"; //from "./call";
+import RandomNumberFetchButton, { DynamicFdcSearchButton, StaticFdcSearchButton, Selector2, FdcAsyncDropdown } from "@/pages/usda-fdc-search/call"; //from "./call";
 import { useState } from "react";
 
 export default function DocsPage() {
@@ -14,7 +14,7 @@ export default function DocsPage() {
         </div>
 
         <div>
-          <Selector2 selectedOption={food} setSelectedOption={setFood}/>
+          <FdcAsyncDropdown />
         </div>
 
         <div>
@@ -23,6 +23,10 @@ export default function DocsPage() {
 
         <div>
           <StaticFdcSearchButton />
+        </div>
+
+        <div>
+          <DynamicFdcSearchButton />
         </div>
 
       </section>
