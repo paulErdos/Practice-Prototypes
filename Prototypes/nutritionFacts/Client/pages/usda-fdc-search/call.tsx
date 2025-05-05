@@ -376,10 +376,10 @@ export const FdcAsyncDropdown: FC = () => {
         value={selectedOption}
         placeholder="Search for a food..."
         styles={{
-          option: (provided) => ({
+          option: (provided, state) => ({
             ...provided,
             color: 'black',
-            backgroundColor: 'white',
+            backgroundColor: state.isFocused ? 'lightblue' : provided.backgroundColor
           }),
         }}
         menuPosition="fixed"
