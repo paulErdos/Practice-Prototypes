@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes blink-fade {
+  0% { opacity: 1; }
+  20% { opacity: 0.2; }
+  40% { opacity: 1; }
+  60% { opacity: 0.2; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.blink-fade {
+  animation: blink-fade var(--blink-fade-duration, 1s) linear;
+}

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import DefaultLayout from '@/layouts/default';
 import AsyncSelect from 'react-select/async';
@@ -20,6 +20,9 @@ export default function RecipeNutritionBuilder() {
   const [savedRecipes, setSavedRecipes] = useState<{ [key: string]: RecipeFood[] }>({});
   const [selectedRecipe, setSelectedRecipe] = useState('');
   const router = useRouter();
+  const [blink, setBlink] = useState(false);
+  const BLINK_FADE_DURATION = 1500; // ms, change as desired
+  const blinkTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Load options from USDA API
   const loadOptions = useCallback(async (inputValue: string) => {
@@ -106,6 +109,13 @@ export default function RecipeNutritionBuilder() {
     const newRecipes = { ...savedRecipes, [recipeName]: foods };
     setSavedRecipes(newRecipes);
     saveAllRecipes(newRecipes);
+    // Trigger blink/fade on View Saved Recipes button
+    setBlink(false); // reset in case it's already animating
+    void Promise.resolve().then(() => setBlink(true));
+    if (blinkTimeoutRef.current) clearTimeout(blinkTimeoutRef.current);
+    blinkTimeoutRef.current = setTimeout(() => setBlink(false), BLINK_FADE_DURATION);
+    // Dispatch custom event for top nav Recipes button
+    window.dispatchEvent(new CustomEvent('blinkRecipesNav', { detail: { duration: BLINK_FADE_DURATION } }));
   };
 
   // Load a recipe by name
@@ -170,7 +180,12 @@ export default function RecipeNutritionBuilder() {
                     </Button>
                   </div>
                   <div className="flex flex-row gap-2 mt-2 items-center">
-                    <Button color="secondary" onClick={() => router.push('/Recipe-Nutrition-Builder/SavedRecipes')}>
+                    <Button
+                      color="secondary"
+                      onClick={() => router.push('/Recipe-Nutrition-Builder/SavedRecipes')}
+                      className={blink ? 'blink-fade' : ''}
+                      style={blink ? { '--blink-fade-duration': `${BLINK_FADE_DURATION}ms` } as React.CSSProperties : {}}
+                    >
                       View Saved Recipes
                     </Button>
                   </div>

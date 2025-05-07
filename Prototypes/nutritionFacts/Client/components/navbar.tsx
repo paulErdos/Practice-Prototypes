@@ -14,6 +14,7 @@ import { Input } from "@heroui/input";
 import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
+import { useEffect, useState, useRef } from 'react';
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
@@ -27,6 +28,24 @@ import {
 } from "@/components/icons";
 
 export const Navbar = () => {
+  const [blinkRecipes, setBlinkRecipes] = useState(false);
+  const blinkTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const handler = (e: CustomEvent) => {
+      setBlinkRecipes(false); // reset if already animating
+      void Promise.resolve().then(() => setBlinkRecipes(true));
+      if (blinkTimeoutRef.current) clearTimeout(blinkTimeoutRef.current);
+      const duration = e.detail?.duration || 1500;
+      blinkTimeoutRef.current = setTimeout(() => setBlinkRecipes(false), duration);
+    };
+    window.addEventListener('blinkRecipesNav', handler as EventListener);
+    return () => {
+      window.removeEventListener('blinkRecipesNav', handler as EventListener);
+      if (blinkTimeoutRef.current) clearTimeout(blinkTimeoutRef.current);
+    };
+  }, []);
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -64,6 +83,7 @@ export const Navbar = () => {
                 className={clsx(
                   linkStyles({ color: "foreground" }),
                   "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  item.label === 'Recipes' && blinkRecipes ? 'blink-fade' : ''
                 )}
                 color="foreground"
                 href={item.href}
