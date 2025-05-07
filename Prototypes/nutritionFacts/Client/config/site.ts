@@ -26,7 +26,7 @@ export const siteConfig = {
     },
     {
       label: "Recipes",
-      href: "/SavedRecipes",
+      href: "/Recipes",
     },
   ],
   navMenuItems: [
@@ -56,7 +56,7 @@ export const siteConfig = {
     },
     {
       label: "Recipes",
-      href: "/SavedRecipes",
+      href: "/Recipes",
     },
     {
       label: "Help & Feedback",
