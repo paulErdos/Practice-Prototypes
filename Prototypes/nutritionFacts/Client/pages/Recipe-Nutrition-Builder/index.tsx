@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import DefaultLayout from '@/layouts/default';
 import AsyncSelect from 'react-select/async';
 import RenderAny from '../NutritionFacts/RenderAny';
@@ -15,6 +16,10 @@ interface RecipeFood {
 export default function RecipeNutritionBuilder() {
   const [foods, setFoods] = useState<RecipeFood[]>([]);
   const [responseData, setResponseData] = useState();
+  const [recipeName, setRecipeName] = useState('');
+  const [savedRecipes, setSavedRecipes] = useState<{ [key: string]: RecipeFood[] }>({});
+  const [selectedRecipe, setSelectedRecipe] = useState('');
+  const router = useRouter();
 
   // Load options from USDA API
   const loadOptions = useCallback(async (inputValue: string) => {
@@ -62,6 +67,68 @@ export default function RecipeNutritionBuilder() {
     foods.map(f => new Food({ name: f.label, nutrients: f.nutrients, amount: f.amount }))
   );
 
+  // Load saved recipes from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('savedRecipeFoodsMulti');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object') {
+          setSavedRecipes(parsed);
+        }
+      } catch (e) {
+        // Ignore parse errors
+      }
+    }
+    // Check if a recipe should be loaded from sessionStorage
+    const loadName = sessionStorage.getItem('loadRecipeName');
+    if (loadName && saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object' && parsed[loadName]) {
+          setFoods(parsed[loadName]);
+          setRecipeName(loadName);
+          setSelectedRecipe(loadName);
+        }
+      } catch (e) {}
+      sessionStorage.removeItem('loadRecipeName');
+    }
+  }, []);
+
+  // Save all recipes to localStorage
+  const saveAllRecipes = (recipes: { [key: string]: RecipeFood[] }) => {
+    localStorage.setItem('savedRecipeFoodsMulti', JSON.stringify(recipes));
+  };
+
+  // Save current recipe under a name
+  const handleSaveRecipe = () => {
+    if (!recipeName) return;
+    const newRecipes = { ...savedRecipes, [recipeName]: foods };
+    setSavedRecipes(newRecipes);
+    saveAllRecipes(newRecipes);
+  };
+
+  // Load a recipe by name
+  const handleLoadRecipe = (name: string) => {
+    if (!name || !savedRecipes[name]) return;
+    setFoods(savedRecipes[name]);
+    setSelectedRecipe(name);
+    setRecipeName(name);
+  };
+
+  // Delete a recipe by name
+  const handleDeleteRecipe = (name: string) => {
+    if (!name) return;
+    const { [name]: _, ...rest } = savedRecipes;
+    setSavedRecipes(rest);
+    saveAllRecipes(rest);
+    if (selectedRecipe === name) {
+      setFoods([]);
+      setSelectedRecipe('');
+      setRecipeName('');
+    }
+  };
+
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -90,6 +157,26 @@ export default function RecipeNutritionBuilder() {
                       }),
                     }}
                   />
+                  <div className="flex flex-row gap-2 mt-2 items-center">
+                    <Input
+                      type="text"
+                      value={recipeName}
+                      onChange={e => setRecipeName(e.target.value)}
+                      placeholder="Recipe name"
+                      className="w-40"
+                    />
+                    <Button color="primary" onClick={handleSaveRecipe} disabled={!recipeName || foods.length === 0}>
+                      Save Recipe
+                    </Button>
+                  </div>
+                  <div className="flex flex-row gap-2 mt-2 items-center">
+                    <Button color="secondary" onClick={() => router.push('/Recipe-Nutrition-Builder/SavedRecipes')}>
+                      View Saved Recipes
+                    </Button>
+                  </div>
+                  <Button color="secondary" className="mt-2 w-fit" onClick={() => { setFoods([]); setRecipeName(''); setSelectedRecipe(''); }} disabled={foods.length === 0}>
+                    Clear Current
+                  </Button>
                 </div>
               </CardHeader>
               <Divider />

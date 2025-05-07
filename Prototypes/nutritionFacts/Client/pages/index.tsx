@@ -180,6 +180,19 @@ export default function IndexPage() {
       </Link>
     </div>
 
+    <div className="flex gap-3">
+      <Link
+        className={buttonStyles({
+          color: "primary",
+          radius: "full",
+          variant: "shadow",
+        })}
+        href="/Recipes"
+      >
+        Recipes
+      </Link>
+    </div>
+
       </section>
     </DefaultLayout>
   );
