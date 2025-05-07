@@ -7,7 +7,7 @@ interface FoodNutrient {
 }
 
 interface RenderAnyProps {
-  item: { render: () => FoodNutrient[] };
+  item: { render: () => FoodNutrient[] } | null;
   title?: string;
 }
 
@@ -47,8 +47,34 @@ const SECTIONS: Record<string, string[]> = {
 };
 
 function RenderAny({ item, title }: RenderAnyProps) {
-  const result = item.render();
-  const nutrients: FoodNutrient[] = result.nutrients || result;
+  // If item or item.render is missing, or item.render() returns null/undefined, use zeroes for all nutrients
+  let result: FoodNutrient[] = [];
+  try {
+    if (item && typeof item.render === 'function') {
+      const rendered = item.render();
+      if (rendered && Array.isArray(rendered)) {
+        result = rendered;
+      } else if (rendered && typeof rendered === 'object' && 'nutrients' in rendered && Array.isArray((rendered as any).nutrients)) {
+        result = (rendered as any).nutrients;
+      }
+    }
+  } catch (e) {
+    // fallback to empty
+    result = [];
+  }
+
+  // If result is null/undefined or empty, fill with zeroes for all nutrients in all sections
+  let nutrients: FoodNutrient[];
+  if (!result || result.length === 0) {
+    // Fill with zeroes for all nutrients in all sections
+    nutrients = Object.values(SECTIONS).flat().map(name => ({
+      nutrientName: name,
+      value: 0,
+      unitName: ""
+    }));
+  } else {
+    nutrients = result;
+  }
 
   // Map of nutrientName to FoodNutrient
   const nutrientMap: Record<string, FoodNutrient> = {};
@@ -84,70 +110,74 @@ function RenderAny({ item, title }: RenderAnyProps) {
   }
 
   return (
-    <Card
-      css={{
-        maxWidth: "300px",
+    <div
+      style={{
+        maxWidth: "400px",
+        minWidth: "400px",
+        width: "400px",
         padding: "$10",
-        backgroundColor: "white",
+        //backgroundColor: "white",
         border: "1px solid black",
         borderRadius: "0",
         boxShadow: "none",
       }}
     >
-      <div style={{ padding: "16px" }}>
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "5px",
-            fontSize: "28px",
-            fontWeight: "900",
-            fontFamily: "Helvetica, Arial, sans-serif",
-          }}
-        >
-          {title || "Nutrition Data"}
-        </h2>
+      <Card>
+        <div style={{ padding: "16px" }}>
+          <h2
+            style={{
+              textAlign: "center",
+              marginBottom: "5px",
+              fontSize: "28px",
+              fontWeight: "900",
+              fontFamily: "Helvetica, Arial, sans-serif",
+            }}
+          >
+            {title || "Nutrition Data"}
+          </h2>
 
-        <Divider
-          css={{
-            height: "8px",
-            backgroundColor: "black",
-            margin: "8px 0",
-          }}
-        />
+          <Divider
+            css={{
+              height: "8px",
+              backgroundColor: "black",
+              margin: "8px 0",
+            }}
+          />
 
-        <Divider
-          css={{
-            height: "4px",
-            backgroundColor: "black",
-            margin: "8px 0",
-          }}
-        />
+          <Divider
+            css={{
+              height: "4px",
+              backgroundColor: "black",
+              margin: "8px 0",
+            }}
+          />
 
-        {SECTION_ORDER.map(section => (
-          <div key={section} style={{ marginBottom: "16px" }}>
-            <strong style={{ display: "block", fontSize: "16px", marginTop: "16px", marginBottom: "8px" }}>{section}</strong>
-            {sectioned[section].map((nutrient, idx) => (
-              <div
-                key={nutrient.nutrientName + idx}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: "16px",
-                  fontSize: "14px",
-                  fontFamily: "Helvetica, Arial, sans-serif",
-                  margin: "4px 0",
-                }}
-              >
-                <div style={{ flex: 1 }}>{nutrient.nutrientName}</div>
-                <div style={{ textAlign: "right", minWidth: "60px" }}>
-                  {nutrient.value} {nutrient.unitName}
+          {SECTION_ORDER.map(section => (
+            <div key={section} style={{ marginBottom: "16px" }}>
+              <strong style={{ display: "block", fontSize: "16px", marginTop: "16px", marginBottom: "8px" }}>{section}</strong>
+              {sectioned[section].map((nutrient, idx) => (
+                <div
+                  key={nutrient.nutrientName + idx}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: "16px",
+                    fontSize: "14px",
+                    fontFamily: "Helvetica, Arial, sans-serif",
+                    margin: "4px 0",
+                  }}
+                >
+                  <div style={{ flex: 1 }}>{nutrient.nutrientName}</div>
+                  <div style={{ textAlign: "right", minWidth: "60px" }}>
+                    {nutrient.value} {nutrient.unitName}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </Card>
+              ))}
+            </div>
+          ))}
+        </div>
+      </Card>
+    </div>
   );
 }
 

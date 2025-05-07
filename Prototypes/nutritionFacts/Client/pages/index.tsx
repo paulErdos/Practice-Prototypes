@@ -167,6 +167,19 @@ export default function IndexPage() {
       </Link>
     </div>
 
+    <div className="flex gap-3">
+      <Link
+        className={buttonStyles({
+          color: "primary",
+          radius: "full",
+          variant: "shadow",
+        })}
+        href="/Recipe-Nutrition-Builder"
+      >
+        Recipe Nutrition Facts Builder
+      </Link>
+    </div>
+
       </section>
     </DefaultLayout>
   );
