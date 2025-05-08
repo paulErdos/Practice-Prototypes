@@ -20,7 +20,10 @@ const SECTION_ORDER = [
   "Sugars",
   "Fats",
   "Vitamin A",
+  "Vitamin D",
   "Vitamin E",
+  "Vitamin K",
+  "Sterols",
   "Uncategorized",
   "Other"
 ];
@@ -95,23 +98,31 @@ const SECTIONS: Record<string, string[]> = {
   ],
 
   "Fats": [
-    "Fatty acids, total trans", 
     "Fatty acids, total saturated", 
-    "Fatty acids, total trans-monoenoic", 
     "Fatty acids, total monounsaturated", 
     "Fatty acids, total polyunsaturated", 
+    "Fatty acids, total trans", 
+
+    "PUFA 18:3 n-3 c,c,c (ALA)", 
+    "PUFA 20:5 n-3 (EPA)", 
+    "PUFA 22:6 n-3 (DHA)", 
+    "PUFA 22:5 n-3 (DPA)", 
+
+    "Fatty acids, total trans-monoenoic", 
     "Fatty acids, total trans-polyenoic", 
 
     "TFA 16:1 t", 
     "TFA 18:1 t", 
-    "TFA 22:1 t", 
+    "TFA 18:2 t,t",
     "TFA 18:2 t not further defined", 
+    "TFA 22:1 t", 
 
     "SFA 4:0",
     "SFA 6:0",
     "SFA 8:0",
     "SFA 10:0",
     "SFA 12:0",
+    "SFA 13:0",
     "SFA 14:0",
     "SFA 15:0",
     "SFA 16:0",
@@ -135,23 +146,20 @@ const SECTIONS: Record<string, string[]> = {
     "MUFA 22:1 c", 
     "MUFA 24:1 c", 
 
-    "PUFA 18:3 n-3 c,c,c (ALA)", 
-    "PUFA 20:5 n-3 (EPA)", 
-    "PUFA 22:6 n-3 (DHA)", 
-    "PUFA 22:5 n-3 (DPA)", 
-
     "PUFA 18:2 n-6 c,c", 
     "PUFA 18:2", 
     "PUFA 18:3", 
     "PUFA 20:4", 
     "PUFA 18:4", 
-    "PUFA 18:2 CLAs", 
-    "PUFA 20:2 n-6 c,c", 
+    "PUFA 18:2 CLAs",  
+    "PUFA 18:3i",
     "PUFA 18:3 n-6 c,c,c", 
+    "PUFA 20:2 n-6 c,c", 
     "PUFA 20:3", 
     "PUFA 20:3 n-6",
     "PUFA 20:3 n-3", 
-    "PUFA 18:3i", 
+    "PUFA 20:4 n-6",
+    "PUFA 21:5",  
     "PUFA 22:4",     
   ],
 
@@ -167,8 +175,17 @@ const SECTIONS: Record<string, string[]> = {
     "Vitamin A, RAE",
     "Retinol",
   ],
+  
+  // TODO: add other, also for A, K
+  "Vitamin D": [
+    "Vitamin D (D2 + D3)", 
+    "Vitamin D3 (cholecalciferol)", 
+    "Vitamin D2 (ergocalciferol)", 
+    "Vitamin D (D2 + D3), International Units", 
+  ],
 
   "Vitamin E": [
+    "Vitamin E (alpha-tocopherol)", 
     "Tocopherol, beta",
     "Tocopherol, gamma",
     "Tocotrienol, alpha",
@@ -176,34 +193,37 @@ const SECTIONS: Record<string, string[]> = {
     "Tocopherol, delta",
     "Tocotrienol, gamma",
     "Tocotrienol, delta",
+    "Vitamin E, added",  
+  ],
+  
+  // TODO: add other, also for A, K
+  "Vitamin K": [
+    "Vitamin K (Dihydrophylloquinone)",
+    "Vitamin K (Menaquinone-4)",  
+    "Vitamin K (phylloquinone)", 
   ],
 
+  "Sterols": [
+    "Phytosterols",
+    "Cholesterol", 
+    "Stigmasterol",
+    "Campesterol",
+    "Beta-sitosterol",
+  ],
+  
   "Uncategorized": [
+    "Starch",
+    "Vitamin B-12, added", 
+    "Folate, food", 
+    "Folic acid", 
+    "Folate, DFE",  
     "Alcohol, ethyl", 
     "Caffeine", 
     "Theobromine", 
-    "Cholesterol", 
     "Ash", 
-    "Vitamin B-12, added", 
-    "Vitamin D3 (cholecalciferol)", 
-    "Vitamin D2 (ergocalciferol)", 
-    "Vitamin D (D2 + D3), International Units", 
-    "Vitamin E, added",
-    "Folate, food", 
-    "Folic acid", 
-    "Folate, DFE",     
     "Choline, total", 
-    "Phytosterols",
     "Betaine",
-    "Starch",
-    "Vitamin K (Dihydrophylloquinone)",
-    "SFA 13:0",
-    "Stigmasterol",
-    "Hydroxyproline",
-    "Campesterol",
-    "Beta-sitosterol",
-    "Vitamin K (Menaquinone-4)",
-    "PUFA 21:5",    
+    "Hydroxyproline", 
   ],
 
   "Other": [
