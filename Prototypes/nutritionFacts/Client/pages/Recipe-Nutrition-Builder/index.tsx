@@ -31,8 +31,8 @@ export default function RecipeNutritionBuilder() {
       const url = `http://192.168.0.3:9001/search-test/${encodeURIComponent(inputValue)}`;
       const response = await fetch(url);
       const text = await response.text();
-      const data = JSON.parse(text);
-      const processed_data = data.foods.map((item: any) => ({
+      const data = JSON.parse(text);  // TODO: unaddressed failure mode
+      const processed_data = data.foods.map((item: any) => ({  // TODO: occurs here
         label: item.description,
         value: item.description,
         nutrients: item.foodNutrients.map((datum: any) => ({
@@ -182,7 +182,7 @@ export default function RecipeNutritionBuilder() {
                   <div className="flex flex-row gap-2 mt-2 items-center">
                     <Button
                       color="secondary"
-                      onClick={() => router.push('/Recipe-Nutrition-Builder/SavedRecipes')}
+                      onClick={() => router.push('/Recipes')}
                       className={blink ? 'blink-fade' : ''}
                       style={blink ? { '--blink-fade-duration': `${BLINK_FADE_DURATION}ms` } as React.CSSProperties : {}}
                     >
@@ -205,7 +205,7 @@ export default function RecipeNutritionBuilder() {
                         <div className="flex-1 font-semibold">{food.label}</div>
                         <Input
                           type="number"
-                          min={1}
+                          min={0}
                           max={50000}
                           value={food.amount.toString()}
                           onChange={e => handleAmountChange(idx, Number(e.target.value))}
