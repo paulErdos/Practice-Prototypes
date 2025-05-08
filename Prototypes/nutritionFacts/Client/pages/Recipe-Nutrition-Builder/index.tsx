@@ -80,7 +80,7 @@ export default function RecipeNutritionBuilder() {
           setSavedRecipes(parsed);
         }
       } catch (e) {
-        // Ignore parse errors
+        // TODO: Explore parse errors
       }
     }
     // Check if a recipe should be loaded from sessionStorage

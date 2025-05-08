@@ -17,34 +17,360 @@ const SECTION_ORDER = [
   "Vitamins",
   "Minerals",
   "Aminos",
+  "Sugars",
   "Fats",
-  "Carotenoids",
+  "Vitamin A",
+  "Vitamin E",
+  "Uncategorized",
   "Other"
 ];
 
 const SECTIONS: Record<string, string[]> = {
   "Macronutrients": [
-    "Protein", "Fiber, total dietary", "Total Sugars", "Energy", "Total lipid (fat)", "Carbohydrate, by difference", "Water"
+    "Protein", 
+    "Fiber, total dietary", 
+    "Total Sugars", 
+    "Energy", 
+    "Total lipid (fat)", 
+    "Carbohydrate, by difference", 
+    "Water",
   ],
+
   "Vitamins": [
-    "Vitamin A, IU", "Retinol", "Vitamin A, RAE", "Carotene, beta", "Carotene, alpha", "Vitamin D3 (cholecalciferol)", "Vitamin D (D2 + D3)", "Cryptoxanthin, beta", "Lycopene", "Vitamin C, total ascorbic acid", "Thiamin", "Riboflavin", "Folate, total", "Vitamin B-12", "Vitamin K (phylloquinone)", "Folate, food", "Vitamin B-12, added", "Vitamin E (alpha-tocopherol)", "Vitamin D (D2 + D3), International Units", "Vitamin D2 (ergocalciferol)", "Lutein + zeaxanthin", "Niacin", "Pantothenic acid", "Vitamin B-6", "Choline, total", "Folic acid", "Folate, DFE", "Vitamin E, added"
+    "Vitamin A, IU", 
+    "Thiamin", 
+    "Riboflavin", 
+    "Folate, total", 
+    "Niacin", 
+    "Pantothenic acid", 
+    "Vitamin B-6", 
+    "Vitamin B-12", 
+    "Vitamin C, total ascorbic acid", 
+    "Vitamin D (D2 + D3)", 
+    "Vitamin E (alpha-tocopherol)", 
+    "Vitamin K (phylloquinone)", 
   ],
+
   "Minerals": [
-    "Iron, Fe", "Magnesium, Mg", "Phosphorus, P", "Sodium, Na", "Copper, Cu", "Manganese, Mn", "Calcium, Ca", "Potassium, K", "Zinc, Zn", "Selenium, Se"
+    "Calcium, Ca",
+    "Copper, Cu",
+    "Iron, Fe",
+    "Magnesium, Mg",
+    "Manganese, Mn",
+    "Phosphorus, P",
+    "Potassium, K",
+    "Selenium, Se",
+    "Sodium, Na",
+    "Zinc, Zn",
   ],
+
   "Aminos": [
-    // Add amino acids here as needed
+    "Alanine",
+    "Arginine",
+    "Aspartic acid",
+    "Cystine",
+    "Glutamic acid",
+    "Glycine",
+    "Histidine",
+    "Isoleucine",
+    "Leucine",
+    "Lysine",
+    "Methionine",
+    "Phenylalanine",
+    "Proline",
+    "Serine",
+    "Threonine",
+    "Tryptophan",
+    "Tyrosine",
+    "Valine",
   ],
+
+  "Sugars": [
+    "Glucose",  
+    "Sucrose", 
+    "Fructose", 
+    "Lactose", 
+    "Galactose",
+    "Maltose", 
+  ],
+
   "Fats": [
-    "Fatty acids, total trans", "Fatty acids, total saturated", "Fatty acids, total trans-monoenoic", "Fatty acids, total monounsaturated", "Fatty acids, total polyunsaturated", "Fatty acids, total trans-polyenoic", "SFA 8:0", "SFA 12:0", "SFA 14:0", "PUFA 22:6 n-3 (DHA)", "SFA 22:0", "MUFA 14:1", "MUFA 16:1", "PUFA 20:5 n-3 (EPA)", "PUFA 22:5 n-3 (DPA)", "SFA 17:0", "SFA 24:0", "TFA 16:1 t", "MUFA 24:1 c", "MUFA 18:1 c", "PUFA 18:2 n-6 c,c", "MUFA 22:1 c", "MUFA 17:1", "MUFA 15:1", "PUFA 18:3 n-3 c,c,c (ALA)", "PUFA 20:3 n-3", "PUFA 18:3i", "PUFA 22:4", "SFA 4:0", "SFA 6:0", "SFA 10:0", "SFA 16:0", "SFA 18:0", "SFA 20:0", "MUFA 18:1", "PUFA 18:2", "PUFA 18:3", "PUFA 20:4", "PUFA 18:4", "MUFA 20:1", "MUFA 22:1", "SFA 15:0", "TFA 18:1 t", "TFA 22:1 t", "TFA 18:2 t not further defined", "PUFA 18:2 CLAs", "PUFA 20:2 n-6 c,c", "MUFA 16:1 c", "PUFA 18:3 n-6 c,c,c", "PUFA 20:3", "PUFA 20:3 n-6"
+    "Fatty acids, total trans", 
+    "Fatty acids, total saturated", 
+    "Fatty acids, total trans-monoenoic", 
+    "Fatty acids, total monounsaturated", 
+    "Fatty acids, total polyunsaturated", 
+    "Fatty acids, total trans-polyenoic", 
+
+    "TFA 16:1 t", 
+    "TFA 18:1 t", 
+    "TFA 22:1 t", 
+    "TFA 18:2 t not further defined", 
+
+    "SFA 4:0",
+    "SFA 6:0",
+    "SFA 8:0",
+    "SFA 10:0",
+    "SFA 12:0",
+    "SFA 14:0",
+    "SFA 15:0",
+    "SFA 16:0",
+    "SFA 17:0",
+    "SFA 18:0",
+    "SFA 20:0",
+    "SFA 22:0",
+    "SFA 24:0",
+
+    "MUFA 14:1", 
+    "MUFA 15:1", 
+    "MUFA 16:1", 
+    "MUFA 17:1", 
+    "MUFA 18:1", 
+    "MUFA 20:1", 
+    "MUFA 22:1",
+
+    // TODO: research notation
+    "MUFA 16:1 c", 
+    "MUFA 18:1 c", 
+    "MUFA 22:1 c", 
+    "MUFA 24:1 c", 
+
+    "PUFA 18:3 n-3 c,c,c (ALA)", 
+    "PUFA 20:5 n-3 (EPA)", 
+    "PUFA 22:6 n-3 (DHA)", 
+    "PUFA 22:5 n-3 (DPA)", 
+
+    "PUFA 18:2 n-6 c,c", 
+    "PUFA 18:2", 
+    "PUFA 18:3", 
+    "PUFA 20:4", 
+    "PUFA 18:4", 
+    "PUFA 18:2 CLAs", 
+    "PUFA 20:2 n-6 c,c", 
+    "PUFA 18:3 n-6 c,c,c", 
+    "PUFA 20:3", 
+    "PUFA 20:3 n-6",
+    "PUFA 20:3 n-3", 
+    "PUFA 18:3i", 
+    "PUFA 22:4",     
   ],
-  "Carotenoids": [
-    "Carotene, beta", "Carotene, alpha", "Cryptoxanthin, beta", "Lycopene", "Lutein + zeaxanthin"
+
+  "Vitamin A": [
+    "Carotene, beta", 
+    "Carotene, alpha", 
+    "Cryptoxanthin, beta",
+    "Cryptoxanthin, beta",
+    "Lutein + zeaxanthin",
+    "Lutein + zeaxanthin",
+    "Lycopene",
+    "Lycopene",
+    "Vitamin A, RAE",
+    "Retinol",
   ],
+
+  "Vitamin E": [
+    "Tocopherol, beta",
+    "Tocopherol, gamma",
+    "Tocotrienol, alpha",
+    "Tocotrienol, beta",
+    "Tocopherol, delta",
+    "Tocotrienol, gamma",
+    "Tocotrienol, delta",
+  ],
+
+  "Uncategorized": [
+    "Alcohol, ethyl", 
+    "Caffeine", 
+    "Theobromine", 
+    "Cholesterol", 
+    "Ash", 
+    "Vitamin B-12, added", 
+    "Vitamin D3 (cholecalciferol)", 
+    "Vitamin D2 (ergocalciferol)", 
+    "Vitamin D (D2 + D3), International Units", 
+    "Vitamin E, added",
+    "Folate, food", 
+    "Folic acid", 
+    "Folate, DFE",     
+    "Choline, total", 
+    "Phytosterols",
+    "Betaine",
+    "Starch",
+    "Vitamin K (Dihydrophylloquinone)",
+    "SFA 13:0",
+    "Stigmasterol",
+    "Hydroxyproline",
+    "Campesterol",
+    "Beta-sitosterol",
+    "Vitamin K (Menaquinone-4)",
+    "PUFA 21:5",    
+  ],
+
   "Other": [
-    "Ash", "Alcohol, ethyl", "Cholesterol", "Caffeine", "Theobromine", "Fructose", "Lactose", "Galactose", "Sucrose", "Glucose", "Maltose"
+
   ]
 };
+
+/*
+
+total nutrient list seen so far
+
+Macronutrients
+Protein
+Fiber, total dietary
+Total Sugars
+Energy
+Total lipid (fat)
+Carbohydrate, by difference
+Water
+Vitamins
+Vitamin A, IU
+Retinol
+Vitamin A, RAE
+Carotene, beta
+Carotene, alpha
+Vitamin D3 (cholecalciferol)
+Vitamin D (D2 + D3)
+Cryptoxanthin, beta
+Lycopene
+Vitamin C, total ascorbic acid
+Thiamin
+Riboflavin
+Folate, total
+Vitamin B-12
+Vitamin K (phylloquinone)
+Folate, food
+Vitamin B-12, added
+Vitamin E (alpha-tocopherol)
+Vitamin D (D2 + D3), International Units
+Vitamin D2 (ergocalciferol)
+Lutein + zeaxanthin
+Niacin
+Pantothenic acid
+Vitamin B-6
+Choline, total
+Folic acid
+Folate, DFE
+Vitamin E, added
+Minerals
+Iron, Fe
+Magnesium, Mg
+Phosphorus, P
+Sodium, Na
+Copper, Cu
+Manganese, Mn
+Calcium, Ca
+Potassium, K
+Zinc, Zn
+Selenium, Se
+Aminos
+Fats
+Fatty acids, total trans
+Fatty acids, total saturated
+Fatty acids, total trans-monoenoic
+Fatty acids, total monounsaturated
+Fatty acids, total polyunsaturated
+Fatty acids, total trans-polyenoic
+SFA 8:0
+SFA 12:0
+SFA 14:0
+PUFA 22:6 n-3 (DHA)
+SFA 22:0
+MUFA 14:1
+MUFA 16:1
+PUFA 20:5 n-3 (EPA)
+PUFA 22:5 n-3 (DPA)
+SFA 17:0
+SFA 24:0
+TFA 16:1 t
+MUFA 24:1 c
+MUFA 18:1 c
+PUFA 18:2 n-6 c,c
+MUFA 22:1 c
+MUFA 17:1
+MUFA 15:1
+PUFA 18:3 n-3 c,c,c (ALA)
+PUFA 20:3 n-3
+PUFA 18:3i
+PUFA 22:4
+SFA 4:0
+SFA 6:0
+SFA 10:0
+SFA 16:0
+SFA 18:0
+SFA 20:0
+MUFA 18:1
+PUFA 18:2
+PUFA 18:3
+PUFA 20:4
+PUFA 18:4
+MUFA 20:1
+MUFA 22:1
+SFA 15:0
+TFA 18:1 t
+TFA 22:1 t
+TFA 18:2 t not further defined
+PUFA 18:2 CLAs
+PUFA 20:2 n-6 c,c
+MUFA 16:1 c
+PUFA 18:3 n-6 c,c,c
+PUFA 20:3
+PUFA 20:3 n-6
+Carotenoids
+Carotene, beta
+Carotene, alpha
+Cryptoxanthin, beta
+Lycopene
+Lutein + zeaxanthin
+Other
+Ash
+Alcohol, ethyl
+Cholesterol
+Caffeine
+Theobromine
+Fructose
+Lactose
+Galactose
+Sucrose
+Glucose
+Maltose
+Isoleucine
+Leucine
+Lysine
+Cystine
+Valine
+Arginine
+Histidine
+Aspartic acid
+Serine
+Tryptophan
+Threonine
+Methionine
+Phenylalanine
+Tyrosine
+Alanine
+Glutamic acid
+Glycine
+Proline
+Phytosterols
+Betaine
+Tocopherol, beta
+Tocopherol, gamma
+Tocotrienol, alpha
+Tocotrienol, beta
+Tocopherol, delta
+Tocotrienol, gamma
+Tocotrienol, delta
+Starch
+Vitamin K (Dihydrophylloquinone)
+SFA 13:0
+Stigmasterol
+Hydroxyproline
+Campesterol
+Beta-sitosterol
+Vitamin K (Menaquinone-4)
+
+*/
 
 function RenderAny({ item, title }: RenderAnyProps) {
   // If item or item.render is missing, or item.render() returns null/undefined, use zeroes for all nutrients
