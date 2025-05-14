@@ -55,12 +55,12 @@ import { Input } from "@heroui/react";
 const CsvUploader = () => {
   const [csvContent, setCsvContent] = useState('');
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setCsvContent(e.target.result);
+        setCsvContent(e.target?.result as string);
       };
       reader.readAsText(file);
     }
@@ -78,7 +78,7 @@ const CsvUploader = () => {
         onChange={handleFileUpload}
         label="Choose CSV file"
       />
-      <Button onClick={clearContent} color="error" auto>
+      <Button onClick={clearContent} color="default">
         Clear
       </Button>
       {csvContent && (
