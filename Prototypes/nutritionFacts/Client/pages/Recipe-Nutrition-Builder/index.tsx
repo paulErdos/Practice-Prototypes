@@ -31,8 +31,11 @@ export default function RecipeNutritionBuilder() {
       const url = `http://192.168.0.3:9001/search-test/${encodeURIComponent(inputValue)}`;
       const response = await fetch(url);
       const text = await response.text();
-      const data = JSON.parse(text);  // TODO: unaddressed failure mode
-      const processed_data = data.foods.map((item: any) => ({  // TODO: occurs here
+      const data = JSON.parse(text);  // TODO: unaddressed failure mode that occurs ...
+      if(data.foods === undefined) {
+        return [{error: 'Something broke on our end'}]  // TODO: algo mas
+      }
+      const processed_data = data.foods.map((item: any) => ({  // TODO: ... here
         label: item.description,
         value: item.description,
         nutrients: item.foodNutrients.map((datum: any) => ({

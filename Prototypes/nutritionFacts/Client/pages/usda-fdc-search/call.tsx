@@ -37,6 +37,7 @@ export class Food {
   name: string;
   amount: number; // in grams
   nutrients: FoodNutrient[];
+  rda: number = 0
 
   constructor({ name, nutrients, amount = 100 }: {
     name: string,

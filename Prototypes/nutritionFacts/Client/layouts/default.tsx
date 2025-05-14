@@ -20,11 +20,11 @@ export default function DefaultLayout({
         <Link
           isExternal
           className="flex items-center gap-1 text-current"
-          href="https://nextui-docs-v2.vercel.app?utm_source=next-pages-template"
-          title="nextui.org homepage"
+          href="https://www.laoganmausa.com/products?pgid=lqprp10a-2f47ee36-93b5-43b5-bf7f-1318f436a291"
+          title="no affiliation"
         >
-          <span className="text-default-600">Powered by</span>
-          <p className="text-primary">NextUI</p>
+          <span className="text-default-400">Powered by</span>
+          <p className="text-primary">spicy chili oil</p>
         </Link>
       </footer>
     </div>

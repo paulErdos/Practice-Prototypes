@@ -14,14 +14,41 @@ export default function IndexPage() {
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-xl text-center justify-center">
           <span className={title()}>Make&nbsp;</span>
-          <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
+          <span className={title({ color: "violet" })}>complete&nbsp;</span>
           <br />
           <span className={title()}>
-            websites regardless of your design experience.
+            nutrition facts labels for everything you eat
           </span>
           <div className={subtitle({ class: "mt-4" })}>
-            Beautiful, fast and modern React UI library.
+            Hit 100% Daily Value. For every nutrient. Every day.
           </div>
+        </div>
+
+        <div>
+          {/* This will go back in
+          <div className="flex gap-3">
+            <Link
+              //isExternal
+              className={buttonStyles({
+                color: "primary",
+                radius: "full",
+                variant: "shadow",
+              })}
+              href={siteConfig.links.docs}
+            >
+              Documentation
+            </Link>
+
+            <Link
+              //isExternal
+              className={buttonStyles({ variant: "bordered", radius: "full" })}
+              href={siteConfig.links.github}
+            >
+              <GithubIcon size={20} />
+              GitHub
+            </Link>
+          </div>
+          */}
         </div>
 
         <div className="flex gap-3">
@@ -32,166 +59,24 @@ export default function IndexPage() {
               radius: "full",
               variant: "shadow",
             })}
-            href={siteConfig.links.docs}
+            href="/Experiments-Warehouse"
           >
-            Documentation
+            Experiments
           </Link>
+        </div>
+
+        <div className="flex gap-3">
           <Link
-            //isExternal
-            className={buttonStyles({ variant: "bordered", radius: "full" })}
-            href={siteConfig.links.github}
+            className={buttonStyles({
+              color: "primary",
+              radius: "full",
+              variant: "shadow",
+            })}
+            href="/Recipe-Nutrition-Builder"
           >
-            <GithubIcon size={20} />
-            GitHub
+            Recipe Nutrition Facts Builder
           </Link>
         </div>
-
-        <div className="mt-8">
-          <Snippet hideCopyButton hideSymbol variant="bordered">
-            <span>
-              Get started by editing{" "}
-              <Code color="primary">pages/index.tsx</Code>
-            </span>
-          </Snippet>
-        </div>
-
-      <div className="flex gap-3">
-        <Link
-          //isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href="/usda-fdc-search"
-        >
-          USDA FDC Search Experiments
-        </Link>
-      </div>
-
-      <div className="flex gap-3">
-        <Link
-          //isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href="/API-Search-Dropdown"
-        >
-          API Search Dropdown
-        </Link>
-      </div>
-
-      <div className="flex gap-3">
-        <Link
-          //isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href="/Search-Dropdown"
-        >
-          Search Dropdown
-        </Link>
-      </div>
-
-      <div className="flex gap-3">
-        <Link
-          //isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href="/Recipe-Ingredients"
-        >
-          Ingredient List / Recipe Card UI Experiments
-        </Link>
-      </div>
-
-      <div className="flex gap-3">
-        <Link
-          //isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href="/NutritionFacts"
-        >
-          Nutrition Facts Label UI Tests
-        </Link>
-      </div>
-
-      <div className="flex gap-3">
-        <Link
-          //isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href="/api-call-button"
-        >
-          Button-Triggered API Call Tests
-        </Link>
-      </div>
-
-    <div className="flex gap-3">
-      <Link
-        //isExternal
-        className={buttonStyles({
-          color: "primary",
-          radius: "full",
-          variant: "shadow",
-        })}
-        href="/Recipe-Ingredients"
-      >
-        Recipe Card Experiments
-      </Link>
-    </div>
-
-    <div className="flex gap-3">
-      <Link
-        //isExternal
-        className={buttonStyles({
-          color: "primary",
-          radius: "full",
-          variant: "shadow",
-        })}
-        href="/upload-download-file-button"
-      >
-        Upload / Download File Button Experiments
-      </Link>
-    </div>
-
-    <div className="flex gap-3">
-      <Link
-        className={buttonStyles({
-          color: "primary",
-          radius: "full",
-          variant: "shadow",
-        })}
-        href="/Recipe-Nutrition-Builder"
-      >
-        Recipe Nutrition Facts Builder
-      </Link>
-    </div>
-
-    <div className="flex gap-3">
-      <Link
-        className={buttonStyles({
-          color: "primary",
-          radius: "full",
-          variant: "shadow",
-        })}
-        href="/Recipes"
-      >
-        Recipes
-      </Link>
-    </div>
 
       </section>
     </DefaultLayout>
