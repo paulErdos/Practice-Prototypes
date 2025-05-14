@@ -24,7 +24,7 @@ interface nfexp1Props {
 function nfexp1({ categories, nutrientsData }: nfexp1Props) {
   return (
     <Card
-      css={{
+      style={{
         maxWidth: "300px",
         padding: "$10",
         backgroundColor: "white",
@@ -47,7 +47,7 @@ function nfexp1({ categories, nutrientsData }: nfexp1Props) {
         </h2>
 
         <Divider
-          css={{
+          style={{
             height: "8px",
             backgroundColor: "black",
             margin: "8px 0",
@@ -55,7 +55,7 @@ function nfexp1({ categories, nutrientsData }: nfexp1Props) {
         />
 
         <Divider
-          css={{
+          style={{
             height: "4px",
             backgroundColor: "black",
             margin: "8px 0",
@@ -123,7 +123,7 @@ function nfexp1({ categories, nutrientsData }: nfexp1Props) {
               );
             })}
             <Divider
-              css={{
+              style={{
                 height: "1px",
                 backgroundColor: "black",
                 margin: "8px 0",

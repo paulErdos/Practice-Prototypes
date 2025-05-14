@@ -333,7 +333,7 @@ function RenderAny({ item, title }: RenderAnyProps) {
           <Divider />
 
           <Divider
-            css={{
+            style={{
               height: "4px",
               backgroundColor: "black",
               margin: "8px 0",
