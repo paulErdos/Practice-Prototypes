@@ -10,8 +10,8 @@ import React from 'react';
 import AsyncSelect from 'react-select/async';
 import RenderAny from "../NutritionFacts/RenderAny";
 
-/*
-function DocsPage() {
+
+export default function DocsPage() {
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -20,15 +20,12 @@ function DocsPage() {
           <h1 className={title()}>API Call Button</h1>
         </div>
 
-        <div>
-          <RandomNumberFetchButton />
-        </div>
 
       </section>
     </DefaultLayout>
   );
 }
-*/
+
 
 // Abstract Data Type: Food
 export type FoodNutrient = { nutrientName: string; value: number; unitName: string };
