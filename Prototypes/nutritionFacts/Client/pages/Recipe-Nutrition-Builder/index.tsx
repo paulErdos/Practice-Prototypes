@@ -2,7 +2,6 @@
 import { useRouter } from 'next/router';
 import DefaultLayout from '@/layouts/default';
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { Food, Recipe, FoodNutrient } from '../usda-fdc-search/call';
 import { Button, Card, CardBody, CardHeader, Divider, Input } from '@heroui/react';
 
 // Third Party
@@ -10,6 +9,7 @@ import AsyncSelect from 'react-select/async';
 
 // Local
 import RenderAny from '../NutritionFacts/RenderAny';
+import { Food, Recipe, FoodNutrient } from '../usda-fdc-search/call';
 
 
 interface RecipeFood {
