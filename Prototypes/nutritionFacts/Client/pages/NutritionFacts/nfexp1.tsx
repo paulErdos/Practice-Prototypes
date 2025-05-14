@@ -16,7 +16,7 @@ interface NutrientData {
 }
 
 interface nfexp1Props {
-  categories: { sections: Section[] };
+  categories?: { sections: Section[] };
   nutrientsData: NutrientData[];
 }
 
@@ -62,7 +62,7 @@ function nfexp1({ categories, nutrientsData }: nfexp1Props) {
           }}
         />
 
-        {categories.sections.map((section, index) => (
+        {categories?.sections.map((section, index) => (
           <div
             key={index}
             style={{
