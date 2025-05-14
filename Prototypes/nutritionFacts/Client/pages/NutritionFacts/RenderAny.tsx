@@ -321,6 +321,7 @@ function RenderAny({ item, title }: RenderAnyProps) {
             {title || "Nutrition Data"}
           </h2>
 
+          {/*
           <Divider
             css={{
               height: "8px",
@@ -328,6 +329,8 @@ function RenderAny({ item, title }: RenderAnyProps) {
               margin: "8px 0",
             }}
           />
+          */}
+          <Divider />
 
           <Divider
             css={{

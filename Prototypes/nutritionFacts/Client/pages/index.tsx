@@ -20,7 +20,7 @@ export default function IndexPage() {
             nutrition facts labels for everything you eat
           </span>
           <div className={subtitle({ class: "mt-4" })}>
-            Hit 100% Daily Value. For every nutrient. Every day.
+            Get 100% of every nutrient, every day.
           </div>
         </div>
 

@@ -146,11 +146,13 @@ export default function RecipeNutritionBuilder() {
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className="text-3xl font-bold mb-2">Recipe Nutrition Facts Builder</h1>
-          <p className="mb-4">Build a recipe by adding foods and specifying the amount (in grams) for each. The nutrition facts label below will update automatically.</p>
+          <h1 className="text-3xl font-bold mb-2">Recipe Specs</h1>
+          <p className="mb-4">Lorem ipsum foo bar blah</p>
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row flex space-x-4">
           <div className="mt-8">
+
+            {/* TODO: make this its own component */}
             <Card className="max-w-[700px] w-full">
               <CardHeader>
                 <div className="flex flex-col w-full gap-2">
@@ -226,12 +228,17 @@ export default function RecipeNutritionBuilder() {
               </CardBody>
             </Card>
           </div>
+
           <div className="mt-8">
-            <RenderAny item={foods.length > 0 ? recipeObj : null} title={foods.length > 0 ? 'Recipe Nutrition Facts' : 'No recipe yet'} />
+            <RenderAny item={foods.length > 0 ? recipeObj : null} title={'Nutrition Facts'} />
           </div>
+
+
+          {/* // Dev: display data
           <div>
             <p>{JSON.stringify(responseData)}</p>
           </div>
+          */}
         </div>
       </section>
     </DefaultLayout>
