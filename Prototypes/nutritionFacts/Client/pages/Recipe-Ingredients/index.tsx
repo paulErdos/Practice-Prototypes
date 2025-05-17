@@ -8,7 +8,8 @@ import { Button, Card, CardBody, CardHeader, Divider, Input } from '@heroui/reac
 import AsyncSelect from 'react-select/async';
 
 // Local
-import RenderAny from '../NutritionFacts/RenderAny';
+//import RenderAny from '../NutritionFacts/RenderAny';
+import RenderAny from '../../components/NutritionFactsLabel/NutritionFactsLabel';
 import { Food, Recipe, FoodNutrient } from '../usda-fdc-search/call';
 
 
@@ -152,14 +153,52 @@ export default function RecipeNutritionBuilder() {
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className="text-3xl font-bold mb-2">Recipe Specs</h1>
-          <p className="mb-4">Lorem ipsum foo bar blah</p>
+          <h1 className="text-3xl font-bold mb-2">Recipe Ingredients</h1>
+          <p className="mb-4">A recipe is a collection of ingredients and amounts</p>
+          <p className="mb-4">TODO</p>
+          <p className="mb-4">Remove button should go back to being nvm button </p>
+          <p className="mb-4">Active-displaying of highlighted food broke</p>
+          <p className="mb-4">Add button next to text dropdown: "Add"</p>
+          <p className="mb-4">Numbers are ugly</p>
+          <p className="mb-4">Energy kcal and kjoule are getting combined</p>
+          <p className="mb-4">NutritionFacts card needs work to support RDA & Tolerable Upper Intake</p>
+          <p className="mb-4">Numbers should be aligned on the decimal</p>
+          <p className="mb-4">Units should be aligned on G</p>
+          <p className="mb-4">Numerical data could be inside a pill color coded by unit</p>
+          <p className="mb-4">Some of the fats are coming over as 0 unitless</p>
+          <p className="mb-4">Highlight the complete protein collection of aminos</p>
+          <p className="mb-4">Invisible top row (save recipe) when no recipes saved</p>
+          <p className="mb-4">Invisible recipes button at the top when no recipes saved</p>
+          <p className="mb-4">Save / Load recipes</p>
+          <p className="mb-4"></p>
         </div>
         <div className="flex flex-row flex space-x-4">
           <div className="mt-8">
 
             {/* TODO: make this its own component */}
             <Card className="max-w-[700px] w-full">
+
+              <CardHeader>
+                <div>
+                  TODO: nonexistent when no ingredients are added
+                </div>
+
+                <div className="flex flex-row gap-2 mt-2 items-center">
+                    <Input
+                      type="text"
+                      value={recipeName}
+                      onChange={e => setRecipeName(e.target.value)}
+                      placeholder="Recipe name"
+                      className="w-40"
+                    />
+                    <Button color="primary" onClick={handleSaveRecipe} disabled={!recipeName || foods.length === 0}>
+                      Save Recipe
+                    </Button>
+                  </div>
+              </CardHeader>
+
+              <Divider />
+
               <CardHeader>
                 <div className="flex flex-col w-full gap-2">
                   <AsyncSelect
@@ -178,18 +217,7 @@ export default function RecipeNutritionBuilder() {
                       }),
                     }}
                   />
-                  <div className="flex flex-row gap-2 mt-2 items-center">
-                    <Input
-                      type="text"
-                      value={recipeName}
-                      onChange={e => setRecipeName(e.target.value)}
-                      placeholder="Recipe name"
-                      className="w-40"
-                    />
-                    <Button color="primary" onClick={handleSaveRecipe} disabled={!recipeName || foods.length === 0}>
-                      Save Recipe
-                    </Button>
-                  </div>
+                  {/*
                   <div className="flex flex-row gap-2 mt-2 items-center">
                     <Button
                       color="secondary"
@@ -200,15 +228,17 @@ export default function RecipeNutritionBuilder() {
                       View Saved Recipes
                     </Button>
                   </div>
-                  <Button color="secondary" className="mt-2 w-fit" onClick={() => { setFoods([]); setRecipeName(''); setSelectedRecipe(''); }} disabled={foods.length === 0}>
-                    Clear Current
-                  </Button>
+                  */}
                 </div>
               </CardHeader>
+
               <Divider />
+                            
               <CardBody>
                 {foods.length === 0 ? (
-                  <div className="text-center text-gray-500">No foods added yet.</div>
+                  <div>
+                  
+                  </div>
                 ) : (
                   <div className="flex flex-col gap-4">
                     {foods.map((food, idx) => (
@@ -232,6 +262,7 @@ export default function RecipeNutritionBuilder() {
                   </div>
                 )}
               </CardBody>
+
             </Card>
           </div>
 

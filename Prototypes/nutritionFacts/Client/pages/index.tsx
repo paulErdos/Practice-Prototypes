@@ -13,18 +13,19 @@ export default function IndexPage() {
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-xl text-center justify-center">
-          <span className={title()}>Make&nbsp;</span>
+          <span className={title()}>Get&nbsp;</span>
           <span className={title({ color: "violet" })}>complete&nbsp;</span>
           <br />
           <span className={title()}>
             nutrition facts labels for everything you eat
           </span>
           <div className={subtitle({ class: "mt-4" })}>
-            Get 100% of every nutrient, every day.
+            Just add ingredients
           </div>
         </div>
 
         <div>
+          {/* Styled elements I might want to use later */}
           {/* This will go back in
           <div className="flex gap-3">
             <Link
@@ -53,20 +54,6 @@ export default function IndexPage() {
 
         <div className="flex gap-3">
           <Link
-            //isExternal
-            className={buttonStyles({
-              color: "primary",
-              radius: "full",
-              variant: "shadow",
-            })}
-            href="/Experiments-Warehouse"
-          >
-            Experiments
-          </Link>
-        </div>
-
-        <div className="flex gap-3">
-          <Link
             className={buttonStyles({
               color: "primary",
               radius: "full",
@@ -74,7 +61,7 @@ export default function IndexPage() {
             })}
             href="/Recipe-Nutrition-Builder"
           >
-            Recipe Nutrition Facts Builder
+            Try it
           </Link>
         </div>
 

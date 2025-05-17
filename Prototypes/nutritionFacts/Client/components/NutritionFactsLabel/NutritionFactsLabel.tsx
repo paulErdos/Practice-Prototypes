@@ -233,6 +233,7 @@ const SECTIONS: Record<string, string[]> = {
 
 
 function RenderAny({ item, title }: RenderAnyProps) {
+  
   // If item or item.render is missing, or item.render() returns null/undefined, use zeroes for all nutrients
   let result: FoodNutrient[] = [];
   try {
