@@ -10,7 +10,7 @@ import AsyncSelect from 'react-select/async';
 // Local
 //import RenderAny from '../NutritionFacts/RenderAny';
 import RenderAny from '../../components/NutritionFactsLabel/NutritionFactsLabel';
-import { Food, Recipe, FoodNutrient } from '../usda-fdc-search/call';
+import { Food, Recipe, FoodNutrient } from '../../types/food';
 
 
 interface RecipeFood {

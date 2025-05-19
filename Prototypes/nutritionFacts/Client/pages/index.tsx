@@ -59,7 +59,7 @@ export default function IndexPage() {
               radius: "full",
               variant: "shadow",
             })}
-            href="/Recipe-Nutrition-Builder"
+            href="/Recipe-Ingredients"
           >
             Try it
           </Link>
