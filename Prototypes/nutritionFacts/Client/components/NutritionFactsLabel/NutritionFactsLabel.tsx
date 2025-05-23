@@ -1,16 +1,13 @@
 import { Card, Divider } from "@heroui/react";
-
-interface FoodNutrient {
-  nutrientName: string;
-  value: number;
-  unitName: string;
-}
+import { FoodNutrient } from "@/types/food";
 
 interface RenderAnyProps {
   item: { render: () => FoodNutrient[] } | null;
   title?: string;
 }
 
+
+// TODO: Move to new file
 // Section definitions (hardcoded for now, inspired by nutrients-categorized.json)
 const SECTION_ORDER = [
   "Macronutrients",
@@ -28,6 +25,8 @@ const SECTION_ORDER = [
   "Other"
 ];
 
+
+// TODO: Move to new file
 const SECTIONS: Record<string, string[]> = {
   "Macronutrients": [
     "Energy", 

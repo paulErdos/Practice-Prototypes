@@ -1,0 +1,3 @@
+#!/bin/bash
+
+uvicorn falcon-helloworld:app --reload --port 9001
