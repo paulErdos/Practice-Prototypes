@@ -8,3 +8,4 @@ target/
 /target/debug/
 data/
 *.gz
+*.ignore*

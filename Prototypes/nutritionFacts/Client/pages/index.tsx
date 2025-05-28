@@ -11,58 +11,66 @@ import DefaultLayout from "@/layouts/default";
 export default function IndexPage() {
   return (
     <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <div className="inline-block max-w-xl text-center justify-center">
-          <span className={title()}>Get&nbsp;</span>
-          <span className={title({ color: "violet" })}>complete&nbsp;</span>
-          <br />
-          <span className={title()}>
-            nutrition facts labels for everything you eat
-          </span>
-          <div className={subtitle({ class: "mt-4" })}>
-            Just add ingredients
+      {/*  See notes.txt.ignore  */}
+
+      {/*  Layout is a column of two rows  */}
+      {/* <section className="flex flex-row items-center justify-center gap-4 py-8 md:py-10"> */}
+      <section className="flex flex-row gap-4 py-8 md:py-10">
+
+        {/*  First, the left of two screen-height columns  */}
+        <section className="flex flex-col justify-left gap-4 py-8 md:py-10 bg-gray-900 py-6 px-6 rounded-3xl">
+          {/*  First, the top of two half-screen-height,half-screen-width rows  */}
+          <div className="inline-block max-w-xl text-left justify-center bg-gray-700 py-6 px-6 rounded-3xl">
+            <span className={title()}>Make&nbsp;</span>
+            <span className={title({ color: "violet" })}>complete&nbsp;</span>
+            <br />
+            <span className={title()}>
+              nutrition facts labels
+            </span>
           </div>
-        </div>
-
-        <div>
-          {/* Styled elements I might want to use later */}
-          {/* This will go back in
-          <div className="flex gap-3">
-            <Link
-              //isExternal
-              className={buttonStyles({
-                color: "primary",
-                radius: "full",
-                variant: "shadow",
-              })}
-              href={siteConfig.links.docs}
-            >
-              Documentation
-            </Link>
-
-            <Link
-              //isExternal
-              className={buttonStyles({ variant: "bordered", radius: "full" })}
-              href={siteConfig.links.github}
-            >
-              <GithubIcon size={20} />
-              GitHub
-            </Link>
+          {/*  Second, right of two rows  */}
+          <div className="flex flex-row max-w-xl text-right justify-center bg-gray-700 py-6 px-6 rounded-3xl">
+            <div className="flex gap-3">
+              <Link
+                className={buttonStyles({
+                  color: "primary",
+                  radius: "full",
+                  variant: "shadow",
+                })}
+                href="/Recipe-Ingredients"
+              >
+                Try it
+              </Link>
+            </div>
           </div>
-          */}
-        </div>
+        {/*  End of first column  */}
+        </section>
 
-        <div className="flex gap-3">
-          <Link
-            className={buttonStyles({
-              color: "primary",
-              radius: "full",
-              variant: "shadow",
-            })}
-            href="/Recipe-Nutrition-Builder"
-          >
-            Try it
-          </Link>
+        {/* TODO: move all todos to issues
+            TODO: section vs div
+         */}
+        {/*  Second, right of two screen-height columns  */}
+        <div className="flex flex-row justify-left gap-4 py-8 md:py-10 bg-gray-900 py-6 px-6 rounded-3xl">
+          {/*  First, left, a column one-third of this column's width  */}
+          <div className="flex flex-col max-w-xl text-right justify-center bg-gray-700 py-6 px-6 rounded-3xl">
+          </div>
+          {/*  Second, right, a column two-thirds of this column's width  */}
+          <div className="flex flex-col max-w-xl text-right justify-center bg-gray-700 py-6 px-6 rounded-3xl">
+            {/*  This section has one giant region, populated by
+                 a series of semi-overlapping tiles with increasing right
+                 and increasing z (gotta see the nutrients and not the
+                 numbers).
+
+                 These tiles will be an example complete nutrition facts label
+                 going off the bottom of the screen, reappearing at the top,
+                 higher (z) and right a bit, looping around to show how detailed
+                 it can be.
+
+                 Perhaps toggle between the three sizes. I want to showcase
+                 the small size.
+             */}
+          </div>
+        {/*  End of second main column  */}
         </div>
 
       </section>
