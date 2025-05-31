@@ -1,9 +1,9 @@
-Life-Stage Group|Calcium (mg/d)|Chromium (μg/d)|Copper (μg/d)|Fluoride (mg/d)|Iodine (μg/d)|Iron (mg/d)|Magnesium (mg/d)|Manganese (mg/d)|Molybdenum (μg/d)|Phosphorus (mg/d)|Selenium (μg/d)|Zinc (mg/d)|Potassium (mg/d)|Sodium (mg/d)|Chloride (g/d)
-Infants 0–6 mo|200a|0.2|200|0.01|110|0.27|30|0.003|2|100|15|2|400|110|0.18
-Infants7–12 mo|260a|5.5|220|0.5|130|11|75|0.6|3|275|20|3|860|370|0.57
+Life Stage Group|Calcium (mg/d)|Chromium (μg/d)|Copper (μg/d)|Fluoride (mg/d)|Iodine (μg/d)|Iron (mg/d)|Magnesium (mg/d)|Manganese (mg/d)|Molybdenum (μg/d)|Phosphorus (mg/d)|Selenium (μg/d)|Zinc (mg/d)|Potassium (mg/d)|Sodium (mg/d)|Chloride (g/d)
+Infants 0–6 mo|200|0.2|200|0.01|110|0.27|30|0.003|2|100|15|2|400|110|0.18
+Infants7–12 mo|260|5.5|220|0.5|130|11|75|0.6|3|275|20|3|860|370|0.57
 Children 1–3 y|700|11|340|0.7|90|7|80|1.2|17|460|20|3|2,000|800|1.5
 Children 4–8 y|1,000|15|440|1|90|10|130|1.5|22|500|30|5|2,300|1,000|1.9
-Males 9–13 y|1,300|25|700|2|120|8|240|1.9|34|1,250|40|8|2,500|1,200|2.3
+Males 9–13 y  |1,300|25|700|2|120|8|240|1.9|34|1,250|40|8|2,500|1,200|2.3
 Males 14–18 y|1,300|35|890|3|150|11|410|2.2|43|1,250|55|11|3,000|1,500|2.3
 Males 19–30 y|1,000|35|900|4|150|8|400|2.3|45|700|55|11|3,400|1,500|2.3
 Males 31–50 y|1,000|35|900|4|150|8|420|2.3|45|700|55|11|3,400|1,500|2.3

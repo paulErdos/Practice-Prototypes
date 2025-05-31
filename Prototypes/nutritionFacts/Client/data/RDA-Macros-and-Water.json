@@ -1,222 +1,202 @@
 {
-  "Infants 0–6 mo": {
-    "Life Stage Group": "Infants 0–6 mo",
-    "Total Water (L/d)": 0.7,
-    "Carbohydrate (g/d)": 60,
-    "Total Fiber (g/d)": null,
-    "Fat (g/d)": 31,
-    "Linoleic Acid (g/d)": 4.4,
-    "α-Linolenic Acid (g/d)": 0.5,
-    "Protein (g/d)": 9.1
-  },
-  "Infants 6–12 mo": {
-    "Life Stage Group": "Infants 6–12 mo",
-    "Total Water (L/d)": 0.8,
-    "Carbohydrate (g/d)": 95,
-    "Total Fiber (g/d)": null,
-    "Fat (g/d)": 30,
-    "Linoleic Acid (g/d)": 4.6,
-    "α-Linolenic Acid (g/d)": 0.5,
-    "Protein (g/d)": 11
-  },
-  "Children 1–3 y": {
-    "Life Stage Group": "Children 1–3 y",
-    "Total Water (L/d)": 1.3,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 19,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 7,
-    "α-Linolenic Acid (g/d)": 0.7,
-    "Protein (g/d)": 13
-  },
-  "Children 4–8 y": {
-    "Life Stage Group": "Children 4–8 y",
-    "Total Water (L/d)": 1.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 25,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 10,
-    "α-Linolenic Acid (g/d)": 0.9,
-    "Protein (g/d)": 19
-  },
-  "Males 9–13 y": {
-    "Life Stage Group": "Males 9–13 y",
-    "Total Water (L/d)": 2.4,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 31,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 12,
-    "α-Linolenic Acid (g/d)": 1.2,
-    "Protein (g/d)": 34
-  },
-  "Males 14–18 y": {
-    "Life Stage Group": "Males 14–18 y",
-    "Total Water (L/d)": 3.3,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 38,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 16,
-    "α-Linolenic Acid (g/d)": 1.6,
-    "Protein (g/d)": 52
-  },
-  "Males 19–30 y": {
-    "Life Stage Group": "Males 19–30 y",
-    "Total Water (L/d)": 3.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 38,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 17,
-    "α-Linolenic Acid (g/d)": 1.6,
-    "Protein (g/d)": 56
-  },
-  "Males 31–50 y": {
-    "Life Stage Group": "Males 31–50 y",
-    "Total Water (L/d)": 3.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 38,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 17,
-    "α-Linolenic Acid (g/d)": 1.6,
-    "Protein (g/d)": 56
-  },
-  "Males 51–70 y": {
-    "Life Stage Group": "Males 51–70 y",
-    "Total Water (L/d)": 3.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 30,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 14,
-    "α-Linolenic Acid (g/d)": 1.6,
-    "Protein (g/d)": 56
-  },
-  "Males > 70 y": {
-    "Life Stage Group": "Males > 70 y",
-    "Total Water (L/d)": 3.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 30,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 14,
-    "α-Linolenic Acid (g/d)": 1.6,
-    "Protein (g/d)": 56
-  },
-  "Females 9–13 y": {
-    "Life Stage Group": "Females 9–13 y",
-    "Total Water (L/d)": 2.1,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 26,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 10,
-    "α-Linolenic Acid (g/d)": 1,
-    "Protein (g/d)": 34
-  },
-  "Females 14–18 y": {
-    "Life Stage Group": "Females 14–18 y",
-    "Total Water (L/d)": 2.3,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 26,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 11,
-    "α-Linolenic Acid (g/d)": 1.1,
-    "Protein (g/d)": 46
-  },
-  "Females 19–30 y": {
-    "Life Stage Group": "Females 19–30 y",
-    "Total Water (L/d)": 2.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 25,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 12,
-    "α-Linolenic Acid (g/d)": 1.1,
-    "Protein (g/d)": 46
-  },
-  "Females 31–50 y": {
-    "Life Stage Group": "Females 31–50 y",
-    "Total Water (L/d)": 2.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 25,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 12,
-    "α-Linolenic Acid (g/d)": 1.1,
-    "Protein (g/d)": 46
-  },
-  "Females 51–70 y": {
-    "Life Stage Group": "Females 51–70 y",
-    "Total Water (L/d)": 2.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 21,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 11,
-    "α-Linolenic Acid (g/d)": 1.1,
-    "Protein (g/d)": 46
-  },
-  "Females > 70 y": {
-    "Life Stage Group": "Females > 70 y",
-    "Total Water (L/d)": 2.7,
-    "Carbohydrate (g/d)": 130,
-    "Total Fiber (g/d)": 21,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 11,
-    "α-Linolenic Acid (g/d)": 1.1,
-    "Protein (g/d)": 46
-  },
-  "Pregnancy 14–18 y": {
-    "Life Stage Group": "Pregnancy 14–18 y",
-    "Total Water (L/d)": 3,
-    "Carbohydrate (g/d)": 175,
-    "Total Fiber (g/d)": 28,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 13,
-    "α-Linolenic Acid (g/d)": 1.4,
-    "Protein (g/d)": 71
-  },
-  "Pregnancy 19–30 y": {
-    "Life Stage Group": "Pregnancy 19–30 y",
-    "Total Water (L/d)": 3,
-    "Carbohydrate (g/d)": 175,
-    "Total Fiber (g/d)": 28,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 13,
-    "α-Linolenic Acid (g/d)": 1.4,
-    "Protein (g/d)": 71
-  },
-  "Pregnancy 31–50 y": {
-    "Life Stage Group": "Pregnancy 31–50 y",
-    "Total Water (L/d)": 3,
-    "Carbohydrate (g/d)": 175,
-    "Total Fiber (g/d)": 28,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 13,
-    "α-Linolenic Acid (g/d)": 1.4,
-    "Protein (g/d)": 71
-  },
-  "Lactation 14–18 y": {
-    "Life Stage Group": "Lactation 14–18 y",
-    "Total Water (L/d)": 3.8,
-    "Carbohydrate (g/d)": 210,
-    "Total Fiber (g/d)": 29,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 13,
-    "α-Linolenic Acid (g/d)": 1.3,
-    "Protein (g/d)": 71
-  },
-  "Lactation 19–30 y": {
-    "Life Stage Group": "Lactation 19–30 y",
-    "Total Water (L/d)": 3.8,
-    "Carbohydrate (g/d)": 210,
-    "Total Fiber (g/d)": 29,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 13,
-    "α-Linolenic Acid (g/d)": 1.3,
-    "Protein (g/d)": 71
-  },
-  "Lactation 31–50 y": {
-    "Life Stage Group": "Lactation 31–50 y",
-    "Total Water (L/d)": 3.8,
-    "Carbohydrate (g/d)": 210,
-    "Total Fiber (g/d)": 29,
-    "Fat (g/d)": null,
-    "Linoleic Acid (g/d)": 13,
-    "α-Linolenic Acid (g/d)": 1.3,
-    "Protein (g/d)": 71
+  "Life Stage Group": {
+    "Infants 0–6 mo": {
+      "Total Water (L/d)": 0.7,
+      "Carbohydrate (g/d)": 60,
+      "Total Fiber (g/d)": "ND",
+      "Fat (g/d)": 31,
+      "Linoleic Acid (g/d)": 4.4,
+      "α-Linolenic Acid (g/d)": 0.5,
+      "Protein (g/d)": 9.1
+    },
+    "Infants 6–12 mo": {
+      "Total Water (L/d)": 0.8,
+      "Carbohydrate (g/d)": 95,
+      "Total Fiber (g/d)": "ND",
+      "Fat (g/d)": 30,
+      "Linoleic Acid (g/d)": 4.6,
+      "α-Linolenic Acid (g/d)": 0.5,
+      "Protein (g/d)": 11
+    },
+    "Children 1–3 y": {
+      "Total Water (L/d)": 1.3,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 19,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 7,
+      "α-Linolenic Acid (g/d)": 0.7,
+      "Protein (g/d)": 13
+    },
+    "Children 4–8 y": {
+      "Total Water (L/d)": 1.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 25,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 10,
+      "α-Linolenic Acid (g/d)": 0.9,
+      "Protein (g/d)": 19
+    },
+    "Males 9–13 y": {
+      "Total Water (L/d)": 2.4,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 31,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 12,
+      "α-Linolenic Acid (g/d)": 1.2,
+      "Protein (g/d)": 34
+    },
+    "Males 14–18 y": {
+      "Total Water (L/d)": 3.3,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 38,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 16,
+      "α-Linolenic Acid (g/d)": 1.6,
+      "Protein (g/d)": 52
+    },
+    "Males 19–30 y": {
+      "Total Water (L/d)": 3.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 38,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 17,
+      "α-Linolenic Acid (g/d)": 1.6,
+      "Protein (g/d)": 56
+    },
+    "Males 31–50 y": {
+      "Total Water (L/d)": 3.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 38,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 17,
+      "α-Linolenic Acid (g/d)": 1.6,
+      "Protein (g/d)": 56
+    },
+    "Males 51–70 y": {
+      "Total Water (L/d)": 3.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 30,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 14,
+      "α-Linolenic Acid (g/d)": 1.6,
+      "Protein (g/d)": 56
+    },
+    "Males > 70 y": {
+      "Total Water (L/d)": 3.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 30,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 14,
+      "α-Linolenic Acid (g/d)": 1.6,
+      "Protein (g/d)": 56
+    },
+    "Females 9–13 y": {
+      "Total Water (L/d)": 2.1,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 26,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 10,
+      "α-Linolenic Acid (g/d)": 1,
+      "Protein (g/d)": 34
+    },
+    "Females 14–18 y": {
+      "Total Water (L/d)": 2.3,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 26,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 11,
+      "α-Linolenic Acid (g/d)": 1.1,
+      "Protein (g/d)": 46
+    },
+    "Females 19–30 y": {
+      "Total Water (L/d)": 2.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 25,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 12,
+      "α-Linolenic Acid (g/d)": 1.1,
+      "Protein (g/d)": 46
+    },
+    "Females 31–50 y": {
+      "Total Water (L/d)": 2.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 25,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 12,
+      "α-Linolenic Acid (g/d)": 1.1,
+      "Protein (g/d)": 46
+    },
+    "Females 51–70 y": {
+      "Total Water (L/d)": 2.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 21,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 11,
+      "α-Linolenic Acid (g/d)": 1.1,
+      "Protein (g/d)": 46
+    },
+    "Females > 70 y": {
+      "Total Water (L/d)": 2.7,
+      "Carbohydrate (g/d)": 130,
+      "Total Fiber (g/d)": 21,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 11,
+      "α-Linolenic Acid (g/d)": 1.1,
+      "Protein (g/d)": 46
+    },
+    "Pregnancy 14–18 y": {
+      "Total Water (L/d)": 3,
+      "Carbohydrate (g/d)": 175,
+      "Total Fiber (g/d)": 28,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 13,
+      "α-Linolenic Acid (g/d)": 1.4,
+      "Protein (g/d)": 71
+    },
+    "Pregnancy 19–30 y": {
+      "Total Water (L/d)": 3,
+      "Carbohydrate (g/d)": 175,
+      "Total Fiber (g/d)": 28,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 13,
+      "α-Linolenic Acid (g/d)": 1.4,
+      "Protein (g/d)": 71
+    },
+    "Pregnancy 31–50 y": {
+      "Total Water (L/d)": 3,
+      "Carbohydrate (g/d)": 175,
+      "Total Fiber (g/d)": 28,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 13,
+      "α-Linolenic Acid (g/d)": 1.4,
+      "Protein (g/d)": 71
+    },
+    "Lactation 14–18 y": {
+      "Total Water (L/d)": 3.8,
+      "Carbohydrate (g/d)": 210,
+      "Total Fiber (g/d)": 29,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 13,
+      "α-Linolenic Acid (g/d)": 1.3,
+      "Protein (g/d)": 71
+    },
+    "Lactation 19–30 y": {
+      "Total Water (L/d)": 3.8,
+      "Carbohydrate (g/d)": 210,
+      "Total Fiber (g/d)": 29,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 13,
+      "α-Linolenic Acid (g/d)": 1.3,
+      "Protein (g/d)": 71
+    },
+    "Lactation 31–50 y": {
+      "Total Water (L/d)": 3.8,
+      "Carbohydrate (g/d)": 210,
+      "Total Fiber (g/d)": 29,
+      "Fat (g/d)": "ND",
+      "Linoleic Acid (g/d)": 13,
+      "α-Linolenic Acid (g/d)": 1.3,
+      "Protein (g/d)": 71
+    }
   }
 }
