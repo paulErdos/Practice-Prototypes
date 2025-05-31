@@ -1,4 +1,5 @@
-import { Card, Divider } from "@heroui/react";
+import { Card, Divider, Button, Select, SelectItem } from "@heroui/react";
+import { useState } from "react";
 
 interface FoodNutrient {
   nutrientName: string;
@@ -231,9 +232,183 @@ const SECTIONS: Record<string, string[]> = {
   ]
 };
 
+// Import path for UL data - to be updated when real data is available
+const LIMIT_DATA_PATH = './nutrient-limits.json';  // This will be replaced with the real path
+
+// RDAs for nutrients (in their respective units)
+const NUTRIENT_RDAS: Record<string, number> = {
+  // Vitamins
+  "Vitamin A, IU": 5000, // IU
+  "Vitamin A, RAE": 900, // µg
+  "Vitamin C, total ascorbic acid": 90, // mg
+  "Vitamin D (D2 + D3)": 20, // µg
+  "Vitamin D (D2 + D3), International Units": 800, // IU
+  "Vitamin E (alpha-tocopherol)": 15, // mg
+  "Vitamin K (phylloquinone)": 120, // µg
+  "Thiamin": 1.2, // mg
+  "Riboflavin": 1.3, // mg
+  "Niacin": 16, // mg
+  "Vitamin B-6": 1.7, // mg
+  "Folate, total": 400, // µg
+  "Vitamin B-12": 2.4, // µg
+  "Pantothenic acid": 5, // mg
+
+  // Macronutrients
+  "Protein": 50, // g
+  "Total lipid (fat)": 65, // g
+  "Carbohydrate, by difference": 300, // g
+  "Fiber, total dietary": 28, // g
+
+  // Minerals
+  "Calcium, Ca": 1300, // mg
+  "Copper, Cu": 0.9, // mg
+  "Iron, Fe": 18, // mg
+  "Magnesium, Mg": 420, // mg
+  "Manganese, Mn": 2.3, // mg
+  "Phosphorus, P": 1250, // mg
+  "Potassium, K": 4700, // mg
+  "Selenium, Se": 55, // µg
+  "Sodium, Na": 2300, // mg
+  "Zinc, Zn": 11, // mg
+};
+
+// Temporary ULs (using RDAs as placeholders until real data is available)
+const NUTRIENT_LIMITS: Record<string, number> = {
+  // Vitamins
+  "Vitamin A, IU": 5000, // IU
+  "Vitamin A, RAE": 900, // µg
+  "Vitamin C, total ascorbic acid": 90, // mg
+  "Vitamin D (D2 + D3)": 20, // µg
+  "Vitamin D (D2 + D3), International Units": 800, // IU
+  "Vitamin E (alpha-tocopherol)": 15, // mg
+  "Vitamin K (phylloquinone)": 120, // µg
+  "Thiamin": 1.2, // mg
+  "Riboflavin": 1.3, // mg
+  "Niacin": 16, // mg
+  "Vitamin B-6": 1.7, // mg
+  "Folate, total": 400, // µg
+  "Vitamin B-12": 2.4, // µg
+  "Pantothenic acid": 5, // mg
+
+  // Macronutrients
+  "Protein": 50, // g
+  "Total lipid (fat)": 65, // g
+  "Carbohydrate, by difference": 300, // g
+  "Fiber, total dietary": 28, // g
+
+  // Minerals
+  "Calcium, Ca": 1300, // mg
+  "Copper, Cu": 0.9, // mg
+  "Iron, Fe": 18, // mg
+  "Magnesium, Mg": 420, // mg
+  "Manganese, Mn": 2.3, // mg
+  "Phosphorus, P": 1250, // mg
+  "Potassium, K": 4700, // mg
+  "Selenium, Se": 55, // µg
+  "Sodium, Na": 2300, // mg
+  "Zinc, Zn": 11, // mg
+};
+
+// Structure for Life-Stage Group specific values
+interface NutrientValues {
+  rda: number;
+  limit: number;
+}
+
+// Type for the complete nutrient database
+type NutrientDatabase = Record<string, Record<string, NutrientValues>>;
+
+// Temporary database structure (to be replaced with real data)
+const NUTRIENT_DATABASE: NutrientDatabase = {
+  "Females 19-30 years": {
+    // Vitamins
+    "Vitamin A, IU": { rda: 5000, limit: 5000 },
+    "Vitamin A, RAE": { rda: 900, limit: 900 },
+    "Vitamin C, total ascorbic acid": { rda: 90, limit: 90 },
+    "Vitamin D (D2 + D3)": { rda: 20, limit: 20 },
+    "Vitamin D (D2 + D3), International Units": { rda: 800, limit: 800 },
+    "Vitamin E (alpha-tocopherol)": { rda: 15, limit: 15 },
+    "Vitamin K (phylloquinone)": { rda: 120, limit: 120 },
+    "Thiamin": { rda: 1.2, limit: 1.2 },
+    "Riboflavin": { rda: 1.3, limit: 1.3 },
+    "Niacin": { rda: 16, limit: 16 },
+    "Vitamin B-6": { rda: 1.7, limit: 1.7 },
+    "Folate, total": { rda: 400, limit: 400 },
+    "Vitamin B-12": { rda: 2.4, limit: 2.4 },
+    "Pantothenic acid": { rda: 5, limit: 5 },
+
+    // Macronutrients
+    "Protein": { rda: 50, limit: 50 },
+    "Total lipid (fat)": { rda: 65, limit: 65 },
+    "Carbohydrate, by difference": { rda: 300, limit: 300 },
+    "Fiber, total dietary": { rda: 28, limit: 28 },
+
+    // Minerals
+    "Calcium, Ca": { rda: 1300, limit: 1300 },
+    "Copper, Cu": { rda: 0.9, limit: 0.9 },
+    "Iron, Fe": { rda: 18, limit: 18 },
+    "Magnesium, Mg": { rda: 420, limit: 420 },
+    "Manganese, Mn": { rda: 2.3, limit: 2.3 },
+    "Phosphorus, P": { rda: 1250, limit: 1250 },
+    "Potassium, K": { rda: 4700, limit: 4700 },
+    "Selenium, Se": { rda: 55, limit: 55 },
+    "Sodium, Na": { rda: 2300, limit: 2300 },
+    "Zinc, Zn": { rda: 11, limit: 11 },
+  },
+  // Add other life stage groups here with their specific values
+};
+
+// Helper function to calculate percentage of RDA
+function calculateRDA(nutrient: FoodNutrient | undefined, lifeStageGroup: string): string {
+  if (!nutrient) return "ND";
+  
+  const values = NUTRIENT_DATABASE[lifeStageGroup]?.[nutrient.nutrientName];
+  if (!values) return "ND";
+  
+  const percentage = (nutrient.value / values.rda) * 100;
+  return `${percentage.toFixed(0)}%`;
+}
+
+// Helper function to calculate percentage of limit
+function calculateLimit(nutrient: FoodNutrient | undefined, lifeStageGroup: string): string {
+  if (!nutrient) return "ND";
+  
+  const values = NUTRIENT_DATABASE[lifeStageGroup]?.[nutrient.nutrientName];
+  if (!values) return "ND";
+  
+  const percentage = (nutrient.value / values.limit) * 100;
+  return `${percentage.toFixed(0)}%`;
+}
+
+// Life-Stage Group options
+const LIFE_STAGE_GROUPS = [
+  "Infants 0-6 months",
+  "Infants 7-12 months",
+  "Children 1-3 years",
+  "Children 4-8 years",
+  "Children 9-13 years",
+  "Males 14-18 years",
+  "Females 14-18 years",
+  "Males 19-30 years",
+  "Females 19-30 years",
+  "Males 31-50 years",
+  "Females 31-50 years",
+  "Males 51-70 years",
+  "Females 51-70 years",
+  "Males >70 years",
+  "Females >70 years",
+  "Pregnancy 14-18 years",
+  "Pregnancy 19-30 years",
+  "Pregnancy 31-50 years",
+  "Lactation 14-18 years",
+  "Lactation 19-30 years",
+  "Lactation 31-50 years"
+];
 
 function RenderAny({ item, title }: RenderAnyProps) {
-  
+  const [showLifeStage, setShowLifeStage] = useState(false);
+  const [selectedLifeStage, setSelectedLifeStage] = useState("Females 19-30 years");
+
   // If item or item.render is missing, or item.render() returns null/undefined, use zeroes for all nutrients
   let result: FoodNutrient[] = [];
   try {
@@ -310,39 +485,71 @@ function RenderAny({ item, title }: RenderAnyProps) {
     >
       <Card>
         <div style={{ padding: "16px" }}>
-          <h2
-            style={{
-              textAlign: "center",
-              marginBottom: "5px",
-              fontSize: "28px",
-              fontWeight: "900",
-              fontFamily: "Helvetica, Arial, sans-serif",
-            }}
-          >
-            {title || "Nutrition Data"}
-          </h2>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+            <h2
+              style={{
+                textAlign: "center",
+                marginBottom: "5px",
+                fontSize: "28px",
+                fontWeight: "900",
+                fontFamily: "Helvetica, Arial, sans-serif",
+              }}
+            >
+              {title || "Nutrition Data"}
+            </h2>
+            <Button
+              size="sm"
+              color="primary"
+              variant="light"
+              onClick={() => setShowLifeStage(!showLifeStage)}
+            >
+              {showLifeStage ? "Less Specific" : "More Specific"}
+            </Button>
+          </div>
 
-          {/*
-          <Divider
-            css={{
-              height: "8px",
-              backgroundColor: "black",
-              margin: "8px 0",
-            }}
-          />
+          {showLifeStage && (
+            <div style={{ marginBottom: "16px" }}>
+              <Select
+                label="Life-Stage Group"
+                selectedKeys={[selectedLifeStage]}
+                onSelectionChange={(keys) => setSelectedLifeStage(Array.from(keys)[0] as string)}
+                style={{ width: "100%" }}
+              >
+                {LIFE_STAGE_GROUPS.map((group) => (
+                  <SelectItem key={group}>
+                    {group}
+                  </SelectItem>
+                ))}
+              </Select>
+            </div>
+          )}
 
-          <Divider />
-
-          */}
-          
-          
           <Divider
             style={{
               height: "4px",
               margin: "8px 0",
-              /*backgroundColor: "black",
-            */}}
+            }}
           />
+
+          {/* Column headers */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: "16px",
+              fontSize: "14px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              margin: "4px 0",
+              fontWeight: "bold",
+              borderBottom: "1px solid black",
+              paddingBottom: "4px",
+            }}
+          >
+            <div style={{ flex: 1 }}>Nutrient</div>
+            <div style={{ textAlign: "right", minWidth: "60px" }}>Amount</div>
+            <div style={{ textAlign: "right", minWidth: "60px" }}>RDA</div>
+            <div style={{ textAlign: "right", minWidth: "60px" }}>Limit</div>
+          </div>
 
           {SECTION_ORDER.map(section => (
             <div key={section} style={{ marginBottom: "16px" }}>
@@ -362,6 +569,12 @@ function RenderAny({ item, title }: RenderAnyProps) {
                   <div style={{ flex: 1 }}>{nutrient.nutrientName}</div>
                   <div style={{ textAlign: "right", minWidth: "60px" }}>
                     {nutrient.value} {nutrient.unitName}
+                  </div>
+                  <div style={{ textAlign: "right", minWidth: "60px" }}>
+                    {calculateRDA(nutrient, selectedLifeStage)}
+                  </div>
+                  <div style={{ textAlign: "right", minWidth: "60px" }}>
+                    {calculateLimit(nutrient, selectedLifeStage)}
                   </div>
                 </div>
               ))}

@@ -20,6 +20,35 @@ interface nfexp1Props {
   nutrientsData: NutrientData[];
 }
 
+// RDAs for vitamins (in their respective units)
+const VITAMIN_RDAS: Record<string, number> = {
+  "Vitamin A, IU": 5000, // IU
+  "Vitamin A, RAE": 900, // µg
+  "Vitamin C, total ascorbic acid": 90, // mg
+  "Vitamin D (D2 + D3)": 20, // µg
+  "Vitamin D (D2 + D3), International Units": 800, // IU
+  "Vitamin E (alpha-tocopherol)": 15, // mg
+  "Vitamin K (phylloquinone)": 120, // µg
+  "Thiamin": 1.2, // mg
+  "Riboflavin": 1.3, // mg
+  "Niacin": 16, // mg
+  "Vitamin B-6": 1.7, // mg
+  "Folate, total": 400, // µg
+  "Vitamin B-12": 2.4, // µg
+  "Pantothenic acid": 5, // mg
+};
+
+// Helper function to calculate percentage of RDA
+function calculateRDA(nutrient: { nutrientName: string; value: number; unitName: string } | undefined): string {
+  if (!nutrient) return "ND";
+  
+  const rda = VITAMIN_RDAS[nutrient.nutrientName];
+  if (!rda) return "ND";
+  
+  const percentage = (nutrient.value / rda) * 100;
+  return `${percentage.toFixed(0)}%`;
+}
+
 // nfexp1 component to render the nutrition facts
 function nfexp1({ categories, nutrientsData }: nfexp1Props) {
   return (
@@ -108,7 +137,7 @@ function nfexp1({ categories, nutrientsData }: nfexp1Props) {
                     }}
                   >
                     {/* Display the amount (or a placeholder if missing) */}
-                    {nutrient ? `${nutrient.value} ${nutrient.unitName}` : "N/A"}
+                    {nutrient ? `${nutrient.value} ${nutrient.unitName}` : "ND"}
                   </div>
                   <div
                     style={{
@@ -116,8 +145,8 @@ function nfexp1({ categories, nutrientsData }: nfexp1Props) {
                       minWidth: "60px",
                     }}
                   >
-                    {/* Placeholder for Percent DV (you can implement this calculation as needed) TODO current format: incorrect, will need another vector of daily value and tolerable upper intake level*/}
-                    {nutrient ? `${(nutrient.value / 100).toFixed(2)}%` : "N/A"}
+                    {/* Display percentage of RDA for vitamins */}
+                    {nutrient ? calculateRDA(nutrient) : "ND"}
                   </div>
                 </div>
               );
