@@ -6,7 +6,7 @@ interface FoodNutrient {
   unitName: string;
 }
 
-interface RenderAnyProps {
+interface NFLabelProps {
   item: { render: () => FoodNutrient[] } | null;
   title?: string;
 }
@@ -232,7 +232,7 @@ const SECTIONS: Record<string, string[]> = {
 };
 
 
-function RenderAny({ item, title }: RenderAnyProps) {
+function NFLabel({ item, title }: NFLabelProps) {
   // If item or item.render is missing, or item.render() returns null/undefined, use zeroes for all nutrients
   let result: FoodNutrient[] = [];
   try {
@@ -321,26 +321,12 @@ function RenderAny({ item, title }: RenderAnyProps) {
             {title || "Nutrition Data"}
           </h2>
 
-          {/*
-          <Divider
-            css={{
-              height: "8px",
-              backgroundColor: "black",
-              margin: "8px 0",
-            }}
-          />
-
-          <Divider />
-
-          */}
-          
           
           <Divider
             style={{
               height: "4px",
               margin: "8px 0",
-              /*backgroundColor: "black",
-            */}}
+              }}
           />
 
           {SECTION_ORDER.map(section => (
@@ -372,4 +358,4 @@ function RenderAny({ item, title }: RenderAnyProps) {
   );
 }
 
-export default RenderAny; 
+export default NFLabel; 
