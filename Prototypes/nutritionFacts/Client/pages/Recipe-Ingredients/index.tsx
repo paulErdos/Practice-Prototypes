@@ -7,10 +7,13 @@ import { Button, Card, CardBody, CardHeader, Divider, Input } from '@heroui/reac
 // Third Party
 import AsyncSelect from 'react-select/async';
 
+
+
 // Local
-//import RenderAny from '../NutritionFacts/RenderAny';
-import RenderAny from '../../components/NutritionFactsLabel/NutritionFactsLabel';
-import { Food, Recipe, FoodNutrient } from '../usda-fdc-search/call';
+//import NFLabel from '../NutritionFacts/NFLabel';
+import NFLabel from './NFLabel';
+import { Food, Recipe, FoodNutrient } from './call';
+
 
 
 interface RecipeFood {
@@ -267,7 +270,7 @@ export default function RecipeNutritionBuilder() {
           </div>
 
           <div className="mt-8">
-            <RenderAny item={foods.length > 0 ? recipeObj : null} title={'Nutrition Facts'} />
+            <NFLabel item={foods.length > 0 ? recipeObj : null} title={'Nutrition Facts'} />
           </div>
 
 
