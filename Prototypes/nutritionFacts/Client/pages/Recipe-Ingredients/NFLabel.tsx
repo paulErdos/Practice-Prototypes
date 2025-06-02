@@ -1,8 +1,11 @@
 import { Card, Divider, Button, Select, SelectItem } from "@heroui/react";
 import { useState } from "react";
 import { SECTION_ORDER, SECTIONS } from "./NFLabelData"
-//import nutrient_envelope from '../../data/Combined-RDA-TUI.json';
 import nutrient_envelope from '../../data/Clean-RDA-TUI-Data.json';
+
+
+const LIFE_STAGE_GROUPS = Object.keys(nutrient_envelope)
+
 interface FoodNutrient {
   nutrientName: string;
   value: number;
@@ -17,51 +20,11 @@ interface NFLabelProps {
 // Structure for Life-Stage Group specific values
 interface NutrientValues {
   rda: number;
-  limit: number;
+  tui: number;
 }
-
 // Type for the complete nutrient database
 type NutrientDatabase = Record<string, Record<string, NutrientValues>>;
 
-// Temporary database structure (to be replaced with real data)
-const NUTRIENT_DATABASE: NutrientDatabase = {
-  "Females 19-30 years": {
-    // Vitamins
-    "Vitamin A, IU": { rda: 5000, limit: 5000 },
-    "Vitamin A, RAE": { rda: 900, limit: 900 },
-    "Vitamin C, total ascorbic acid": { rda: 90, limit: 90 },
-    "Vitamin D (D2 + D3)": { rda: 20, limit: 20 },
-    "Vitamin D (D2 + D3), International Units": { rda: 800, limit: 800 },
-    "Vitamin E (alpha-tocopherol)": { rda: 15, limit: 15 },
-    "Vitamin K (phylloquinone)": { rda: 120, limit: 120 },
-    "Thiamin": { rda: 1.2, limit: 1.2 },
-    "Riboflavin": { rda: 1.3, limit: 1.3 },
-    "Niacin": { rda: 16, limit: 16 },
-    "Vitamin B-6": { rda: 1.7, limit: 1.7 },
-    "Folate, total": { rda: 400, limit: 400 },
-    "Vitamin B-12": { rda: 2.4, limit: 2.4 },
-    "Pantothenic acid": { rda: 5, limit: 5 },
-
-    // Macronutrients
-    "Protein": { rda: 50, limit: 50 },
-    "Total lipid (fat)": { rda: 65, limit: 65 },
-    "Carbohydrate, by difference": { rda: 300, limit: 300 },
-    "Fiber, total dietary": { rda: 28, limit: 28 },
-
-    // Minerals
-    "Calcium, Ca": { rda: 1300, limit: 1300 },
-    "Copper, Cu": { rda: 0.9, limit: 0.9 },
-    "Iron, Fe": { rda: 18, limit: 18 },
-    "Magnesium, Mg": { rda: 420, limit: 420 },
-    "Manganese, Mn": { rda: 2.3, limit: 2.3 },
-    "Phosphorus, P": { rda: 1250, limit: 1250 },
-    "Potassium, K": { rda: 4700, limit: 4700 },
-    "Selenium, Se": { rda: 55, limit: 55 },
-    "Sodium, Na": { rda: 2300, limit: 2300 },
-    "Zinc, Zn": { rda: 11, limit: 11 },
-  },
-  // Add other life stage groups here with their specific values
-};
 
 // Helper function to calculate percentage of RDA
 function calculateRDA(nutrient: FoodNutrient | undefined, lifeStageGroup: string): string {
@@ -75,22 +38,20 @@ function calculateRDA(nutrient: FoodNutrient | undefined, lifeStageGroup: string
 }
 
 // Helper function to calculate percentage of limit
-function calculateLimit(nutrient: FoodNutrient, lifeStageGroup: string): string {
-  console.log(nutrient.nutrientName)
+function calculateLimit(nutrient: FoodNutrient | undefined, lifeStageGroup: string): string {
   if (!nutrient) return "ND";
   
-  const values = (nutrient_envelope as NutrientDatabase)[lifeStageGroup]?.[nutrient.nutrientName];
+  const values = nutrient_envelope[lifeStageGroup]?.[nutrient.nutrientName];
   if (!values) return "ND";
-                                            // Tolerable Upper Intake
+  
   const percentage = (nutrient.value / values.tui) * 100;
   return `${percentage.toFixed(0)}%`;
 }
 
-const LIFE_STAGE_GROUPS = Object.keys(nutrient_envelope)
 
 function NFLabel({ item, title }: NFLabelProps) {
   const [showLifeStage, setShowLifeStage] = useState(false);
-  const [selectedLifeStage, setSelectedLifeStage] = useState("Females 19-30 years");
+  const [selectedLifeStage, setSelectedLifeStage] = useState("Females 19–30 y");
 
   // If item or item.render is missing, or item.render() returns null/undefined, use zeroes for all nutrients
   let result: FoodNutrient[] = [];
@@ -219,7 +180,7 @@ function NFLabel({ item, title }: NFLabelProps) {
             style={{
               display: "flex",
               justifyContent: "space-between",
-              gap: "16px",
+              gap: "8px",
               fontSize: "14px",
               fontFamily: "Helvetica, Arial, sans-serif",
               margin: "4px 0",
@@ -229,9 +190,9 @@ function NFLabel({ item, title }: NFLabelProps) {
             }}
           >
             <div style={{ flex: 1 }}>Nutrient</div>
-            <div style={{ textAlign: "right", minWidth: "60px" }}>Amount</div>
-            <div style={{ textAlign: "right", minWidth: "60px" }}>RDA</div>
-            <div style={{ textAlign: "right", minWidth: "60px" }}>Limit</div>
+            <div style={{ textAlign: "right", width: "80px" }}>Amount</div>
+            <div style={{ textAlign: "right", width: "60px" }}>RDA</div>
+            <div style={{ textAlign: "right", width: "60px" }}>Limit</div>
           </div>
 
           {SECTION_ORDER.map(section => (
@@ -243,22 +204,21 @@ function NFLabel({ item, title }: NFLabelProps) {
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    gap: "16px",
+                    gap: "8px",
                     fontSize: "14px",
                     fontFamily: "Helvetica, Arial, sans-serif",
                     margin: "4px 0",
                   }}
                 >
                   <div style={{ flex: 1 }}>{nutrient.nutrientName}</div>
-                  <div style={{ textAlign: "right", minWidth: "60px" }}>
-                    {nutrient.value} {nutrient.unitName}
+                  <div style={{ textAlign: "right", width: "80px" }}>
+                    {nutrient.value.toFixed(2)} {nutrient.unitName}
                   </div>
-                  <div style={{ textAlign: "right", minWidth: "60px" }}>
+                  <div style={{ textAlign: "right", width: "60px" }}>
                     {calculateRDA(nutrient, selectedLifeStage)}
                   </div>
-                  <div style={{ textAlign: "right", minWidth: "60px" }}>
+                  <div style={{ textAlign: "right", width: "60px" }}>
                     {calculateLimit(nutrient, selectedLifeStage)}
-                    
                   </div>
                 </div>
               ))}
