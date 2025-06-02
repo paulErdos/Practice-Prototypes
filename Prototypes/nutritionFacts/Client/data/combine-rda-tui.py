@@ -14,8 +14,7 @@ rda, tui = data
 
 for lsg in tui:
     for datum in tui[lsg]:
-        print(datum, tui[lsg][datum])
         rda[lsg][datum] = {'rda': rda[lsg][datum], 'tui': tui[lsg][datum]}
 
-
-print(rda)
+with open('Combined-RDA-TUI.json', 'w') as o:
+    o.write(json.dumps(rda, indent=2, ensure_ascii=False))

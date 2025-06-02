@@ -1,7 +1,8 @@
 import { Card, Divider, Button, Select, SelectItem } from "@heroui/react";
 import { useState } from "react";
 import { SECTION_ORDER, SECTIONS } from "./NFLabelData"
-
+//import nutrient_envelope from '../../data/Combined-RDA-TUI.json';
+import nutrient_envelope from '../../data/Clean-RDA-TUI-Data.json';
 interface FoodNutrient {
   nutrientName: string;
   value: number;
@@ -66,7 +67,7 @@ const NUTRIENT_DATABASE: NutrientDatabase = {
 function calculateRDA(nutrient: FoodNutrient | undefined, lifeStageGroup: string): string {
   if (!nutrient) return "ND";
   
-  const values = NUTRIENT_DATABASE[lifeStageGroup]?.[nutrient.nutrientName];
+  const values = nutrient_envelope[lifeStageGroup]?.[nutrient.nutrientName];
   if (!values) return "ND";
   
   const percentage = (nutrient.value / values.rda) * 100;
@@ -74,40 +75,18 @@ function calculateRDA(nutrient: FoodNutrient | undefined, lifeStageGroup: string
 }
 
 // Helper function to calculate percentage of limit
-function calculateLimit(nutrient: FoodNutrient | undefined, lifeStageGroup: string): string {
+function calculateLimit(nutrient: FoodNutrient, lifeStageGroup: string): string {
+  console.log(nutrient.nutrientName)
   if (!nutrient) return "ND";
   
-  const values = NUTRIENT_DATABASE[lifeStageGroup]?.[nutrient.nutrientName];
+  const values = (nutrient_envelope as NutrientDatabase)[lifeStageGroup]?.[nutrient.nutrientName];
   if (!values) return "ND";
-  
-  const percentage = (nutrient.value / values.limit) * 100;
+                                            // Tolerable Upper Intake
+  const percentage = (nutrient.value / values.tui) * 100;
   return `${percentage.toFixed(0)}%`;
 }
 
-// Life-Stage Group options
-const LIFE_STAGE_GROUPS = [
-  "Infants 0-6 months",
-  "Infants 7-12 months",
-  "Children 1-3 years",
-  "Children 4-8 years",
-  "Children 9-13 years",
-  "Males 14-18 years",
-  "Females 14-18 years",
-  "Males 19-30 years",
-  "Females 19-30 years",
-  "Males 31-50 years",
-  "Females 31-50 years",
-  "Males 51-70 years",
-  "Females 51-70 years",
-  "Males >70 years",
-  "Females >70 years",
-  "Pregnancy 14-18 years",
-  "Pregnancy 19-30 years",
-  "Pregnancy 31-50 years",
-  "Lactation 14-18 years",
-  "Lactation 19-30 years",
-  "Lactation 31-50 years"
-];
+const LIFE_STAGE_GROUPS = Object.keys(nutrient_envelope)
 
 function NFLabel({ item, title }: NFLabelProps) {
   const [showLifeStage, setShowLifeStage] = useState(false);
@@ -278,8 +257,8 @@ function NFLabel({ item, title }: NFLabelProps) {
                     {calculateRDA(nutrient, selectedLifeStage)}
                   </div>
                   <div style={{ textAlign: "right", minWidth: "60px" }}>
-                    {/*calculateLimit(nutrient, selectedLifeStage)*/}
-                    {nutrient.value} {nutrient.unitName}
+                    {calculateLimit(nutrient, selectedLifeStage)}
+                    
                   </div>
                 </div>
               ))}
