@@ -24,7 +24,7 @@ export default function SavedRecipes() {
   const handleLoadRecipe = (name: string) => {
     // Store the selected recipe name in sessionStorage for the builder to pick up
     sessionStorage.setItem('loadRecipeName', name);
-    router.push('/Recipe-Nutrition-Builder');
+    router.push('/Recipe-Ingredients');
   };
 
   const handleDeleteRecipe = (name: string) => {
@@ -53,7 +53,7 @@ export default function SavedRecipes() {
                 ))
               )}
             </div>
-            <Button className="mt-4" onClick={() => router.push('/Recipe-Nutrition-Builder')}>Back to Builder</Button>
+            <Button className="mt-4" onClick={() => router.push('/Recipe-Ingredients')}>Back to Builder</Button>
           </CardBody>
         </Card>
       </div>
