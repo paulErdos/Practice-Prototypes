@@ -29,9 +29,13 @@ type NutrientDatabase = Record<string, Record<string, NutrientValues>>;
 // Helper function to calculate percentage of RDA
 function calculateRDA(nutrient: FoodNutrient | undefined, lifeStageGroup: string): string {
   if (!nutrient) return "ND";
-  
+  if (nutrient.value === 0) return "0%";
+    
   const values = nutrient_envelope[lifeStageGroup]?.[nutrient.nutrientName];
-  if (!values) return "ND";
+  if (!values || values.rda === "ND" || values.tui === "ND") return "ND";
+
+  // TODO: Some of the raw data values have footnote letters, and need to be cleaned out
+  if (typeof values.rda !== 'number' || typeof values.tui !== 'number') return "ND";
   
   const percentage = (nutrient.value / values.rda) * 100;
   return `${percentage.toFixed(0)}%`;
@@ -40,9 +44,14 @@ function calculateRDA(nutrient: FoodNutrient | undefined, lifeStageGroup: string
 // Helper function to calculate percentage of limit
 function calculateLimit(nutrient: FoodNutrient | undefined, lifeStageGroup: string): string {
   if (!nutrient) return "ND";
+  if (nutrient.value === 0) return "0%";
   
   const values = nutrient_envelope[lifeStageGroup]?.[nutrient.nutrientName];
-  if (!values) return "ND";
+
+  if (!values || values.rda === "ND" || values.tui === "ND") return "ND";
+
+  // TODO: Some of the raw data values have footnote letters, and need to be cleaned out
+  if (typeof values.rda !== 'number' || typeof values.tui !== 'number') return "ND";
   
   const percentage = (nutrient.value / values.tui) * 100;
   return `${percentage.toFixed(0)}%`;
