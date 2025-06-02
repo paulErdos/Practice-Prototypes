@@ -158,22 +158,6 @@ export default function RecipeNutritionBuilder() {
         <div className="inline-block max-w-lg text-center justify-center">
           <h1 className="text-3xl font-bold mb-2">Recipe Ingredients</h1>
           <p className="mb-4">A recipe is a collection of ingredients and amounts</p>
-          <p className="mb-4">TODO</p>
-          <p className="mb-4">Remove button should go back to being nvm button </p>
-          <p className="mb-4">Active-displaying of highlighted food broke</p>
-          <p className="mb-4">Add button next to text dropdown: "Add"</p>
-          <p className="mb-4">Numbers are ugly</p>
-          <p className="mb-4">Energy kcal and kjoule are getting combined</p>
-          <p className="mb-4">NutritionFacts card needs work to support RDA & Tolerable Upper Intake</p>
-          <p className="mb-4">Numbers should be aligned on the decimal</p>
-          <p className="mb-4">Units should be aligned on G</p>
-          <p className="mb-4">Numerical data could be inside a pill color coded by unit</p>
-          <p className="mb-4">Some of the fats are coming over as 0 unitless</p>
-          <p className="mb-4">Highlight the complete protein collection of aminos</p>
-          <p className="mb-4">Invisible top row (save recipe) when no recipes saved</p>
-          <p className="mb-4">Invisible recipes button at the top when no recipes saved</p>
-          <p className="mb-4">Save / Load recipes</p>
-          <p className="mb-4"></p>
         </div>
         <div className="flex flex-row flex space-x-4">
           <div className="mt-8">
