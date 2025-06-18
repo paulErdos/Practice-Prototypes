@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+
+const isChecked = ref(false);
+const textInput = ref('');
 </script>
 
 <template>
@@ -9,6 +13,15 @@ import HelloWorld from './components/HelloWorld.vue'
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
+
+<input type="checkbox" id="toggle" v-model="isChecked" />
+<label for="toggle">Show text field</label>
+
+<div v-if="isChecked">
+  <input type="text" v-model="textInput" placeholder="Enter something..." />
+<p>You typed: {{ textInput }}</p>
+</div>
+
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
