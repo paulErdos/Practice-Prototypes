@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+npm install vue@latest
+
+cd vueProjectZero
+npm install
+npm run format
+npm run dev
