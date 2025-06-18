@@ -5,6 +5,20 @@ import { ref } from 'vue';
 
 const isChecked = ref(false);
 const textInput = ref('');
+const randomNumber = ref(null);
+
+async function fetchRandomNumber() {
+  try {
+    const response = await fetch('https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new');
+    if (!response.ok) throw new Error('Network response was not ok');
+    const number = await response.text();
+    randomNumber.value = number.trim();  // trim to clean up whitespace/newlines
+  } catch (error) {
+    randomNumber.value = 'Error fetching number';
+  }
+}
+
+
 </script>
 
 <template>
@@ -18,8 +32,15 @@ const textInput = ref('');
 <label for="toggle">Show text field</label>
 
 <div v-if="isChecked">
-  <input type="text" v-model="textInput" placeholder="Enter something..." />
+<input
+  type="text"
+  v-model="textInput"
+  placeholder="Enter something..."
+  @keyup.enter="fetchRandomNumber"
+/>
+
 <p>You typed: {{ textInput }}</p>
+<p v-if="randomNumber !== null">Random Number: {{ randomNumber }} </p>
 </div>
 
 
