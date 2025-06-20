@@ -54,7 +54,10 @@ def remove_unneeded_items(nutrient):
             nutrient.pop(field)
 
 def standardize_units(n):
-    pass
+    # Ignore duplicate energy in kJ
+    if n['unitName'].upper()== 'KJ':
+        n['unitName'] = 'KCAL'
+        n['value'] = 0
 
 
 
