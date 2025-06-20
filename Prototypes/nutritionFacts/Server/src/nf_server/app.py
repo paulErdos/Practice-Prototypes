@@ -71,12 +71,13 @@ class USDASearchResource:
                     }
                 )
                 raw_data = response.text
-                standardized_data = standardize(raw_data)
+                parsed = json.loads(raw_data)
+                standardized_data = standardize(parsed)
                 
-                return standardized_data
+                return json.dumps(standardized_data)
 
         except Exception as e:
-            print(traceback.format_exec())
+            print(traceback.format_exc())
             raise
 
 
