@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 
-import falcon.asgi
-import httpx
 import json
+import logging
+
+import httpx
+import falcon.asgi
 from falcon import media
 
 from nf_server.services.data_transformer import standardize
+
 
 json_handler = media.JSONHandler()
 extra_handlers = {
     'application/json': json_handler,
 }
+
 
 class CORSMiddleware:
     async def process_request(self, req, resp):
@@ -22,6 +26,12 @@ class CORSMiddleware:
                         'GET, POST, OPTIONS')
         resp.set_header('Access-Control-Allow-Headers',
                         'Authorization, Content-Type')
+
+class ExceptionLoggingMiddleware:
+    async def process_response(self, req, resp, resource, req_succeeded):
+        if not req_succeeded:
+            logging.error("Request failed", exc_info=True)
+
 
 
 class Counter:
@@ -61,6 +71,9 @@ class USDASearchResource:
                     }
                 )
                 raw_data = response.text
+                print('v'*80)
+                print(raw_data)
+                print('^'*80)
                 standardized_data = standardize(raw_data)
                 
                 return standardized_data  # Why does this only work with two identical return statements??????
@@ -69,7 +82,7 @@ class USDASearchResource:
             raise Exception(e)
 
 
-app = falcon.asgi.App(middleware=[CORSMiddleware()])
+app = falcon.asgi.App(middleware=[ExceptionLoggingMiddleware(), CORSMiddleware()])
 
 app.add_route("/test-rest", USDASearchResource())
 app.add_route("/search-test/{query}", USDASearchResource())

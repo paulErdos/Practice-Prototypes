@@ -1,28 +1,26 @@
 #!/usr/bin/python3
- 
+
+from nf_server.services.drop_fields_from_json import drop_fields_from_json as drop_fields
+
+import os
 import json
 from time import time
 
-import os
+data_log_path = 'data-log.ignore/'
 
-print(os.getcwd())
 
 def timestring():
     return ''.join(str(time()).split('.'))
 
-data_log_path = 'data-log.ignore/'
- 
 def log_data(data):
     the_path = data_log_path + timestring() + '.json'
 
-    print(1)
     with open(the_path, 'w') as o:
-        print(2)
         o.write(json.dumps(json.loads(data), indent=2))
-        print(3)
+
 
 def standardize(data):
     log_data(data)
     
     # For now
-    return data
+    return drop_fields(data)
