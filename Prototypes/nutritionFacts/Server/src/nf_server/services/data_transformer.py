@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from nf_server.services.drop_fields_from_json import drop_fields_from_json as drop_fields
+from nf_server.services.drop_fields import drop_fields
 
 import os
 import json
@@ -22,5 +22,4 @@ def log_data(data):
 def standardize(data):
     log_data(data)
     
-    # For now
     return drop_fields(data)
