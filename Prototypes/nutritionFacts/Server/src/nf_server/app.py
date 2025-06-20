@@ -1,14 +1,21 @@
 #!/usr/bin/python3
 
-import falcon.asgi
-import httpx
 import json
+import logging
+import traceback
+
+import httpx
+import falcon.asgi
 from falcon import media
+
+from nf_server.services.data_transformer import standardize
+
 
 json_handler = media.JSONHandler()
 extra_handlers = {
     'application/json': json_handler,
 }
+
 
 class CORSMiddleware:
     async def process_request(self, req, resp):
@@ -16,8 +23,16 @@ class CORSMiddleware:
 
     async def process_response(self, req, resp, resource, req_succeeded):
         resp.set_header('Access-Control-Allow-Origin', '*')
-        resp.set_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        resp.set_header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+        resp.set_header('Access-Control-Allow-Methods',
+                        'GET, POST, OPTIONS')
+        resp.set_header('Access-Control-Allow-Headers',
+                        'Authorization, Content-Type')
+
+
+class ExceptionLoggingMiddleware:
+    async def process_response(self, req, resp, resource, req_succeeded):
+        if not req_succeeded:
+            logging.error("Request failed", exc_info=True)
 
 
 class Counter:
@@ -33,41 +48,40 @@ class Counter:
         resp.status = falcon.HTTP_200
         resp.text = 'Alive!'
 
-class USDASearchResource:
 
+class USDASearchResource:
     async def on_get(self, req, resp, query=None):
         print('on get', query)
         if not query:
-            resp.text = await self._fetch_usda_data("kefir")
-        else:
-            resp.text = await self._fetch_usda_data(query)
+            query = 'kefir'
 
-        print(resp.text)
+        resp.text = await self._fetch_usda_data(query)
 
     async def _fetch_usda_data(self, query: str):
-        async with httpx.AsyncClient() as client:
-            response = await client.post(
-                "https://fdc.nal.usda.gov/portal-data/external/search",
-                headers={
-#                    "Accept": "application/json, text/plain, */*",
-#                    "Accept-Language": "en-US,en;q=0.9",
-#                    "Content-Type": "application/json",
-#                    "Referer": f"https://fdc.nal.usda.gov/food-search?query={query}&type=SR%20Legacy",
-#                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
-                },
-                json={
-                    "includeDataTypes": {"SR Legacy": True},
-                    "generalSearchInput": query,
-                    "requireAllWords": True,
-                    "pageNumber": 1,
-                    "sortCriteria": {"sortColumn": "description", "sortDirection": "asc"}
-                }
-            )
+        try:
+            async with httpx.AsyncClient() as client:
+                response = await client.post(
+                    "https://fdc.nal.usda.gov/portal-data/external/search",
+                    json={
+                        "includeDataTypes": {"SR Legacy": True},
+                        "generalSearchInput": query,
+                        "requireAllWords": True,
+                        "pageNumber": 1,
+                        "sortCriteria": {"sortColumn": "description", "sortDirection": "asc"}
+                    }
+                )
+                raw_data = response.text
+                parsed = json.loads(raw_data)
+                standardized_data = standardize(parsed)
+                
+                return json.dumps(standardized_data)
 
-            return response.text
+        except Exception as e:
+            print(traceback.format_exc())
+            raise
 
 
-app = falcon.asgi.App(middleware=[CORSMiddleware()])
+app = falcon.asgi.App(middleware=[ExceptionLoggingMiddleware(), CORSMiddleware()])
 
 app.add_route("/test-rest", USDASearchResource())
 app.add_route("/search-test/{query}", USDASearchResource())

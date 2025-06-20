@@ -12,14 +12,5 @@ fi
 cd Server && poetry run ./start-server.sh &
 
 # HeroUI Client
-# Notes: The cd itself is backgrounded. We never leave here.
-# cd - puts us back in Server.
-# The team sent somebody there, and that's where the team was last.
-# But we never left here.
 cd Client && npm run dev &
-#cd -
-#pwd
 
-
-# Supabase DB
-# under construction!
