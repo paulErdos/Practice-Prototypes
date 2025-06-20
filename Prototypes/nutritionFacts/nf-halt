@@ -1,11 +1,10 @@
 #!/usr/bin/bash
 
 # Halt Falcon server
-#./haltport 9001
-fuser -k 9001/tcp < /dev/null
+# Detach to prevent bash echo silencing and silence non-error output
+fuser -k 9001/tcp > /dev/null 2>&1 < /dev/null
 
 # Halt node dev server
-#./haltport 9002
-fuser -k 9002/tcp < /dev/null
+fuser -k 9002/tcp > /dev/null 2>&1 < /dev/null
 
 ./nf-status
