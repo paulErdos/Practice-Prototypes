@@ -3,9 +3,16 @@
 import json
 
 
-def get_test_data():
-    with open('17504304279746428.json', 'r') as i:
-        return json.loads(i.read())
+def clean(data):
+    remap_criteria(data)
+    drop_unneeded(data)
+    data['foods'] = [winnow_toplevel_food(u) for u in data['foods']]
+    clean_nutrients(data)
+
+    return data
+
+def remap_criteria(data):
+    data['query'] = data['foodSearchCriteria']['generalSearchInput']
 
 def drop_unneeded(data):
     data.pop('totalHits')
@@ -14,12 +21,6 @@ def drop_unneeded(data):
     data.pop('pageList')
     data.pop('aggregations')
     data.pop('foodSearchCriteria')
-    return data
-
-def remap_criteria(data):
-    print(data.keys())
-    data['query'] = data['foodSearchCriteria']['generalSearchInput']
-    return data
 
 def winnow_toplevel_food(food):
     ban_list = [
@@ -35,27 +36,32 @@ def winnow_toplevel_food(food):
     
     return food
 
-def clean(data):
-    mapped = remap_criteria(data)
-    passed = drop_unneeded(mapped)
-    passed['foods'] = [winnow_toplevel_food(u) for u in passed['foods']]
-
-    done = clean_nutrients(passed)
-    return done
-
 def clean_nutrients(data):
-    keep_list = ['nutrientName', 'unitName', 'value']
     for food in data['foods']:
         for nutrient in food['foodNutrients']:
-            for field in list(nutrient.keys()):
-                if field not in keep_list:
-                    nutrient.pop(field)
+            modify_nutrient(nutrient)
 
-    return data
+
+def modify_nutrient(n):
+    remove_unneeded_items(n)
+    standardize_units(n)
+
+
+def remove_unneeded_items(nutrient):
+    keep_list = ['nutrientName', 'unitName', 'value']
+    for field in list(nutrient.keys()):
+        if field not in keep_list:
+            nutrient.pop(field)
+
+def standardize_units(n):
+    pass
+
 
 
 if __name__ == '__main__':
-    parsed = get_test_data()
-    done = clean(parsed)
+    with open('17504304279746428.json', 'r') as i:
+        data = json.loads(i.read())
+
+    clean(data)
     with open('clean-data-for-inspection.json', 'w') as o:
-        o.write(json.dumps(done, indent=4))
+        o.write(json.dumps(data, indent=4))
