@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import json
 from pathlib import Path
 
@@ -29,9 +30,7 @@ def drop_fields_from_json(raw_json: str) -> str:
     cleaned_data = drop_fields(data, fields_to_drop)
     return json.dumps(cleaned_data, indent=2)
 
-# Example usage:
 if __name__ == "__main__":
-    import sys
     if len(sys.argv) != 3:
         print("Usage: python drop_fields.py <input.json> <fields-to-drop.txt>")
         sys.exit(1)

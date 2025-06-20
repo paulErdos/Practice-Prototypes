@@ -2,6 +2,7 @@
 
 import json
 import logging
+import traceback
 
 import httpx
 import falcon.asgi
@@ -27,11 +28,11 @@ class CORSMiddleware:
         resp.set_header('Access-Control-Allow-Headers',
                         'Authorization, Content-Type')
 
+
 class ExceptionLoggingMiddleware:
     async def process_response(self, req, resp, resource, req_succeeded):
         if not req_succeeded:
             logging.error("Request failed", exc_info=True)
-
 
 
 class Counter:
@@ -47,15 +48,14 @@ class Counter:
         resp.status = falcon.HTTP_200
         resp.text = 'Alive!'
 
-class USDASearchResource:
 
+class USDASearchResource:
     async def on_get(self, req, resp, query=None):
         print('on get', query)
         if not query:
             query = 'kefir'
 
         resp.text = await self._fetch_usda_data(query)
-
 
     async def _fetch_usda_data(self, query: str):
         try:
@@ -71,15 +71,13 @@ class USDASearchResource:
                     }
                 )
                 raw_data = response.text
-                print('v'*80)
-                print(raw_data)
-                print('^'*80)
                 standardized_data = standardize(raw_data)
                 
-                return standardized_data  # Why does this only work with two identical return statements??????
+                return standardized_data
 
         except Exception as e:
-            raise Exception(e)
+            print(traceback.format_exec())
+            raise
 
 
 app = falcon.asgi.App(middleware=[ExceptionLoggingMiddleware(), CORSMiddleware()])
