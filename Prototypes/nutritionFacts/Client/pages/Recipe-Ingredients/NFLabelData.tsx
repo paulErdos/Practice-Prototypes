@@ -4,11 +4,11 @@ export const SECTION_ORDER = [
   "Minerals",
   "Aminos",
   "Sugars",
-  "Fats",
   "Vitamin A",
   "Vitamin D",
   "Vitamin E",
   "Vitamin K",
+  "Fats",
   "Sterols",
   "Uncategorized",
   "Other"
@@ -18,10 +18,12 @@ export const SECTIONS: Record<string, string[]> = {
   "Macronutrients": [
     "Energy", 
     "Protein", 
-    "Total lipid (fat)", 
     "Carbohydrate, by difference",  // TODO: break this down by starch, sugar, and insoluble fiber
-    "Fiber, total dietary", 
+    "Starch",
     "Total Sugars", 
+    "Total lipid (fat)", 
+    "Fiber, total dietary", 
+    "Water",
   ],
 
   "Vitamins": [
@@ -37,6 +39,10 @@ export const SECTIONS: Record<string, string[]> = {
     "Vitamin D (D2 + D3)", 
     "Vitamin E (alpha-tocopherol)", 
     "Vitamin K (phylloquinone)", 
+    "Vitamin B-12, added", 
+    "Folate, food", 
+    "Folic acid", 
+    "Folate, DFE",  
   ],
 
   "Minerals": [
@@ -198,11 +204,6 @@ export const SECTIONS: Record<string, string[]> = {
   ],
   
   "Uncategorized": [
-    "Starch",
-    "Vitamin B-12, added", 
-    "Folate, food", 
-    "Folic acid", 
-    "Folate, DFE",  
     "Alcohol, ethyl", 
     "Caffeine", 
     "Theobromine", 
@@ -210,7 +211,6 @@ export const SECTIONS: Record<string, string[]> = {
     "Choline, total", 
     "Betaine",
     "Hydroxyproline", 
-    "Water",
   ],
 
   "Other": [
