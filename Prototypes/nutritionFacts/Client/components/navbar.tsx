@@ -76,7 +76,7 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">Nutrition Facts</p>
           </NextLink>
         </NavbarBrand>
-        <div className="hidden lg:flex gap-4 justify-start ml-2">
+        <div className="flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
