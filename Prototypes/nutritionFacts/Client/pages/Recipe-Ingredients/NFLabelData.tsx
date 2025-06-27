@@ -8,8 +8,8 @@ export const SECTION_ORDER = [
   "Vitamin D",
   "Vitamin E",
   "Vitamin K",
-  "Fats",
   "Sterols",
+  "Fats",
   "Uncategorized",
   "Other"
 ];
@@ -21,28 +21,24 @@ export const SECTIONS: Record<string, string[]> = {
     "Carbohydrate, by difference",  // TODO: break this down by starch, sugar, and insoluble fiber
     "Starch",
     "Total Sugars", 
-    "Total lipid (fat)", 
     "Fiber, total dietary", 
+    "Total lipid (fat)", 
     "Water",
   ],
 
   "Vitamins": [
-    "Vitamin A, IU", 
     "Thiamin", 
     "Riboflavin", 
-    "Folate, total", 
+    "Folic acid", 
     "Niacin", 
     "Pantothenic acid", 
+    "Vitamin A, RAE",
     "Vitamin B-6", 
     "Vitamin B-12", 
     "Vitamin C, total ascorbic acid", 
     "Vitamin D (D2 + D3)", 
     "Vitamin E (alpha-tocopherol)", 
     "Vitamin K (phylloquinone)", 
-    "Vitamin B-12, added", 
-    "Folate, food", 
-    "Folic acid", 
-    "Folate, DFE",  
   ],
 
   "Minerals": [
@@ -81,8 +77,8 @@ export const SECTIONS: Record<string, string[]> = {
 
   "Sugars": [
     "Total Sugars", 
-    "Glucose",  
     "Sucrose", 
+    "Glucose",  
     "Fructose", 
     "Lactose", 
     "Galactose",
@@ -156,15 +152,14 @@ export const SECTIONS: Record<string, string[]> = {
   ],
 
   "Vitamin A": [
+    "Vitamin A, RAE",
     "Carotene, beta", 
     "Carotene, alpha", 
     "Cryptoxanthin, beta",
-    "Cryptoxanthin, beta",
-    "Lutein + zeaxanthin",
     "Lutein + zeaxanthin",
     "Lycopene",
     "Lycopene",
-    "Vitamin A, RAE",
+    "Vitamin A, IU", 
     "Retinol",
   ],
   
@@ -193,6 +188,13 @@ export const SECTIONS: Record<string, string[]> = {
     "Vitamin K (Dihydrophylloquinone)",
     "Vitamin K (Menaquinone-4)",  
     "Vitamin K (phylloquinone)", 
+  ],
+
+  "Vitamin B": [
+    "Vitamin B-12, added", 
+    "Folate, total", 
+    "Folate, food", 
+    "Folate, DFE",  
   ],
 
   "Sterols": [

@@ -1,0 +1,4008 @@
+{
+  "Infants 0–6 mo": {
+    "Linoleic Acid": {
+      "rda": 4.4,
+      "tui": 4.4,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 0.5,
+      "tui": 0.5,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 9.1,
+      "tui": 9.1,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 0.2,
+      "tui": 0.2,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 0.01,
+      "tui": 0.01,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 110,
+      "tui": 110,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 0.18,
+      "tui": 0.18,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 0.2,
+      "tui": 0.2,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 0.3,
+      "tui": 0.3,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 700.0,
+      "tui": 0.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 60,
+      "tui": 60,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": 31,
+      "tui": 31,
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 200,
+      "tui": 200,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 200,
+      "tui": 200,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 0.27,
+      "tui": 0.27,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 0.003,
+      "tui": 0.003,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 100,
+      "tui": 100,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 110,
+      "tui": 110,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 40,
+      "tui": 40,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 10,
+      "tui": 10,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 4,
+      "tui": 4,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 0.1,
+      "tui": 0.1,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 65,
+      "tui": 65,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 0.4,
+      "tui": 0.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 1.7,
+      "tui": 1.7,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 125,
+      "tui": 125,
+      "unitName": "mg"
+    }
+  },
+  "Infants 6–12 mo": {
+    "Linoleic Acid": {
+      "rda": 4.6,
+      "tui": 4.6,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 0.5,
+      "tui": 0.5,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 0.3,
+      "tui": 0.3,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 0.4,
+      "tui": 0.4,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 4,
+      "tui": 4,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 6,
+      "tui": 6,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 800.0,
+      "tui": 0.8,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 95,
+      "tui": 95,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "g"
+    },
+    "Vitamin A, RAE": {
+      "rda": 500,
+      "tui": 500,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 50,
+      "tui": 50,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 10,
+      "tui": 10,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 2.5,
+      "tui": 2.5,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 0.3,
+      "tui": 0.3,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 80,
+      "tui": 80,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 0.5,
+      "tui": 0.5,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "mg"
+    }
+  },
+  "Children 1–3 y": {
+    "Linoleic Acid": {
+      "rda": 7,
+      "tui": 7,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 0.7,
+      "tui": 0.7,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 13,
+      "tui": 13,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 0.7,
+      "tui": 0.7,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 17,
+      "tui": 17,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 1.5,
+      "tui": 1.5,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 0.5,
+      "tui": 0.5,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 0.5,
+      "tui": 0.5,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 6,
+      "tui": 6,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 1300.0,
+      "tui": 1.3,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 19,
+      "tui": 19,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 340,
+      "tui": 340,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 7,
+      "tui": 7,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 80,
+      "tui": 80,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 460,
+      "tui": 460,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 20,
+      "tui": 20,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2000,
+      "tui": 2000,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 800,
+      "tui": 800,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 300,
+      "tui": 300,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 6,
+      "tui": 6,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 0.5,
+      "tui": 0.5,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 0.9,
+      "tui": 0.9,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 200,
+      "tui": 200,
+      "unitName": "mg"
+    }
+  },
+  "Children 4–8 y": {
+    "Linoleic Acid": {
+      "rda": 10,
+      "tui": 10,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 0.9,
+      "tui": 0.9,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 19,
+      "tui": 19,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 1,
+      "tui": 1,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 22,
+      "tui": 22,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 1.9,
+      "tui": 1.9,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 0.6,
+      "tui": 0.6,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 0.6,
+      "tui": 0.6,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 1700.0,
+      "tui": 1.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 440,
+      "tui": 440,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 10,
+      "tui": 10,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.5,
+      "tui": 1.5,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 500,
+      "tui": 500,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2300,
+      "tui": 2300,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 7,
+      "tui": 7,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 0.6,
+      "tui": 0.6,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 200,
+      "tui": 200,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 250,
+      "tui": 250,
+      "unitName": "mg"
+    }
+  },
+  "Males 9–13 y": {
+    "Linoleic Acid": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 34,
+      "tui": 34,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 120,
+      "tui": 120,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 34,
+      "tui": 34,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 0.9,
+      "tui": 0.9,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 0.9,
+      "tui": 0.9,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 20,
+      "tui": 20,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 2400.0,
+      "tui": 2.4,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 31,
+      "tui": 31,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 240,
+      "tui": 240,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.9,
+      "tui": 1.9,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 1250,
+      "tui": 1250,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 40,
+      "tui": 40,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2500,
+      "tui": 2500,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1200,
+      "tui": 1200,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 600,
+      "tui": 600,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 60,
+      "tui": 60,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1,
+      "tui": 1,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 300,
+      "tui": 300,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 4,
+      "tui": 4,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 375,
+      "tui": 375,
+      "unitName": "mg"
+    }
+  },
+  "Males 14–18 y": {
+    "Linoleic Acid": {
+      "rda": 16,
+      "tui": 16,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 52,
+      "tui": 52,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 35,
+      "tui": 35,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 43,
+      "tui": 43,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 16,
+      "tui": 16,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3300.0,
+      "tui": 3.3,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 38,
+      "tui": 38,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 890,
+      "tui": 890,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 410,
+      "tui": 410,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2.2,
+      "tui": 2.2,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 1250,
+      "tui": 1250,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 3000,
+      "tui": 3000,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 550,
+      "tui": 550,
+      "unitName": "mg"
+    }
+  },
+  "Males 19–30 y": {
+    "Linoleic Acid": {
+      "rda": 17,
+      "tui": 17,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 56,
+      "tui": 56,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 35,
+      "tui": 35,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 4,
+      "tui": 4,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 16,
+      "tui": 16,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3700.0,
+      "tui": 3.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 38,
+      "tui": 38,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 3400,
+      "tui": 3400,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 120,
+      "tui": 120,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 550,
+      "tui": 550,
+      "unitName": "mg"
+    }
+  },
+  "Males 31–50 y": {
+    "Linoleic Acid": {
+      "rda": 17,
+      "tui": 17,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 56,
+      "tui": 56,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 35,
+      "tui": 35,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 4,
+      "tui": 4,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 16,
+      "tui": 16,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3700.0,
+      "tui": 3.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 38,
+      "tui": 38,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 420,
+      "tui": 420,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 3400,
+      "tui": 3400,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 120,
+      "tui": 120,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 550,
+      "tui": 550,
+      "unitName": "mg"
+    }
+  },
+  "Males 51–70 y": {
+    "Linoleic Acid": {
+      "rda": 14,
+      "tui": 14,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 56,
+      "tui": 56,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 4,
+      "tui": 4,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 16,
+      "tui": 16,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3700.0,
+      "tui": 3.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 420,
+      "tui": 420,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 3400,
+      "tui": 3400,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 120,
+      "tui": 120,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.7,
+      "tui": 1.7,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 550,
+      "tui": 550,
+      "unitName": "mg"
+    }
+  },
+  "Males > 70 y": {
+    "Linoleic Acid": {
+      "rda": 14,
+      "tui": 14,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 56,
+      "tui": 56,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 4,
+      "tui": 4,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 16,
+      "tui": 16,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3700.0,
+      "tui": 3.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1200,
+      "tui": 1200,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 420,
+      "tui": 420,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 3400,
+      "tui": 3400,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 20,
+      "tui": 20,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 120,
+      "tui": 120,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.7,
+      "tui": 1.7,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 550,
+      "tui": 550,
+      "unitName": "mg"
+    }
+  },
+  "Females 9–13 y": {
+    "Linoleic Acid": {
+      "rda": 10,
+      "tui": 10,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1,
+      "tui": 1,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 34,
+      "tui": 34,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 21,
+      "tui": 21,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 120,
+      "tui": 120,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 34,
+      "tui": 34,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 0.9,
+      "tui": 0.9,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 0.9,
+      "tui": 0.9,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 20,
+      "tui": 20,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 2100.0,
+      "tui": 2.1,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 26,
+      "tui": 26,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 240,
+      "tui": 240,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 1250,
+      "tui": 1250,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 40,
+      "tui": 40,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2300,
+      "tui": 2300,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1200,
+      "tui": 1200,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 600,
+      "tui": 600,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 60,
+      "tui": 60,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1,
+      "tui": 1,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 300,
+      "tui": 300,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 4,
+      "tui": 4,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 375,
+      "tui": 375,
+      "unitName": "mg"
+    }
+  },
+  "Females 14–18 y": {
+    "Linoleic Acid": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 46,
+      "tui": 46,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 24,
+      "tui": 24,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 43,
+      "tui": 43,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1,
+      "tui": 1,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1,
+      "tui": 1,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 14,
+      "tui": 14,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 2300.0,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 26,
+      "tui": 26,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 890,
+      "tui": 890,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 360,
+      "tui": 360,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 1250,
+      "tui": 1250,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 9,
+      "tui": 9,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2300,
+      "tui": 2300,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 65,
+      "tui": 65,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.2,
+      "tui": 1.2,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": "400i",
+      "tui": "400i",
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "mg"
+    }
+  },
+  "Females 19–30 y": {
+    "Linoleic Acid": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 46,
+      "tui": 46,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 14,
+      "tui": 14,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 2700.0,
+      "tui": 2.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 18,
+      "tui": 18,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 310,
+      "tui": 310,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2600,
+      "tui": 2600,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": "400i",
+      "tui": "400i",
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 425,
+      "tui": 425,
+      "unitName": "mg"
+    }
+  },
+  "Females 31–50 y": {
+    "Linoleic Acid": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 46,
+      "tui": 46,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 14,
+      "tui": 14,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 2700.0,
+      "tui": 2.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 25,
+      "tui": 25,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 18,
+      "tui": 18,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 320,
+      "tui": 320,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2600,
+      "tui": 2600,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": "400i",
+      "tui": "400i",
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 425,
+      "tui": 425,
+      "unitName": "mg"
+    }
+  },
+  "Females 51–70 y": {
+    "Linoleic Acid": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 46,
+      "tui": 46,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 20,
+      "tui": 20,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 14,
+      "tui": 14,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 2700.0,
+      "tui": 2.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 21,
+      "tui": 21,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1200,
+      "tui": 1200,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 320,
+      "tui": 320,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2600,
+      "tui": 2600,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.5,
+      "tui": 1.5,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 425,
+      "tui": 425,
+      "unitName": "mg"
+    }
+  },
+  "Females > 70 y": {
+    "Linoleic Acid": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 46,
+      "tui": 46,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 20,
+      "tui": 20,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 150,
+      "tui": 150,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.1,
+      "tui": 1.1,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 14,
+      "tui": 14,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 2700.0,
+      "tui": 2.7,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 21,
+      "tui": 21,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1200,
+      "tui": 1200,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 900,
+      "tui": 900,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 320,
+      "tui": 320,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 1.8,
+      "tui": 1.8,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 55,
+      "tui": 55,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 8,
+      "tui": 8,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2600,
+      "tui": 2600,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 20,
+      "tui": 20,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.5,
+      "tui": 1.5,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.4,
+      "tui": 2.4,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 5,
+      "tui": 5,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 425,
+      "tui": 425,
+      "unitName": "mg"
+    }
+  },
+  "Pregnancy 14–18 y": {
+    "Linoleic Acid": {
+      "rda": 13,
+      "tui": 13,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 71,
+      "tui": 71,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 29,
+      "tui": 29,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 220,
+      "tui": 220,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 50,
+      "tui": 50,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 18,
+      "tui": 18,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3000,
+      "tui": 3,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 175,
+      "tui": 175,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 28,
+      "tui": 28,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 27,
+      "tui": 27,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 400,
+      "tui": 400,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 1250,
+      "tui": 1250,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 60,
+      "tui": 60,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2600,
+      "tui": 2600,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 750,
+      "tui": 750,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 80,
+      "tui": 80,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.9,
+      "tui": 1.9,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": "600j",
+      "tui": "600j",
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.6,
+      "tui": 2.6,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 6,
+      "tui": 6,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 450,
+      "tui": 450,
+      "unitName": "mg"
+    }
+  },
+  "Pregnancy 19–30 y": {
+    "Linoleic Acid": {
+      "rda": 13,
+      "tui": 13,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 71,
+      "tui": 71,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 220,
+      "tui": 220,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 50,
+      "tui": 50,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 18,
+      "tui": 18,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3000,
+      "tui": 3,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 175,
+      "tui": 175,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 28,
+      "tui": 28,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 27,
+      "tui": 27,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 350,
+      "tui": 350,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 60,
+      "tui": 60,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2900,
+      "tui": 2900,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 770,
+      "tui": 770,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 85,
+      "tui": 85,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.9,
+      "tui": 1.9,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": "600j",
+      "tui": "600j",
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.6,
+      "tui": 2.6,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 6,
+      "tui": 6,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 450,
+      "tui": 450,
+      "unitName": "mg"
+    }
+  },
+  "Pregnancy 31–50 y": {
+    "Linoleic Acid": {
+      "rda": 13,
+      "tui": 13,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 71,
+      "tui": 71,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 220,
+      "tui": 220,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 50,
+      "tui": 50,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 18,
+      "tui": 18,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 30,
+      "tui": 30,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3000,
+      "tui": 3,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 175,
+      "tui": 175,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 28,
+      "tui": 28,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 27,
+      "tui": 27,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 360,
+      "tui": 360,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 60,
+      "tui": 60,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2900,
+      "tui": 2900,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 770,
+      "tui": 770,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 85,
+      "tui": 85,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 1.9,
+      "tui": 1.9,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": "600j",
+      "tui": "600j",
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.6,
+      "tui": 2.6,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 6,
+      "tui": 6,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 450,
+      "tui": 450,
+      "unitName": "mg"
+    }
+  },
+  "Lactation 14–18 y": {
+    "Linoleic Acid": {
+      "rda": 13,
+      "tui": 13,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 71,
+      "tui": 71,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 44,
+      "tui": 44,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 290,
+      "tui": 290,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 50,
+      "tui": 50,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 17,
+      "tui": 17,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 35,
+      "tui": 35,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3800.0,
+      "tui": 3.8,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 210,
+      "tui": 210,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 29,
+      "tui": 29,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 10,
+      "tui": 10,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 360,
+      "tui": 360,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2.6,
+      "tui": 2.6,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 1250,
+      "tui": 1250,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 70,
+      "tui": 70,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 13,
+      "tui": 13,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2500,
+      "tui": 2500,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 1200,
+      "tui": 1200,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 115,
+      "tui": 115,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 19,
+      "tui": 19,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 500,
+      "tui": 500,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.8,
+      "tui": 2.8,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 7,
+      "tui": 7,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 550,
+      "tui": 550,
+      "unitName": "mg"
+    }
+  },
+  "Lactation 19–30 y": {
+    "Linoleic Acid": {
+      "rda": 13,
+      "tui": 13,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 71,
+      "tui": 71,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 290,
+      "tui": 290,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 50,
+      "tui": 50,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 17,
+      "tui": 17,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 35,
+      "tui": 35,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3800.0,
+      "tui": 3.8,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 210,
+      "tui": 210,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 29,
+      "tui": 29,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 9,
+      "tui": 9,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 310,
+      "tui": 310,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2.6,
+      "tui": 2.6,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 70,
+      "tui": 70,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2800,
+      "tui": 2800,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 120,
+      "tui": 120,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 19,
+      "tui": 19,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 500,
+      "tui": 500,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.8,
+      "tui": 2.8,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 7,
+      "tui": 7,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 550,
+      "tui": 550,
+      "unitName": "mg"
+    }
+  },
+  "Lactation 31–50 y": {
+    "Linoleic Acid": {
+      "rda": 13,
+      "tui": 13,
+      "unitName": "g"
+    },
+    "α-Linolenic Acid": {
+      "rda": 1.3,
+      "tui": 1.3,
+      "unitName": "g"
+    },
+    "Protein": {
+      "rda": 71,
+      "tui": 71,
+      "unitName": "g"
+    },
+    "Chromium": {
+      "rda": 45,
+      "tui": 45,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 290,
+      "tui": 290,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 50,
+      "tui": 50,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 2.3,
+      "tui": 2.3,
+      "unitName": "g"
+    },
+    "Thiamin": {
+      "rda": 1.4,
+      "tui": 1.4,
+      "unitName": "mg"
+    },
+    "Riboflavin": {
+      "rda": 1.6,
+      "tui": 1.6,
+      "unitName": "mg"
+    },
+    "Niacin": {
+      "rda": 17,
+      "tui": 17,
+      "unitName": "mg"
+    },
+    "Biotin": {
+      "rda": 35,
+      "tui": 35,
+      "unitName": "μg"
+    },
+    "Water": {
+      "rda": 3800.0,
+      "tui": 3.8,
+      "unitName": "g"
+    },
+    "Carbohydrate, by difference": {
+      "rda": 210,
+      "tui": 210,
+      "unitName": "g"
+    },
+    "Fiber, total dietary": {
+      "rda": 29,
+      "tui": 29,
+      "unitName": "g"
+    },
+    "Total lipid (fat)": {
+      "rda": "ND",
+      "tui": "ND",
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 1000,
+      "tui": 1000,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 9,
+      "tui": 9,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 320,
+      "tui": 320,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 2.6,
+      "tui": 2.6,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 700,
+      "tui": 700,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 70,
+      "tui": 70,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 12,
+      "tui": 12,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 2800,
+      "tui": 2800,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 1500,
+      "tui": 1500,
+      "unitName": "mg"
+    },
+    "Vitamin A, RAE": {
+      "rda": 1300,
+      "tui": 1300,
+      "unitName": "μg"
+    },
+    "Vitamin C, total ascorbic acid": {
+      "rda": 120,
+      "tui": 120,
+      "unitName": "mg"
+    },
+    "Vitamin D (D2 + D3)": {
+      "rda": 15,
+      "tui": 15,
+      "unitName": "μg"
+    },
+    "Vitamin E (alpha-tocopherol)": {
+      "rda": 19,
+      "tui": 19,
+      "unitName": "mg"
+    },
+    "Vitamin K (phylloquinone)": {
+      "rda": 90,
+      "tui": 90,
+      "unitName": "μg"
+    },
+    "Vitamin B-6": {
+      "rda": 2,
+      "tui": 2,
+      "unitName": "mg"
+    },
+    "Folate, total": {
+      "rda": 500,
+      "tui": 500,
+      "unitName": "μg"
+    },
+    "Vitamin B-12": {
+      "rda": 2.8,
+      "tui": 2.8,
+      "unitName": "μg"
+    },
+    "Pantothenic acid": {
+      "rda": 7,
+      "tui": 7,
+      "unitName": "mg"
+    },
+    "Choline, total": {
+      "rda": 550,
+      "tui": 550,
+      "unitName": "mg"
+    }
+  },
+  "Infants7–12 mo": {
+    "Chromium": {
+      "rda": 5.5,
+      "tui": 5.5,
+      "unitName": "μg"
+    },
+    "Fluoride": {
+      "rda": 0.5,
+      "tui": 0.5,
+      "unitName": "mg"
+    },
+    "Iodine": {
+      "rda": 130,
+      "tui": 130,
+      "unitName": "μg"
+    },
+    "Molybdenum": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "μg"
+    },
+    "Chloride": {
+      "rda": 0.57,
+      "tui": 0.57,
+      "unitName": "g"
+    },
+    "Calcium, Ca": {
+      "rda": 260,
+      "tui": 260,
+      "unitName": "mg"
+    },
+    "Copper, Cu": {
+      "rda": 220,
+      "tui": 220,
+      "unitName": "μg"
+    },
+    "Iron, Fe": {
+      "rda": 11,
+      "tui": 11,
+      "unitName": "mg"
+    },
+    "Magnesium, Mg": {
+      "rda": 75,
+      "tui": 75,
+      "unitName": "mg"
+    },
+    "Manganese, Mn": {
+      "rda": 0.6,
+      "tui": 0.6,
+      "unitName": "mg"
+    },
+    "Phosphorus, P": {
+      "rda": 275,
+      "tui": 275,
+      "unitName": "mg"
+    },
+    "Selenium, Se": {
+      "rda": 20,
+      "tui": 20,
+      "unitName": "μg"
+    },
+    "Zinc, Zn": {
+      "rda": 3,
+      "tui": 3,
+      "unitName": "mg"
+    },
+    "Potassium, K": {
+      "rda": 860,
+      "tui": 860,
+      "unitName": "mg"
+    },
+    "Sodium, Na": {
+      "rda": 370,
+      "tui": 370,
+      "unitName": "mg"
+    }
+  }
+}

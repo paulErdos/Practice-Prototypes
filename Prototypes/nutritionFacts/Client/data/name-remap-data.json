@@ -1,0 +1,29 @@
+{
+  "Total Water" : "Water",
+  "Carbohydrate": "Carbohydrate, by difference",
+  "Total Fiber": "Fiber, total dietary",
+  "Fat": "Total lipid (fat)",
+
+  "Vitamin A": "Vitamin A, RAE",
+  "Vitamin C": "Vitamin C, total ascorbic acid",
+  "Vitamin D": "Vitamin D (D2 + D3)",
+  "Vitamin E": "Vitamin E (alpha-tocopherol)",
+  "Vitamin K": "Vitamin K (phylloquinone)",
+  "Vitamin B6": "Vitamin B-6",
+  "Folate": "Folate, total",
+  "Vitamin B12": "Vitamin B-12",
+  "Pantothenic Acid": "Pantothenic acid",
+  "Choline": "Choline, total",
+
+  "Calcium": "Calcium, Ca",
+  "Copper": "Copper, Cu",
+  "Iron": "Iron, Fe",
+  "Magnesium": "Magnesium, Mg",
+  "Manganese": "Manganese, Mn",
+  "Phosphorus": "Phosphorus, P",
+  "Potassium": "Potassium, K",
+  "Selenium": "Selenium, Se",
+  "Sodium": "Sodium, Na",
+  "Zinc": "Zinc, Zn"
+}
+

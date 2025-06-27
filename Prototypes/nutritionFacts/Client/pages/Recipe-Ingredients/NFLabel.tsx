@@ -1,7 +1,7 @@
 import { Card, Divider, Button, Select, SelectItem } from "@heroui/react";
 import { useState } from "react";
 import { SECTION_ORDER, SECTIONS } from "./NFLabelData"
-import nutrient_envelope from '../../data/Clean-RDA-TUI-Data.json';
+import nutrient_envelope from '../../data/RDA-TUI-Data.json';
 
 
 const LIFE_STAGE_GROUPS = Object.keys(nutrient_envelope)
@@ -204,6 +204,7 @@ function NFLabel({ item, title }: NFLabelProps) {
             <div style={{ textAlign: "right", width: "60px" }}>Limit</div>
           </div>
 
+          {/* Everything Happens Here */}
           {SECTION_ORDER.map(section => (
             <div key={section} style={{ marginBottom: "16px" }}>
               <strong style={{ display: "block", fontSize: "16px", marginTop: "16px", marginBottom: "8px" }}>{section}</strong>
