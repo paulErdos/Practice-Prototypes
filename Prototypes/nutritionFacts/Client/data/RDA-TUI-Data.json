@@ -86,9 +86,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 200,
+      "rda": 0.2,
       "tui": 200,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 0.27,
@@ -375,9 +375,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 340,
+      "rda": 0.34,
       "tui": 340,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 7,
@@ -557,9 +557,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 440,
+      "rda": 0.44,
       "tui": 440,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 10,
@@ -739,9 +739,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 700,
+      "rda": 0.7,
       "tui": 700,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 8,
@@ -921,9 +921,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 890,
+      "rda": 0.89,
       "tui": 890,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 11,
@@ -1103,9 +1103,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 900,
+      "rda": 0.9,
       "tui": 900,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 8,
@@ -1285,9 +1285,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 900,
+      "rda": 0.9,
       "tui": 900,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 8,
@@ -1467,9 +1467,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 900,
+      "rda": 0.9,
       "tui": 900,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 8,
@@ -1649,9 +1649,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 900,
+      "rda": 0.9,
       "tui": 900,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 8,
@@ -1831,9 +1831,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 700,
+      "rda": 0.7,
       "tui": 700,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 8,
@@ -2013,9 +2013,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 890,
+      "rda": 0.89,
       "tui": 890,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 15,
@@ -2195,9 +2195,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 900,
+      "rda": 0.9,
       "tui": 900,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 18,
@@ -2377,9 +2377,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 900,
+      "rda": 0.9,
       "tui": 900,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 18,
@@ -2559,9 +2559,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 900,
+      "rda": 0.9,
       "tui": 900,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 8,
@@ -2741,9 +2741,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 900,
+      "rda": 0.9,
       "tui": 900,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 8,
@@ -2923,9 +2923,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 1000,
+      "rda": 1.0,
       "tui": 1000,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 27,
@@ -3105,9 +3105,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 1000,
+      "rda": 1.0,
       "tui": 1000,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 27,
@@ -3287,9 +3287,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 1000,
+      "rda": 1.0,
       "tui": 1000,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 27,
@@ -3469,9 +3469,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 1300,
+      "rda": 1.3,
       "tui": 1300,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 10,
@@ -3651,9 +3651,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 1300,
+      "rda": 1.3,
       "tui": 1300,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 9,
@@ -3833,9 +3833,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 1300,
+      "rda": 1.3,
       "tui": 1300,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 9,
@@ -3960,9 +3960,9 @@
       "unitName": "mg"
     },
     "Copper, Cu": {
-      "rda": 220,
+      "rda": 0.22,
       "tui": 220,
-      "unitName": "μg"
+      "unitName": "mg"
     },
     "Iron, Fe": {
       "rda": 11,

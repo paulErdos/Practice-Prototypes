@@ -20,13 +20,17 @@ units_to_map = {'L': {'f': lambda u: u * 1000, 'newUnitName': 'g'}}
 
 for lifestage in envelope:
     for nutrient in envelope[lifestage]:
+        print(nutrient)
         data = envelope[lifestage][nutrient]
+        print(data)
+
+        if nutrient == 'Copper':
+            data['unitName'] = 'mg'
+            data['rda'] /= 1000
 
         if data['unitName'] in units_to_map:
-            print(data)
             data['rda'] = units_to_map[data['unitName']]['f'](data['rda'])
             data['unitName'] = units_to_map[data['unitName']]['newUnitName']
-            print(data)
 
 
 #print(json.dumps(renamed, indent=2, ensure_ascii=False))
