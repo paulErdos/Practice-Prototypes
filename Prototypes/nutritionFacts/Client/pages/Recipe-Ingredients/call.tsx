@@ -10,23 +10,6 @@ import React from 'react';
 import AsyncSelect from 'react-select/async';
 import NFLabel from "../Experiments-Warehouse/NFLabel";
 
-
-export default function DocsPage() {
-  return (
-    <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-
-        <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className={title()}>API Call Button</h1>
-        </div>
-
-
-      </section>
-    </DefaultLayout>
-  );
-}
-
-
 // Abstract Data Type: Food
 export type FoodNutrient = { nutrientName: string; value: number; unitName: string };
 
@@ -83,7 +66,10 @@ export class Recipe {
   }
 }
 
-
+const alterFoodsDataMap = (data: Record<string, FoodNutrient[]>) => {
+  console.log(data)
+  return data;
+}
 
 // New: Async dropdown for FDC search
 import type { FC } from 'react';
@@ -94,113 +80,3 @@ type FoodOption = { label: string; value: string };
 // type FoodNutrient = { nutrientName: string; value: number; unitName: string };
 type FoodData = { label: string; value: import('./call').FoodNutrient[] };
 
-export const FdcAsyncDropdown: FC = () => {
-  const [selectedOption, setSelectedOption] = useState<SingleValue<FoodOption>>(null);
-  const [highlightedOption, setHighlightedOption] = useState<SingleValue<FoodOption>>(null);
-  const [foodsDataMap, setFoodsDataMap] = useState<Record<string, FoodNutrient[]>>({});
-  const [selectedFoodNutrients, setSelectedFoodNutrients] = useState<FoodNutrient[] | null>(null);
-  const [highlightedFoodNutrients, setHighlightedFoodNutrients] = useState<FoodNutrient[] | null>(null);
-
-  // Fetch options from API as user types
-  const loadOptions = useCallback(async (inputValue: string): Promise<FoodOption[]> => {
-    if (!inputValue) return [];
-    try {
-      const url = `http://192.168.0.3:9001/search-test/${encodeURIComponent(inputValue)}`;
-      const response = await fetch(url);
-      const text = await response.text();
-      const data = JSON.parse(text);
-      const options: FoodOption[] = [];
-      const foodsMap: Record<string, FoodNutrient[]> = {};
-      for (const item of data.foods) {
-        const nutrients: FoodNutrient[] = item.foodNutrients.map((datum: any) => ({
-          nutrientName: datum.nutrientName,
-          value: datum.value,
-          unitName: datum.unitName,
-        }));
-        options.push({ label: item.description, value: item.description });
-        foodsMap[item.description] = nutrients;
-      }
-      setFoodsDataMap(foodsMap);
-      return options;
-    } catch (error) {
-      console.error('Error fetching FDC options:', error);
-      return [];
-    }
-  }, []);
-
-  // When an option is selected, show its nutrients
-  const handleChange = (option: SingleValue<FoodOption>) => {
-    setSelectedOption(option);
-    setHighlightedOption(null); // Clear highlight on select
-    if (option && foodsDataMap[option.label]) {
-      setSelectedFoodNutrients(foodsDataMap[option.label]);
-    } else {
-      setSelectedFoodNutrients(null);
-    }
-  };
-
-  // When an option is highlighted, show its nutrients
-  const handleHighlight = (option: FoodOption | null) => {
-    if (option) {
-      setHighlightedOption(option);
-      if (foodsDataMap[option.label]) {
-        setHighlightedFoodNutrients(foodsDataMap[option.label]);
-      } else {
-        setHighlightedFoodNutrients(null);
-      }
-    } else {
-      setHighlightedOption(null);
-      setHighlightedFoodNutrients(null);
-    }
-  };
-
-  // Custom Option component for react-select
-  const CustomOption = (props: OptionProps<FoodOption, false>) => {
-    const { isFocused, data } = props;
-    // Only call handleHighlight when focus changes to true
-    React.useEffect(() => {
-      if (isFocused) {
-        handleHighlight(data);
-      }
-    }, [isFocused, data]);
-    return <selectComponents.Option {...props} />;
-  };
-
-  // Decide which nutrients to show: highlighted or selected
-  const nutrientsToShow = highlightedFoodNutrients || selectedFoodNutrients;
-  const optionToShow = highlightedOption || selectedOption;
-
-  return (
-    <div className="flex flex-row gap-4 items-start">
-      <div style={{ width: 250 }} >
-        <AsyncSelect
-          cacheOptions={false}
-          loadOptions={loadOptions}
-          defaultOptions={[]}
-          onChange={handleChange}
-          value={selectedOption}
-          placeholder="Search for a food..."
-          styles={{
-            option: (provided, state) => ({
-              ...provided,
-              color: 'black',
-              backgroundColor: state.isFocused ? 'lightblue' : provided.backgroundColor,
-              width: "300px"
-            }),
-          }}
-          menuPosition="fixed"
-          isClearable
-          components={{ Option: CustomOption }}
-        />
-      </div>
-      {/* Render NFLabel for the highlighted or selected food */}
-      
-      {optionToShow ? (
-        <RenderAny item={new Food({ name: optionToShow.label, nutrients: nutrientsToShow || [] })} title={optionToShow.label} />
-      ) : (
-        <RenderAny item={null} title={"No food selected"} />
-      )}
-
-    </div>
-  );
-};

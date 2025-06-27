@@ -23,6 +23,17 @@ interface RecipeFood {
   amount: number; // grams
 }
 
+const alterResponseData = (data) => {
+  console.log(data)
+  return data.map(food => ({
+    ...food,
+    nutrients: food.nutrients.map(nutrient => ({
+      ...nutrient,
+      unitName: nutrient.unitName === "UG" ? "µg" : nutrient.unitName
+    }))
+  }))
+}
+
 export default function RecipeNutritionBuilder() {
   const [foods, setFoods] = useState<RecipeFood[]>([]);
   const [responseData, setResponseData] = useState();
@@ -45,7 +56,7 @@ export default function RecipeNutritionBuilder() {
       if(data.foods === undefined) {
         return [{error: 'Something broke on our end'}]  // TODO: algo mas
       }
-      const processed_data = data.foods.map((item: any) => ({  // TODO: ... here
+      var processed_data = data.foods.map((item: any) => ({  // TODO: ... here
         label: item.description,
         value: item.description,
         nutrients: item.foodNutrients.map((datum: any) => ({
@@ -54,6 +65,7 @@ export default function RecipeNutritionBuilder() {
           unitName: datum.unitName,
         })),
       }));
+      processed_data = alterResponseData(processed_data)
       setResponseData(processed_data);
       return processed_data;
     } catch (error) {
@@ -253,6 +265,7 @@ export default function RecipeNutritionBuilder() {
             </Card>
           </div>
 
+          {/*                                   vvvvvvv Defined on line 100 */}
           <div className="mt-8">
             <NFLabel item={foods.length > 0 ? recipeObj : null} title={'Nutrition Facts'} />
           </div>
