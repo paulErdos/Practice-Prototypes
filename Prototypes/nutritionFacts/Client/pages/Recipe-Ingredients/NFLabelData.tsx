@@ -5,6 +5,7 @@ export const SECTION_ORDER = [
   "Aminos",
   "Sugars",
   "Vitamin A",
+  "Vitamin B",
   "Vitamin D",
   "Vitamin E",
   "Vitamin K",
@@ -29,9 +30,9 @@ export const SECTIONS: Record<string, string[]> = {
   "Vitamins": [
     "Thiamin", 
     "Riboflavin", 
-    "Folic acid", 
     "Niacin", 
     "Pantothenic acid", 
+    "Folate, total", 
     "Vitamin A, RAE",
     "Vitamin B-6", 
     "Vitamin B-12", 
@@ -158,7 +159,6 @@ export const SECTIONS: Record<string, string[]> = {
     "Cryptoxanthin, beta",
     "Lutein + zeaxanthin",
     "Lycopene",
-    "Lycopene",
     "Vitamin A, IU", 
     "Retinol",
   ],
@@ -192,7 +192,7 @@ export const SECTIONS: Record<string, string[]> = {
 
   "Vitamin B": [
     "Vitamin B-12, added", 
-    "Folate, total", 
+    "Folic acid", 
     "Folate, food", 
     "Folate, DFE",  
   ],
