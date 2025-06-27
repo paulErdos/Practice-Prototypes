@@ -27,6 +27,10 @@ export const siteConfig = {
     },
     */
     {
+      label: "Recipe Ingredients",
+      href: "/Recipe-Ingredients",
+    },
+    {
       label: "Recipes",
       href: "/Recipes",
     },
