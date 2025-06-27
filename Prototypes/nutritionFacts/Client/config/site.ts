@@ -30,10 +30,12 @@ export const siteConfig = {
       label: "Recipes",
       href: "/Recipes",
     },
+    /*
     {
       label: "Experiments",
       href: "/Experiments-Warehouse",
     },
+    */
   ],
   navMenuItems: [
     {
