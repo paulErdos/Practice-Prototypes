@@ -187,20 +187,16 @@ export default function RecipeNutritionBuilder() {
             {/* TODO: make this its own component */}
             <Card className="max-w-[700px] w-full">
 
-              <CardHeader>
-                <div>
-                  TODO: nonexistent when no ingredients are added
-                </div>
-
-                <div className="flex flex-row gap-2 mt-2 items-center">
+              <CardHeader className="flex justify-end">
+                <div className="flex flex-row gap-2 items-center">
                     <Input
                       type="text"
                       value={recipeName}
                       onChange={e => setRecipeName(e.target.value)}
                       placeholder="Recipe name"
-                      className="w-40"
+                      className="w-full"
                     />
-                    <Button color="primary" onClick={handleSaveRecipe} disabled={!recipeName || foods.length === 0}>
+                    <Button color="primary" variant="bordered" onClick={handleSaveRecipe} disabled={!recipeName || foods.length === 0}>
                       Save Recipe
                     </Button>
                   </div>
@@ -263,8 +259,8 @@ export default function RecipeNutritionBuilder() {
                           placeholder="grams"
                         />
                         <span>g</span>
-                        <Button color="danger" variant="light" onClick={() => handleRemoveFood(idx)}>
-                          Remove
+                        <Button color="primary" variant="faded" onClick={() => handleRemoveFood(idx)}>
+                          nvm
                         </Button>
                       </div>
                     ))}
