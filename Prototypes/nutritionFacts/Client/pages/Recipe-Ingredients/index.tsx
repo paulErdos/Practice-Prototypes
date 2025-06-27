@@ -23,13 +23,23 @@ interface RecipeFood {
   amount: number; // grams
 }
 
-const alterResponseData = (data) => {
+const alterUnit = (unit: string) => {
+  const map: { [key: string]: string } = {
+    "UG": "µg",
+    "MG": "mg",
+    "KCAL": "kcal",
+    "G": "g",
+  }
+  return unit in map ? map[unit] : unit;
+}
+
+const alterResponseData = (data: any[]): any[] => {
   console.log(data)
   return data.map(food => ({
     ...food,
-    nutrients: food.nutrients.map(nutrient => ({
+    nutrients: food.nutrients.map((nutrient: any) => ({
       ...nutrient,
-      unitName: nutrient.unitName === "UG" ? "µg" : nutrient.unitName
+      unitName: alterUnit(nutrient.unitName)
     }))
   }))
 }

@@ -222,7 +222,7 @@ function NFLabel({ item, title }: NFLabelProps) {
                 >
                   <div style={{ flex: 1 }}>{nutrient.nutrientName}</div>
                   <div style={{ textAlign: "right", width: "80px" }}>
-                    {nutrient.value.toFixed(2)} {nutrient.unitName}
+                    {nutrient.value.toFixed(2)} {nutrient.unitName || "mg"}
                   </div>
                   <div style={{ textAlign: "right", width: "60px" }}>
                     {calculateRDA(nutrient, selectedLifeStage)}
