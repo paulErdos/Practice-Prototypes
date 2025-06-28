@@ -60,7 +60,7 @@ function calculateLimit(nutrient: FoodNutrient | undefined, lifeStageGroup: stri
 
 function NFLabel({ item, title }: NFLabelProps) {
   const [showLifeStage, setShowLifeStage] = useState(false);
-  const [selectedLifeStage, setSelectedLifeStage] = useState("Females 19–30 y");
+  const [selectedLifeStage, setSelectedLifeStage] = useState("Males 31–50 y");
 
   // If item or item.render is missing, or item.render() returns null/undefined, use zeroes for all nutrients
   let result: FoodNutrient[] = [];
