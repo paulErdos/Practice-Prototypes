@@ -12,6 +12,7 @@ data_log_path = 'data-log.ignore/'
 def timestring():
     return ''.join(str(time()).split('.'))
 
+
 def log_data(data):
     the_path = data_log_path + timestring() + '.json'
 
@@ -20,6 +21,5 @@ def log_data(data):
 
 
 def standardize(data):
-    log_data(data)
-    
+    log_data(data)    
     return clean(data)

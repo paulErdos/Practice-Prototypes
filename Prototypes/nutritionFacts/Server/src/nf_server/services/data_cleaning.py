@@ -11,16 +11,23 @@ def clean(data):
 
     return data
 
+
 def remap_criteria(data):
     data['query'] = data['foodSearchCriteria']['generalSearchInput']
 
+
 def drop_unneeded(data):
-    data.pop('totalHits')
-    data.pop('currentPage')
-    data.pop('totalPages')
-    data.pop('pageList')
-    data.pop('aggregations')
-    data.pop('foodSearchCriteria')
+    fields = [
+        'totalHits',
+        'currentPage',
+        'totalPages',
+        'pageList',
+        'aggregations',
+        'foodSearchCriteria']
+
+    for f in fields:
+        data.pop(f)
+
 
 def winnow_toplevel_food(food):
     ban_list = [
@@ -35,6 +42,7 @@ def winnow_toplevel_food(food):
         food.pop(chaff)
     
     return food
+
 
 def clean_nutrients(data):
     for food in data['foods']:
@@ -53,6 +61,7 @@ def remove_unneeded_items(nutrient):
         if field not in keep_list:
             nutrient.pop(field)
 
+
 def standardize_units(n):
     # Ignore duplicate energy in kJ
     if n['unitName'].upper()== 'KJ':
@@ -66,5 +75,6 @@ if __name__ == '__main__':
         data = json.loads(i.read())
 
     clean(data)
+
     with open('clean-data-for-inspection.json', 'w') as o:
         o.write(json.dumps(data, indent=4))

@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+#  TODO: Move everything out of here that doesn't need to be in here.
+# We need a middleware directory with a file for these middleware funcs
+# Counter can move. It can be removed altogether, but that can happen later.
+# USDASearchResource can move
+
 import json
 import logging
 import traceback
@@ -51,10 +56,8 @@ class Counter:
 
 class USDASearchResource:
     async def on_get(self, req, resp, query=None):
+        #  TODO: Add logging
         print('on get', query)
-        if not query:
-            query = 'kefir'
-
         resp.text = await self._fetch_usda_data(query)
 
     async def _fetch_usda_data(self, query: str):
@@ -63,6 +66,7 @@ class USDASearchResource:
                 response = await client.post(
                     "https://fdc.nal.usda.gov/portal-data/external/search",
                     json={
+                        #  TODO: look into aggregating the other dbs
                         "includeDataTypes": {"SR Legacy": True},
                         "generalSearchInput": query,
                         "requireAllWords": True,
@@ -83,6 +87,8 @@ class USDASearchResource:
 
 app = falcon.asgi.App(middleware=[ExceptionLoggingMiddleware(), CORSMiddleware()])
 
+#  TODO: Rename: these are no longer tests
+#  TODO: Write test framework
 app.add_route("/test-rest", USDASearchResource())
 app.add_route("/search-test/{query}", USDASearchResource())
 app.add_route('/', Counter())
