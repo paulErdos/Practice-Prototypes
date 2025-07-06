@@ -1,0 +1,9 @@
+<script src="https://unpkg.com/idb/build/iife/index-min.js"></script>
+<script type="module">
+  import { get, set } from './main.js';
+
+  await set('userTheme', { darkMode: true });
+  const theme = await get('userTheme');
+  console.log(theme); // { darkMode: true }
+</script>
+

@@ -1,0 +1,75 @@
+To be moved into projects, tickets, and diagrams inside nutritionfacts
+
+DB + Caching
+=================================
+
+Database
+-----------
+
+System Design
+0. User
+1. Client
+2. Browser
+3. Server: Request handler + cache interface library
+4. Cache
+   - Server 1 - cache api
+   - db: postgres
+   - data cleaning code
+   - external USDA - cache api
+   - eviction handler
+5. External data source
+
+
+Cost Minimization
+---------------------
+
+Data efflux costs money.
+Data influx doesn't. 
+
+Contents:
+* Data Transmission Plan
+* Clientside caching plan
+* Clientside cache latency minimization plan
+
+Data Transmission Plan:
+0. Data Cleaning. Dropping unneeded fields reduces data size to < 50%. 
+1. Precompression
+   - Field names needn't be transmitted.
+   - Unit names needn't be transmitted.
+   - These can all be numbered.
+   - The field names can be transmitted once, when the page is loaded.
+2. Compression
+   - gzip or brotli. gzip faster brotly compresser
+   - Handled by both the sender and receiver
+     > Client must send "Accept Encoding: gzip, br"
+     > Server must encode in one or the other.
+3. Transmission + Decompression (native in browsers for those two)
+4. Postcompression
+   - Field and unit names remapped
+
+
+Clientside Caching Plan: Native key-value pairs
+* window.localstorage:
+  - 5-10mb
+  - blocking
+  - Sub-millisecond latency
+* window.indexedDB
+  - 400ish-mb
+  - async
+  - slower
+  - more features
+  - latency 1-10ms
+* cacheStorage
+  - 50mb-2Gb
+  - Strings only, so parsing mandatory
+  - latency 5-50ms
+* http request:
+  - 20-500ms
+
+
+Cache Latency Minimization Plan
+* It is possible to fork off a worker process to manage movement between
+  the three storage types. 
+  > localstorage is synchronous only, while the others are async
+* It is also possible to separately access the cache from the main loop
+* Sketch of both of these in example project in this directory.
