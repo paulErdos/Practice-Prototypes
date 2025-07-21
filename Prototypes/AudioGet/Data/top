@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+# Print next url in queue
+
+head -n 1 new-urls

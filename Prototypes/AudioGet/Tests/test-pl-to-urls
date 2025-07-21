@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+# Notes
+# * URL needs to be wrapped in single quotes
+ ./playlist-to-urls 'https://www.youtube.com/watch?v=BTlUyS-T-_4&list=PLLHtCcbaXjSjNvTKhCSUtpzwvX8EXxER-&pp=gAQB'

@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+# grep -v
+# -f reference file
+# So 
+grep -Fxv -f new-urls - >> new-urls

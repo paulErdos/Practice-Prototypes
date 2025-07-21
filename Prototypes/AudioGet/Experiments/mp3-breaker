@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 'path'"
+    exit 1
+fi
+
+ffmpeg -i "$1" -f segment -segment_time 30 -c copy part_%03d.mp3
+

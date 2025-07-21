@@ -2,7 +2,8 @@
 
 if [ -z "$1" ]; then
     echo "Usage: $0 'single-quote enclosed url'"
+    exit
 fi
 
-yt-dlp -x "$1" --audio-format mp3
+yt-dlp --no-flat-playlist --extract-audio "$1" --audio-format mp3
 

@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+# Destructively remove the first line of new-urls
+sed -i '1d' new-urls
