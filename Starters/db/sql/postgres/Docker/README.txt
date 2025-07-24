@@ -12,15 +12,15 @@ echo
 # 1. Build docker image
 echo 'Building image'
 echo 'Setting up to build...'
-cd Docker
+cd postgres-docker
 echo 'Halting if needed'
-sudo ./stop.sh
+./stop.sh
 echo 'Halt done'
 echo 'Removing as needed'
-sudo ./remove-container.sh
+./remove-container.sh
 echo 'Removing done'
 echo '... Initiating build'
-sudo ./build.sh
+./build.sh
 cd -
 echo 'Image built'
 echo
@@ -29,11 +29,11 @@ echo
 # 2. Start postgres
 echo 'Running container'
 env | egrep -i post
-cd Dockerfile
-sudo ./run.sh
+cd postgres-docker
+./run.sh
 echo 'Run kickoff done'
 echo 'Stopping container'
-sudo ./stop.sh
+./stop.sh
 echo 'Stopping done'
 cd -
 echo
@@ -41,11 +41,11 @@ echo
 
 # 3. Start and stop the container
 echo 'Starting container'
-cd Docker
-sudo ./start.sh
+cd postgres-docker
+./start.sh
 echo 'Container has started'
 echo 'Stopping container'
-sudo ./stop.sh
+./stop.sh
 cd -
 echo 'Container has stopped'
 echo
