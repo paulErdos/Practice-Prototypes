@@ -1,12 +1,8 @@
 #!/bin/bash
 
 # 0: prep
-read -p "First, set credentials. Ready? Press return. "
-vim template.env
-mv template.env .env
-source .env
-echo 'Got env vars'
-echo
+# Run setup.sh once
+# Then run this file
 
 
 # 1. Build docker image
