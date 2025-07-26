@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-poetry env activate
+echo 'source  .venv/bin/activate'
