@@ -9,7 +9,7 @@ if [ $(./nf-status) -eq 1 ]; then
 fi
 
 # Falcon Server
-cd Server && poetry run ./start-server.sh &
+cd Server/Falcon-Uvicorn && poetry run ./start-server.sh &
 
 # HeroUI Client
 cd Client && npm run dev &

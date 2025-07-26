@@ -7,10 +7,7 @@ import { Button, Card, CardBody, CardHeader, Divider, Input } from '@heroui/reac
 // Third Party
 import AsyncSelect from 'react-select/async';
 
-
-
 // Local
-//import NFLabel from '../NutritionFacts/NFLabel';
 import NFLabel from './NFLabel';
 import { Food, Recipe, FoodNutrient } from './call';
 
@@ -44,45 +41,44 @@ const alterResponseData = (data: any[]): any[] => {
   }))
 }
 
-export default function RecipeNutritionBuilder() {
+// Load options from USDA API
+const loadOptions = async (inputValue: string) => {
+  if (!inputValue) return [];
+  try {
+    const url = `http://192.168.0.3:9001/search-test/${encodeURIComponent(inputValue)}`;
+    const response = await fetch(url);
+    const text = await response.text();
+    const data = JSON.parse(text);  // TODO: unaddressed failure mode that occurs ...
+    if(data.foods === undefined) {
+      return [{error: 'Something broke on our end'}]  // TODO: algo mas
+    }
+    var processed_data = data.foods.map((item: any) => ({  // TODO: ... here
+      label: item.description,
+      value: item.description,
+      nutrients: item.foodNutrients.map((datum: any) => ({
+        nutrientName: datum.nutrientName,
+        value: datum.value,
+        unitName: datum.unitName,
+      })),
+    }));
+    processed_data = alterResponseData(processed_data)
+    //setResponseData(processed_data);
+    return processed_data;
+  } catch (error) {
+    console.error('Error fetching FDC options:', error);
+    return [];
+  }
+};
+
+export default function RecipeIngredientsNutritionFacts() {
   const [foods, setFoods] = useState<RecipeFood[]>([]);
-  const [responseData, setResponseData] = useState();
   const [recipeName, setRecipeName] = useState('');
   const [savedRecipes, setSavedRecipes] = useState<{ [key: string]: RecipeFood[] }>({});
   const [selectedRecipe, setSelectedRecipe] = useState('');
-  const router = useRouter();
   const [blink, setBlink] = useState(false);
   const BLINK_FADE_DURATION = 1500; // ms, change as desired
   const blinkTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Load options from USDA API
-  const loadOptions = useCallback(async (inputValue: string) => {
-    if (!inputValue) return [];
-    try {
-      const url = `http://192.168.0.3:9001/search-test/${encodeURIComponent(inputValue)}`;
-      const response = await fetch(url);
-      const text = await response.text();
-      const data = JSON.parse(text);  // TODO: unaddressed failure mode that occurs ...
-      if(data.foods === undefined) {
-        return [{error: 'Something broke on our end'}]  // TODO: algo mas
-      }
-      var processed_data = data.foods.map((item: any) => ({  // TODO: ... here
-        label: item.description,
-        value: item.description,
-        nutrients: item.foodNutrients.map((datum: any) => ({
-          nutrientName: datum.nutrientName,
-          value: datum.value,
-          unitName: datum.unitName,
-        })),
-      }));
-      processed_data = alterResponseData(processed_data)
-      setResponseData(processed_data);
-      return processed_data;
-    } catch (error) {
-      console.error('Error fetching FDC options:', error);
-      return [];
-    }
-  }, []);
 
   // Add a new food to the recipe
   const handleAddFood = (option: any) => {
@@ -105,6 +101,7 @@ export default function RecipeNutritionBuilder() {
     foods.map(f => new Food({ name: f.label, nutrients: f.nutrients, amount: f.amount }))
   );
 
+  
   // Load saved recipes from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem('savedRecipeFoodsMulti');
@@ -126,18 +123,19 @@ export default function RecipeNutritionBuilder() {
         if (parsed && typeof parsed === 'object' && parsed[loadName]) {
           setFoods(parsed[loadName]);
           setRecipeName(loadName);
-          setSelectedRecipe(loadName);
+          //setSelectedRecipe(loadName);
         }
       } catch (e) {}
       sessionStorage.removeItem('loadRecipeName');
     }
   }, []);
-
+  
+ 
   // Save all recipes to localStorage
   const saveAllRecipes = (recipes: { [key: string]: RecipeFood[] }) => {
     localStorage.setItem('savedRecipeFoodsMulti', JSON.stringify(recipes));
   };
-
+ 
   // Save current recipe under a name
   const handleSaveRecipe = () => {
     if (!recipeName) return;
@@ -153,6 +151,7 @@ export default function RecipeNutritionBuilder() {
     window.dispatchEvent(new CustomEvent('blinkRecipesNav', { detail: { duration: BLINK_FADE_DURATION } }));
   };
 
+  /*
   // Load a recipe by name
   const handleLoadRecipe = (name: string) => {
     if (!name || !savedRecipes[name]) return;
@@ -173,6 +172,7 @@ export default function RecipeNutritionBuilder() {
       setRecipeName('');
     }
   };
+  */
 
   return (
     <DefaultLayout>
@@ -184,7 +184,7 @@ export default function RecipeNutritionBuilder() {
         <div className="flex flex-row flex space-x-4">
           <div className="mt-8">
 
-            {/* TODO: make this its own component */}
+            {/* TODO: Recipe-Ingredients */}
             <Card className="max-w-[700px] w-full">
 
               <CardHeader className="flex justify-end">
@@ -222,18 +222,6 @@ export default function RecipeNutritionBuilder() {
                       }),
                     }}
                   />
-                  {/*
-                  <div className="flex flex-row gap-2 mt-2 items-center">
-                    <Button
-                      color="secondary"
-                      onClick={() => router.push('/Recipes')}
-                      className={blink ? 'blink-fade' : ''}
-                      style={blink ? { '--blink-fade-duration': `${BLINK_FADE_DURATION}ms` } as React.CSSProperties : {}}
-                    >
-                      View Saved Recipes
-                    </Button>
-                  </div>
-                  */}
                 </div>
               </CardHeader>
 
@@ -271,17 +259,10 @@ export default function RecipeNutritionBuilder() {
             </Card>
           </div>
 
-          {/*                                   vvvvvvv Defined on line 100 */}
+          {/* The NutritionFacts Label */}
           <div className="mt-8">
             <NFLabel item={foods.length > 0 ? recipeObj : null} title={'Nutrition Facts'} />
           </div>
-
-
-          {/* // Dev: display data
-          <div>
-            <p>{JSON.stringify(responseData)}</p>
-          </div>
-          */}
         </div>
       </section>
     </DefaultLayout>

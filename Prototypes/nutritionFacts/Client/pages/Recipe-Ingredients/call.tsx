@@ -1,4 +1,4 @@
-import { title } from "@/components/primitives";
+/*import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 //import Select from 'react-select'; 
 import { Button } from "@heroui/react";
@@ -9,7 +9,7 @@ import React from 'react';
 
 import AsyncSelect from 'react-select/async';
 import NFLabel from "../Experiments-Warehouse/NFLabel";
-
+*/
 // Abstract Data Type: Food
 export type FoodNutrient = { nutrientName: string; value: number; unitName: string };
 
@@ -66,6 +66,8 @@ export class Recipe {
   }
 }
 
+/*
+
 const alterFoodsDataMap = (data: Record<string, FoodNutrient[]>) => {
   console.log(data)
   return data;
@@ -79,4 +81,11 @@ import type { SingleValue, OptionProps } from 'react-select';
 type FoodOption = { label: string; value: string };
 // type FoodNutrient = { nutrientName: string; value: number; unitName: string };
 type FoodData = { label: string; value: import('./call').FoodNutrient[] };
+
+*/
+
+// TODO
+export default function BeQuiet() {
+  return null;
+}
 

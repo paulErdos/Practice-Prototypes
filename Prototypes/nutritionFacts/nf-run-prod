@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+## TODO: Put bash notes in bash notes.
+
+# Already running?
+if [ $(./nf-status) -eq 1 ]; then
+    echo 'Running'
+    exit
+fi
+
+# Falcon Server
+cd Server/Falcon-Uvicorn && poetry run ./start-server.sh &
+
+# HeroUI Client
+cd Client && npm run dev &
+

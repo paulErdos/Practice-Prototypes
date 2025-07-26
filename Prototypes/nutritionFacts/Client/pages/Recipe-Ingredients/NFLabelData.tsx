@@ -218,3 +218,10 @@ export const SECTIONS: Record<string, string[]> = {
   "Other": [
   ]
 };
+
+
+// TODO: move this file
+export default function DummyPage() {
+  return null;
+}
+

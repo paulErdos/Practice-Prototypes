@@ -1,0 +1,339 @@
+2025/07/25 23:15:13 [emerg] 768939#0: open() "/home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/conf/nginx.conf" failed (2: No such file or directory)
+2025/07/25 23:15:33 [emerg] 769368#0: open() "/home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/conf/nginx.conf" failed (2: No such file or directory)
+2025/07/25 23:18:36 [emerg] 773045#0: open() "/home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/conf/mime.types" failed (2: No such file or directory) in /home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/conf/nginx.conf:18
+2025/07/25 23:18:47 [emerg] 773269#0: open() "/home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/conf/mime.types" failed (2: No such file or directory) in /home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/conf/nginx.conf:18
+2025/07/25 23:21:14 [emerg] 776286#0: bind() to 0.0.0.0:80 failed (13: Permission denied)
+2025/07/25 23:24:38 [emerg] 780342#0: unknown log format "main" in /home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/conf/nginx.conf:25
+2025/07/25 23:24:59 [notice] 780757#0: using the "epoll" event method
+2025/07/25 23:24:59 [notice] 780757#0: using the "epoll" event method
+2025/07/25 23:24:59 [notice] 780757#0: nginx/1.28.0
+2025/07/25 23:24:59 [notice] 780757#0: nginx/1.28.0
+2025/07/25 23:24:59 [notice] 780757#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:24:59 [notice] 780757#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:24:59 [notice] 780757#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:24:59 [notice] 780757#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:24:59 [notice] 780757#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:24:59 [notice] 780757#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:24:59 [notice] 780758#0: start worker processes
+2025/07/25 23:24:59 [notice] 780758#0: start worker processes
+2025/07/25 23:24:59 [notice] 780758#0: start worker process 780759
+2025/07/25 23:24:59 [notice] 780758#0: start worker process 780759
+2025/07/25 23:29:05 [notice] 780758#0: signal 15 (SIGTERM) received from 785661, exiting
+2025/07/25 23:29:05 [notice] 780759#0: signal 15 (SIGTERM) received from 785661, exiting
+2025/07/25 23:29:05 [notice] 780758#0: signal 15 (SIGTERM) received from 785661, exiting
+2025/07/25 23:29:05 [notice] 780759#0: signal 15 (SIGTERM) received from 785661, exiting
+2025/07/25 23:29:05 [info] 780759#0: epoll_wait() failed (4: Interrupted system call)
+2025/07/25 23:29:05 [notice] 780759#0: exiting
+2025/07/25 23:29:05 [notice] 780759#0: exiting
+2025/07/25 23:29:05 [notice] 780759#0: exit
+2025/07/25 23:29:05 [notice] 780758#0: signal 17 (SIGCHLD) received from 780759
+2025/07/25 23:29:05 [notice] 780758#0: signal 17 (SIGCHLD) received from 780759
+2025/07/25 23:29:05 [notice] 780758#0: worker process 780759 exited with code 0
+2025/07/25 23:29:05 [notice] 780758#0: worker process 780759 exited with code 0
+2025/07/25 23:29:05 [notice] 780758#0: exit
+2025/07/25 23:29:05 [notice] 780758#0: exit
+2025/07/25 23:30:35 [notice] 787520#0: using the "epoll" event method
+2025/07/25 23:30:35 [notice] 787520#0: using the "epoll" event method
+2025/07/25 23:30:35 [notice] 787520#0: nginx/1.28.0
+2025/07/25 23:30:35 [notice] 787520#0: nginx/1.28.0
+2025/07/25 23:30:35 [notice] 787520#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:30:35 [notice] 787520#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:30:35 [notice] 787520#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:30:35 [notice] 787520#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:30:35 [notice] 787520#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:30:35 [notice] 787520#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:30:35 [notice] 787521#0: start worker processes
+2025/07/25 23:30:35 [notice] 787521#0: start worker processes
+2025/07/25 23:30:35 [notice] 787521#0: start worker process 787522
+2025/07/25 23:30:35 [notice] 787521#0: start worker process 787522
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [emerg] 789293#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [notice] 789293#0: try again to bind() after 500ms
+2025/07/25 23:32:00 [emerg] 789293#0: still could not bind()
+2025/07/25 23:32:00 [emerg] 789293#0: still could not bind()
+2025/07/25 23:32:00 [emerg] 789293#0: still could not bind()
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [emerg] 791326#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [notice] 791326#0: try again to bind() after 500ms
+2025/07/25 23:33:39 [emerg] 791326#0: still could not bind()
+2025/07/25 23:33:39 [emerg] 791326#0: still could not bind()
+2025/07/25 23:33:39 [emerg] 791326#0: still could not bind()
+2025/07/25 23:34:52 [notice] 787522#0: signal 15 (SIGTERM) received from 792788, exiting
+2025/07/25 23:34:52 [notice] 787521#0: signal 15 (SIGTERM) received from 792788, exiting
+2025/07/25 23:34:52 [notice] 787522#0: signal 15 (SIGTERM) received from 792788, exiting
+2025/07/25 23:34:52 [notice] 787521#0: signal 15 (SIGTERM) received from 792788, exiting
+2025/07/25 23:34:52 [info] 787522#0: epoll_wait() failed (4: Interrupted system call)
+2025/07/25 23:34:52 [notice] 787522#0: exiting
+2025/07/25 23:34:52 [notice] 787522#0: exiting
+2025/07/25 23:34:52 [notice] 787522#0: exit
+2025/07/25 23:34:52 [notice] 787521#0: signal 17 (SIGCHLD) received from 787522
+2025/07/25 23:34:52 [notice] 787521#0: signal 17 (SIGCHLD) received from 787522
+2025/07/25 23:34:52 [notice] 787521#0: worker process 787522 exited with code 0
+2025/07/25 23:34:52 [notice] 787521#0: worker process 787522 exited with code 0
+2025/07/25 23:34:52 [notice] 787521#0: exit
+2025/07/25 23:34:52 [notice] 787521#0: exit
+2025/07/25 23:35:04 [notice] 792998#0: using the "epoll" event method
+2025/07/25 23:35:04 [notice] 792998#0: using the "epoll" event method
+2025/07/25 23:35:04 [notice] 792998#0: nginx/1.28.0
+2025/07/25 23:35:04 [notice] 792998#0: nginx/1.28.0
+2025/07/25 23:35:04 [notice] 792998#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:35:04 [notice] 792998#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:35:04 [notice] 792998#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:35:04 [notice] 792998#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:35:04 [notice] 792998#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:35:04 [notice] 792998#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:35:04 [notice] 792999#0: start worker processes
+2025/07/25 23:35:04 [notice] 792999#0: start worker processes
+2025/07/25 23:35:04 [notice] 792999#0: start worker process 793000
+2025/07/25 23:35:04 [notice] 792999#0: start worker process 793000
+2025/07/25 23:35:10 [notice] 792999#0: signal 15 (SIGTERM) received from 793193, exiting
+2025/07/25 23:35:10 [notice] 793000#0: signal 15 (SIGTERM) received from 793193, exiting
+2025/07/25 23:35:10 [notice] 792999#0: signal 15 (SIGTERM) received from 793193, exiting
+2025/07/25 23:35:10 [notice] 793000#0: signal 15 (SIGTERM) received from 793193, exiting
+2025/07/25 23:35:10 [info] 793000#0: epoll_wait() failed (4: Interrupted system call)
+2025/07/25 23:35:10 [notice] 793000#0: exiting
+2025/07/25 23:35:10 [notice] 793000#0: exiting
+2025/07/25 23:35:10 [notice] 793000#0: exit
+2025/07/25 23:35:10 [notice] 792999#0: signal 17 (SIGCHLD) received from 793000
+2025/07/25 23:35:10 [notice] 792999#0: signal 17 (SIGCHLD) received from 793000
+2025/07/25 23:35:10 [notice] 792999#0: worker process 793000 exited with code 0
+2025/07/25 23:35:10 [notice] 792999#0: worker process 793000 exited with code 0
+2025/07/25 23:35:10 [notice] 792999#0: exit
+2025/07/25 23:35:10 [notice] 792999#0: exit
+2025/07/25 23:44:08 [notice] 805357#0: using the "epoll" event method
+2025/07/25 23:44:08 [notice] 805357#0: using the "epoll" event method
+2025/07/25 23:44:08 [notice] 805357#0: nginx/1.28.0
+2025/07/25 23:44:08 [notice] 805357#0: nginx/1.28.0
+2025/07/25 23:44:08 [notice] 805357#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:44:08 [notice] 805357#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:44:08 [notice] 805357#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:44:08 [notice] 805357#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:44:08 [notice] 805357#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:44:08 [notice] 805357#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:44:08 [notice] 805358#0: start worker processes
+2025/07/25 23:44:08 [notice] 805358#0: start worker processes
+2025/07/25 23:44:08 [notice] 805358#0: start worker process 805359
+2025/07/25 23:44:08 [notice] 805358#0: start worker process 805359
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [emerg] 806612#0: bind() to 0.0.0.0:9003 failed (98: Address already in use)
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [notice] 806612#0: try again to bind() after 500ms
+2025/07/25 23:45:10 [emerg] 806612#0: still could not bind()
+2025/07/25 23:45:10 [emerg] 806612#0: still could not bind()
+2025/07/25 23:45:10 [emerg] 806612#0: still could not bind()
+2025/07/25 23:45:15 [notice] 805358#0: signal 15 (SIGTERM) received from 806730, exiting
+2025/07/25 23:45:15 [notice] 805358#0: signal 15 (SIGTERM) received from 806730, exiting
+2025/07/25 23:45:15 [notice] 805359#0: signal 15 (SIGTERM) received from 806730, exiting
+2025/07/25 23:45:15 [notice] 805359#0: signal 15 (SIGTERM) received from 806730, exiting
+2025/07/25 23:45:15 [info] 805359#0: epoll_wait() failed (4: Interrupted system call)
+2025/07/25 23:45:15 [notice] 805359#0: exiting
+2025/07/25 23:45:15 [notice] 805359#0: exiting
+2025/07/25 23:45:15 [notice] 805359#0: exit
+2025/07/25 23:45:15 [notice] 805358#0: signal 17 (SIGCHLD) received from 805359
+2025/07/25 23:45:15 [notice] 805358#0: signal 17 (SIGCHLD) received from 805359
+2025/07/25 23:45:15 [notice] 805358#0: worker process 805359 exited with code 0
+2025/07/25 23:45:15 [notice] 805358#0: worker process 805359 exited with code 0
+2025/07/25 23:45:15 [notice] 805358#0: exit
+2025/07/25 23:45:15 [notice] 805358#0: exit
+2025/07/25 23:45:16 [notice] 806756#0: using the "epoll" event method
+2025/07/25 23:45:16 [notice] 806756#0: using the "epoll" event method
+2025/07/25 23:45:16 [notice] 806756#0: nginx/1.28.0
+2025/07/25 23:45:16 [notice] 806756#0: nginx/1.28.0
+2025/07/25 23:45:16 [notice] 806756#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:45:16 [notice] 806756#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/25 23:45:16 [notice] 806756#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:45:16 [notice] 806756#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/25 23:45:16 [notice] 806756#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:45:16 [notice] 806756#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/25 23:45:16 [notice] 806757#0: start worker processes
+2025/07/25 23:45:16 [notice] 806757#0: start worker processes
+2025/07/25 23:45:16 [notice] 806757#0: start worker process 806758
+2025/07/25 23:45:16 [notice] 806757#0: start worker process 806758
+2025/07/25 23:48:13 [notice] 810395#0: signal process started
+2025/07/25 23:48:13 [notice] 806757#0: signal 15 (SIGTERM) received from 810395, exiting
+2025/07/25 23:48:13 [notice] 806757#0: signal 15 (SIGTERM) received from 810395, exiting
+2025/07/25 23:48:13 [notice] 806758#0: exiting
+2025/07/25 23:48:13 [notice] 806758#0: exiting
+2025/07/25 23:48:13 [notice] 806758#0: exit
+2025/07/25 23:48:13 [notice] 806757#0: signal 17 (SIGCHLD) received from 806758
+2025/07/25 23:48:13 [notice] 806757#0: signal 17 (SIGCHLD) received from 806758
+2025/07/25 23:48:13 [notice] 806757#0: worker process 806758 exited with code 0
+2025/07/25 23:48:13 [notice] 806757#0: worker process 806758 exited with code 0
+2025/07/25 23:48:13 [notice] 806757#0: exit
+2025/07/25 23:48:13 [notice] 806757#0: exit
+2025/07/25 23:48:28 [notice] 810606#0: signal process started
+2025/07/25 23:48:28 [error] 810606#0: open() "/home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/logs/nginx.pid" failed (2: No such file or directory)
+2025/07/25 23:51:50 [notice] 818414#0: signal process started
+2025/07/25 23:51:50 [error] 818414#0: open() "/home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/logs/nginx.pid" failed (2: No such file or directory)
+2025/07/26 00:03:07 [notice] 844647#0: using the "epoll" event method
+2025/07/26 00:03:07 [notice] 844647#0: using the "epoll" event method
+2025/07/26 00:03:07 [notice] 844647#0: nginx/1.28.0
+2025/07/26 00:03:07 [notice] 844647#0: nginx/1.28.0
+2025/07/26 00:03:07 [notice] 844647#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/26 00:03:07 [notice] 844647#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/26 00:03:07 [notice] 844647#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/26 00:03:07 [notice] 844647#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/26 00:03:07 [notice] 844647#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/26 00:03:07 [notice] 844647#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/26 00:03:07 [notice] 844648#0: start worker processes
+2025/07/26 00:03:07 [notice] 844648#0: start worker processes
+2025/07/26 00:03:07 [notice] 844648#0: start worker process 844649
+2025/07/26 00:03:07 [notice] 844648#0: start worker process 844649
+2025/07/26 00:03:40 [notice] 845279#0: signal process started
+2025/07/26 00:03:40 [notice] 844648#0: signal 15 (SIGTERM) received from 845279, exiting
+2025/07/26 00:03:40 [notice] 844648#0: signal 15 (SIGTERM) received from 845279, exiting
+2025/07/26 00:03:40 [notice] 844649#0: exiting
+2025/07/26 00:03:40 [notice] 844649#0: exiting
+2025/07/26 00:03:40 [notice] 844649#0: exit
+2025/07/26 00:03:40 [notice] 844648#0: signal 17 (SIGCHLD) received from 844649
+2025/07/26 00:03:40 [notice] 844648#0: signal 17 (SIGCHLD) received from 844649
+2025/07/26 00:03:40 [notice] 844648#0: worker process 844649 exited with code 0
+2025/07/26 00:03:40 [notice] 844648#0: worker process 844649 exited with code 0
+2025/07/26 00:03:40 [notice] 844648#0: exit
+2025/07/26 00:03:40 [notice] 844648#0: exit
+2025/07/26 00:04:09 [notice] 845916#0: using the "epoll" event method
+2025/07/26 00:04:09 [notice] 845916#0: using the "epoll" event method
+2025/07/26 00:04:09 [notice] 845916#0: nginx/1.28.0
+2025/07/26 00:04:09 [notice] 845916#0: nginx/1.28.0
+2025/07/26 00:04:09 [notice] 845916#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/26 00:04:09 [notice] 845916#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/26 00:04:09 [notice] 845916#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/26 00:04:09 [notice] 845916#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/26 00:04:09 [notice] 845916#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/26 00:04:09 [notice] 845916#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/26 00:04:09 [notice] 845920#0: start worker processes
+2025/07/26 00:04:09 [notice] 845920#0: start worker processes
+2025/07/26 00:04:09 [notice] 845920#0: start worker process 845921
+2025/07/26 00:04:09 [notice] 845920#0: start worker process 845921
+2025/07/26 00:04:26 [notice] 846226#0: signal process started
+2025/07/26 00:04:26 [error] 846226#0: invalid PID number "845920
+842740
+842824
+8" in "/home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/logs/nginx.pid"
+2025/07/26 00:04:26 [notice] 845921#0: signal 15 (SIGTERM) received from 846343, exiting
+2025/07/26 00:04:26 [notice] 845920#0: signal 15 (SIGTERM) received from 846343, exiting
+2025/07/26 00:04:26 [notice] 845921#0: signal 15 (SIGTERM) received from 846343, exiting
+2025/07/26 00:04:26 [notice] 845920#0: signal 15 (SIGTERM) received from 846343, exiting
+2025/07/26 00:04:26 [info] 845921#0: epoll_wait() failed (4: Interrupted system call)
+2025/07/26 00:04:26 [notice] 845921#0: exiting
+2025/07/26 00:04:26 [notice] 845921#0: exiting
+2025/07/26 00:04:26 [notice] 845921#0: exit
+2025/07/26 00:04:26 [notice] 845920#0: signal 17 (SIGCHLD) received from 845921
+2025/07/26 00:04:26 [notice] 845920#0: signal 17 (SIGCHLD) received from 845921
+2025/07/26 00:04:26 [notice] 845920#0: worker process 845921 exited with code 0
+2025/07/26 00:04:26 [notice] 845920#0: worker process 845921 exited with code 0
+2025/07/26 00:04:26 [notice] 845920#0: exit
+2025/07/26 00:04:26 [notice] 845920#0: exit
+2025/07/26 00:04:36 [notice] 846455#0: using the "epoll" event method
+2025/07/26 00:04:36 [notice] 846455#0: using the "epoll" event method
+2025/07/26 00:04:36 [notice] 846455#0: nginx/1.28.0
+2025/07/26 00:04:36 [notice] 846455#0: nginx/1.28.0
+2025/07/26 00:04:36 [notice] 846455#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/26 00:04:36 [notice] 846455#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/26 00:04:36 [notice] 846455#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/26 00:04:36 [notice] 846455#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/26 00:04:36 [notice] 846455#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/26 00:04:36 [notice] 846455#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/26 00:04:36 [notice] 846456#0: start worker processes
+2025/07/26 00:04:36 [notice] 846456#0: start worker processes
+2025/07/26 00:04:36 [notice] 846456#0: start worker process 846457
+2025/07/26 00:04:36 [notice] 846456#0: start worker process 846457
+2025/07/26 00:04:49 [notice] 846778#0: signal process started
+2025/07/26 00:04:49 [error] 846778#0: invalid PID number "846456
+842740
+842824
+8" in "/home/vincent/Repositories/Practice-Prototypes/Starters/Servers/nginx/logs/nginx.pid"
+2025/07/26 00:04:50 [notice] 846457#0: signal 15 (SIGTERM) received from 846783, exiting
+2025/07/26 00:04:50 [notice] 846457#0: signal 15 (SIGTERM) received from 846783, exiting
+2025/07/26 00:04:50 [notice] 846456#0: signal 15 (SIGTERM) received from 846783, exiting
+2025/07/26 00:04:50 [notice] 846456#0: signal 15 (SIGTERM) received from 846783, exiting
+2025/07/26 00:04:50 [info] 846457#0: epoll_wait() failed (4: Interrupted system call)
+2025/07/26 00:04:50 [notice] 846457#0: exiting
+2025/07/26 00:04:50 [notice] 846457#0: exiting
+2025/07/26 00:04:50 [notice] 846457#0: exit
+2025/07/26 00:04:50 [notice] 846456#0: signal 17 (SIGCHLD) received from 846457
+2025/07/26 00:04:50 [notice] 846456#0: signal 17 (SIGCHLD) received from 846457
+2025/07/26 00:04:50 [notice] 846456#0: worker process 846457 exited with code 0
+2025/07/26 00:04:50 [notice] 846456#0: worker process 846457 exited with code 0
+2025/07/26 00:04:50 [notice] 846456#0: exit
+2025/07/26 00:04:50 [notice] 846456#0: exit
+2025/07/26 01:13:07 [notice] 934617#0: using the "epoll" event method
+2025/07/26 01:13:07 [notice] 934617#0: using the "epoll" event method
+2025/07/26 01:13:07 [notice] 934617#0: nginx/1.28.0
+2025/07/26 01:13:07 [notice] 934617#0: nginx/1.28.0
+2025/07/26 01:13:07 [notice] 934617#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/26 01:13:07 [notice] 934617#0: built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+2025/07/26 01:13:07 [notice] 934617#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/26 01:13:07 [notice] 934617#0: OS: Linux 6.8.0-64-lowlatency
+2025/07/26 01:13:07 [notice] 934617#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/26 01:13:07 [notice] 934617#0: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2025/07/26 01:13:07 [notice] 934618#0: start worker processes
+2025/07/26 01:13:07 [notice] 934618#0: start worker processes
+2025/07/26 01:13:07 [notice] 934618#0: start worker process 934619
+2025/07/26 01:13:07 [notice] 934618#0: start worker process 934619
+2025/07/26 01:13:54 [info] 934619#0: *1 client 127.0.0.1 closed keepalive connection
