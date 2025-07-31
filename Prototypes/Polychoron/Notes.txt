@@ -1,0 +1,12 @@
+The 5-Cell pentatope 4-simplex is a pyramid in four dimensions.
+
+The goal is to visualize the five tetrahedra that comprise the polychoron
+itself.
+
+At hand is a pixelblaze and 5x 20-led neopixel strands.
+
+The polychoron itself can be thought of as a fully connected graph on five
+nodes. This implies ten edges: 12 LEDs per edge.
+
+Steps:
+1. (Done) Figure out the very basics of addressing one edge at a time.
