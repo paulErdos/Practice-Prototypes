@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Gets one file, managing the new / visited files in ../Data
+# Get the directory of the script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+echo "Script is located in: $SCRIPT_DIR"

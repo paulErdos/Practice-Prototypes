@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Courtesy matters. Wait the duration of the video. Also, move file to
+# destination.
+
+
+# Record duration to later wait, no need to be rude and blast the servers
+duration=$(( $(mp3info  -p "%m:%02s\n" *.mp3 | sed 's,:.*$,,') + 1 ))
+
+mv *.mp3 ../Data/Files
+
+# Wait duration
+sleep $((duration * 60 + $(($RANDOM % 314)) ))
+

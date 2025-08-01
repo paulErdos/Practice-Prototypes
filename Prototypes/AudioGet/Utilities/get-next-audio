@@ -6,6 +6,10 @@ if [ -z "$" ]; then
     exit
 fi
 
-../Data/top >> ../Data/visited-urls
-./url-to-mp3 $(../Data/top)
+../Data/top >> ../Data/visited-urls && \
+./url-to-mp3 $(../Data/top) && \
 ../Data/pop
+# TODO: add wc -l to be at least 1 before popping
+
+
+#./move-and-wait

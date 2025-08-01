@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# Note: Takes only piped input
+
+# Get in position
+cd ../Data
+
+# grep -v
+# -f reference file
+# So 
+grep -Fxv -f new-urls - >> new-urls
