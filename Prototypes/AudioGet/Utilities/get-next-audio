@@ -1,0 +1,11 @@
+
+# Gets audio, managing url list
+
+if [ -z "$" ]; then
+    echo "Usage: $0"
+    exit
+fi
+
+../Data/top >> ../Data/visited-urls
+./url-to-mp3 $(../Data/top)
+../Data/pop
