@@ -1,4 +1,10 @@
 #!/usr/bin/bash
 
 # Destructively remove the first line of new-urls
-sed -i '1d' new-urls
+
+# Dir in which this script resides
+dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+#dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+sed -i '1d' $dir/new-urls
+

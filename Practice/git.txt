@@ -1,0 +1,2 @@
+# Stop tracking changes to a file that's been tracked in, e.g., .env template
+git update-index --assume-unchanged [path]

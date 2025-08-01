@@ -2,4 +2,8 @@
 
 # Print next url in queue
 
-head -n 1 new-urls
+# Dir in which this script resides
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+head -n 1 "$dir"/new-urls
+
