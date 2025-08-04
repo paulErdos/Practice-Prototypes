@@ -6,9 +6,11 @@
 
 # Record duration to later wait, no need to be rude and blast the servers
 duration=$(( $(mp3info  -p "%m:%02s\n" *.mp3 | sed 's,:.*$,,') + 1 ))
+totalDuration=$((duration * 60 + $(($RANDOM % 314)) ))
 
 mv *.mp3 ../Data/Files
 
 # Wait duration
-sleep $((duration * 60 + $(($RANDOM % 314)) ))
-
+echo sleeping for "$totalDuration" seconds
+sleep $totalDuration
+echo "I'm awake!"

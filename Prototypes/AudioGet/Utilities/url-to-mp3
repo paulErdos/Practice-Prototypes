@@ -1,9 +1,0 @@
-#!/usr/bin/bash
-
-# Support either pipe input or cli args
-if [ "$#" -eq 1 ]; then
-    yt-dlp -x "$1" --audio-format mp3
-else
-    xargs -n 1 yt-dlp -x "$1" --audio-format mp3
-fi
-

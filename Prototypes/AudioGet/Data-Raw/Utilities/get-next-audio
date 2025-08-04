@@ -1,0 +1,21 @@
+
+# Gets audio, managing url list
+
+if [ -z "$" ]; then
+    echo "Usage: $0"
+    exit
+fi
+
+while true; do
+    url=$(../Data/top) 
+
+    [ ! -n "$url" ] && break
+
+    echo $url >> ../Data/visited-urls && \
+    ./url-to-mp3 "$url" && \
+    ../Data/pop
+    # TODO: add wc -l to be at least 1 before popping
+
+    ./move-and-wait
+done
+
