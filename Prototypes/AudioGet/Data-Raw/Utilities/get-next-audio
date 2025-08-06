@@ -6,16 +6,26 @@ if [ -z "$" ]; then
     exit
 fi
 
-while true; do
-    url=$(../Data/top) 
+function get {
+    while true; do
+        url=$(../Data/top) 
+    
+        [ ! -n "$url" ] && break
+    
+        echo $url >> ../Data/visited-urls && \
+        ./url-to-mp3 "$url" && \
+        ../Data/pop
+        # TODO: add wc -l to be at least 1 before popping
+    
+        ./move-and-wait
+    done
+}
 
-    [ ! -n "$url" ] && break
+function run {
+    while [ "$(./reload* && cat ../Data/new-urls | wc -l)" -ne 0 ] && get ; do
+        echo running
+#        get
+    done
+}
 
-    echo $url >> ../Data/visited-urls && \
-    ./url-to-mp3 "$url" && \
-    ../Data/pop
-    # TODO: add wc -l to be at least 1 before popping
-
-    ./move-and-wait
-done
-
+run 
