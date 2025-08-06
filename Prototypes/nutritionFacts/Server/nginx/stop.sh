@@ -5,5 +5,5 @@
 
 
 # Demand
-lsof -i | egrep nginx | sed 's,^[^0-9]*\([^ ]*\)  *.*$,\1,' | xargs kill
+[ $? -ne 0 ] && lsof -i | egrep nginx | sed 's,^[^0-9]*\([^ ]*\)  *.*$,\1,' | xargs kill
 

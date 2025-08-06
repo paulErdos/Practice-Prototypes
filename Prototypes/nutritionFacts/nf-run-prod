@@ -11,6 +11,6 @@ fi
 # Falcon Server
 cd Server/Falcon-Uvicorn && poetry run ./start-server.sh &
 
-# HeroUI Client
-cd Client && npm run dev &
+# nginx serving HeroUI Client
+cd Server/nginx && ./start.sh
 
