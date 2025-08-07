@@ -1,0 +1,3 @@
+* Have a build or pre-deployment script that gives the client the ip of the
+data server (note: this assumes they're on the same machine, although it does
+allow parametrization)
