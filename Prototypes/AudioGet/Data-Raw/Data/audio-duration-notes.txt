@@ -1,0 +1,1 @@
+mp3info -x What\ is\ THIS\ in\ JavaScript？\ in\ 100\ seconds\ \[YOlr79NaAtQ\].mp3 2>/dev/null | grep Length | sed "s,^[^0-9]*\([0-9:]*\).*$,\1,"
