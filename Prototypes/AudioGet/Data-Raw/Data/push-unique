@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# grep -v
+# grep -v invert match ie filter out
 # -f reference file
-# So 
+# So pass only lines that don't match a line in the reference file
 grep -Fxv -f new-urls - >> new-urls
