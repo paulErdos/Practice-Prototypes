@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+[ $# -ne "1" ] && echo "Usage: $0 path/to/audio.mp3" && exit 1
+
+name="$(echo "$1" | sed 's,\.mp3,,')"
+
+ffmpeg -i "$1" -f segment -segment_time 30 -c copy Data-Segmented/"$name"_%03d.mp3
+

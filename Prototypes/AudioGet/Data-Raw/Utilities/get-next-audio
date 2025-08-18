@@ -22,9 +22,9 @@ function get {
 }
 
 function run {
-    while [ "$(./reload* && cat ../Data/new-urls | wc -l)" -ne 0 ] && get ; do
+    while [ "$(./reload* && cat ../Data/new-urls | wc -l)" -ne 0 ] ; do
         echo running
-#        get
+        get
     done
 }
 

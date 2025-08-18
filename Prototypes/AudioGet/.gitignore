@@ -3,3 +3,5 @@
 *.ignore
 *url*
 new-urls
+nohup*
+*log*

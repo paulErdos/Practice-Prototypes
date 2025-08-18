@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# * * * * * <command to execute>
+# | | | | |
+# | | | | day of the week (0–6) (Sunday to Saturday; 
+# | | | month (1–12)             7 is also Sunday on some systems)
+# | | day of the month (1–31)
+# | hour (0–23)
+# minute (0–59)
+
+# Intention: daily, 6:34 am
+(crontab -l 2>/dev/null; echo "34 6 * * * ""PATH=$PATH; cd $(pwd) && ./kickoff.sh") | crontab -
+
