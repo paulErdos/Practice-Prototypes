@@ -45,7 +45,7 @@ const alterResponseData = (data: any[]): any[] => {
 const loadOptions = async (inputValue: string) => {
   if (!inputValue) return [];
   try {
-    const url = `http://192.168.0.3:9001/search-test/${encodeURIComponent(inputValue)}`;
+    const url = `http://192.168.1.40:9001/search-test/${encodeURIComponent(inputValue)}`;
     const response = await fetch(url);
     const text = await response.text();
     const data = JSON.parse(text);  // TODO: unaddressed failure mode that occurs ...
