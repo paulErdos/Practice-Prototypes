@@ -1,0 +1,26 @@
+
+
+# TODO: Move to bash notes
+#
+#expected=$'HTTP/1.1 200 OK
+#'
+#
+#for deployment in $(cat ~/Repositories/deployments); do
+#    response="$(curl -I $deployment 2>&1 | grep -i http)"
+#
+#    if [ "$response" != "$expected" ]; then
+#        echo 0
+#        exit
+#    fi
+#done
+#echo 1
+#
+#
+# Neat stuff learned.
+#    diff <( echo "$response") <(echo "$expected")
+#    wc -c <(echo "$response")
+#    wc -c <(echo "$expected")
+#    echo $expected
+#
+#
+#lsof -i | egrep "'""$(cat deployments | sed 's,[^:]*:\([0-9]*\),\1,' | tr '\n' '|' | sed 's,|$,,')""'"
