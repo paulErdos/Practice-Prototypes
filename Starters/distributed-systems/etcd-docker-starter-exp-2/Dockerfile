@@ -1,5 +1,5 @@
 # Extract etcd from official image
-FROM quay.io/coreos/etcd:v3.5.13-amd64 as etcd-source
+FROM quay.io/coreos/etcd:v3.5.13-amd64 AS etcd-source
 
 # Use Ubuntu with shell tools
 FROM ubuntu:22.04
