@@ -16,7 +16,7 @@ COPY --from=etcd-source /usr/local/bin/etcdctl /usr/local/bin/etcdctl
 # Copy your scripts
 COPY start-etcd.sh /start-etcd.sh
 #COPY list-siblings.sh /usr/local/bin/list-siblings
-COPY run.sh /usr/local/bin/run
+#COPY run.sh /usr/local/bin/run
 COPY tail-logs.sh /usr/local/bin/tail-logs
 #RUN chmod +x /start.sh /usr/local/bin/list-siblings /usr/local/bin/run /usr/local/bin/tail-logs
 

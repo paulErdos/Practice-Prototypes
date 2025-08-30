@@ -41,9 +41,6 @@ fi
 
 echo "Initial cluster: $INITIAL_CLUSTER"
 
-# Start sibling watcher in background
-/usr/local/bin/list-siblings --watch &
-
 # Start etcd in foreground
 exec etcd \
     --name "${MY_NAME}" \
