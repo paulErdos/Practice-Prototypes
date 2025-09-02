@@ -12,3 +12,5 @@ data/
 *.wal*
 *webm
 *mp4
+*default.etcd*
+*snap/db
