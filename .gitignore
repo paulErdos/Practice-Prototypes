@@ -9,3 +9,6 @@ target/
 data/
 *.gz
 *.ignore*
+*.wal*
+*webm
+*mp4
