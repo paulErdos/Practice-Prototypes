@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+##  distributed-fs:                                                                    #0
+##    image: ceph/daemon                                                              #0
+##    container_name: distributed-fs                                                  #0
+##    ports:                                                                          #0
+##      - "6789:6789"  # Ceph monitor                                                #0
+##      - "6800-7300:6800-7300"  # Ceph OSD                                         #0
+##    volumes:                                                                        #0
+##      - ceph_data:/var/lib/ceph                                                     #0
+##    environment:                                                                    #0
+##      - CEPH_DAEMON=osd                                                             #0
+##    networks:                                                                       #0
+##      - cluster_net                                                                 #0
+
+  mongodb:                                                                          #1
+    image: mongo:latest                                                             #1
+    container_name: mongodb                                                         #1
+    ports:                                                                          #1
+      - "27017:27017"                                                               #1
+    volumes:                                                                        #1
+      - mongodb_data:/data/db                                                       #1
+    environment:                                                                    #1
+      - MONGO_INITDB_ROOT_USERNAME=admin                                            #1
+      - MONGO_INITDB_ROOT_PASSWORD=password                                         #1
+    networks:                                                                       #1
+      - cluster_net                                                                 #1
+
+  yugabyte:                                                                        #2
+    image: yugabytedb/yugabyte:latest                                              #2
+    container_name: yugabyte                                                        #2
+    ports:                                                                          #2
+      - "5433:5433"  # YSQL                                                        #2
+      - "7000:7000"  # Master UI                                                   #2
+      - "9000:9000"  # TServer UI                                                  #2
+    volumes:                                                                        #2
+      - yugabyte_data:/mnt/master                                                   #2
+    environment:                                                                    #2
+      - YB_MASTER_WEBSERVER_PORT=7000                                              #2
+      - YB_TSERVER_WEBSERVER_PORT=9000                                             #2
+    networks:                                                                       #2
+      - cluster_net                                                                 #2
+
+  pyspark:                                                                         #3
+    image: apache/spark-py:latest                                                  #3
+    container_name: pyspark                                                         #3
+    ports:                                                                          #3
+      - "8080:8080"  # Spark UI                                                    #3
+      - "7077:7077"  # Spark Master                                                #3
+    volumes:                                                                        #3
+      - spark_data:/opt/spark/work-dir                                              #3
+    environment:                                                                    #3
+      - SPARK_MASTER_HOST=0.0.0.0                                                  #3
+    networks:                                                                       #3
+      - cluster_net                                                                 #3
+
+  compute-mpi:                                                                     #4
+    image: openmpi/openmpi:latest                                                  #4
+    container_name: compute-mpi                                                     #4
+    ports:                                                                          #4
+      - "2222:22"  # SSH for MPI                                                   #4
+    volumes:                                                                        #4
+      - mpi_data:/workspace                                                         #4
+    environment:                                                                    #4
+      - OMPI_ALLOW_RUN_AS_ROOT=1                                                   #4
+    networks:                                                                       #4
+      - cluster_net                                                                 #4
+
+volumes:
+  ceph_data:
+  mongodb_data:
+  yugabyte_data:
+  spark_data:
+  mpi_data:
+
+networks:
+  cluster_net:
+    driver: bridge

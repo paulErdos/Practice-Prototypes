@@ -17,7 +17,8 @@ EXPIRE_AFTER = 5        # seconds
 out = subprocess.run(['./where-am-i.sh'], capture_output=True, text=True)
 if out.returncode != 0:
     exit("Cannot determine own IP")
-node_id = out.stdout.strip()  # unique node ID
+# Get just the first IP if multiple are returned
+node_id = out.stdout.strip().split()[0]  # unique node ID
 
 # Get startup timestamp
 startup_time = time.time()
