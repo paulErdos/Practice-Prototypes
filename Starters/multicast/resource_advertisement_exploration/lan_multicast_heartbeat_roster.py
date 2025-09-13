@@ -19,7 +19,10 @@ if out.returncode != 0:
     exit("Cannot determine own IP")
 node_id = out.stdout.strip()  # unique node ID
 
-peers = {}  # {peer_id: last_seen_timestamp}
+# Get startup timestamp
+startup_time = time.time()
+
+peers = {}  # {peer_id: {"startup_time": x, "last_seen": y}}
 lock = threading.Lock()
 
 # Setup receiver socket
@@ -33,15 +36,24 @@ recv_sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
 def receive_heartbeats():
     while True:
         data, _ = recv_sock.recvfrom(10240)
-        peer_ip = data.decode().strip()
-        with lock:
-            peers[peer_ip] = time.time()
+        try:
+            hb = json.loads(data.decode())
+            peer_ip = hb['ip']
+            peer_startup = hb['startup_time']
+            with lock:
+                peers[peer_ip] = {"startup_time": peer_startup, "last_seen": time.time()}
+        except:
+            # Fallback for old format
+            peer_ip = data.decode().strip()
+            with lock:
+                peers[peer_ip] = {"startup_time": time.time(), "last_seen": time.time()}
 
 def send_heartbeats():
     send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
     send_sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, MULTICAST_TTL)
     while True:
-        send_sock.sendto(node_id.encode(), (MCAST_GRP, MCAST_PORT))
+        heartbeat = {"ip": node_id, "startup_time": startup_time}
+        send_sock.sendto(json.dumps(heartbeat).encode(), (MCAST_GRP, MCAST_PORT))
         time.sleep(HEARTBEAT_FREQ)
 
 # Start receiver and sender threads
@@ -53,7 +65,7 @@ while True:
     time.sleep(HEARTBEAT_FREQ)
     now = time.time()
     with lock:
-        expired = [pid for pid, t in peers.items() if now - t > EXPIRE_AFTER]
+        expired = [pid for pid, info in peers.items() if now - info["last_seen"] > EXPIRE_AFTER]
         for pid in expired:
             del peers[pid]
         print(f"Active peers: {list(peers.keys())}")
