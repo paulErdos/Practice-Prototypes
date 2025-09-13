@@ -68,4 +68,4 @@ while True:
         expired = [pid for pid, info in peers.items() if now - info["last_seen"] > EXPIRE_AFTER]
         for pid in expired:
             del peers[pid]
-        print(f"Active peers: {list(peers.keys())}")
+        print(f"Active peers: {peers}")
