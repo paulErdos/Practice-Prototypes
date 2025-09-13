@@ -69,3 +69,15 @@ while True:
         for pid in expired:
             del peers[pid]
         print(f"Active peers: {peers}")
+        # Collect all timestamps (ours + peers)
+        timestamp_list = []
+        for peer_ip, info in peers.items():
+            if peer_ip == node_id:
+                timestamp_list.append((info['startup_time'], f"me: {info['startup_time']}"))
+            else:
+                timestamp_list.append((info['startup_time'], f"not me: {info['startup_time']}"))
+        
+        # Sort by timestamp and add index
+        timestamp_list.sort(key=lambda x: x[0])
+        all_timestamps = [f"{i}: {label}" for i, (_, label) in enumerate(timestamp_list)]
+        print(f"Timestamps: {all_timestamps}")
