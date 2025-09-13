@@ -6,8 +6,6 @@ import json
 import threading
 import time
 import subprocess
-import os
-import multiprocessing
 
 MCAST_GRP = '224.1.1.1'
 MCAST_PORT = 5007
@@ -15,37 +13,23 @@ MULTICAST_TTL = 2
 HEARTBEAT_FREQ = 2      # seconds
 EXPIRE_AFTER = 5        # seconds
 
-# Unique node ID: use local IP
+# Determine our own IP using your existing script
 out = subprocess.run(['./where-am-i.sh'], capture_output=True, text=True)
 if out.returncode != 0:
     exit("Cannot determine own IP")
-node_id = out.stdout.strip()
+node_id = out.stdout.strip()  # unique node ID
 
-peers = {}  # {peer_id: {"cpu_free": x, "gpu_free": y, ...}}
+# Get startup timestamp
+startup_time = time.time()
+
+peers = {}  # {peer_id: {"startup_time": x, "last_seen": y}}
 lock = threading.Lock()
-
-# Detect CPU and GPU resources
-total_cpu = multiprocessing.cpu_count()
-cpu_free = total_cpu
-
-def detect_gpus():
-    try:
-        out = subprocess.run(
-            ["nvidia-smi", "--query-gpu=index,memory.total", "--format=csv,noheader,nounits"],
-            capture_output=True, text=True
-        )
-        gpus = [line.split(",") for line in out.stdout.strip().split("\n") if line]
-        return len(gpus)
-    except FileNotFoundError:
-        return 0
-
-total_gpu = detect_gpus()
-gpu_free = total_gpu
 
 # Setup receiver socket
 recv_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 recv_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-recv_sock.bind(('', MCAST_PORT))
+recv_sock.bind(('', MCAST_PORT))  # receive from all interfaces
+
 mreq = struct.pack("4sl", socket.inet_aton(MCAST_GRP), socket.INADDR_ANY)
 recv_sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
 
@@ -54,52 +38,46 @@ def receive_heartbeats():
         data, _ = recv_sock.recvfrom(10240)
         try:
             hb = json.loads(data.decode())
-            peer_id = hb['id']
+            peer_ip = hb['ip']
+            peer_startup = hb['startup_time']
             with lock:
-                peers[peer_id] = {
-                    "cpu_total": hb.get("cpu_total", 0),
-                    "cpu_free": hb.get("cpu_free", 0),
-                    "gpu_total": hb.get("gpu_total", 0),
-                    "gpu_free": hb.get("gpu_free", 0),
-                    "last_seen": time.time()
-                }
-        except Exception as e:
-            print("Receive error:", e)
+                peers[peer_ip] = {"startup_time": peer_startup, "last_seen": time.time()}
+        except:
+            # Fallback for old format
+            peer_ip = data.decode().strip()
+            with lock:
+                peers[peer_ip] = {"startup_time": time.time(), "last_seen": time.time()}
 
 def send_heartbeats():
-    global cpu_free, gpu_free
     send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
     send_sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, MULTICAST_TTL)
     while True:
-        heartbeat = {
-            "id": node_id,
-            "cpu_total": total_cpu,
-            "cpu_free": cpu_free,
-            "gpu_total": total_gpu,
-            "gpu_free": gpu_free
-        }
+        heartbeat = {"ip": node_id, "startup_time": startup_time}
         send_sock.sendto(json.dumps(heartbeat).encode(), (MCAST_GRP, MCAST_PORT))
         time.sleep(HEARTBEAT_FREQ)
 
-# Expire old peers
-def expire_peers():
-    while True:
-        time.sleep(HEARTBEAT_FREQ)
-        now = time.time()
-        with lock:
-            expired = [pid for pid, info in peers.items() if now - info["last_seen"] > EXPIRE_AFTER]
-            for pid in expired:
-                del peers[pid]
-            # Display current roster
-            roster = {pid: {"cpu_free": info["cpu_free"], "gpu_free": info["gpu_free"]} for pid, info in peers.items()}
-            print(f"Active peers: {roster}")
-
-# Start threads
+# Start receiver and sender threads
 threading.Thread(target=receive_heartbeats, daemon=True).start()
 threading.Thread(target=send_heartbeats, daemon=True).start()
-threading.Thread(target=expire_peers, daemon=True).start()
 
-# Keep main thread alive
+# Main loop: expire old peers and print roster
 while True:
-    time.sleep(1)
-
+    time.sleep(HEARTBEAT_FREQ)
+    now = time.time()
+    with lock:
+        expired = [pid for pid, info in peers.items() if now - info["last_seen"] > EXPIRE_AFTER]
+        for pid in expired:
+            del peers[pid]
+        print(f"Active peers: {peers}")
+        # Collect all timestamps (ours + peers)
+        timestamp_list = []
+        for peer_ip, info in peers.items():
+            if peer_ip == node_id:
+                timestamp_list.append((info['startup_time'], f"me: {info['startup_time']}"))
+            else:
+                timestamp_list.append((info['startup_time'], f"not me: {info['startup_time']}"))
+        
+        # Sort by timestamp and add index
+        timestamp_list.sort(key=lambda x: x[0])
+        all_timestamps = [f"{i}: {label}" for i, (_, label) in enumerate(timestamp_list)]
+        print(f"Timestamps: {all_timestamps}")
