@@ -1,0 +1,7 @@
+1.
+ 1 warning found (use docker --debug to expand):
+ - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "POSTGRES_PASSWORD") (line 8)
+
+2. 
+docker: Error response from daemon: unable to find user pguser: no matching entries in passwd file
+
