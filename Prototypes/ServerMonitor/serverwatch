@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <port>"
+    exit
+fi
+
+mkdir serverwatch
+cd serverwatch
+echo '0' > status  # Status is being syntax-highlighted, but it's not a prograM
+echo "ServerWatch started watching port $1 at $(date +%s)" > log
+cd ..
+
+
