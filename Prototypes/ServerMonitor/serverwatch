@@ -11,4 +11,12 @@ echo '0' > status  # Status is being syntax-highlighted, but it's not a prograM
 echo "ServerWatch started watching port $1 at $(date +%s)" > log
 cd ..
 
+while true; do
+    writtenStatus="$(echo serverwatch/status)"
+    serverStatus="$([ $(lsof -i $1 | wc -l) -eq '0' ] && echo '0' else echo '1')"
+
+    if [ $writtenStatus != $serverStatus ]; then
+        echo 'they are not the same raise notimplementederror this is a work in progress'
+    fi
+done
 

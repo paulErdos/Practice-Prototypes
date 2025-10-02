@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Legend
+# 
+# 1: Data server off, nothing else checked
+# 2: Data server on, web server off
+# 0: All on
+#
+
+
+if [ -z "$(lsof -i :9001)" ]; then
+    # Data server not running
+    echo 1
+    echo 'Data server not running' >> /dev/stderr
+    exit
+fi
+
+
+if [ -z "$(lsof -i :9003)" ]; then
+    # Web server not running
+    echo 2
+    echo 'Web server not running' >> /dev/stderr
+    exit
+fi
+
+echo 0
+
+#
+#if [ "$( (lsof -i :9001 | wc -l; lsof -i :9003 | wc -l ) | wc -l )" -ne "2" ];
+#then
+#    echo 0
+#else
+#    echo bar
+#fi
+#
+#if [ ! -z "$(lsof -i :9001,9003)" ]; then 
+#    echo 1
+#else
+#    echo 0
+#fi
