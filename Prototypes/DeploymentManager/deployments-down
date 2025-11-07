@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+./Practice-Prototypes/Prototypes/nutritionFacts/nf-halt
+
+
+ps aux | grep vince | grep Repo | egrep -v grep | sed 's,vincent *\([^ ]*\) *.*$,\1,' | xargs kill

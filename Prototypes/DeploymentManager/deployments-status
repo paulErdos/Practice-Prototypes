@@ -1,0 +1,134 @@
+#!/usr/bin/bash
+
+# Readme
+# Set ip and port for deployments each on their own line in file 'deployments' in this directory.
+
+# Returns 
+# -1: no deployments
+# 0: all expected are running
+# 1: some expected are running (also prints deployments that are not running)
+# 2: zero expected are running (also prints deployments that are not running)
+
+
+##############################################
+#### Foreword: Utils Warehouse
+##############################################
+
+help() {
+    echo 'Usage: deployments-status [option]'
+    echo
+    echo 'The number of running deployments. With -i or --info,'
+    echo "describes what's seen, and what we expect to be see."
+    echo
+    echo 'Options:'
+    echo '  -i, --info:    Print observed / expected.'
+    echo '  -h, --help     Prints this message.' 
+    echo
+}
+
+# Echo to stderr
+err() {
+    echo "$1" >&2
+}
+
+
+##############################################
+#### Prelude 1/2: Options
+##############################################
+
+i=false
+info=false
+h=false
+help=false
+
+# Long
+while [[ "$1" == --* ]]; do
+    case "$1" in
+        --info) info=true; shift ;;
+        --help) help=true; shift ;;
+        *) help; shift ;;
+    esac
+done
+
+# Short
+while getopts 'ih' opt; do
+    case "$opt" in
+        i) i=true;;
+        h) h=true;;
+        \?) help ;;
+    esac
+done
+
+
+##############################################
+#### Prelude 2/2: Help
+##############################################
+
+if [[ $h || $help ]]; then
+    help
+    exit
+fi
+
+
+##############################################
+#### Part 1/3: Coordinate
+##############################################
+
+deployments="$(cat deployments | egrep -v '#' | egrep -v '^$')"
+if [ "$deployments" == '' ]; then
+    echo 'No deployments' 2>&1
+    exit -1
+fi
+
+
+##############################################
+#### Part 2/3: Assess
+##############################################
+
+n_expected_running="$(echo "$deployments" | wc -l)"
+ports_of_expected_running="$(echo "$deployments" | sed 's,[^:]*:\([0-9]*\),\1,' | tr '\n' '|' | sed 's,|$,,')"
+
+
+observed_running="$(lsof -i | egrep $ports_of_expected_running )"
+observed_ports="$(echo "$observed_running" | sed 's,^[^0-9]*\([0-9]*\) .*$,\1,')"
+n_observed_running="$(( $(echo "$observed_ports" | wc -l ) - 1 ))"
+
+
+##############################################
+#### Part 3a/3: Report
+##############################################
+
+if [[ $i || $info ]]; then
+    err '# --- Expected --- #'
+    err
+    err "Expecting ""$n_expected_running"" processes on ports:"
+    err "$ports_of_expected_running"
+    err
+    err
+    err '# --- Observed --- #'
+    err
+    err "running: ""$n_observed_running"" processes on ports:"
+    err "$observed_ports"
+    err
+    err
+fi
+
+
+##############################################
+#### Part 3/3: Return
+##############################################
+
+if [ $n_observed_running -eq 0 ]; then
+    cat deployments
+    echo 2
+    exit
+fi
+
+if [ $n_observed_running -eq $n_expected_running ]; 
+then
+    echo 0;
+    exit
+else 
+    cat deployments | egrep $ports_of_observed_running_deployments
+    echo 1; 
+fi

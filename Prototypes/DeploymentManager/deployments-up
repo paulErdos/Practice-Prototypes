@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+# Case 1/3: All are running
+if [ $(~/Repositories/deployments-status) -eq 0 ]; then
+    echo 1
+    echo "Deployments observed to be up"
+    exit 1
+fi
+
+# Case 2/3: Some are running
+# TODO
+
+# Case 3/3: None are running:w
+
+
+# Add start commands here
+
+# 1
+cd ~/Repositories/Practice-Prototypes/Prototypes/nutritionFacts/ && ./nf-run &
+
+# 2
