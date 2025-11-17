@@ -1,0 +1,13 @@
+[Unit]
+Description=Look Ma No Quotation Marks 
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/neon/Repositories/Practice-Prototypes/Experiments/systemd/exp01/script.sh
+Restart=always
+RestartSec=5s
+
+
+WantedBy=default.target
+#WantedBy=multi-user.target
