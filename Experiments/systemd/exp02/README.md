@@ -4,6 +4,7 @@
 
 Rename your service 
 Set the name in activate.sh
+Set service name in uninstall.sh
 
 
 ## Step 2: Setup
@@ -13,17 +14,20 @@ Set the name in activate.sh
 
 # Systemctl Notes
 
-...
+## Start / Stop
+
+systemctl --user stop foobar.service
+
+## Block (mask / unmask)
+
+systemctl --user mask foobar.service
 
 
-# Todos
+# Ideas
 
-Set up way to remove this service. 
+## Parametrize this whole thing by name.
 
-
-## Ideas
-
-Could also parametrize this whole thing by name. 
-
+Install can ask for a name as an arg. 
+It can export that env var and let everything else expect it. 
 
 
