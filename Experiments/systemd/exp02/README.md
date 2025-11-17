@@ -23,7 +23,12 @@ systemctl --user stop foobar.service
 systemctl --user mask foobar.service
 
 
-# Ideas
+# Ideas + Todos
+
+## Move tools to ./scripts directory
+
+A lot of this is internal tools and not interface. 
+
 
 ## Parametrize this whole thing by name.
 
