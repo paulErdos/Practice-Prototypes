@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+Access at:
+    http://localhost:3000 to access Open WebUI.
+    or http://localhost:8080/ when using a Python deployment.
+
+Connect to LM Studio by:
+    https://docs.openwebui.com/getting-started/quick-start/starting-with-openai-compatible/

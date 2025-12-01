@@ -1,0 +1,13 @@
+[Unit]
+Description=Look Ma No Quotation Marks 
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/vincent/Repositories/Practice-Prototypes/Experiments/systemd/exp02/script.sh
+Restart=always
+RestartSec=5s
+
+[Install]
+# This user only
+WantedBy=default.target
