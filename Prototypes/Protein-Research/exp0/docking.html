@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPH Docking Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+        }
+        #container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #00ff00;
+        }
+        .info {
+            background: #1a1a1a;
+            border: 1px solid #00ff00;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        canvas {
+            border: 2px solid #00ff00;
+            display: block;
+            margin: 20px auto;
+            background: #000;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            margin: 5px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #00cc00;
+        }
+        button:disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+        #results {
+            background: #000;
+            padding: 20px;
+            border: 1px solid #00ff00;
+            margin: 20px 0;
+            min-height: 100px;
+        }
+        .result-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid #00ff00;
+            background: #0a0a0a;
+        }
+        .ligand-name {
+            font-weight: bold;
+            font-size: 16px;
+            color: #00ffff;
+        }
+        .score {
+            color: #ffff00;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .winner {
+            border-left-color: #ffff00;
+            background: #1a1a00;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>⚛️ Tryptophan Hydroxylase Docking Simulation</h1>
+        
+        <div class="info">
+            <strong>Protein:</strong> Chicken TPH1 (PDB: 3E2T)<br>
+            <strong>Active Site:</strong> Fe²⁺ coordinated by His273, His278, Glu318<br>
+            <strong>Key Interaction:</strong> Substrate stacks against Pro269<br>
+            <strong>Ligands:</strong> L-Tryptophan (natural substrate) vs L-Phenylalanine (wrong substrate)
+        </div>
+
+        <canvas id="canvas" width="700" height="500"></canvas>
+        
+        <div class="controls">
+            <button onclick="runDocking()" id="dockBtn">Run Docking Simulation</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        
+        <div id="results">
+            <div style="text-align: center; color: #666;">Results will appear here after docking...</div>
+        </div>
+        
+        <div class="info" style="font-size: 12px;">
+            <strong>Scoring Function:</strong><br>
+            • Distance to Fe²⁺ center (optimal: ~3.9Å for hydroxylation site)<br>
+            • Stacking interaction with Pro269<br>
+            • H-bonds to His273, His278, Glu318<br>
+            • Steric complementarity to binding pocket<br>
+            • Indole ring bonus for tryptophan (aromatic stacking)
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // TPH active site (simplified 2D projection)
+        const activeSite = {
+            fe: { x: 350, y: 250, label: 'Fe²⁺' },
+            his273: { x: 320, y: 200, label: 'His273' },
+            his278: { x: 380, y: 200, label: 'His278' },
+            glu318: { x: 350, y: 300, label: 'Glu318' },
+            pro269: { x: 300, y: 250, label: 'Pro269' }
+        };
+        
+        // Ligand structures (simplified)
+        const ligands = {
+            tryptophan: {
+                name: 'L-Tryptophan',
+                atoms: [
+                    { x: 0, y: 0, type: 'N', label: 'NH₂' },
+                    { x: 20, y: 0, type: 'C', label: 'Cα' },
+                    { x: 40, y: -10, type: 'C', label: 'Cβ' },
+                    { x: 60, y: -5, type: 'C', label: 'indole' },
+                    { x: 80, y: -15, type: 'C', label: 'C3' }, // hydroxylation site
+                    { x: 75, y: 10, type: 'N', label: 'N1' }
+                ],
+                hasIndole: true,
+                hydroxylationSite: 4
+            },
+            phenylalanine: {
+                name: 'L-Phenylalanine',
+                atoms: [
+                    { x: 0, y: 0, type: 'N', label: 'NH₂' },
+                    { x: 20, y: 0, type: 'C', label: 'Cα' },
+                    { x: 40, y: -10, type: 'C', label: 'Cβ' },
+                    { x: 60, y: -5, type: 'C', label: 'phenyl' },
+                    { x: 75, y: -15, type: 'C', label: 'para' }
+                ],
+                hasIndole: false,
+                hydroxylationSite: 4
+            }
+        };
+        
+        function distance(p1, p2) {
+            return Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+        }
+        
+        function scoreLigand(ligandKey, pose) {
+            const ligand = ligands[ligandKey];
+            let score = 0;
+            
+            // Transform ligand atoms to pose position
+            const transformedAtoms = ligand.atoms.map(atom => ({
+                x: pose.x + atom.x * Math.cos(pose.rotation) - atom.y * Math.sin(pose.rotation),
+                y: pose.y + atom.x * Math.sin(pose.rotation) + atom.y * Math.cos(pose.rotation),
+                type: atom.type
+            }));
+            
+            const hydroxylationAtom = transformedAtoms[ligand.hydroxylationSite];
+            
+            // 1. Distance to Fe (optimal ~3.9Å, we'll scale to pixels)
+            const optimalFeDistance = 39; // 3.9Å scaled to ~39 pixels
+            const feDistance = distance(hydroxylationAtom, activeSite.fe);
+            const feScore = -Math.abs(feDistance - optimalFeDistance) * 2;
+            score += feScore;
+            
+            // 2. Stacking with Pro269
+            const proDistance = distance(transformedAtoms[2], activeSite.pro269);
+            if (proDistance < 50) {
+                score += (50 - proDistance) * 1.5;
+            }
+            
+            // 3. H-bonding to His residues
+            const his273Distance = distance(transformedAtoms[0], activeSite.his273);
+            if (his273Distance < 40) {
+                score += (40 - his273Distance) * 1.0;
+            }
+            
+            const his278Distance = distance(transformedAtoms[0], activeSite.his278);
+            if (his278Distance < 40) {
+                score += (40 - his278Distance) * 1.0;
+            }
+            
+            // 4. Interaction with Glu318
+            const gluDistance = distance(transformedAtoms[0], activeSite.glu318);
+            if (gluDistance < 60) {
+                score += (60 - gluDistance) * 0.8;
+            }
+            
+            // 5. Indole ring bonus (tryptophan specific)
+            if (ligand.hasIndole) {
+                score += 25; // Aromatic stacking bonus
+                
+                // Extra points for proper orientation
+                if (Math.abs(pose.rotation - Math.PI/4) < Math.PI/6) {
+                    score += 15;
+                }
+            }
+            
+            // 6. Steric penalty for bad fits
+            if (feDistance < 20 || feDistance > 80) {
+                score -= 40; // Too close or too far
+            }
+            
+            return score;
+        }
+        
+        function drawActiveSite() {
+            // Draw binding pocket outline
+            ctx.strokeStyle = '#00ff0040';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(activeSite.fe.x, activeSite.fe.y, 80, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Draw residues
+            for (const [key, residue] of Object.entries(activeSite)) {
+                if (key === 'fe') {
+                    ctx.fillStyle = '#ff6600';
+                    ctx.beginPath();
+                    ctx.arc(residue.x, residue.y, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.fillStyle = '#00ff00';
+                    ctx.beginPath();
+                    ctx.arc(residue.x, residue.y, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                ctx.fillStyle = '#00ff00';
+                ctx.font = '11px Courier New';
+                ctx.fillText(residue.label, residue.x + 10, residue.y + 5);
+            }
+        }
+        
+        function drawLigand(ligandKey, pose, color) {
+            const ligand = ligands[ligandKey];
+            
+            const transformedAtoms = ligand.atoms.map(atom => ({
+                x: pose.x + atom.x * Math.cos(pose.rotation) - atom.y * Math.sin(pose.rotation),
+                y: pose.y + atom.x * Math.sin(pose.rotation) + atom.y * Math.cos(pose.rotation),
+                label: atom.label
+            }));
+            
+            // Draw bonds
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            for (let i = 0; i < transformedAtoms.length - 1; i++) {
+                ctx.beginPath();
+                ctx.moveTo(transformedAtoms[i].x, transformedAtoms[i].y);
+                ctx.lineTo(transformedAtoms[i + 1].x, transformedAtoms[i + 1].y);
+                ctx.stroke();
+            }
+            
+            // Draw atoms
+            transformedAtoms.forEach(atom => {
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(atom.x, atom.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+        
+        async function runDocking() {
+            document.getElementById('dockBtn').disabled = true;
+            document.getElementById('results').innerHTML = '<div style="text-align: center;">🔬 Running docking simulation...</div>';
+            
+            await new Promise(r => setTimeout(r, 500));
+            
+            const numPoses = 1000;
+            const results = {};
+            
+            for (const ligandKey of Object.keys(ligands)) {
+                let bestScore = -Infinity;
+                let bestPose = null;
+                
+                // Sample poses
+                for (let i = 0; i < numPoses; i++) {
+                    const pose = {
+                        x: activeSite.fe.x + (Math.random() - 0.5) * 120,
+                        y: activeSite.fe.y + (Math.random() - 0.5) * 120,
+                        rotation: Math.random() * Math.PI * 2
+                    };
+                    
+                    const score = scoreLigand(ligandKey, pose);
+                    
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestPose = pose;
+                    }
+                }
+                
+                results[ligandKey] = { score: bestScore, pose: bestPose };
+            }
+            
+            // Draw results
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            drawActiveSite();
+            drawLigand('tryptophan', results.tryptophan.pose, '#00ffff');
+            drawLigand('phenylalanine', results.phenylalanine.pose, '#ff00ff');
+            
+            // Add legend
+            ctx.fillStyle = '#00ffff';
+            ctx.fillRect(20, 20, 15, 15);
+            ctx.fillStyle = '#00ff00';
+            ctx.font = '12px Courier New';
+            ctx.fillText('Tryptophan', 40, 32);
+            
+            ctx.fillStyle = '#ff00ff';
+            ctx.fillRect(20, 45, 15, 15);
+            ctx.fillStyle = '#00ff00';
+            ctx.fillText('Phenylalanine', 40, 57);
+            
+            // Display results
+            const winner = results.tryptophan.score > results.phenylalanine.score ? 'tryptophan' : 'phenylalanine';
+            
+            document.getElementById('results').innerHTML = `
+                <div class="result-item ${winner === 'tryptophan' ? 'winner' : ''}">
+                    <div class="ligand-name">L-Tryptophan (Natural Substrate)</div>
+                    <div class="score">Binding Score: ${results.tryptophan.score.toFixed(2)}</div>
+                    <div>Poses evaluated: ${numPoses.toLocaleString()}</div>
+                </div>
+                <div class="result-item ${winner === 'phenylalanine' ? 'winner' : ''}">
+                    <div class="ligand-name">L-Phenylalanine (Non-substrate)</div>
+                    <div class="score">Binding Score: ${results.phenylalanine.score.toFixed(2)}</div>
+                    <div>Poses evaluated: ${numPoses.toLocaleString()}</div>
+                </div>
+                <div style="margin-top: 20px; text-align: center; color: #ffff00; font-size: 16px;">
+                    ✓ Winner: ${ligands[winner].name} (${winner === 'tryptophan' ? 'Correct!' : 'Unexpected!'})
+                </div>
+            `;
+            
+            document.getElementById('dockBtn').disabled = false;
+        }
+        
+        function reset() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            drawActiveSite();
+            document.getElementById('results').innerHTML = '<div style="text-align: center; color: #666;">Results will appear here after docking...</div>';
+        }
+        
+        // Initial draw
+        reset();
+    </script>
+</body>
+</html>
