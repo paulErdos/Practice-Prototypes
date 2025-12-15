@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+d339149dba15f8670cb7013423213d6a mandelbrot.comp.spv

@@ -1,0 +1,3 @@
+/home/amanita/Desktop/integrated-test-2/build/CMakeFiles/mandelbrot.dir
+/home/amanita/Desktop/integrated-test-2/build/CMakeFiles/edit_cache.dir
+/home/amanita/Desktop/integrated-test-2/build/CMakeFiles/rebuild_cache.dir

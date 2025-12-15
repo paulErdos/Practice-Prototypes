@@ -1,0 +1,35 @@
+#version 450
+layout(local_size_x = 16, local_size_y = 16) in;
+layout(binding = 0) buffer OutputBuffer {
+    uint data[];
+} outputBuffer;
+
+layout(push_constant) uniform PushConstants {
+    uint n;
+    uint maxIterations;
+    float scale;
+} params;
+
+void main() {
+    uint x = gl_GlobalInvocationID.x;
+    uint y = gl_GlobalInvocationID.y;
+    
+    if (x >= params.n || y >= params.n) return;
+    
+    float fx = (float(x) / float(params.n - 1)) * 2.0 - 1.0;
+    float fy = (float(y) / float(params.n - 1)) * 2.0 - 1.0;
+    
+    vec2 c = vec2(fx * params.scale, fy * params.scale);
+    vec2 z = vec2(0.0, 0.0);
+    uint iterations = 0;
+    
+    while (iterations < params.maxIterations && dot(z, z) < 4.0) {
+        float x_temp = z.x * z.x - z.y * z.y + c.x;
+        z.y = 2.0 * z.x * z.y + c.y;
+        z.x = x_temp;
+        iterations++;
+    }
+    
+    uint idx = y * params.n + x;
+    outputBuffer.data[idx] = iterations;
+}
