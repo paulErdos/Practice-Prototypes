@@ -1,0 +1,7 @@
+It's stty.
+
+Make typing invisible: 
+stty -echo
+
+Make typing visible:
+stty echo
