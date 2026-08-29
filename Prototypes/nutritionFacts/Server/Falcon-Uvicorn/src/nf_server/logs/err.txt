@@ -2,3 +2,6 @@
 ./start-server.sh: line 3: uvicorn: command not found
 ./start-server.sh: line 3: uvicorn: command not found
 ./start-server.sh: line 3: uvicorn: command not found
+./start-server.sh: line 3: uvicorn: command not found
+./start-server.sh: line 3: uvicorn: command not found
+./start-server.sh: line 3: uvicorn: command not found
