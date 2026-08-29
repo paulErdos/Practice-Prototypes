@@ -1,0 +1,1 @@
+create tags, apply to machines, set user in acl rule, and then also specify the user in tailscale ssh user@host
