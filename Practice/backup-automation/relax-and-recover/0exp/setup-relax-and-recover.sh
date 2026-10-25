@@ -8,6 +8,8 @@ fi
 
 iso_and_archive_destination=$1
 recovery_script_path=$2
+list_drives_script=$3
+mount_drive_script=$4
 
 set -euo pipefail
 
@@ -16,7 +18,7 @@ CONFIG_FILE="local.conf"
 echo "Generating Relax-and-Recover (ReaR) configuration..."
 
 # Write the ReaR configuration file locally
-cat << 'EOF' > "$CONFIG_FILE"
+cat << EOF > "$CONFIG_FILE"
 # Relax-and-Recover (ReaR) Configuration
 # Generated for system backup and smaller disk migration/clone support
 
@@ -24,18 +26,19 @@ cat << 'EOF' > "$CONFIG_FILE"
 OUTPUT=ISO
 
 # Parens: it needs this as an array.
-PRE_RECOVERY_SCRIPT= ( $recovery_script_path )
+#PRE_RECOVERY_SCRIPT=( "$recovery_script_path" )
 
 # This array has data already
-COPY_AS_IS+= (
+COPY_AS_IS+=( "$PWD/$recovery_script_path" "$PWD/$list_drives_script" "$PWD/$mount_drive_script" )
 # Backup method (NETFS for local/network filesystem storage)
 BACKUP=NETFS
 
-BACKUP_URL=file://$iso_and_archive_destination/
-OUTPUT_URL=file://$iso_and_archive_destination/
+BACKUP_URL=file://"$iso_and_archive_destination"/
+OUTPUT_URL=file://"$iso_and_archive_destination"/
 
 # Enable automatic growth/adjustment features where supported
-AUTOINCREASE=y
+#AUTOINCREASE=y
+#AUTOINCREASE_DISK_SIZE_THRESHOLD_PERCENTAGE=10
 
 # Set compression level for faster or smaller backups (gzip, lzma, or zstd)
 # BACKUP_PROG_COMPRESS_OPTIONS="--zstd"
@@ -53,7 +56,7 @@ EOF
 #echo "  sudo chmod 600 /etc/rear/local.conf"
 #echo "--------------------------------------------------------"
 
-sudo mkdir -p /etc/rear"
-sudo mv ./$CONFIG_FILE /etc/rear/local.conf"
-sudo chown root:root /etc/rear/local.conf"
-sudo chmod 600 /etc/rear/local.conf"
+sudo mkdir -p /etc/rear
+sudo mv ./$CONFIG_FILE /etc/rear/local.conf
+sudo chown root:root /etc/rear/local.conf
+sudo chmod 600 /etc/rear/local.conf

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-./setup-relax-and-recover.sh
 
 set -euo pipefail
 
@@ -10,14 +9,14 @@ if [ $# -ne 4 ]; then
     exit 1
 fi
 
-# Create config
-./setup-relax-and-recover.sh $1 $2 $3 $4
-
 # Ensure the script is run as root
 if [[ $EUID -ne 0 ]]; then
    echo "Error: This script must be run as root." >&2
    exit 1
 fi
+
+# Create config
+./setup-relax-and-recover.sh "$1" "$2" "$3" "$4"
 
 echo "========================================================"
 echo "Starting Relax-and-Recover (ReaR) Backup Process"
@@ -31,7 +30,7 @@ fi
 
 # Display active ReaR configuration info
 echo "Loaded configuration summary from /etc/rear/local.conf:"
-grep -E '^(OUTPUT|BACKUP|BACKUP_URL)=' /etc/rear/local.conf || true
+grep -E '^(OUTPUT|BACKUP|BACKUP_URL|OUTPUT_URL|PRE_RECOVERY_SCRIPT)=' /etc/rear/local.conf || true
 echo "--------------------------------------------------------"
 
 # Execute ReaR backup workflow
@@ -47,5 +46,5 @@ echo "--------------------------------------------------------"
 echo "Next Steps:"
 echo "1. Locate your generated rescue ISO image."
 echo "2. Boot your smaller destination drive using the rescue media."
-echo "3. Run 'rear recover' on the destination system to restore."
+echo "3. Run 'rear recover (or my script, recover-to-disk.sh)' on the destination system to restore."
 echo "========================================================"

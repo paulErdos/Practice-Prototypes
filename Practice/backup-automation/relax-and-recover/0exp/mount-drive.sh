@@ -12,9 +12,11 @@ DEVICE="$1"
 MOUNT_POINT="/mnt/$(basename "$DEVICE")"
 
 # Ensure the mount point exists
-sudo mkdir -p "$MOUNT_POINT"
+#sudo mkdir -p "$MOUNT_POINT"
+mkdir -p "$MOUNT_POINT"
 
 # Mount the device (auto-detects filesystem type)
-sudo mount "$DEVICE" "$MOUNT_POINT"
+#sudo mount "$DEVICE" "$MOUNT_POINT"
+mount "$DEVICE" "$MOUNT_POINT"
 
 echo "Mounted $DEVICE at $MOUNT_POINT"
