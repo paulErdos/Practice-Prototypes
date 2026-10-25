@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 
+./setup-relax-and-recover.sh
+
 set -euo pipefail
+
+# Ensure the user knows how to use
+if [ $# -ne 4 ]; then
+    echo 'usage: create-backup-archive.sh /path/to/iso/destination/eg/desktop /path/to/recovery/script.sh /path/to/list-drives-scipt.sh /path/to/drive/mounter/script.sh'
+    exit 1
+fi
+
+# Create config
+./setup-relax-and-recover.sh $1 $2 $3 $4
 
 # Ensure the script is run as root
 if [[ $EUID -ne 0 ]]; then
@@ -14,7 +25,7 @@ echo "========================================================"
 
 # Check if ReaR configuration exists
 if [[ ! -f /etc/rear/local.conf ]]; then
-    echo "Error: /etc/rear/local.conf not found. Please run Script 2 first." >&2
+    echo "Error: /etc/rear/local.conf not found. Please run the setup script first." >&2
     exit 1
 fi
 
