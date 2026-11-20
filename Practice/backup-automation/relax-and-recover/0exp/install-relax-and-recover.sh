@@ -22,3 +22,4 @@ sudo apt-get install -y rear genisoimage syslinux extlinux
 
 echo "Relax-and-Recover install attempted."
 
+echo 'Verify install, then run ./create.sh.'

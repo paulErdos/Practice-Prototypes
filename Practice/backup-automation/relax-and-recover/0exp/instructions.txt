@@ -1,0 +1,19 @@
+Note: setup, and create-backup-archive are all utilities. 
+
+Steps:
+1. Install.
+
+2. Run create.sh on the laptop with a destination on the laptop's own
+   drive (e.g. the desktop path). This produces the ISO and the archive.
+
+3. Put the ISO on a USB stick, plug in the blank SSD, and boot the
+   laptop from the stick.
+
+4. In the rescue environment, run list-drives.sh to identify the
+   laptop drive and the SSD.
+
+5. Run mount-drive.sh /dev/<laptop-partition> so the archive is
+   reachable.
+
+6. Run recover-to-disk.sh, and when ReaR asks for the disk mapping,
+   map the original disk to the SSD.

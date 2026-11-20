@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Ensure the user knows how to use
-if [ $# -ne 4 ]; then
-    echo 'usage: setup-relax-and-recover.sh /path/to/iso/destination/eg/desktop /path/to/recovery/script.sh /path/to/list-drives-scipt.sh /path/to/drive/mounter/script.sh'
+if [ $# -ne 5 ]; then
+    echo 'usage: setup-relax-and-recover.sh /path/to/iso/destination/eg/desktop /path/to/recovery/script.sh /path/to/list-drives-scipt.sh /path/to/drive/mounter/script.sh /path/to/instructions.txt'
     exit 1
 fi
 
@@ -10,6 +10,7 @@ iso_and_archive_destination=$1
 recovery_script_path=$2
 list_drives_script=$3
 mount_drive_script=$4
+instructions_doc=$5
 
 set -euo pipefail
 
@@ -29,7 +30,7 @@ OUTPUT=ISO
 #PRE_RECOVERY_SCRIPT=( "$recovery_script_path" )
 
 # This array has data already
-COPY_AS_IS+=( "$PWD/$recovery_script_path" "$PWD/$list_drives_script" "$PWD/$mount_drive_script" )
+COPY_AS_IS+=( "$PWD/$recovery_script_path" "$PWD/$list_drives_script" "$PWD/$mount_drive_script" "$PWD/instructions_doc" )
 # Backup method (NETFS for local/network filesystem storage)
 BACKUP=NETFS
 
@@ -60,3 +61,5 @@ sudo mkdir -p /etc/rear
 sudo mv ./$CONFIG_FILE /etc/rear/local.conf
 sudo chown root:root /etc/rear/local.conf
 sudo chmod 600 /etc/rear/local.conf
+
+echo 'Setup complete. Local.conf created, andusted, and placed.'

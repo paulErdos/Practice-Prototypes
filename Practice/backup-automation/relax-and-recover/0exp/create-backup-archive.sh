@@ -5,7 +5,7 @@ set -euo pipefail
 
 # Ensure the user knows how to use
 if [ $# -ne 4 ]; then
-    echo 'usage: create-backup-archive.sh /path/to/iso/destination/eg/desktop /path/to/recovery/script.sh /path/to/list-drives-scipt.sh /path/to/drive/mounter/script.sh'
+    echo 'usage: create-backup-archive.sh /path/to/iso/destination/eg/desktop /path/to/recovery/script.sh /path/to/list-drives-scipt.sh /path/to/drive/mounter/script.sh /path/to/instructions.txt'
     exit 1
 fi
 

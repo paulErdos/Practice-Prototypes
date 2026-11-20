@@ -16,4 +16,4 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 
-./create-backup-archive.sh "$1" recover-to-disk.sh list-drives.sh mount-drive.sh
+./create-backup-archive.sh "$1" recover-to-disk.sh list-drives.sh mount-drive.sh instructions.txt
